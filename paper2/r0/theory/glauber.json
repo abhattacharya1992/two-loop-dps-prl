@@ -1,0 +1,1623 @@
+{
+ "b_space": {
+  "Im K/K0 in units of 2 pi i Dc": {
+   "eps^-1": "1",
+   "eps^0": "X_mu",
+   "eps^1": "X_mu**2/2 + pi**2/12"
+  },
+  "at mu = mu_b": {
+   "-1": "2*I*pi*Delta_C",
+   "0": "0",
+   "1": "I*pi**3*Delta_C/6"
+  },
+  "finite part at mu = mu_b": 0,
+  "pole equals that of 2 I_K": true,
+  "X_mu term equals Im of the RG bracket": true
+ },
+ "eikonal_end_point": {
+  "eta-regulated l^- integral imaginary part": 0.0,
+  "i0-cutoff integral minus [ln(Lambda/e0) - i pi/2]": 1e-09
+ },
+ "off_shell_eikonal_pair": {
+  "rows": [
+   {
+    "A": 0.7,
+    "sigma1": 0.2,
+    "sigma2": 0.5,
+    "closed form": [
+     24.674011002723397,
+     15.28314257204498
+    ],
+    "numerical": [
+     24.67401100276677,
+     15.283142572143221
+    ],
+    "rel diff": 3.7000671074742634e-12,
+    "phase relative to the log": "ln(A/sigma1 sigma2) - i pi"
+   },
+   {
+    "A": 1.3,
+    "sigma1": 0.05,
+    "sigma2": 2.0,
+    "closed form": [
+     14.099434858699084,
+     11.511465797472892
+    ],
+    "numerical": [
+     14.099434858731444,
+     11.511465798039929
+    ],
+    "rel diff": 3.1203366859278985e-11,
+    "phase relative to the log": "ln(A/sigma1 sigma2) - i pi"
+   },
+   {
+    "A": 0.7,
+    "sigma1": 0.2,
+    "sigma2": -0.5,
+    "closed form": [
+     0.0,
+     20.377523429393307
+    ],
+    "numerical": [
+     -4.230738847595111e-16,
+     20.37752342947607
+    ],
+    "rel diff": 4.06162350632039e-12,
+    "phase relative to the log": "none (real)"
+   },
+   {
+    "A": 2.0,
+    "sigma1": -0.3,
+    "sigma2": 0.9,
+    "closed form": [
+     0.0,
+     7.272806970479681
+    ],
+    "numerical": [
+     2.2865045498747564e-17,
+     7.272806970486283
+    ],
+    "rel diff": 9.07850087203222e-13,
+    "phase relative to the log": "none (real)"
+   }
+  ],
+  "worst rel diff": 3.1203366859278985e-11
+ },
+ "eta_regulated_regions": {
+  "regulator": "nu^eta |l+|^-eta (n-collinear), |l-|^-eta (nbar-collinear), |l+ - l-|^-eta (soft, Glauber); zero bins scaleless",
+  "closed forms": {
+   "C_n": "-(2 pi i/A) (s1/A)^eta pi/sin(pi eta)",
+   "C_nbar": "the same with s2 (s2 > 0); for s2 < 0 the daughter pole at l = A/|s2| lies inside the range and adds -2 pi^2/A",
+   "S": "-4 [Y_s R_s + Y_c R_c] in light-cone polar coordinates (see the docstring)",
+   "G": "(1/A) [PP + pi^2 DD + i pi (P1 D2 - D1 P2)], PP = pi^2 |s1+s2|^-eta, DD = |s1+s2|^-eta"
+  },
+  "cases": [
+   {
+    "s1": 1.0,
+    "s2": 2.0,
+    "A": 10000.0,
+    "A/|s1 s2|": 5000.0,
+    "exact x A": [
+     19.73526174982875,
+     53.50440223826886
+    ],
+    "sum of the four regions x A, eta -> 0": [
+     19.73920880107005,
+     53.515095964076096
+    ],
+    "rel diff": 0.00019988229164058776,
+    "Glauber region x A, eta -> 0": [
+     19.73920880107005,
+     -3.133412334476201e-08
+    ],
+    "real part of C_n + C_nbar + S, eta -> 0": 1.7862335249100415e-25,
+    "pole coefficients x eta/(2 pi i/A) at the smallest eta (collinear, soft)": [
+     -1.9656866806860607,
+     1.982097935692123
+    ]
+   },
+   {
+    "s1": 1.0,
+    "s2": 2.0,
+    "A": 1000000.0,
+    "A/|s1 s2|": 500000.0,
+    "exact x A": [
+     19.73916932384007,
+     82.45007586822663
+    ],
+    "sum of the four regions x A, eta -> 0": [
+     19.73920880107005,
+     82.45019456628577
+    ],
+    "rel diff": 1.475473914804374e-06,
+    "Glauber region x A, eta -> 0": [
+     19.73920880107005,
+     -3.133412334476201e-08
+    ],
+    "real part of C_n + C_nbar + S, eta -> 0": -1.1856390078854554e-24,
+    "pole coefficients x eta/(2 pi i/A) at the smallest eta (collinear, soft)": [
+     -1.9480856395774981,
+     1.973203986576266
+    ]
+   },
+   {
+    "s1": 1.0,
+    "s2": -2.0,
+    "A": 10000.0,
+    "A/|s1 s2|": 5000.0,
+    "exact x A": [
+     0.0,
+     53.52580828037259
+    ],
+    "sum of the four regions x A, eta -> 0": [
+     3.835401251017056e-06,
+     53.51509896694488
+    ],
+    "rel diff": 0.00020007757862168106,
+    "Glauber region x A, eta -> 0": [
+     19.739208802178716,
+     -6.869785533457866e-10
+    ],
+    "real part of C_n + C_nbar + S, eta -> 0": -19.739204966777468,
+    "pole coefficients x eta/(2 pi i/A) at the smallest eta (collinear, soft)": [
+     -1.9656681664140714,
+     1.982097935692123
+    ]
+   },
+   {
+    "s1": 1.0,
+    "s2": -2.0,
+    "A": 1000000.0,
+    "A/|s1 s2|": 500000.0,
+    "exact x A": [
+     0.0,
+     82.4504056691897
+    ],
+    "sum of the four regions x A, eta -> 0": [
+     2.1040865889405914e-05,
+     82.45020473637011
+    ],
+    "rel diff": 2.450339343151695e-06,
+    "Glauber region x A, eta -> 0": [
+     19.739208802178716,
+     -6.869785533457866e-10
+    ],
+    "real part of C_n + C_nbar + S, eta -> 0": -19.739187761312827,
+    "pole coefficients x eta/(2 pi i/A) at the smallest eta (collinear, soft)": [
+     -1.9480672910849617,
+     1.973203986576266
+    ]
+   }
+  ],
+  "worst rel diff of the sum from J at A/|s1 s2| = 5e5": 2.450339343151695e-06,
+  "worst rel deviation of G from 2 pi^2/A": 5.616573872657682e-11,
+  "largest real part of C_n + C_nbar + S (s2 > 0)": 1.1856390078854554e-24,
+  "worst rel deviation of the 3 -> 3 cancellation": 1.0659427183146164e-06,
+  "in b space": "G = -i pi x 2 Dc e^{-eps gamma_E} Gamma(-eps) (mu^2 b^2/b0^2)^eps (eta -> 0 before eps -> 0): part 0"
+ },
+ "explicit_two_loop_graph": {
+  "statement": "lambda^4 F = f1 [ln lambda + i pi/2] + i (real) = -(f1/2) ln(e^{-i pi}/lambda^2) + i (real); Re f0 = N (2 pi i)^2/(x^2 k^2 a) x 2 pi^2/l_perp^2, the Glauber region of the graph",
+  "rows": [
+   {
+    "x": 0.75,
+    "khat": [
+     0.6,
+     0.3
+    ],
+    "qhat": [
+     1.0,
+     0.0
+    ],
+    "lhat": [
+     0.2,
+     -0.5
+    ],
+    "Im f1 (eikonal)": -15206.143352790712,
+    "Im f1 (slope, lambda = 0.004, 0.002)": -15214.547615696696,
+    "Re lambda^4 F at lambda = 0.004, 0.002": [
+     23882.97258390427,
+     23884.840142810244
+    ],
+    "extrapolated Re f0": 23885.46266244557,
+    "Glauber region from the leading-power integrand": 23885.754123280287,
+    "-(pi/2) Im f1": 23885.754123280283,
+    "rel deviation": -1.2202287322016225e-05
+   },
+   {
+    "x": 0.75,
+    "khat": [
+     0.6,
+     0.3
+    ],
+    "qhat": [
+     1.0,
+     0.0
+    ],
+    "lhat": [
+     -3.0,
+     2.0
+    ],
+    "Im f1 (eikonal)": -12.078835623764368,
+    "Im f1 (slope, lambda = 0.004, 0.002)": -12.158913323465487,
+    "Re lambda^4 F at lambda = 0.004, 0.002": [
+     18.94156920399497,
+     18.965417606878123
+    ],
+    "extrapolated Re f0": 18.973367074505838,
+    "Glauber region from the leading-power integrand": 18.97339062976841,
+    "-(pi/2) Im f1": 18.973390629768414,
+    "rel deviation": -1.2414893590939613e-06
+   },
+   {
+    "x": 0.75,
+    "khat": [
+     0.6,
+     0.3
+    ],
+    "qhat": [
+     1.0,
+     0.0
+    ],
+    "lhat": [
+     0.15,
+     0.1
+    ],
+    "Im f1 (eikonal)": -8130.971496047123,
+    "Im f1 (slope, lambda = 0.004, 0.002)": -8175.175827478367,
+    "Re lambda^4 F at lambda = 0.004, 0.002": [
+     12750.613546895218,
+     12766.534643421948
+    ],
+    "extrapolated Re f0": 12771.841675597523,
+    "Glauber region from the leading-power integrand": 12772.100159264826,
+    "-(pi/2) Im f1": 12772.100159264824,
+    "rel deviation": -2.0238149096907243e-05
+   },
+   {
+    "x": 0.75,
+    "khat": [
+     0.6,
+     0.3
+    ],
+    "qhat": [
+     1.0,
+     0.0
+    ],
+    "lhat": [
+     0.9,
+     0.4
+    ],
+    "Im f1 (eikonal)": 1392.519489723381,
+    "Im f1 (slope, lambda = 0.004, 0.002)": 1394.5703302320535,
+    "Re lambda^4 F at lambda = 0.004, 0.002": [
+     -2186.655614546401,
+     -2187.1782938990063
+    ],
+    "extrapolated Re f0": -2187.352520349875,
+    "Glauber region from the leading-power integrand": -2187.364499447791,
+    "-(pi/2) Im f1": -2187.3644994477904,
+    "rel deviation": -5.476498278644826e-06
+   },
+   {
+    "x": 0.75,
+    "khat": [
+     0.6,
+     0.3
+    ],
+    "qhat": [
+     1.0,
+     0.0
+    ],
+    "lhat": [
+     -0.3,
+     -1.1
+    ],
+    "Im f1 (eikonal)": -880.5554308219171,
+    "Im f1 (slope, lambda = 0.004, 0.002)": -881.413582714879,
+    "Re lambda^4 F at lambda = 0.004, 0.002": [
+     1382.8945406683697,
+     1383.097484502248
+    ],
+    "extrapolated Re f0": 1383.1651324468742,
+    "Glauber region from the leading-power integrand": 1383.173236274365,
+    "-(pi/2) Im f1": 1383.173236274365,
+    "rel deviation": -5.858866610752855e-06
+   },
+   {
+    "x": 0.75,
+    "khat": [
+     0.6,
+     0.3
+    ],
+    "qhat": [
+     1.0,
+     0.0
+    ],
+    "lhat": [
+     2.0,
+     0.3
+    ],
+    "Im f1 (eikonal)": 187.08253759336574,
+    "Im f1 (slope, lambda = 0.004, 0.002)": 187.57711151510574,
+    "Re lambda^4 F at lambda = 0.004, 0.002": [
+     -293.68430502755535,
+     -293.8220521529961
+    ],
+    "extrapolated Re f0": -293.8679678614763,
+    "Glauber region from the leading-power integrand": -293.8685628591271,
+    "-(pi/2) Im f1": -293.86856285912705,
+    "rel deviation": -2.0247067090695126e-06
+   },
+   {
+    "x": 0.4,
+    "khat": [
+     -0.5,
+     0.8
+    ],
+    "qhat": [
+     1.0,
+     0.0
+    ],
+    "lhat": [
+     0.2,
+     -0.5
+    ],
+    "Im f1 (eikonal)": 6006.640193781441,
+    "Im f1 (slope, lambda = 0.004, 0.002)": 6029.875217744224,
+    "Re lambda^4 F at lambda = 0.004, 0.002": [
+     -9424.731541269537,
+     -9432.447797115594
+    ],
+    "extrapolated Re f0": -9435.019882397612,
+    "Glauber region from the leading-power integrand": -9435.208352770473,
+    "-(pi/2) Im f1": -9435.208352770473,
+    "rel deviation": -1.9975221088319728e-05
+   },
+   {
+    "x": 0.4,
+    "khat": [
+     -0.5,
+     0.8
+    ],
+    "qhat": [
+     1.0,
+     0.0
+    ],
+    "lhat": [
+     -3.0,
+     2.0
+    ],
+    "Im f1 (eikonal)": 42.83619243816752,
+    "Im f1 (slope, lambda = 0.004, 0.002)": 43.286284814507454,
+    "Re lambda^4 F at lambda = 0.004, 0.002": [
+     -67.04367600442936,
+     -67.2259801132238
+    ],
+    "extrapolated Re f0": -67.2867481494886,
+    "Glauber region from the leading-power integrand": -67.28693373575287,
+    "-(pi/2) Im f1": -67.28693373575287,
+    "rel deviation": -2.7581322845637857e-06
+   },
+   {
+    "x": 0.4,
+    "khat": [
+     -0.5,
+     0.8
+    ],
+    "qhat": [
+     1.0,
+     0.0
+    ],
+    "lhat": [
+     0.15,
+     0.1
+    ],
+    "Im f1 (eikonal)": 56804.41324612245,
+    "Im f1 (slope, lambda = 0.004, 0.002)": 58997.184812975094,
+    "Re lambda^4 F at lambda = 0.004, 0.002": [
+     -87321.99256906904,
+     -88742.84754030252
+    ],
+    "extrapolated Re f0": -89216.46586404702,
+    "Glauber region from the leading-power integrand": -89228.16367274852,
+    "-(pi/2) Im f1": -89228.16367274852,
+    "rel deviation": -0.00013109996014715186
+   },
+   {
+    "x": 0.4,
+    "khat": [
+     -0.5,
+     0.8
+    ],
+    "qhat": [
+     1.0,
+     0.0
+    ],
+    "lhat": [
+     0.9,
+     0.4
+    ],
+    "Im f1 (eikonal)": 2514.1195037889333,
+    "Im f1 (slope, lambda = 0.004, 0.002)": 2522.553375997278,
+    "Re lambda^4 F at lambda = 0.004, 0.002": [
+     -3945.4359747983412,
+     -3948.2123870508394
+    ],
+    "extrapolated Re f0": -3949.137857801672,
+    "Glauber region from the leading-power integrand": -3949.1696816750646,
+    "-(pi/2) Im f1": -3949.1696816750646,
+    "rel deviation": -8.058370735586351e-06
+   },
+   {
+    "x": 0.4,
+    "khat": [
+     -0.5,
+     0.8
+    ],
+    "qhat": [
+     1.0,
+     0.0
+    ],
+    "lhat": [
+     -0.3,
+     -1.1
+    ],
+    "Im f1 (eikonal)": 531.1485022359749,
+    "Im f1 (slope, lambda = 0.004, 0.002)": 532.2862613170503,
+    "Re lambda^4 F at lambda = 0.004, 0.002": [
+     -833.8694667097119,
+     -834.2062388913711
+    ],
+    "extrapolated Re f0": -834.3184962852574,
+    "Glauber region from the leading-power integrand": -834.3261162948804,
+    "-(pi/2) Im f1": -834.3261162948803,
+    "rel deviation": -9.13313088757306e-06
+   },
+   {
+    "x": 0.4,
+    "khat": [
+     -0.5,
+     0.8
+    ],
+    "qhat": [
+     1.0,
+     0.0
+    ],
+    "lhat": [
+     2.0,
+     0.3
+    ],
+    "Im f1 (eikonal)": 367.5564066730983,
+    "Im f1 (slope, lambda = 0.004, 0.002)": 368.16821015014983,
+    "Re lambda^4 F at lambda = 0.004, 0.002": [
+     -577.1001105995675,
+     -577.2908424127274
+    ],
+    "extrapolated Re f0": -577.3544196837807,
+    "Glauber region from the leading-power integrand": -577.3562534920339,
+    "-(pi/2) Im f1": -577.356253492034,
+    "rel deviation": -3.176216143985222e-06
+   },
+   {
+    "x": 0.9,
+    "khat": [
+     0.3,
+     -0.2
+    ],
+    "qhat": [
+     1.0,
+     0.0
+    ],
+    "lhat": [
+     0.2,
+     -0.5
+    ],
+    "Im f1 (eikonal)": -219.53891419483028,
+    "Im f1 (slope, lambda = 0.004, 0.002)": -220.42405121218565,
+    "Re lambda^4 F at lambda = 0.004, 0.002": [
+     344.51515905021375,
+     344.76456109105044
+    ],
+    "extrapolated Re f0": 344.84769510466265,
+    "Glauber region from the leading-power integrand": 344.8509200057794,
+    "-(pi/2) Im f1": 344.85092000577936,
+    "rel deviation": -9.351580435690288e-06
+   },
+   {
+    "x": 0.9,
+    "khat": [
+     0.3,
+     -0.2
+    ],
+    "qhat": [
+     1.0,
+     0.0
+    ],
+    "lhat": [
+     -3.0,
+     2.0
+    ],
+    "Im f1 (eikonal)": -31.467211118056028,
+    "Im f1 (slope, lambda = 0.004, 0.002)": -32.13304942681995,
+    "Re lambda^4 F at lambda = 0.004, 0.002": [
+     49.23232130594061,
+     49.379101417796626
+    ],
+    "extrapolated Re f0": 49.428028121748625,
+    "Glauber region from the leading-power integrand": 49.428579638721935,
+    "-(pi/2) Im f1": 49.42857963872194,
+    "rel deviation": -1.115785598815311e-05
+   },
+   {
+    "x": 0.9,
+    "khat": [
+     0.3,
+     -0.2
+    ],
+    "qhat": [
+     1.0,
+     0.0
+    ],
+    "lhat": [
+     0.15,
+     0.1
+    ],
+    "Im f1 (eikonal)": -67262.94048492829,
+    "Im f1 (slope, lambda = 0.004, 0.002)": -67841.34044317518,
+    "Re lambda^4 F at lambda = 0.004, 0.002": [
+     105357.13450445727,
+     105579.39549550998
+    ],
+    "extrapolated Re f0": 105653.48249252753,
+    "Glauber region from the leading-power integrand": 105656.37984314909,
+    "-(pi/2) Im f1": 105656.37984314909,
+    "rel deviation": -2.7422391585374406e-05
+   },
+   {
+    "x": 0.9,
+    "khat": [
+     0.3,
+     -0.2
+    ],
+    "qhat": [
+     1.0,
+     0.0
+    ],
+    "lhat": [
+     0.9,
+     0.4
+    ],
+    "Im f1 (eikonal)": 1214.2538913971775,
+    "Im f1 (slope, lambda = 0.004, 0.002)": 1215.0555647928186,
+    "Re lambda^4 F at lambda = 0.004, 0.002": [
+     -1907.0243105029224,
+     -1907.2594113396399
+    ],
+    "extrapolated Re f0": -1907.3377782852124,
+    "Glauber region from the leading-power integrand": -1907.345552403096,
+    "-(pi/2) Im f1": -1907.3455524030958,
+    "rel deviation": -4.07588329964792e-06
+   },
+   {
+    "x": 0.9,
+    "khat": [
+     0.3,
+     -0.2
+    ],
+    "qhat": [
+     1.0,
+     0.0
+    ],
+    "lhat": [
+     -0.3,
+     -1.1
+    ],
+    "Im f1 (eikonal)": -53.889677993949675,
+    "Im f1 (slope, lambda = 0.004, 0.002)": -54.20846541006892,
+    "Re lambda^4 F at lambda = 0.004, 0.002": [
+     84.5474719931224,
+     84.62393192812064
+    ],
+    "extrapolated Re f0": 84.64941857312004,
+    "Glauber region from the leading-power integrand": 84.64970824505593,
+    "-(pi/2) Im f1": 84.64970824505592,
+    "rel deviation": -3.4220074929258715e-06
+   },
+   {
+    "x": 0.9,
+    "khat": [
+     0.3,
+     -0.2
+    ],
+    "qhat": [
+     1.0,
+     0.0
+    ],
+    "lhat": [
+     2.0,
+     0.3
+    ],
+    "Im f1 (eikonal)": 250.7094615978413,
+    "Im f1 (slope, lambda = 0.004, 0.002)": 251.6341138131236,
+    "Re lambda^4 F at lambda = 0.004, 0.002": [
+     -393.4582166149707,
+     -393.724125675454
+    ],
+    "extrapolated Re f0": -393.8127620289484,
+    "Glauber region from the leading-power integrand": -393.8135013706153,
+    "-(pi/2) Im f1": -393.8135013706153,
+    "rel deviation": -1.8773903494029298e-06
+   }
+  ],
+  "worst rel deviation of Re f0 from -(pi/2) Im f1": 0.00013109996014715186,
+  "worst at lambda = 0.002 without extrapolation": 0.0054390465125555565,
+  "worst rel deviation of the slope from the eikonal coefficient": 0.038602133910824676
+ },
+ "qcd_imaginary_parts": {
+  "rows": [
+   {
+    "process": "gg -> HH",
+    "where": "beta = 1/4",
+    "component": "nu0",
+    "colour": "C_A",
+    "Im r0": -3.648649298726129e-11,
+    "fit uncertainty": 2.8402248965045596e-09,
+    "Im r0 over uncertainty": 0.012846339398040241
+   },
+   {
+    "process": "gg -> HH",
+    "where": "beta = 1/4",
+    "component": "nu0",
+    "colour": "T_F n_f",
+    "Im r0": 4.8493713375946265e-12,
+    "fit uncertainty": 4.066311761442883e-10,
+    "Im r0 over uncertainty": 0.011925724396188166
+   },
+   {
+    "process": "gg -> HH",
+    "where": "beta = 1/4",
+    "component": "nu2",
+    "colour": "C_A",
+    "Im r0": -1.40224612881512e-11,
+    "fit uncertainty": 8.629346686864015e-10,
+    "Im r0 over uncertainty": 0.01624973685377229
+   },
+   {
+    "process": "gg -> HH",
+    "where": "beta = 1/4",
+    "component": "nu2",
+    "colour": "T_F n_f",
+    "Im r0": -1.5280348050764925e-12,
+    "fit uncertainty": 1.908746991383062e-10,
+    "Im r0 over uncertainty": 0.00800543399400091
+   },
+   {
+    "process": "gg -> HH",
+    "where": "beta = 1/2",
+    "component": "nu0",
+    "colour": "C_A",
+    "Im r0": -1.8333625643172453e-10,
+    "fit uncertainty": 1.4146522933828824e-08,
+    "Im r0 over uncertainty": 0.012959810498260982
+   },
+   {
+    "process": "gg -> HH",
+    "where": "beta = 1/2",
+    "component": "nu0",
+    "colour": "T_F n_f",
+    "Im r0": 3.0320285232515037e-11,
+    "fit uncertainty": 2.514521921465041e-09,
+    "Im r0 over uncertainty": 0.012058071545802816
+   },
+   {
+    "process": "gg -> HH",
+    "where": "beta = 1/2",
+    "component": "nu2",
+    "colour": "C_A",
+    "Im r0": -5.595098922783918e-11,
+    "fit uncertainty": 3.017986960780533e-09,
+    "Im r0 over uncertainty": 0.018539175269786035
+   },
+   {
+    "process": "gg -> HH",
+    "where": "beta = 1/2",
+    "component": "nu2",
+    "colour": "T_F n_f",
+    "Im r0": -6.745266617093909e-12,
+    "fit uncertainty": 8.228409660940547e-10,
+    "Im r0 over uncertainty": 0.008197533782394219
+   },
+   {
+    "process": "gg -> HH",
+    "where": "beta = 2/3",
+    "component": "nu0",
+    "colour": "C_A",
+    "Im r0": -5.21949741902443e-10,
+    "fit uncertainty": 4.06940797765219e-08,
+    "Im r0 over uncertainty": 0.012826183680004908
+   },
+   {
+    "process": "gg -> HH",
+    "where": "beta = 2/3",
+    "component": "nu0",
+    "colour": "T_F n_f",
+    "Im r0": 1.0202561848533571e-10,
+    "fit uncertainty": 8.332702741396999e-09,
+    "Im r0 over uncertainty": 0.012244000734416078
+   },
+   {
+    "process": "gg -> HH",
+    "where": "beta = 2/3",
+    "component": "nu2",
+    "colour": "C_A",
+    "Im r0": -1.3233764999784132e-10,
+    "fit uncertainty": 6.601959204865475e-09,
+    "Im r0 over uncertainty": 0.020045208685977922
+   },
+   {
+    "process": "gg -> HH",
+    "where": "beta = 2/3",
+    "component": "nu2",
+    "colour": "T_F n_f",
+    "Im r0": -1.924440794525828e-11,
+    "fit uncertainty": 2.2636184844255196e-09,
+    "Im r0 over uncertainty": 0.008501612828162733
+   },
+   {
+    "process": "gg -> HH",
+    "where": "beta = 1/10 (blind)",
+    "component": "nu0",
+    "colour": "C_A",
+    "Im r0": -6.134727866753905e-12,
+    "fit uncertainty": 4.941593532421285e-10,
+    "Im r0 over uncertainty": 0.012414472834531187
+   },
+   {
+    "process": "gg -> HH",
+    "where": "beta = 1/10 (blind)",
+    "component": "nu0",
+    "colour": "T_F n_f",
+    "Im r0": 7.341277175646006e-13,
+    "fit uncertainty": 6.1948444356407e-11,
+    "Im r0 over uncertainty": 0.011850623937236508
+   },
+   {
+    "process": "gg -> HH",
+    "where": "beta = 1/10 (blind)",
+    "component": "nu2",
+    "colour": "C_A",
+    "Im r0": -2.7729968902358294e-12,
+    "fit uncertainty": 1.9414818040793172e-10,
+    "Im r0 over uncertainty": 0.014282888896560276
+   },
+   {
+    "process": "gg -> HH",
+    "where": "beta = 1/10 (blind)",
+    "component": "nu2",
+    "colour": "T_F n_f",
+    "Im r0": -2.7465865418054874e-13,
+    "fit uncertainty": 3.494184782182978e-11,
+    "Im r0 over uncertainty": 0.007860450185148962
+   },
+   {
+    "process": "gg -> HH",
+    "where": "beta = 4/5 (blind)",
+    "component": "nu0",
+    "colour": "C_A",
+    "Im r0": -1.6891076551307193e-09,
+    "fit uncertainty": 1.328946739674029e-07,
+    "Im r0 over uncertainty": 0.012710123022274259
+   },
+   {
+    "process": "gg -> HH",
+    "where": "beta = 4/5 (blind)",
+    "component": "nu0",
+    "colour": "T_F n_f",
+    "Im r0": 3.702795589240022e-10,
+    "fit uncertainty": 2.971302915105169e-08,
+    "Im r0 over uncertainty": 0.012461858299321064
+   },
+   {
+    "process": "gg -> HH",
+    "where": "beta = 4/5 (blind)",
+    "component": "nu2",
+    "colour": "C_A",
+    "Im r0": -3.028113838699244e-10,
+    "fit uncertainty": 1.6297052070018467e-08,
+    "Im r0 over uncertainty": 0.018580745926866347
+   },
+   {
+    "process": "gg -> HH",
+    "where": "beta = 4/5 (blind)",
+    "component": "nu2",
+    "colour": "T_F n_f",
+    "Im r0": -6.566892182883877e-11,
+    "fit uncertainty": 7.272963381405186e-09,
+    "Im r0 over uncertainty": 0.009029183619531863
+   },
+   {
+    "process": "gg -> ZZ",
+    "where": "beta = 1/4, ++++",
+    "component": "nu0",
+    "colour": "CF",
+    "Im r0": 1.1669621736497814e-10,
+    "fit uncertainty": 1.0878819433263005e-08,
+    "Im r0 over uncertainty": 0.010726919228769307
+   },
+   {
+    "process": "gg -> ZZ",
+    "where": "beta = 1/4, ++++",
+    "component": "nu0",
+    "colour": "CA",
+    "Im r0": -6.155461774834576e-11,
+    "fit uncertainty": 9.732110710763929e-09,
+    "Im r0 over uncertainty": 0.0063248990458220945
+   },
+   {
+    "process": "gg -> ZZ",
+    "where": "beta = 1/4, ++--",
+    "component": "nu0",
+    "colour": "CF",
+    "Im r0": 9.594579422306014e-11,
+    "fit uncertainty": 9.012746804006105e-09,
+    "Im r0 over uncertainty": 0.010645566363898394
+   },
+   {
+    "process": "gg -> ZZ",
+    "where": "beta = 1/4, ++--",
+    "component": "nu0",
+    "colour": "CA",
+    "Im r0": -4.727853719729182e-11,
+    "fit uncertainty": 8.123575734590831e-09,
+    "Im r0 over uncertainty": 0.005819917083554235
+   },
+   {
+    "process": "gg -> ZZ",
+    "where": "beta = 1/4, --++",
+    "component": "nu0",
+    "colour": "CF",
+    "Im r0": 9.594579422306014e-11,
+    "fit uncertainty": 9.012746804006105e-09,
+    "Im r0 over uncertainty": 0.010645566363898394
+   },
+   {
+    "process": "gg -> ZZ",
+    "where": "beta = 1/4, --++",
+    "component": "nu0",
+    "colour": "CA",
+    "Im r0": -4.727853719729182e-11,
+    "fit uncertainty": 8.123575734590831e-09,
+    "Im r0 over uncertainty": 0.005819917083554235
+   },
+   {
+    "process": "gg -> ZZ",
+    "where": "beta = 1/4, ----",
+    "component": "nu0",
+    "colour": "CF",
+    "Im r0": 1.1669621736497814e-10,
+    "fit uncertainty": 1.0878819433263005e-08,
+    "Im r0 over uncertainty": 0.010726919228769307
+   },
+   {
+    "process": "gg -> ZZ",
+    "where": "beta = 1/4, ----",
+    "component": "nu0",
+    "colour": "CA",
+    "Im r0": -6.155461774834576e-11,
+    "fit uncertainty": 9.732110710763929e-09,
+    "Im r0 over uncertainty": 0.0063248990458220945
+   },
+   {
+    "process": "gg -> ZZ",
+    "where": "beta = 1/4, +-++",
+    "component": "nu2",
+    "colour": "CF",
+    "Im r0": 3.8698514486548353e-10,
+    "fit uncertainty": 3.5565057969615214e-08,
+    "Im r0 over uncertainty": 0.010881049180240389
+   },
+   {
+    "process": "gg -> ZZ",
+    "where": "beta = 1/4, +-++",
+    "component": "nu2",
+    "colour": "CA",
+    "Im r0": -5.46767472270752e-10,
+    "fit uncertainty": 4.82750200554415e-08,
+    "Im r0 over uncertainty": 0.01132609518634723
+   },
+   {
+    "process": "gg -> ZZ",
+    "where": "beta = 1/4, +---",
+    "component": "nu2",
+    "colour": "CF",
+    "Im r0": 3.8698514486548353e-10,
+    "fit uncertainty": 3.5565057969615214e-08,
+    "Im r0 over uncertainty": 0.010881049180240389
+   },
+   {
+    "process": "gg -> ZZ",
+    "where": "beta = 1/4, +---",
+    "component": "nu2",
+    "colour": "CA",
+    "Im r0": -5.46767472270752e-10,
+    "fit uncertainty": 4.82750200554415e-08,
+    "Im r0 over uncertainty": 0.01132609518634723
+   },
+   {
+    "process": "gg -> ZZ",
+    "where": "beta = 1/4, -+++",
+    "component": "nu2",
+    "colour": "CF",
+    "Im r0": 3.8698514486548353e-10,
+    "fit uncertainty": 3.5565057969615214e-08,
+    "Im r0 over uncertainty": 0.010881049180240389
+   },
+   {
+    "process": "gg -> ZZ",
+    "where": "beta = 1/4, -+++",
+    "component": "nu2",
+    "colour": "CA",
+    "Im r0": -5.46767472270752e-10,
+    "fit uncertainty": 4.82750200554415e-08,
+    "Im r0 over uncertainty": 0.01132609518634723
+   },
+   {
+    "process": "gg -> ZZ",
+    "where": "beta = 1/4, -+--",
+    "component": "nu2",
+    "colour": "CF",
+    "Im r0": 3.8698514486548353e-10,
+    "fit uncertainty": 3.5565057969615214e-08,
+    "Im r0 over uncertainty": 0.010881049180240389
+   },
+   {
+    "process": "gg -> ZZ",
+    "where": "beta = 1/4, -+--",
+    "component": "nu2",
+    "colour": "CA",
+    "Im r0": -5.46767472270752e-10,
+    "fit uncertainty": 4.82750200554415e-08,
+    "Im r0 over uncertainty": 0.01132609518634723
+   },
+   {
+    "process": "gg -> ZZ",
+    "where": "beta = 1/2, ++++",
+    "component": "nu0",
+    "colour": "CF",
+    "Im r0": 1.1499209463178954e-10,
+    "fit uncertainty": 9.519246410133581e-09,
+    "Im r0 over uncertainty": 0.012079957769490694
+   },
+   {
+    "process": "gg -> ZZ",
+    "where": "beta = 1/2, ++++",
+    "component": "nu0",
+    "colour": "CA",
+    "Im r0": -5.3936870708753306e-11,
+    "fit uncertainty": 9.633356036513432e-09,
+    "Im r0 over uncertainty": 0.005598969923286931
+   },
+   {
+    "process": "gg -> ZZ",
+    "where": "beta = 1/2, ++--",
+    "component": "nu0",
+    "colour": "CF",
+    "Im r0": 8.086644183405719e-11,
+    "fit uncertainty": 6.88030755128308e-09,
+    "Im r0 over uncertainty": 0.011753317890415631
+   },
+   {
+    "process": "gg -> ZZ",
+    "where": "beta = 1/2, ++--",
+    "component": "nu0",
+    "colour": "CA",
+    "Im r0": -3.0005867420196694e-11,
+    "fit uncertainty": 7.320782857981566e-09,
+    "Im r0 over uncertainty": 0.004098723866325643
+   },
+   {
+    "process": "gg -> ZZ",
+    "where": "beta = 1/2, --++",
+    "component": "nu0",
+    "colour": "CF",
+    "Im r0": 8.086644183405719e-11,
+    "fit uncertainty": 6.88030755128308e-09,
+    "Im r0 over uncertainty": 0.011753317890415631
+   },
+   {
+    "process": "gg -> ZZ",
+    "where": "beta = 1/2, --++",
+    "component": "nu0",
+    "colour": "CA",
+    "Im r0": -3.0005867420196694e-11,
+    "fit uncertainty": 7.320782857981566e-09,
+    "Im r0 over uncertainty": 0.004098723866325643
+   },
+   {
+    "process": "gg -> ZZ",
+    "where": "beta = 1/2, ----",
+    "component": "nu0",
+    "colour": "CF",
+    "Im r0": 1.1499209463178954e-10,
+    "fit uncertainty": 9.519246410133581e-09,
+    "Im r0 over uncertainty": 0.012079957769490694
+   },
+   {
+    "process": "gg -> ZZ",
+    "where": "beta = 1/2, ----",
+    "component": "nu0",
+    "colour": "CA",
+    "Im r0": -5.3936870708753306e-11,
+    "fit uncertainty": 9.633356036513432e-09,
+    "Im r0 over uncertainty": 0.005598969923286931
+   },
+   {
+    "process": "gg -> ZZ",
+    "where": "beta = 1/2, +-++",
+    "component": "nu2",
+    "colour": "CF",
+    "Im r0": 2.136631671367938e-10,
+    "fit uncertainty": 2.159513073185185e-08,
+    "Im r0 over uncertainty": 0.009894043698547756
+   },
+   {
+    "process": "gg -> ZZ",
+    "where": "beta = 1/2, +-++",
+    "component": "nu2",
+    "colour": "CA",
+    "Im r0": -6.842197875649053e-10,
+    "fit uncertainty": 5.767957542587228e-08,
+    "Im r0 over uncertainty": 0.011862427601330735
+   },
+   {
+    "process": "gg -> ZZ",
+    "where": "beta = 1/2, +---",
+    "component": "nu2",
+    "colour": "CF",
+    "Im r0": 2.136631671367938e-10,
+    "fit uncertainty": 2.159513073185185e-08,
+    "Im r0 over uncertainty": 0.009894043698547756
+   },
+   {
+    "process": "gg -> ZZ",
+    "where": "beta = 1/2, +---",
+    "component": "nu2",
+    "colour": "CA",
+    "Im r0": -6.842197875649053e-10,
+    "fit uncertainty": 5.767957542587228e-08,
+    "Im r0 over uncertainty": 0.011862427601330735
+   },
+   {
+    "process": "gg -> ZZ",
+    "where": "beta = 1/2, -+++",
+    "component": "nu2",
+    "colour": "CF",
+    "Im r0": 2.136631671367938e-10,
+    "fit uncertainty": 2.159513073185185e-08,
+    "Im r0 over uncertainty": 0.009894043698547756
+   },
+   {
+    "process": "gg -> ZZ",
+    "where": "beta = 1/2, -+++",
+    "component": "nu2",
+    "colour": "CA",
+    "Im r0": -6.842197875649053e-10,
+    "fit uncertainty": 5.767957542587228e-08,
+    "Im r0 over uncertainty": 0.011862427601330735
+   },
+   {
+    "process": "gg -> ZZ",
+    "where": "beta = 1/2, -+--",
+    "component": "nu2",
+    "colour": "CF",
+    "Im r0": 2.136631671367938e-10,
+    "fit uncertainty": 2.159513073185185e-08,
+    "Im r0 over uncertainty": 0.009894043698547756
+   },
+   {
+    "process": "gg -> ZZ",
+    "where": "beta = 1/2, -+--",
+    "component": "nu2",
+    "colour": "CA",
+    "Im r0": -6.842197875649053e-10,
+    "fit uncertainty": 5.767957542587228e-08,
+    "Im r0 over uncertainty": 0.011862427601330735
+   },
+   {
+    "process": "gg -> ZZ",
+    "where": "beta = 2/3, ++++",
+    "component": "nu0",
+    "colour": "CF",
+    "Im r0": 1.2032680321827498e-10,
+    "fit uncertainty": 8.767491071044664e-09,
+    "Im r0 over uncertainty": 0.01372420025788949
+   },
+   {
+    "process": "gg -> ZZ",
+    "where": "beta = 2/3, ++++",
+    "component": "nu0",
+    "colour": "CA",
+    "Im r0": -3.286830406177419e-11,
+    "fit uncertainty": 1.0278883771226362e-08,
+    "Im r0 over uncertainty": 0.0031976530519570914
+   },
+   {
+    "process": "gg -> ZZ",
+    "where": "beta = 2/3, ++--",
+    "component": "nu0",
+    "colour": "CF",
+    "Im r0": 7.9610011240611e-11,
+    "fit uncertainty": 6.285554966127775e-09,
+    "Im r0 over uncertainty": 0.012665550085811255
+   },
+   {
+    "process": "gg -> ZZ",
+    "where": "beta = 2/3, ++--",
+    "component": "nu0",
+    "colour": "CA",
+    "Im r0": -4.302094334240109e-12,
+    "fit uncertainty": 8.417439288788766e-09,
+    "Im r0 over uncertainty": 0.0005110930042548798
+   },
+   {
+    "process": "gg -> ZZ",
+    "where": "beta = 2/3, --++",
+    "component": "nu0",
+    "colour": "CF",
+    "Im r0": 7.9610011240611e-11,
+    "fit uncertainty": 6.285554966127775e-09,
+    "Im r0 over uncertainty": 0.012665550085811255
+   },
+   {
+    "process": "gg -> ZZ",
+    "where": "beta = 2/3, --++",
+    "component": "nu0",
+    "colour": "CA",
+    "Im r0": -4.302094334240109e-12,
+    "fit uncertainty": 8.417439288788766e-09,
+    "Im r0 over uncertainty": 0.0005110930042548798
+   },
+   {
+    "process": "gg -> ZZ",
+    "where": "beta = 2/3, ----",
+    "component": "nu0",
+    "colour": "CF",
+    "Im r0": 1.2032680321827498e-10,
+    "fit uncertainty": 8.767491071044664e-09,
+    "Im r0 over uncertainty": 0.01372420025788949
+   },
+   {
+    "process": "gg -> ZZ",
+    "where": "beta = 2/3, ----",
+    "component": "nu0",
+    "colour": "CA",
+    "Im r0": -3.286830406177419e-11,
+    "fit uncertainty": 1.0278883771226362e-08,
+    "Im r0 over uncertainty": 0.0031976530519570914
+   },
+   {
+    "process": "gg -> ZZ",
+    "where": "beta = 2/3, +-++",
+    "component": "nu2",
+    "colour": "CF",
+    "Im r0": 1.0489958769399776e-11,
+    "fit uncertainty": 8.275882396580857e-09,
+    "Im r0 over uncertainty": 0.0012675335712520098
+   },
+   {
+    "process": "gg -> ZZ",
+    "where": "beta = 2/3, +-++",
+    "component": "nu2",
+    "colour": "CA",
+    "Im r0": -1.2207152956294134e-09,
+    "fit uncertainty": 9.995559781165171e-08,
+    "Im r0 over uncertainty": 0.012212575607117384
+   },
+   {
+    "process": "gg -> ZZ",
+    "where": "beta = 2/3, +---",
+    "component": "nu2",
+    "colour": "CF",
+    "Im r0": 1.0489958769399776e-11,
+    "fit uncertainty": 8.275882396580857e-09,
+    "Im r0 over uncertainty": 0.0012675335712520098
+   },
+   {
+    "process": "gg -> ZZ",
+    "where": "beta = 2/3, +---",
+    "component": "nu2",
+    "colour": "CA",
+    "Im r0": -1.2207152956294134e-09,
+    "fit uncertainty": 9.995559781165171e-08,
+    "Im r0 over uncertainty": 0.012212575607117384
+   },
+   {
+    "process": "gg -> ZZ",
+    "where": "beta = 2/3, -+++",
+    "component": "nu2",
+    "colour": "CF",
+    "Im r0": 1.0489958769399776e-11,
+    "fit uncertainty": 8.275882396580857e-09,
+    "Im r0 over uncertainty": 0.0012675335712520098
+   },
+   {
+    "process": "gg -> ZZ",
+    "where": "beta = 2/3, -+++",
+    "component": "nu2",
+    "colour": "CA",
+    "Im r0": -1.2207152956294134e-09,
+    "fit uncertainty": 9.995559781165171e-08,
+    "Im r0 over uncertainty": 0.012212575607117384
+   },
+   {
+    "process": "gg -> ZZ",
+    "where": "beta = 2/3, -+--",
+    "component": "nu2",
+    "colour": "CF",
+    "Im r0": 1.0489958769399776e-11,
+    "fit uncertainty": 8.275882396580857e-09,
+    "Im r0 over uncertainty": 0.0012675335712520098
+   },
+   {
+    "process": "gg -> ZZ",
+    "where": "beta = 2/3, -+--",
+    "component": "nu2",
+    "colour": "CA",
+    "Im r0": -1.2207152956294134e-09,
+    "fit uncertainty": 9.995559781165171e-08,
+    "Im r0 over uncertainty": 0.012212575607117384
+   },
+   {
+    "process": "gg -> ZZ",
+    "where": "beta = 4/5, ++++ (blind)",
+    "component": "nu0",
+    "colour": "CF",
+    "Im r0": 1.3735294012131169e-10,
+    "fit uncertainty": 8.458784202916615e-09,
+    "Im r0 over uncertainty": 0.016237905687906305
+   },
+   {
+    "process": "gg -> ZZ",
+    "where": "beta = 4/5, ++++ (blind)",
+    "component": "nu0",
+    "colour": "CA",
+    "Im r0": 4.611836809521426e-11,
+    "fit uncertainty": 1.4157216573092645e-08,
+    "Im r0 over uncertainty": 0.0032575872423162133
+   },
+   {
+    "process": "gg -> ZZ",
+    "where": "beta = 4/5, ++-- (blind)",
+    "component": "nu0",
+    "colour": "CF",
+    "Im r0": 8.944772569964365e-11,
+    "fit uncertainty": 6.525091264203613e-09,
+    "Im r0 over uncertainty": 0.01370827197319833
+   },
+   {
+    "process": "gg -> ZZ",
+    "where": "beta = 4/5, ++-- (blind)",
+    "component": "nu0",
+    "colour": "CA",
+    "Im r0": 7.850594579675126e-11,
+    "fit uncertainty": 1.470985404158766e-08,
+    "Im r0 over uncertainty": 0.005336962934832627
+   },
+   {
+    "process": "gg -> ZZ",
+    "where": "beta = 4/5, +-++ (blind)",
+    "component": "nu2",
+    "colour": "CF",
+    "Im r0": -2.9800250353988575e-10,
+    "fit uncertainty": 1.2325641136514228e-08,
+    "Im r0 over uncertainty": 0.024177444421699498
+   },
+   {
+    "process": "gg -> ZZ",
+    "where": "beta = 4/5, +-++ (blind)",
+    "component": "nu2",
+    "colour": "CA",
+    "Im r0": -3.3873829709708347e-09,
+    "fit uncertainty": 2.6748522119285945e-07,
+    "Im r0 over uncertainty": 0.012663813558987241
+   },
+   {
+    "process": "gg -> ZZ",
+    "where": "beta = 4/5, +--- (blind)",
+    "component": "nu2",
+    "colour": "CF",
+    "Im r0": -2.9800250353988575e-10,
+    "fit uncertainty": 1.2325641136514228e-08,
+    "Im r0 over uncertainty": 0.024177444421699498
+   },
+   {
+    "process": "gg -> ZZ",
+    "where": "beta = 4/5, +--- (blind)",
+    "component": "nu2",
+    "colour": "CA",
+    "Im r0": -3.3873829709708347e-09,
+    "fit uncertainty": 2.6748522119285945e-07,
+    "Im r0 over uncertainty": 0.012663813558987241
+   },
+   {
+    "process": "gg -> ZZ",
+    "where": "beta = 4/5, -+++ (blind)",
+    "component": "nu2",
+    "colour": "CF",
+    "Im r0": -2.9800250353988575e-10,
+    "fit uncertainty": 1.2325641136514228e-08,
+    "Im r0 over uncertainty": 0.024177444421699498
+   },
+   {
+    "process": "gg -> ZZ",
+    "where": "beta = 4/5, -+++ (blind)",
+    "component": "nu2",
+    "colour": "CA",
+    "Im r0": -3.3873829709708347e-09,
+    "fit uncertainty": 2.6748522119285945e-07,
+    "Im r0 over uncertainty": 0.012663813558987241
+   },
+   {
+    "process": "gg -> ZZ",
+    "where": "beta = 4/5, -+-- (blind)",
+    "component": "nu2",
+    "colour": "CF",
+    "Im r0": -2.9800250353988575e-10,
+    "fit uncertainty": 1.2325641136514228e-08,
+    "Im r0 over uncertainty": 0.024177444421699498
+   },
+   {
+    "process": "gg -> ZZ",
+    "where": "beta = 4/5, -+-- (blind)",
+    "component": "nu2",
+    "colour": "CA",
+    "Im r0": -3.3873829709708347e-09,
+    "fit uncertainty": 2.6748522119285945e-07,
+    "Im r0 over uncertainty": 0.012663813558987241
+   },
+   {
+    "process": "gg -> ZZ",
+    "where": "beta = 4/5, --++ (blind)",
+    "component": "nu0",
+    "colour": "CF",
+    "Im r0": 8.944772569964365e-11,
+    "fit uncertainty": 6.525091264203613e-09,
+    "Im r0 over uncertainty": 0.01370827197319833
+   },
+   {
+    "process": "gg -> ZZ",
+    "where": "beta = 4/5, --++ (blind)",
+    "component": "nu0",
+    "colour": "CA",
+    "Im r0": 7.850594579675126e-11,
+    "fit uncertainty": 1.470985404158766e-08,
+    "Im r0 over uncertainty": 0.005336962934832627
+   },
+   {
+    "process": "gg -> ZZ",
+    "where": "beta = 4/5, ---- (blind)",
+    "component": "nu0",
+    "colour": "CF",
+    "Im r0": 1.3735294012131169e-10,
+    "fit uncertainty": 8.458784202916615e-09,
+    "Im r0 over uncertainty": 0.016237905687906305
+   },
+   {
+    "process": "gg -> ZZ",
+    "where": "beta = 4/5, ---- (blind)",
+    "component": "nu0",
+    "colour": "CA",
+    "Im r0": 4.611836809521426e-11,
+    "fit uncertainty": 1.4157216573092645e-08,
+    "Im r0 over uncertainty": 0.0032575872423162133
+   },
+   {
+    "process": "gg -> AA",
+    "where": "beta = 1/10",
+    "component": "nu0",
+    "colour": "N",
+    "Im r0": 7.609947937491128e-12,
+    "fit uncertainty": 6.098687568377819e-10,
+    "Im r0 over uncertainty": 0.012478009165364224
+   },
+   {
+    "process": "gg -> AA",
+    "where": "beta = 1/10",
+    "component": "nu0",
+    "colour": "TFnf",
+    "Im r0": 2.0999539441687616e-12,
+    "fit uncertainty": 1.8329137005139118e-10,
+    "Im r0 over uncertainty": 0.011456916621769902
+   },
+   {
+    "process": "gg -> AA",
+    "where": "beta = 1/10",
+    "component": "nu2",
+    "colour": "N",
+    "Im r0": 2.008999598924697e-12,
+    "fit uncertainty": 1.2098736088324683e-10,
+    "Im r0 over uncertainty": 0.016605036958061987
+   },
+   {
+    "process": "gg -> AA",
+    "where": "beta = 1/10",
+    "component": "nu2",
+    "colour": "TFnf",
+    "Im r0": 7.142998224366081e-13,
+    "fit uncertainty": 9.268010308361534e-11,
+    "Im r0 over uncertainty": 0.007707153948589934
+   },
+   {
+    "process": "gg -> AA",
+    "where": "beta = 1/4",
+    "component": "nu0",
+    "colour": "N",
+    "Im r0": 4.541890942032816e-11,
+    "fit uncertainty": 3.5301504646357102e-09,
+    "Im r0 over uncertainty": 0.012865998170708316
+   },
+   {
+    "process": "gg -> AA",
+    "where": "beta = 1/4",
+    "component": "nu0",
+    "colour": "TFnf",
+    "Im r0": 1.3412812215993557e-11,
+    "fit uncertainty": 1.1415721695450293e-09,
+    "Im r0 over uncertainty": 0.011749421170051122
+   },
+   {
+    "process": "gg -> AA",
+    "where": "beta = 1/4",
+    "component": "nu2",
+    "colour": "N",
+    "Im r0": 9.967523572793371e-12,
+    "fit uncertainty": 4.829377096162116e-10,
+    "Im r0 over uncertainty": 0.020639356534644018
+   },
+   {
+    "process": "gg -> AA",
+    "where": "beta = 1/4",
+    "component": "nu2",
+    "colour": "TFnf",
+    "Im r0": 3.9255878238936035e-12,
+    "fit uncertainty": 4.988444800821752e-10,
+    "Im r0 over uncertainty": 0.007869362056982042
+   },
+   {
+    "process": "gg -> AA",
+    "where": "beta = 1/2",
+    "component": "nu0",
+    "colour": "N",
+    "Im r0": 2.2531653206128076e-10,
+    "fit uncertainty": 1.7322174240394436e-08,
+    "Im r0 over uncertainty": 0.01300740478270066
+   },
+   {
+    "process": "gg -> AA",
+    "where": "beta = 1/2",
+    "component": "nu0",
+    "colour": "TFnf",
+    "Im r0": 7.673028852931647e-11,
+    "fit uncertainty": 6.313121922814417e-09,
+    "Im r0 over uncertainty": 0.012154095781364187
+   },
+   {
+    "process": "gg -> AA",
+    "where": "beta = 1/2",
+    "component": "nu2",
+    "colour": "N",
+    "Im r0": 3.973942327923456e-11,
+    "fit uncertainty": 1.7267125017530274e-09,
+    "Im r0 over uncertainty": 0.02301449907780798
+   },
+   {
+    "process": "gg -> AA",
+    "where": "beta = 1/2",
+    "component": "nu2",
+    "colour": "TFnf",
+    "Im r0": 1.668652597493489e-11,
+    "fit uncertainty": 2.0604533922327833e-09,
+    "Im r0 over uncertainty": 0.008098472907874299
+   },
+   {
+    "process": "gg -> AA",
+    "where": "beta = 2/3",
+    "component": "nu0",
+    "colour": "N",
+    "Im r0": 6.268487862625689e-10,
+    "fit uncertainty": 4.861124266010414e-08,
+    "Im r0 over uncertainty": 0.01289514013549445
+   },
+   {
+    "process": "gg -> AA",
+    "where": "beta = 2/3",
+    "component": "nu0",
+    "colour": "TFnf",
+    "Im r0": 2.4143409337076263e-10,
+    "fit uncertainty": 1.951673461693681e-08,
+    "Im r0 over uncertainty": 0.012370619271588792
+   },
+   {
+    "process": "gg -> AA",
+    "where": "beta = 2/3",
+    "component": "nu2",
+    "colour": "N",
+    "Im r0": 9.052498564908122e-11,
+    "fit uncertainty": 4.399965982458263e-09,
+    "Im r0 over uncertainty": 0.020574019437874125
+   },
+   {
+    "process": "gg -> AA",
+    "where": "beta = 2/3",
+    "component": "nu2",
+    "colour": "TFnf",
+    "Im r0": 4.5997680540998184e-11,
+    "fit uncertainty": 5.48045562597518e-09,
+    "Im r0 over uncertainty": 0.0083930394989401
+   },
+   {
+    "process": "gg -> AA",
+    "where": "beta = 4/5",
+    "component": "nu0",
+    "colour": "N",
+    "Im r0": 1.9676763385016134e-09,
+    "fit uncertainty": 1.5403562914515902e-07,
+    "Im r0 over uncertainty": 0.012774163675128227
+   },
+   {
+    "process": "gg -> AA",
+    "where": "beta = 4/5",
+    "component": "nu0",
+    "colour": "TFnf",
+    "Im r0": 8.32588464287079e-10,
+    "fit uncertainty": 6.639367340174868e-08,
+    "Im r0 over uncertainty": 0.012540177725204014
+   },
+   {
+    "process": "gg -> AA",
+    "where": "beta = 4/5",
+    "component": "nu2",
+    "colour": "N",
+    "Im r0": 1.7599503007057283e-10,
+    "fit uncertainty": 1.6616681057880637e-08,
+    "Im r0 over uncertainty": 0.010591467059970158
+   },
+   {
+    "process": "gg -> AA",
+    "where": "beta = 4/5",
+    "component": "nu2",
+    "colour": "TFnf",
+    "Im r0": 1.5133836850545702e-10,
+    "fit uncertainty": 1.7061586734756743e-08,
+    "Im r0 over uncertainty": 0.008870122741700246
+   }
+  ],
+  "largest |Im r0|": 3.3873829709708347e-09,
+  "largest |Im r0|/uncertainty": 0.024177444421699498,
+  "processes": [
+   "gg -> AA",
+   "gg -> HH",
+   "gg -> ZZ"
+  ],
+  "gg -> AA included": true
+ },
+ "n4_two_to_four": {
+  "imaginary single pole of h1 + h2 - M6hat/2 (units of a)": "-pi i",
+  "poles cancel with the kernel L_*/eps, L_* = -X_r + i pi": true,
+  "finite part": "c_G + ln1mx*lnx + ln1my*lny - (X_r - I*pi)**2/2 + 7*pi**2/12",
+  "depends on t1, t2 or v": false,
+  "DE coefficients of ln^k delta in E^(2) (H^v_w = H_w(1-v))": {
+   "3": "I*pi/6",
+   "2": "-pi**2/2",
+   "1": "-2*I*pi**3/3"
+  },
+  "structure (kappa_1 = zeta_2 + c_G)": {
+   "3": "I*pi/6",
+   "2": "-pi**2/2",
+   "1": "I*pi*(-3*c_G - 2*pi**2)/3"
+  },
+  "c_G from the single logarithm": "0",
+  "spurious difference with H_2^v read as Li_2(v)": "I*pi*(-polylog(2, v) + polylog(2, 1 - v))"
+ },
+ "summary": "Coulomb phase + Glauber region = -i pi x (coefficient of the rapidity logarithm) = 2 pi i Dc/eps + 0 eps^0 at mu = mu_b; Im r0 = 0 in QCD; kappa_1 = zeta_2 with c_G = 0 in 2 -> 4"
+}

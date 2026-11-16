@@ -1,0 +1,38 @@
+(1) residue formulas against quadrature in u with finite i0 (linear extrapolation i0 -> 0)
+    l/lam^2 = [0.7, -1.3]  graph a     residue (1.262758432e-52 - 856617.6384j)  quadrature (1.819827412e-5 - 856617.685j)  rel 5.4e-8
+    l/lam^2 = [0.7, -1.3]  graph b     residue (1.07715312e-51 - 2452744.976j)  quadrature (4.81004401e-5 - 2452745.103j)  rel 5.2e-8
+    l/lam^2 = [0.7, -1.3]  graph c     residue (8.42925143e-52 - 1129624.828j)  quadrature (5.185331278e-6 - 1129624.85j)  rel 1.9e-8
+    l/lam^2 = [0.7, -1.3]  graph tree  residue (0.0 + 5585.053606j)  quadrature (-4.596751656e-8 + 5585.053744j)  rel 2.5e-8
+    l/lam^2 = [-0.5, 2.1]  graph a     residue (1.61167472e-50 - 9475675.492j)  quadrature (0.04063021675 - 9475691.328j)  rel 1.7e-6
+    l/lam^2 = [-0.5, 2.1]  graph b     residue (1.468784643e-49 - 28641300.55j)  quadrature (0.122854902 - 28641348.43j)  rel 1.7e-6
+    l/lam^2 = [-0.5, 2.1]  graph c     residue (-4.047605557e-50 + 8197867.777j)  quadrature (-0.02976422192 + 8197879.4j)  rel 1.4e-6
+    l/lam^2 = [-0.5, 2.1]  graph tree  residue (0.0 + 5585.053606j)  quadrature (-4.596751656e-8 + 5585.053744j)  rel 2.5e-8
+    worst relative difference 1.7e-6
+(2) ultrasoft scaling l = lambda^2 lhat: each attachment against its limit, and the colour sum
+    lambda = 0.1      |w_a a/tree (l^- - sigma) - 1| = 0.13      (b) 0.037     (c) 0.018     colour sum: |T_k part x l^-/tree - 1| = 0.058    |T_kbar part ...| = 0.025     [one attachment alone: 0.398]
+    lambda = 0.01     |w_a a/tree (l^- - sigma) - 1| = 0.012     (b) 0.0039    (c) 0.0037    colour sum: |T_k part x l^-/tree - 1| = 0.0066   |T_kbar part ...| = 0.0038    [one attachment alone: 0.356]
+    lambda = 0.001    |w_a a/tree (l^- - sigma) - 1| = 0.0012    (b) 0.00039   (c) 0.00039   colour sum: |T_k part x l^-/tree - 1| = 0.00067  |T_kbar part ...| = 0.00039   [one attachment alone: 0.352]
+    lambda = 0.0001   |w_a a/tree (l^- - sigma) - 1| = 0.00012   (b) 3.9e-5    (c) 3.9e-5    colour sum: |T_k part x l^-/tree - 1| = 6.7e-5   |T_kbar part ...| = 3.9e-5    [one attachment alone: 0.351]
+(3) the cancellation needs the ultrasoft scaling
+    Glauber (lambda^2, lambda^2, lambda)   lambda = 0.01    colour sum: |T_k part x l^-/tree - 1| = 0.339     |T_kbar part ...| = 0.104      |parent/daughter (a)| = 1.03
+    Glauber (lambda^2, lambda^2, lambda)   lambda = 0.001   colour sum: |T_k part x l^-/tree - 1| = 0.339     |T_kbar part ...| = 0.105      |parent/daughter (a)| = 1.03
+    soft (lambda, lambda, lambda)          lambda = 0.01    colour sum: |T_k part x l^-/tree - 1| = 0.542     |T_kbar part ...| = 0.00893    |parent/daughter (a)| = 0.0116
+    soft (lambda, lambda, lambda)          lambda = 0.001   colour sum: |T_k part x l^-/tree - 1| = 0.551     |T_kbar part ...| = 0.000906   |parent/daughter (a)| = 0.00119
+(4a) Glauber region, the l^- integral of the parent attachment (both poles below the axis, 1/l^-^2 decay): zero
+    |int dl^- (c)| / int dl^- |(c)| = 1.73e-28
+(4b) Glauber region, daughter attachment: 1/l^- tails at both ends; with a cutoff |l^-| < L symmetric in l_z the
+     integral tends to -i pi times the coefficient of the tail, whatever sigma (here two values of K_perp):
+    K_perp/lam = [0.6, 0.3], sigma-type pole at l^- = 1.76 lam^2, L = 1.0e+4 lam^2:  int/(-i pi tail) - 1 = 0.000112
+    K_perp/lam = [0.6, 0.3], sigma-type pole at l^- = 1.76 lam^2, L = 1.0e+8 lam^2:  int/(-i pi tail) - 1 = 1.12e-8
+    K_perp/lam = [-1.7, 0.9], sigma-type pole at l^- = 27.41 lam^2, L = 1.0e+4 lam^2:  int/(-i pi tail) - 1 = 0.00174
+    K_perp/lam = [-1.7, 0.9], sigma-type pole at l^- = 27.41 lam^2, L = 1.0e+8 lam^2:  int/(-i pi tail) - 1 = 1.74e-7
+(4c) Glauber region, parent attachment at large l^- (fixed l_perp ~ lambda, l^+ ~ lambda^2): (c)/tree ~ 1/l^-^2, (a)/tree ~ 1/l^-
+    l^- =     10 lambda^2:  l^-^2 (c)/tree = 0.00029709    l^- (a)/tree = 2.51078
+    l^- =    100 lambda^2:  l^-^2 (c)/tree = 0.000244703   l^- (a)/tree = 2.10602
+    l^- =   1000 lambda^2:  l^-^2 (c)/tree = 0.000240387   l^- (a)/tree = 2.07261
+    l^- =  10000 lambda^2:  l^-^2 (c)/tree = 0.000239963   l^- (a)/tree = 2.06933
+(5) ultrasoft integral of one pair and of the sum over the 3 x 3 attachments
+    one pair (k, rbar):  T_k.T_rbar J,  J = ( -2*I*pi**2 )/eps^2 + ( 2*pi**2*(I*log(pi*sigma1*sigma2) - pi + EulerGamma*I) )/eps + O(1)
+    sum over attachments to {p1, k, kbar} x {p2, r, rbar}: 0
+    daughters only (no parent attachments): -2*I*pi**(3 - epsilon)*(T_k + T_kbar)*(T_r + T_rbar)*exp(-I*pi*epsilon)*gamma(epsilon)/(sigma1**epsilon*sigma2**epsilon*sin(pi*epsilon))
+all checks passed

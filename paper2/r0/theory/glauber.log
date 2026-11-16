@@ -1,0 +1,9 @@
+0  Im K^(1)/K_0 = -2 pi i Dc e^{-eps gamma} Gamma(-eps) (mu^2 b^2/b0^2)^eps = 2 pi i Dc [1/eps + X_mu + eps (X_mu^2/2 + zeta_2/2)]: pole of 2 I_K, X_mu term of the bracket of eq. (5.3), no eps^0 at mu = mu_b
+1  on-shell eikonal lines: the eikonal pole sits at the end point l^- = 0 of the range; with the eta regulator the integrand is (l^-)^(eta-1) and real; with an i0 cutoff the phase -i pi/2 is the regulator's
+2  off-shell eikonal pair: J = 2 pi i [ln(A/sigma1 sigma2) - i pi]/(A + sigma1 sigma2) for sigma1, sigma2 > 0 (two incoming parents), real for sigma1 sigma2 < 0 (3 -> 3); closed form against quadrature to 3e-11
+2b  the four eta-regulated regions of J (|l^+|^-eta, |l^-|^-eta, |l^+ - l^-|^-eta, |l^+ - l^-|^-eta; zero bins scaleless) sum to J as eta -> 0 to 2e-06 at A/|sigma1 sigma2| = 5e5 (the power correction), the 1/eta poles cancelling (collinear -2, soft +2); the Glauber region alone is the -i pi term 2 pi^2/A (to 6e-11): pi^2/A from the delta functions of the two eikonal lines and pi^2/A from the cross term of their principal values; collinear + soft real parts 1e-24; for sigma2 < 0 the collinear function of the outgoing parent cancels it (to 1e-06)
+3  explicit two-loop graph: Re f0 = Glauber region of the graph from its leading-power integrand (= -(pi/2) Im f1) at 18 configurations, to 1e-04 (extrapolated in lambda^2 from lambda = 0.004, 0.002; raw 5e-03 at 0.002); the slope d(lambda^4 F)/d ln lambda is the eikonal coefficient to 4e-02 (converges like lambda)
+4  QCD: Im r0 = 0 in gg -> AA, gg -> HH, gg -> ZZ: largest |Im r0| = 3e-09 over 104 fitted values, at most 0.02 of the fit uncertainty
+5  planar N = 4, 2 -> 4: poles cancel only with the kernel's + i pi/eps; finite part -X^2/2 + ln x ln(1-x) + ln y ln(1-y) + 7 zeta_2/2 + c_G with X = X_r - i pi, no v, no angles; Dixon-Esterlis single logarithm -2*I*pi**3/3 = structure with kappa_1 = zeta_2 and c_G = 0 (ln^2: -pi**2/2, ln^3: I*pi/6)
+wrote glauber.json
+passed

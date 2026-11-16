@@ -1,0 +1,140 @@
+{
+ "x": {
+  "1/10": {
+   "CF": {
+    "theory, J1 structure ek, J2 structure ek": {
+     "eps^-2": 4.000000000000875,
+     "eps^-1": 15.631782434607292,
+     "eps^0": 11.78598720160701,
+     "max |imag|": 7.42193632941035e-13,
+     "max |1/eta coefficient|": 7.439511750469428e-14
+    },
+    "max spread of eps^0 over the four helicity configurations": 1.4602455422618732e-07,
+    "expected poles": {
+     "eps^-2": 4.0,
+     "eps^-1": 15.631782434607487
+    },
+    "r0 closed form (data)": 11.785987285411295,
+    "difference": -8.380428440091237e-08,
+    "J1 finite part, ek": 7.129982120440554,
+    "J1 finite part, ke": 7.129982076697313,
+    "J1 at 1 - x, finite part, ek": 7.129982099839859,
+    "J1 at 1 - x, finite part, ke": 7.129981997558546
+   },
+   "CA": {
+    "theory, J1 structure ek, J2 structure ek": {
+     "eps^-2": -1.999999999999884,
+     "eps^-1": 5.563216554094197e-12,
+     "eps^0": -6.981063789263592,
+     "max |imag|": 1.9804492247532668e-12,
+     "max |1/eta coefficient|": 8.652514423827062e-14
+    },
+    "max spread of eps^0 over the four helicity configurations": 7.302472049275366e-08,
+    "expected poles": {
+     "eps^-2": -2.0,
+     "eps^-1": 0.0
+    },
+    "r0 closed form (data)": -6.9810638306279325,
+    "difference": 4.136434039736514e-08,
+    "J1 finite part, ek": -4.3129989586862605,
+    "J1 finite part, ke": -4.312998936826837,
+    "J1 at 1 - x, finite part, ek": -4.312998948590858,
+    "J1 at 1 - x, finite part, ke": -4.31299889742556
+   }
+  },
+  "3/10": {
+   "CF": {
+    "theory, J1 structure ek, J2 structure ek": {
+     "eps^-2": 4.0000000000004245,
+     "eps^-1": 12.242590993057993,
+     "eps^0": 3.5662228970111167,
+     "max |imag|": 7.738931023792972e-13,
+     "max |1/eta coefficient|": 3.294480965757917e-14
+    },
+    "max spread of eps^0 over the four helicity configurations": 5.626290544569201e-08,
+    "expected poles": {
+     "eps^-2": 4.0,
+     "eps^-1": 12.242590993058673
+    },
+    "r0 closed form (data)": 3.566222927344109,
+    "difference": -3.033299211807616e-08,
+    "J1 finite part, ek": 3.867397782572102,
+    "J1 finite part, ke": 3.8673977556345256,
+    "J1 at 1 - x, finite part, ek": 3.8673977809307805,
+    "J1 at 1 - x, finite part, ke": 3.8673977516054516
+   },
+   "CA": {
+    "theory, J1 structure ek, J2 structure ek": {
+     "eps^-2": -2.0000000000008824,
+     "eps^-1": -3.3323344084124074e-12,
+     "eps^0": 0.49139902303217875,
+     "max |imag|": 5.767183605676074e-13,
+     "max |1/eta coefficient|": 4.1299304271811324e-14
+    },
+    "max spread of eps^0 over the four helicity configurations": 2.8126591722354988e-08,
+    "expected poles": {
+     "eps^-2": -2.0,
+     "eps^-1": 0.0
+    },
+    "r0 closed form (data)": 0.49139900846791296,
+    "difference": 1.4564265793381992e-08,
+    "J1 finite part, ek": -0.5767675296077521,
+    "J1 finite part, ke": -0.5767675161817545,
+    "J1 at 1 - x, finite part, ek": -0.5767675289088903,
+    "J1 at 1 - x, finite part, ke": -0.5767675142082962
+   }
+  },
+  "1/2": {
+   "CF": {
+    "theory, J1 structure ek, J2 structure ek": {
+     "eps^-2": 4.000000000000456,
+     "eps^-1": 11.545177444479215,
+     "eps^0": 2.1303955613615324,
+     "max |imag|": 7.672681934245418e-14,
+     "max |1/eta coefficient|": 1.697593616205319e-14
+    },
+    "max spread of eps^0 over the four helicity configurations": 6.835852772724138e-08,
+    "expected poles": {
+     "eps^-2": 4.0,
+     "eps^-1": 11.545177444479563
+    },
+    "r0 closed form (data)": 2.130395598910642,
+    "difference": -3.754910959941071e-08,
+    "J1 finite part, ek": 3.323837503498387,
+    "J1 finite part, ke": 3.3238374693191233,
+    "J1 at 1 - x, finite part, ek": 3.323837503498387,
+    "J1 at 1 - x, finite part, ke": 3.3238374693191233
+   },
+   "CA": {
+    "theory, J1 structure ek, J2 structure ek": {
+     "eps^-2": -1.9999999999993745,
+     "eps^-1": 4.809180831344406e-12,
+     "eps^0": 1.723122029259542,
+     "max |imag|": 2.1449248627236628e-13,
+     "max |1/eta coefficient|": 2.0180970283967223e-14
+    },
+    "max spread of eps^0 over the four helicity configurations": 3.417352267831575e-08,
+    "expected poles": {
+     "eps^-2": -2.0,
+     "eps^-1": 0.0
+    },
+    "r0 closed form (data)": 1.723122011175421,
+    "difference": 1.8084120867456477e-08,
+    "J1 finite part, ek": 0.039093972662276766,
+    "J1 finite part, ke": 0.039093989749038105,
+    "J1 at 1 - x, finite part, ek": 0.039093972662276766,
+    "J1 at 1 - x, finite part, ke": 0.039093989749038105
+   }
+  }
+ },
+ "precision checks at x = 1/2 (change of r0)": {
+  "quadrature orders 96, 72, 40 instead of 64, 48, 28": {
+   "CF": 3.313219032463621e-08,
+   "CA": -1.5959040311486206e-08
+  },
+  "16 instead of 32 points on the eps circle": {
+   "CF": 2.1102238179082633e-08,
+   "CA": -2.7648366771604316e-06
+  }
+ }
+}

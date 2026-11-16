@@ -1,0 +1,8 @@
+/home/arunimab/DPS_papers/paper2/r0/theory/gg_diagrams.py:243: RuntimeWarning: invalid value encountered in divide
+  ratio = val/_F
+Vs1 23.8s {'S1': {'0,-1': (0.33333333, 0.0), '0,0': (0.42679077, -0.0)}, 'S2': {'0,-1': (-0.66666667, -0.0), '0,0': (-1.18691487, 0.0)}, 'S3': {'0,-1': (-0.66666667, -0.0), '0,0': (-1.18691487, -0.0)}, 'T4': {'0,0': (0.66666667, 0.0)}}
+/home/arunimab/DPS_papers/paper2/r0/theory/gg_diagrams.py:243: RuntimeWarning: invalid value encountered in divide
+  ratio = val/_F
+Vs2 23.7s {'S1': {'0,-1': (-0.33333333, -0.0), '0,0': (-0.42679077, 0.0)}, 'S2': {'0,-1': (0.66666667, 0.0), '0,0': (1.18691487, -0.0)}, 'S3': {'0,-1': (0.66666667, 0.0), '0,0': (1.18691487, 0.0)}, 'T4': {'0,0': (-0.66666667, -0.0)}}
+Vsbuba 0.0s {'S1': {}, 'S2': {}, 'S3': {}, 'T4': {}}
+Vsbubb 0.0s {'S1': {}, 'S2': {}, 'S3': {}, 'T4': {}}

@@ -1,0 +1,718 @@
+\documentclass[%
+ twocolumn,
+ superscriptaddress,
+%groupedaddress,
+%unsortedaddress,
+%runinaddress,
+%frontmatterverbose,
+%showpacs,
+ preprintnumbers,
+ nofootinbib,
+%nobibnotes,
+%bibnotes,
+ amsmath,amssymb,
+ aps,
+ prl,
+%pra,
+%prb,
+%rmp,
+%prstab,
+%prstper,
+%floatfix,
+]{revtex4-2}
+\usepackage{psfrag,slashed,cancel,array,graphicx,hyperref}
+\usepackage{subfigure}
+%\usepackage[justification=justified]{subcaption}
+% \usepackage[labelfont=bf,labelsep=quad,justification=justified]{caption}
+\usepackage[utf8]{inputenc}
+\usepackage{mathtools}
+\usepackage{mathrsfs}
+\usepackage{multirow}
+\usepackage{braket}
+\usepackage{booktabs} %nice tables
+\usepackage[normalem]{ulem}
+\hypersetup{pdftitle={},pdfcreator={},linkcolor=[rgb]{0.15,0.35,0.75},colorlinks=true,citecolor=[rgb]{0.675,0,0.2},urlcolor=[rgb]{0.15,0.35,0.65}}
+
+% The Letter of the single-paper layout (REVTeX 4.2, PRL). Every number quoted in the text and in Table I
+% is a macro defined in numbers.tex, and the two tables of the End Matter are in tables/; all are written
+% by make_tables.py from the result files, through the shared generators
+% (../_build). Fig. 1 is the TikZ-Feynman diagram of Paper I, compiled by make_figure.py from
+% figures/dps_diagram.tex. `make` rebuilds everything and asserts the PRL length limits with
+% count_words.py.
+\input{numbers.tex}
+
+\newcommand{\LL}{\mathcal L}
+\newcommand{\G}{\mathcal G}
+\newcommand{\M}{\mathcal M}
+\newcommand{\kk}{\boldsymbol k}
+\newcommand{\qq}{\boldsymbol q}
+\newcommand{\bb}{\boldsymbol b}
+\newcommand{\DD}{\Delta_C}
+\newcommand{\DG}{D_\gamma}
+\newcommand{\Kt}{\widetilde{\mathcal K}}
+
+\begin{document}
+
+\title{Double parton scattering singularities in two-loop gluon-fusion amplitudes}
+
+\author{Arunima Bhattacharya\,\href{https://orcid.org/0000-0003-4409-0901}{\includegraphics[scale=0.05]{orcidid.pdf}}}
+\affiliation{Theory Division, IFIC, University of Valencia-CSIC,\\
+E-46980 Paterna, Valencia, Spain}
+%
+%\author{Arunima Bhattacharya}
+\email{arunimab@ific.uv.es}
+%\affiliation{Theory Division, IFIC, University of Valencia-CSIC, E-46980 Paterna, Valencia, Spain}
+
+\begin{abstract}
+Soft and collinear factorisation underpins collider predictions. We test factorisation in double parton scattering at small transverse momentum, where incoming gluons split and the daughter partons undergo two hard collisions. We derive its two-loop logarithms and finite matching functions analytically. Normalised to the one-loop term, the cubic coefficient changes sign between gluon and quark splittings. Higgs, pseudoscalar and $Z$ pair amplitudes support a common factorised form with a Glauber phase. The resulting kernel predicts leading DPS logarithms for colour-singlet pair production.
+\end{abstract}
+
+\maketitle
+
+\textit{Introduction:} In gluon-fusion amplitudes with massless internal
+partons, production of two massive colour singlets can develop a double
+parton scattering (DPS) singularity as the transverse momentum $p_T$
+vanishes~\cite{Gaunt:2011xd,Diehl:2011yj}: each incoming gluon splits
+into two nearly on-shell partons, which fuse pairwise in two hard
+subprocesses [Fig.~\ref{fig:dps}(b)]. This occurs in a loop amplitude and has the kinematic structure of double parton scattering. Such amplitudes arise, for example, in calculations of Higgs and electroweak boson pairs at higher orders in QCD~\cite{Glover:1988hh,Banerjee:2018lfq,vonManteuffel:2015msa}.
+These splitting configurations also overlap with single hard scattering
+and require a consistent treatment to avoid double
+counting~\cite{Gaunt:2011xd,Diehl:2017kgu}.
+At one loop, the DPS singularity is at most logarithmic and is described
+by two splitting amplitudes and two hard subprocesses~\cite{Gaunt:2011xd}.
+At two loops, the dependence of this singularity on the daughter partons,
+their helicities and the hard vertices is not fixed by the one-loop analysis.
+
+We determine the leading two-loop DPS logarithms and finite matching
+functions for gluon and quark splittings at fixed momentum fractions
+away from the endpoints. The coefficients agree with the two-loop
+$gg\to HH$, $gg\to AA$ and $gg\to ZZ$ amplitudes across the tested
+colour and helicity channels. The scalar and pseudoscalar channels use
+effective gluon vertices, while the vector channel uses massless
+quark loops. Normalised to the one-loop DPS term, the cubic coefficient
+changes sign between gluon and quark splittings.
+We organise these results in a common tensor kernel contracted with
+the two hard subprocess amplitudes. We derive the finite matching
+functions from the collinear and soft contributions and parton
+self-energy corrections, including their helicity and parity dependence.
+Independent tests use complete two-loop amplitudes and numerical
+region integrations.
+
+Our earlier analysis of $gg\to AA$ near threshold identified cubic and
+quadratic DPS logarithms and the one-loop scalar and pseudoscalar
+weights~\cite{P1}. The present results extend this description to quark splittings and determine the finite matching functions.
+%Perturbative splitting also appears in double parton distributions, whose two-loop kernels describe parton correlations entering cross sections rather than singularities of coherent amplitudes \cite{Diehl:2019rdh,Diehl:2021non,Diehl:2026quant}.
+%
+The Glauber region yields the phase of the coherent amplitude that survives infrared (IR) subtraction. This is consistent with the cancellation of Glauber contributions in the inclusive double Drell--Yan cross section~\cite{Diehl:2015bca}.
+The small-$p_T$ expressions provide analytic benchmarks for
+two-loop $gg\to ZZ$ calculations~\cite{Caola:2015zz}.
+The Supplemental Material~\cite{SM} presents the analytic derivation,
+subtraction conventions and numerical validation.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.72\textwidth]{figures/dps_diagram.pdf}
+\caption{(a) Tree diagram for $gg\to AA$ with effective vertices
+(crossed circles). (b) Crossed box at the DPS pinch, where the four
+internal partons are on shell and $k=xp_1$, $p_3-k=(1-x)p_2$.
+For $HH$ pairs replace $A$ by $H$; for $ZZ$ pairs the loop contains
+massless quarks.}
+\label{fig:dps}
+\end{figure*}
+
+\textit{Two-loop DPS structure:} Let $\bb$ be the transverse position conjugate to $\boldsymbol p_T$,
+$b=|\bb|$. For a given helicity projection and at fixed momentum fractions, the DPS term of the
+IR-subtracted amplitude, the part not analytic in $\boldsymbol p_T$ at $\boldsymbol p_T=0$,
+is represented as
+\begin{equation}
+\widetilde{\mathcal A}_{\rm DPS}(b)=\mathcal H_1\mathcal H_2\,\Kt(b),
+\label{eq:factorised}
+\end{equation}
+with $\mathcal H_{1,2}$ the IR-subtracted amplitudes of the two $2\to1$ subprocesses, of
+masses $m_1$ and $m_2$, and $\Kt$ a kernel that starts at order $a_s=\alpha_s/(4\pi)$ with one
+splitting of each incoming parton. The product denotes contraction over the daughter parton
+colour and helicity indices. At one loop this is the factorisation of
+Ref.~\cite{Gaunt:2011xd}. At two loops we expand the graphs about the DPS
+pinch, retaining the leading term in the small ratio
+$\lambda=p_T/\sqrt{s}$ and fixed momentum fractions away from the
+endpoints. The additional gluon can be hard, collinear, soft, Glauber or ultrasoft.
+Hard corrections confined to either fusion subprocess enter its amplitude
+$\mathcal H_i$. Contributions from the collinear, soft, Glauber and
+ultrasoft regions are organised in the tensor kernel $\Kt$, which
+describes the two splittings and their interactions.
+%Contracting this kernel with the hard helicity amplitudes gives the DPS contribution.
+Renormalisation group evolution determines its logarithms up to a boundary term discussed below, while finite matching also depends on the hard helicity amplitudes. We test this leading-power representation against the full two-loop amplitudes.
+
+The one-loop anomalous dimensions of IR-subtracted amplitudes are determined by the
+external partons~\cite{Becher:2009cu}; subtracting those of $\mathcal H_1$ and $\mathcal H_2$ from
+that of the $2\to2$ amplitude gives $d\Kt/d\ln\mu=\gamma_{\mathcal K}\Kt$ with
+\begin{equation}
+\gamma_{\mathcal K}=a_s\Big[-4\DD\ln\frac{Q_*^2}{\mu^2}+4i\pi\DD+2\DG\Big],
+\label{eq:gammaK}
+\end{equation}
+$\DD=C_{R_1}+C_{R_2}-C_a$ and $\DG=\gamma_a-\gamma_{R_1}-\gamma_{R_2}$, where $C_a$ is the Casimir
+of the incoming partons, $C_{R_i}$ that of the two partons entering subprocess $i$,
+$\gamma_g=-\beta_0$ and $\gamma_q=-3C_F$ are the one-loop non-cusp anomalous dimensions,
+$\beta_0=\frac{11}3C_A-\frac43T_Fn_f$. The scale $Q_*$ is fixed by
+the two outgoing masses and the incoming energy:
+$\DD\ln Q_*^2=C_{R_1}\ln m_1^2+C_{R_2}\ln m_2^2-C_a\ln s$.
+It sets the logarithmic scale of the DPS singularity. Integrating from $\mu_b=b_0/b$,
+$b_0=2e^{-\gamma_E}$, with the coupling of the lowest-order kernel at $\mu_b$, gives
+\begin{equation}
+\Kt=a_s\Kt_0\big\{1+a_s\big[\DD X_\mu^2-2\DD XX_\mu+BX_\mu\big]\big\}+a_s^2\widetilde R,
+\label{eq:kernel}
+\end{equation}
+Here $X=\ln(Q_*^2e^{-i\pi}b^2/b_0^2)$,
+$X_\mu=\ln(\mu^2b^2/b_0^2)$ and $B=\beta_0+\DG$,
+up to $O(a_s^3)$. The renormalisation group determines the scale
+dependence of the kernel, while the $\mu$-independent remainder
+$\widetilde R$ contains matching information at $\mu_b$.
+%We parametrise its two-loop boundary as $\widetilde R=\Kt_0(r_0+r_1X+r_2X^2)$. Here $r_0$ is the finite matching coefficient, while possible terms proportional to $r_1X$ and $r_2X^2$ would change the two-loop logarithms.
+We parametrise its two-loop boundary as \(\widetilde R=\widetilde{\mathcal K}_0(r_0+r_1X+r_2X^2)\), where \(r_0\) is the finite matching coefficient and \(r_1,r_2\) represent additional logarithms not fixed by renormalisation group evolution.
+%At $\mu^2=Q_*^2e^{-i\pi}$, the bracket in Eq.~(\ref{eq:kernel}) reduces to $-\DD X^2+BX$.
+At $\mu^2=Q_*^2e^{-i\pi}$, the RG terms
+in Eq.~(\ref{eq:kernel}) reduce to
+$-\Delta_C X^2+BX$.
+
+The lowest-order kernel is proportional to $e^{i\nu\phi_b}/b^2$.
+We denote the $\nu=0$ and $|\nu|=2$ projections by $\M_1$ and $\M_2$;
+for scalar and pseudoscalar pairs these are the equal- and opposite-helicity
+amplitudes. For spin-one pairs, $\nu=\Delta J_z$ also includes the outgoing
+helicities~\cite{SM}. In momentum space, we define \(\mathcal G=\ln(p_T/Q_*)+i\pi/2\). At one loop, the DPS terms are \(C_1\mathcal G\) in \(\mathcal M_1\) and \(K\) in \(\mathcal M_2\). The difference arises from the Fourier transforms: the isotropic (\(\nu=0\)) integral is logarithmically divergent at small \(b\), whereas the \(|\nu|=2\) integral converges (\hyperref[sec:endmatter]{End Matter}).
+%The region calculations and amplitude comparisons below support $r_1=r_2=0$.
+The region analysis supports $r_1=r_2=0$ for the DPS
+contributions studied. Independent two-loop amplitude fits
+find both coefficients consistent with zero within numerical
+uncertainties estimated from fit-window variations~\cite{SM}.
+With this boundary condition, the terms $-\DD X^2+BX$ give the two-loop logarithms
+\begin{equation}
+\begin{aligned}
+\M_1^{(2)}&\supset C_1\Big[-\tfrac43\DD\,\G^3-B\,\G^2\Big],\\
+\M_2^{(2)}&\supset K\Big[-4\DD\,\G^2+(4\DD-2B)\,\G\Big].
+\end{aligned}
+\label{eq:rg}
+\end{equation}
+%
+For $g\to gg$, $\DD=C_A$ and $B=2\beta_0$.
+The two contributions to $B$ arise from the running
+coupling of the lowest-order kernel and the non-cusp
+anomalous dimensions. The four coefficients in
+Eq.~(\ref{eq:rg}) are $-\frac43C_A$, $-2\beta_0$,
+$-4C_A$ and $4C_A-4\beta_0$, respectively, with
+$Q_*^2=m^4/s$ for equal masses.
+For $g\to q\bar q$, $\DD=2C_F-C_A=-1/N_c$ and
+$B=6C_F$. The cubic coefficient in $\M_1^{(2)}/C_1$
+is $\frac4{3N_c}$, compared with $-\frac43C_A$
+for $g\to gg$, reflecting the colour factors in
+$\DD$; $\beta_0$ does not enter the quadratic
+coefficient, and
+$Q_*^2=s^{N_c^2}/m^{2(N_c^2-1)}$.
+For $g\to q\bar q$, the Fourier transform is
+performed order by order in $a_s$, since the
+unexpanded large-$b$ exponent does not yield
+a convergent real-$b$ Fourier integral.
+
+
+The one-loop coefficients follow from the residues of the pinch~\cite{Gaunt:2011xd}.
+For two effective vertices and equal final-state masses $m$, the daughter partons
+carry longitudinal momentum fractions $x$ and $1-x$ at the DPS pinch,
+with $x(1-x)=m^2/s$ [Fig.~\ref{fig:dps}(b)],
+\begin{equation}
+\begin{aligned}
+C_1&=-4\pi iN_c\,x(1-x)\,F_0(x)\,\M_1^{(0)},\\
+|K|&=2\pi N_c\,x(1-x)\,F_2(x)\,|\M_1^{(0)}|,
+\end{aligned}
+\label{eq:oneloop}
+\end{equation}
+with $\M_1^{(0)}$ the tree-level value of $\M_1$ [Fig.~\ref{fig:dps}(a)],
+$F_0=\frac1{x(1-x)}+2x(1-x)$ for $gg\to HH$,
+$F_0\to F_A=\frac1{x(1-x)}-2x(1-x)$ for $gg\to AA$ and $F_2=\frac{x^4+(1-x)^4}{x(1-x)}$ for both processes. These functions arise from the helicity overlaps of the
+two splittings~\cite{SM}.
+The second relation gives the magnitude of $K$.
+In the helicity conventions of the Supplemental Material,
+$K>0$ for both $gg\to HH$ and $gg\to AA$.
+For $gg\to ZZ$ through a massless quark loop,
+$C_1$ is proportional to $x^2$ or $(1-x)^2$,
+while $K$ is proportional to $x(1-x)$, depending
+on the helicities~\cite{Gaunt:2011xd,SM}.
+
+
+\textit{Boundary term and phase:}
+The potential $X^2$ contribution (Eq.~(\ref{eq:kernel})) comes from ultrasoft exchange. An ultrasoft gluon cannot resolve the transverse separation of the
+two hard vertices and couples to the combined colour charge of each
+splitting.
+%The regulated sum must therefore include attachments to both daughters and their parent. In the static limit, the exchange between the parents cancels the corresponding exchange between the daughters when the same rapidity regulator is used throughout.
+The calculation must therefore include diagrams in which the ultrasoft gluon couples to both the daughter partons and their parent gluon.
+With the same rapidity regulator throughout, the daughter-daughter and parent-parent exchanges cancel in the static limit, while the mixed parent-daughter contributions vanish.
+The calculated soft subtraction also has no finite rapidity logarithm
+at $\mu_b=b_0/b$. Together with the two-loop amplitude comparisons,
+these results support $r_1=r_2=0$ for the DPS contributions studied.
+The remaining finite matching function $r_0$ is determined below.
+The Supplemental Material~\cite{SM} gives the regulator and overlap
+calculations.
+
+In the subtraction scheme used here, Glauber exchange between
+daughters of the two incoming splittings generates a phase.
+The poles of the daughter propagators produce an imaginary
+contribution to the rapidity logarithm. At fixed momentum
+fractions, the dependence of the regions at scale $\mu_b$
+on the hard scales enters through $X$ in
+Eq.~(\ref{eq:kernel}), with $\operatorname{Im}X=-\pi$.
+The imaginary part of the bare kernel is therefore
+\begin{equation}
+i\,{\rm Im}\,\frac{\Kt^{(1)}_{\rm bare}}{\Kt_0}
+=2\pi i\DD\Big[\frac1\epsilon+X_\mu\Big]+O(\epsilon),
+\label{eq:imK}
+\end{equation}
+The $1/\epsilon$ pole is accounted for by the IR subtraction
+of the full amplitude relative to the two hard
+subprocesses~\cite{Catani:1998bh}. After subtraction, the
+phase is given by the $2\pi i\DD X_\mu$ term in
+Eq.~(\ref{eq:kernel}). The calculated regions leave no
+additional imaginary matching constant at $\mu=\mu_b$.
+%Unlike in the double Drell-Yan cross section, the Glauber phase survives in the coherent amplitude.
+Glauber contributions cancel in the double Drell-Yan cross section, whereas a Glauber phase survives in the IR-subtracted amplitude studied here.
+
+\textit{Two-loop QCD amplitudes:}
+We study the two-loop finite remainders for $gg\to HH$
+with effective gluon vertices~\cite{Banerjee:2018lfq},
+$gg\to AA$~\cite{Bhattacharya:2019oun},
+and $gg\to ZZ$ through massless quark loops
+~\cite{vonManteuffel:2015msa}.
+At fixed velocity $\beta=\sqrt{1-4m^2/s}$,
+with $x=(1+\beta)/2$, we approach $p_T=0$
+and evaluate the amplitudes using
+multiprecision arithmetic. We extract
+the logarithmic coefficients by fitting polynomials in
+$\G$, including power corrections~\cite{SM}.
+
+For $gg\to HH$ and $gg\to AA$, the coefficients of
+$\G^3$ and $\G^2$ in the equal-helicity amplitude,
+and of $\G^2$ and $\G$ in the opposite-helicity
+amplitude, agree with Eq.~(\ref{eq:rg}) for each of
+the colour structures $N_c^2$, $N_cn_f$, $n_f/N_c$
+and $n_f^2$.
+The comparison covers $\beta=\frac14,\frac12,\frac23$,
+with the renormalisation scale dependence of
+$gg\to HH$ checked separately.
+For $gg\to ZZ$, the predicted logarithms agree
+with the two-loop amplitudes in eight helicity
+configurations, including symmetry-related ones,
+separately for the $C_F$ and
+$C_A$ contributions. The fits also confirm the additional
+$\ln[x(1-x)]$ terms arising from the different
+scale $Q_*$ for quark splittings.
+%
+We further test Eq.~(\ref{eq:rg}) using the
+massless-quark $gg\to V_1^*V_2^*$ amplitudes
+with different invariant masses for the two
+off-shell vector bosons.
+For $(m_1^2,m_2^2,s)=(1,2,15/2)$
+and $(2,3,17)$, in common mass-squared units,
+the $++++$ and $++--$ transverse-helicity
+amplitudes reproduce the predicted cubic and
+quadratic logarithms separately in the $C_F$
+and $C_A$ terms. The fits include power
+corrections and window variations, as detailed
+in the Supplemental Material~\cite{SM}.
+%
+Figure~\ref{fig:threeprocess} compares the leading and next-to-leading
+logarithms across $gg\to HH$, $gg\to AA$ and $gg\to ZZ$.
+The normalised cubic coefficients have opposite signs for gluon and
+quark splittings. The quadratic coefficient is common to $HH$ and $AA$,
+while the $ZZ$ result depends on the splitting momentum fraction
+through the scale $Q_*$. The extracted coefficients agree with both
+predictions. Table~\ref{tab:tests} gives the corresponding numerical
+deviations, fit-window tests and additional velocities.
+Together, the comparisons support the absence of additional two-loop
+boundary logarithms in both splitting channels.
+%
+\begin{table}[!htb]
+\centering
+\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lccc}
+\toprule
+& $gg\to HH$ & $gg\to AA$ & $gg\to ZZ$\\
+\midrule
+Logarithms, Eq.~(\ref{eq:rg}) & $\devLeadMax$ & $\rzAAlead$ & $\zzDevMax$\\
+Fit-window shift & $\shiftMax$ & $\rzAALogShift$ & $\zzShiftMax$\\
+$r_0$, fitted points & $\rzFitHH$ & $\rzFitAA$ & $\rzFitZZ$\\
+$r_0$, extra velocities & $\rzBlindHH$ & $\rzBlindAA$ & $\rzBlindZZ$\\
+$r_0$, region integration & $\rzRegG$ & --- & $\rzRegQ$\\
+\bottomrule
+\end{tabular}
+\caption{Tests of Eqs.~(\ref{eq:rg}), (\ref{eq:r0g})
+and~(\ref{eq:r0q}).
+The first row gives the largest deviations of the fitted
+logarithmic coefficients from Eq.~(\ref{eq:rg}) at
+$\beta=\scanBetas$, relative to the nonzero predictions
+for $gg\to HH$ and $gg\to AA$, and in units of $C_1$
+or $K$ for $gg\to ZZ$.
+The second row gives the largest changes upon shifting
+the fit window, with the same normalisations as the first row.
+The remaining rows give the absolute deviations of $r_0$
+from Eqs.~(\ref{eq:r0g}) and~(\ref{eq:r0q}) at the
+fitted velocities, at additional velocities
+$\beta=\aaBlindBetas$ for $gg\to HH,AA$ and
+$\beta=\frac45$ for $gg\to ZZ$, and from separate
+region calculations, respectively.
+For $gg\to AA$, the modifications described in the
+text are applied.}
+\label{tab:tests}
+\end{table}
+
+
+
+
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.94\textwidth]{figures/three_process_comparison.pdf}
+\caption{Coefficients of the cubic and quadratic DPS logarithms in the
+two-loop $gg\to HH$, $gg\to AA$ and $gg\to ZZ$ amplitudes with
+$N_c=3$, $n_f=5$ and
+$\mathcal M_1^{(2)}\supset c_3\mathcal G^3+c_2\mathcal G^2$.
+Lines are the predictions of Eq.~(\ref{eq:rg}); symbols are coefficients
+extracted from the complete amplitudes, divided by the corresponding
+one-loop coefficient $C_1$. The $ZZ$ quadratic coefficient is plotted
+in the gluon-scale logarithm, as in the amplitude fits; $HH$ and $AA$
+share the same prediction. The $HH$ and $AA$ markers are displaced
+slightly in $\beta$ to show both sets.}
+\label{fig:threeprocess}
+\end{figure*}
+
+\textit{Finite matching and parity:}
+The finite boundary coefficient $r_0$ contributes
+to the single logarithm in $\M_1^{(2)}$ and the constant term in
+$\M_2^{(2)}$. We derive $r_0$ analytically from the collinear and soft contributions
+and parton self-energy corrections~\cite{SM}.
+Independent extraction from the complete two-loop amplitudes,
+after subtracting the hard and known imaginary contributions
+in a common IR scheme, gives real values for every tested
+colour and helicity component.
+We obtain
+\begin{align}
+r_0^{g\to gg}&=C_A\Big[\tfrac{134}9-5\zeta_2-4\ln x\ln(1-x)\Big]-\tfrac{40}9T_Fn_f\notag\\
+&\quad+\frac{2(C_A-2T_Fn_f)}{3F_\nu(x)},\label{eq:r0g}\\
+r_0^{g\to q\bar q}&=C_F\Big[12-6\zeta_2+2\ln^2\tfrac{x}{1-x}\Big]\notag\\
+&\quad+C_A\Big[2+\zeta_2-2\ln^2x-2\ln^2(1-x)\Big],\label{eq:r0q}
+\end{align}
+with $x$ the momentum fraction of the splitting and $F_\nu$
+the overlap of the component, $F_0$ or $F_2$.
+The collinear integrals determine the common finite terms,
+while the one-loop splitting tensors and their contraction
+with the hard amplitudes determine the helicity dependence.
+The last term of Eq.~(\ref{eq:r0g}) carries this dependence,
+whereas $r_0^{g\to q\bar q}$ is helicity independent.
+For $gg\to AA$, $F_A$ replaces $F_0$ for $\nu=0$,
+while the last term changes sign for $\nu=2$.
+
+The closed forms are independently reconstructed from
+two-loop amplitude fits at three velocities and tested
+at additional velocities (Table~\ref{tab:tests}).
+The collinear and soft rapidity poles cancel analytically
+for $0<x<1$, and the finite contributions reproduce
+Eqs.~(\ref{eq:r0g}) and~(\ref{eq:r0q}).
+Independent numerical region integrations at
+$x=0.1$, $0.3$ and $0.5$ confirm the matching functions
+in the tested colour and helicity channels
+(Table~\ref{tab:tests}).
+The helicity-dependent term of Eq.~(\ref{eq:r0g}) originates from the
+rational part of the one-loop $g\to gg$ splitting amplitudes
+~\cite{Bern:1999ry}, with colour factor $C_A-2T_Fn_f$.
+For $\nu=2$, the helicity-flip contribution has the relative sign
+of $M_{--}/M_{++}$ of the hard vertex.
+
+\textit{Planar $\mathcal N=4$ checks:} The known self-crossing limit of
+six-gluon amplitudes provides a separate setting in which to test the
+angular decomposition~\cite{Dixon:2016epj,CaronHuot:2019vjl}.
+We use the BDS-like normalisation of the six-gluon amplitude,
+which divides out a modified Bern-Dixon-Smirnov (BDS)
+factor~\cite{Dixon:2016epj}. For $a=g^2N_c/(8\pi^2)$,
+the Sudakov factor is
+\begin{equation}
+\begin{aligned}
+\mathcal S(a,X)
+&=\exp\left[-\frac{\gamma_K(a)}8X^2+B(a)X\right],\\
+\gamma_K(a)
+&=4a-4\zeta_2a^2+22\zeta_4a^3
++\gamma_K^{(4)}a^4+\ldots .
+\end{aligned}
+\label{eq:n4exp}
+\end{equation}
+%
+Here $\gamma_K$ is the cusp anomalous dimension
+~\cite{Beisert:2006ez}, distinct from the kernel
+anomalous dimension $\gamma_{\mathcal K}$ in
+Eq.~(\ref{eq:gammaK}), and
+$B(a)=\sum_{n\ge2}B^{(n)}a^n$.
+The prefactor $a\Kt_0(1+\sum_n\kappa_na^n)$
+multiplies $\mathcal S(a,X)$ and includes the
+hard functions and BDS-like normalisation.
+In $3\to3$ kinematics, the phase cancels and
+$\G=\tfrac12\ln|\delta_*|$, with
+$\delta_*=p_T^2/Q_*^2$.
+The MHV singularity corresponds to $\nu=0$,
+with $C_1=2\pi i$.
+With the normalisation and boundary constants
+fixed, the representation reproduces \nFourPass{}
+additional logarithmic coefficients of the known
+planar six-gluon amplitudes through five loops
+(Table~\ref{tab:n4letter},
+\hyperref[sec:endmatter]{End Matter}).
+
+
+In the $v\to0^-$ overlap with multi-Regge kinematics, the selected
+next-to-MHV component carries $|\Delta J_z|=2$. The transform with
+$\nu=2$ reproduces \nFourNmhvChecked{} coefficients through four loops
+and \nFourNmhvFiveCount{} five-loop coefficients obtained from the
+published multi-Regge amplitude~\cite{CaronHuot:2019vjl}, without an
+additional matching constant. For the leading nonanalytic terms,
+$\M_2(\G)/K=\int_0^\infty ds\,e^{-s}C_1^{-1}
+\partial_\G\M_1(\G-s/2)$ follows from the known helicity-flip
+factor~\cite{Basso:2014bfkl,CaronHuot:2019vjl}. These are consistency
+tests of the DPS interpretation, not a new all-order relation.
+
+
+The region calculation in planar $\mathcal N=4$ theory,
+combined with the hard amplitudes and BDS-like
+normalisation, yields $\kappa_1=\zeta_2$, with
+deviations below \kappaOneReg{} for \nFourRegPairs{}
+pairs of splitting fractions in the four-dimensional
+helicity scheme. The $\mathcal N=4$ field content
+cancels the rational helicity-dependent term, giving
+identical finite matching coefficients for the two
+angular components. The Supplemental Material details
+the normalisation and analytic continuation to $2\to4$
+kinematics, including the phase in
+Eq.~(\ref{eq:imK}).
+
+
+
+\textit{Three loops:}
+The kernel evolution also yields conditional predictions
+for the leading three-loop DPS logarithms. If the
+factorised description persists and the boundary
+correction at relative order $a_s^2$ contains no
+powers of $X$ higher than $X^2$, the two highest
+logarithmic powers in each component are fixed.
+The third is fixed if the $X^2$ coefficient also
+vanishes. These boundary conditions remain to be
+tested at three loops~\cite{SM}.
+
+Under both conditions, the relative boundary correction
+is $a_sr_0+a_s^2(r_0^{(3)}+r_1^{(3)}X)$, with $a_s$
+evaluated at $\mu_b$. Using
+$\gamma_{\mathcal K}=-\DD\gamma_{\rm cusp}(a_s)\ln(Q_*^2e^{-i\pi}/\mu^2)+2\DG(a_s)$,
+$\gamma_{\rm cusp}=4a_s+\Gamma_1a_s^2$ per unit Casimir,
+and
+$\Gamma_1=4[(\frac{67}9-2\zeta_2)C_A-\frac{20}9T_Fn_f]$,
+together with the two-loop running of $a_s(\mu_b)$,
+we obtain in minimal subtraction
+\begin{equation}
+\begin{aligned}
+\M_1^{(3)}&\supset C_1\Big[\tfrac85\DD^2\G^5+c_4\G^4+c_3^{(0)}\G^3\Big],\\
+\M_2^{(3)}&\supset K\Big[8\DD^2\G^4+(4c_4-16\DD^2)\G^3\\
+&\qquad+\big(3c_3^{(2)}-4\DD(3B+2\beta_0-6\DD)\big)\G^2\Big],
+\end{aligned}
+\label{eq:threeloop}
+\end{equation}
+where
+$c_4=2\DD(B+\frac23\beta_0)$ and
+$c_3^{(\nu)}=\frac23B(B+\beta_0)-\frac13\DD\Gamma_1-\frac83\DD h-\frac43\DD r_0^{(\nu)}-\frac43\DD L_*(B+\beta_0+\DD L_*)$.
+Here $r_0^{(\nu)}$ is the finite matching coefficient
+of the corresponding component, $h$ is the one-loop
+hard correction relative to the tree amplitude
+for either of the identical subprocesses, and
+$L_*=\ln[\mu^2/(Q_*^2e^{-i\pi})]$.
+
+For gluon splittings with $T_F=\frac12$, the
+coefficients of the two highest powers are
+$\frac85C_A^2$ and
+$\frac{176}9C_A^2-\frac{32}9C_An_f$
+in $\M_1^{(3)}/C_1$, and $8C_A^2$ and
+$\frac{560}9C_A^2-\frac{128}9C_An_f$
+in $\M_2^{(3)}/K$.
+These coefficients are independent of the
+renormalisation scale and IR subtraction
+scheme. Table~\ref{tab:threeloop}
+(\hyperref[sec:endmatter]{End Matter})
+gives the third coefficient for $gg\to HH$.
+A nonzero boundary term $r_2^{(3)}X^2$ would
+shift the displayed third-logarithm coefficients
+by $\frac43r_2^{(3)}$ and $4r_2^{(3)}$,
+respectively, leaving the two highest powers
+unchanged.
+
+
+\textit{Conclusion:}
+We determine the two-loop DPS logarithms of
+gluon-fusion amplitudes and derive the finite
+matching functions analytically. The cubic coefficient,
+normalised to the one-loop term, changes sign between
+gluon and quark splittings. The helicity and parity
+dependence follows from the one-loop splitting tensors.
+The predictions agree with two-loop
+$gg\to HH$, $gg\to AA$ and $gg\to ZZ$ amplitudes
+across the tested colour and helicity channels.
+Independent numerical region integrations confirm
+the finite matching at the tested momentum fractions,
+while the Glauber contribution reproduces the phase
+after IR subtraction.
+Results for off-shell vector bosons of different
+invariant masses and known planar $\mathcal N=4$
+amplitudes provide further tests. The kernel predicts
+leading DPS logarithms for further colour-singlet
+pairs from their hard amplitudes, subject to the stated
+boundary condition, providing checks on future
+two-loop calculations. Its evolution gives conditional
+three-loop predictions.
+
+\begin{acknowledgments}
+I thank IFIC, University of Valencia, and Prof. Francisco Campanario for providing the computing resources used in this work.
+ChatGPT 6 Pro (OpenAI) and Claude fable 5.2 (Anthropic) were used to
+draft notes, draft and debug code, and organise the Git
+repository. Their use in the computational work and the verification
+procedures are described in the Supplemental Material~\cite{SM}.
+The author takes full responsibility for the content of this Letter.
+\end{acknowledgments}
+
+\textit{Data availability:} The scripts, stored amplitude points, numerical
+results and validation tests accompanying this work are supplied in the
+\texttt{anc/} directory of the arXiv source archive and in the companion
+repository at \url{https://github.com/abhattacharya1992/two-loop-dps-prl}.
+The additional $gg\to V_1^*V_2^*$ scan records and precision checks are in \texttt{paper2/unequal\_virtuality/} of the companion repository.
+Re-evaluation from the original published two-loop amplitudes requires
+the external inputs identified in the repository README.
+
+\input{sm_nocite.tex}
+\bibliography{references,sm}
+
+\section*{End Matter}\phantomsection\label{sec:endmatter}
+
+% The planar N = 4 table is input before its text: as a two-column float it can only go to the top of a
+% page, so defined here, on the page where the references end, it lands at the top of the next one.
+\input{tables/table_n4_letter.tex}
+\textit{Appendix A: Transforms:} The Fourier transforms of the two components of $\Kt_0$ with
+$X^n$ inserted follow by differentiating
+\begin{equation}
+\begin{aligned}
+\Phi_\nu(\alpha)&=\int\!\frac{d^2\bb}{2\pi}\frac{e^{i\boldsymbol p_T\cdot\bb+i\nu\phi_b}}{b^2}
+\Big(\frac{Q_*^2e^{-i\pi}b^2}{b_0^2}\Big)^{\!\alpha}\\
+&=\frac{i^\nu e^{i\nu\phi_q}}{2}\,e^{2(\gamma_E-\G)\alpha}\,
+\frac{\Gamma(\frac\nu2+\alpha)}{\Gamma(1+\frac\nu2-\alpha)}
+\end{aligned}
+\label{eq:Fm}
+\end{equation}
+at $\alpha=0$, with $\phi_q$ the azimuth of
+$\boldsymbol p_T$. For $\nu=0$, the pole of
+$\Gamma(\alpha)$ is independent of $p_T$ and
+corresponds to a contact term in impact-parameter
+space, which is omitted from the nonanalytic
+DPS part of the amplitude.
+The finite part contains one additional power of $\G$.
+No such pole occurs for $\nu=2$.
+
+
+\input{tables/table_threeloop_letter.tex}
+
+
+\textit{Appendix B: The boundary term from the regions:}
+We apply the method of regions~\cite{Beneke:1997zp}
+to the two-loop DPS term at leading power in $\lambda$.
+We use dimensional regularisation and a common
+rapidity regulator, with scaleless integrals set to
+zero in the adopted prescription. Collinear, soft
+and Glauber gluons have transverse momenta of order
+$p_T$ and resolve the separation $b$. Their transverse
+scale is $\mu_b$, while the hard-scale dependence
+enters via a regulated rapidity logarithm at
+this order~\cite{Chiu:2012ir}.
+
+An ultrasoft gluon has all momentum components of
+order $p_T^2/\sqrt{s}$ and cannot resolve $b$, but
+is sensitive to the small virtualities of the
+daughter partons. Denoting the dimensionful
+light-cone energy denominators of the two splittings
+by $\sigma_1$ and $\sigma_2$, their product scales as
+$\sigma_1\sigma_2\sim\mu_b^4s/(m_1^2m_2^2)$, or
+$\mu_b^4/Q_*^2$ for gluon splittings.
+An individual exchange between daughter partons
+contains a factor
+$\Gamma(\epsilon)^2\Gamma(1-\epsilon)
+(\sigma_1\sigma_2e^{i\pi}/\mu^2)^{-\epsilon}$,
+which can generate an $X^2$ boundary term.
+
+At leading eikonal power, colour conservation
+combines the daughter charges into their parent
+charge, $T_k+T_{\bar k}=T_{p_1}$, and similarly
+for the second splitting. With the same regulator
+for all attachments, the static daughter-daughter
+contribution $-2\pi^2$ cancels the parent-parent
+term $+2\pi^2$; mixed terms vanish~\cite{SM}.
+The Glauber phase is treated separately in Appendix C.
+
+The regions have poles
+$(\mu^2/\Lambda^2)^\epsilon
+(e_2/\epsilon^2+e_1/\epsilon+e_0)$.
+Collinear, soft and Glauber terms use
+$\Lambda=\mu_b$ and carry the rapidity logarithm
+$(g/\epsilon+g_1)\ln(Q_*^2e^{-i\pi}/\mu_b^2)$;
+ultrasoft terms use
+$\Lambda^2=\mu_b^4/(\kappa Q_*^2e^{-i\pi})$,
+with $\kappa$ independent of $b$.
+Independence of the IR poles from $b$, followed
+by subtraction, gives $r_2=e_2^{\rm us}/2$ and
+$r_1=g_1+e_1^{\rm us}+e_2^{\rm us}\ln\kappa$.
+The regulated ultrasoft cancellation gives
+$r_2=0$ and $r_1=g_1$ for the calculated terms.
+
+The soft and collinear rapidity poles cancel.
+Their sum yields $2\DD$ times the Fourier
+transform of $1/\boldsymbol\ell^2$ in
+$2-2\epsilon$ dimensions at separation $b$,
+\begin{equation}
+\Big(\frac{\mu^2b^2}{b_0^2}\Big)^\epsilon e^{-\epsilon\gamma_E}\Gamma(-\epsilon)
+=\Big(\frac{\mu^2}{\mu_b^2}\Big)^\epsilon\Big(-\frac1\epsilon-\frac{\zeta_2}2\epsilon+O(\epsilon^2)\Big).
+\label{eq:rapcoef}
+\end{equation}
+At $\mu=\mu_b$ the finite part vanishes,
+giving $g_1=r_1=0$. The resulting boundary
+coefficients agree with the two-loop amplitudes;
+the imaginary term in Eq.~(\ref{eq:imK}) follows
+from the same coefficient multiplied by $-i\pi$.
+
+
+
+
+\textit{Appendix C: Glauber exchange:}
+In the rapidity-regulator and overlap-subtraction scheme
+of Ref.~\cite{Chiu:2012ir}, the phase in
+Eq.~(\ref{eq:imK}) arises from the Glauber region.
+For an exchange between a daughter parton from each
+incoming splitting, the off-shell propagators reduce
+at leading power to eikonal denominators with positive
+light-cone energy offsets $\sigma_1$ and $\sigma_2$.
+Integrating over the longitudinal components of the
+exchanged gluon gives
+\begin{equation}
+\frac{2\pi i}{\boldsymbol\ell^2+\sigma_1\sigma_2}\Big[\ln\frac{\boldsymbol\ell^2}{\sigma_1\sigma_2}-i\pi\Big],
+\label{eq:glauberpair}
+\end{equation}
+where the pole at $\ell^-=\sigma_1$ lies within the
+integration range and produces the $-i\pi$ term.
+The logarithm is the rapidity logarithm, with
+$\sigma_1\sigma_2\sim\mu_b^4/Q_*^2$.
+
+Soft and collinear rapidity poles cancel; the Glauber
+region supplies the phase in Eq.~(\ref{eq:glauberpair}).
+Zero bins vanish in this prescription, while delta
+and principal-value terms contribute equally~\cite{SM}.
+The phase cancels for incoming--outgoing pairs
+($\sigma_2<0$). Direct longitudinal integration checks
+\glauberConfigs{} configurations in a two-loop graph~\cite{SM}.
+
+%\input{tables/table_threeloop_letter.tex}
+
+\end{document}

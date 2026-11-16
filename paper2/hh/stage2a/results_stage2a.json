@@ -1,0 +1,30 @@
+{
+ "rows": [
+  {
+   "coefficient": "spin 0, C_1 G^3",
+   "finite_remainder": "-4*C_A/3",
+   "added_by_uv_and_catani": "4*C_A/3",
+   "two_loop_amplitude": "-8*C_A/3"
+  },
+  {
+   "coefficient": "spin 0, C_1 beta0 G^2",
+   "finite_remainder": "-2",
+   "added_by_uv_and_catani": "2",
+   "two_loop_amplitude": "-4"
+  },
+  {
+   "coefficient": "spin 2, K G^2",
+   "finite_remainder": "-4*C_A",
+   "added_by_uv_and_catani": "4*C_A",
+   "two_loop_amplitude": "-8*C_A"
+  },
+  {
+   "coefficient": "spin 2, K beta0 G",
+   "finite_remainder": "-4",
+   "added_by_uv_and_catani": "4",
+   "two_loop_amplitude": "-8"
+  }
+ ],
+ "same_in_both_eps_conventions": true,
+ "sympy": "1.14.0"
+}

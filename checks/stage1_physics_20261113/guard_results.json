@@ -1,0 +1,47 @@
+{
+  "checker_sha256": "852c4e0c0eb04d10062f29fd027ac99ea2cd22273ea27a7a653fd5bad43346d8",
+  "failure_injections": [
+    {
+      "expected_error": "static overlap cancels at finite eta",
+      "function": "overlap_checks",
+      "name": "omit_parent_parent",
+      "rejected": true
+    },
+    {
+      "expected_error": "explicit-generator colour check",
+      "function": "colour_checks",
+      "name": "wrong_antiquark_sign",
+      "rejected": true
+    },
+    {
+      "expected_error": "two-loop nu0 G^2",
+      "function": "evolution_checks",
+      "name": "omit_running_coupling_of_leading_kernel",
+      "rejected": true
+    },
+    {
+      "expected_error": "two-loop nu2 G^1",
+      "function": "evolution_checks",
+      "name": "wrong_spin_two_transform",
+      "rejected": true
+    },
+    {
+      "expected_error": "quadratic boundary shifts nu2 third logarithm",
+      "function": "evolution_checks",
+      "name": "omit_quartic_boundary",
+      "rejected": true
+    }
+  ],
+  "guard_source_sha256": "b7627d2bb96aa6e2e5c38b57fdcbe3006a44b0e1989981871e304de76560aa9d",
+  "passed": true,
+  "reference_sha256": "1b029f3a420fab1044bbf5e22560b49403a8858c5aac149bc76d27096d8c943c",
+  "replay": {
+    "existing_output_rejected_and_preserved": true,
+    "normal_equals_optimized": true,
+    "normal_passed": true,
+    "optimized_passed": true,
+    "physics_equals_reference": true,
+    "record_equals_reference_bytewise": true
+  },
+  "scope": "replay, output isolation, optimization, deliberate-error detection"
+}

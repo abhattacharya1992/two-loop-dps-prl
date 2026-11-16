@@ -1,0 +1,233 @@
+{
+  "canonical_graph_polynomial_identities": 54,
+  "interjet_no_stationary_certificates": [
+    {
+      "branches": [
+        {
+          "derivative": "a1",
+          "factor": "a1*a3*y + a1*a4*y + a1*a5*(y - 1) + a3*a4*y + a3*a6*y + a4*a5*(y - 1) + a4*a6*y + a5*a6*(y - 1)",
+          "sign": -1,
+          "solution": "(-a1*a3*y - a1*a4*y - a3*a4*y - a3*a6*y - a4*a6*y)/(a1*y - a1 + a4*y - a4 + a6*y - a6)",
+          "solve_for": "a5"
+        }
+      ],
+      "graph": "k|r",
+      "method": "stationary branches excluded",
+      "necessary_derivative": "a0"
+    },
+    {
+      "branches": [
+        {
+          "derivative": "a0",
+          "factor": "a3*y + a4*(y - 1) + a5*(y - 1)",
+          "sign": 1,
+          "solution": "(-a4*y + a4 - a5*y + a5)/y",
+          "solve_for": "a3"
+        },
+        {
+          "derivative": "a3",
+          "factor": "a0*x + a1*x + a2*(x - 1)",
+          "sign": -1,
+          "solution": "(-a0*x - a1*x)/(x - 1)",
+          "solve_for": "a2"
+        }
+      ],
+      "graph": "k|rb",
+      "method": "stationary branches excluded",
+      "necessary_derivative": "a6"
+    },
+    {
+      "branches": [
+        {
+          "derivative": "a4",
+          "factor": "a0*a3*(x*y - x) + a0*a4*(x*y - x) + a1*a2 + a1*a3*x*y + a1*a4*x*y + a2*a3*(x*y - x - y + 1) + a2*a4*(x*y - x - y + 1)",
+          "sign": 1,
+          "solution": "(-a1*a2 - a1*a3*x*y - a1*a4*x*y - a2*a3*x*y + a2*a3*x + a2*a3*y - a2*a3 - a2*a4*x*y + a2*a4*x + a2*a4*y - a2*a4)/(a3*x*y - a3*x + a4*x*y - a4*x)",
+          "solve_for": "a0"
+        }
+      ],
+      "graph": "k|leg2",
+      "method": "stationary branches excluded",
+      "necessary_derivative": "a5"
+    },
+    {
+      "branches": [
+        {
+          "derivative": "a1",
+          "factor": "a1*a3*y + a1*a4*(y - 1) + a3*a4*(y - 1) + a3*a5*y + a4*a5*(y - 1)",
+          "sign": -1,
+          "solution": "(-a1*a3*y - a3*a5*y)/(a1*y - a1 + a3*y - a3 + a5*y - a5)",
+          "solve_for": "a4"
+        }
+      ],
+      "graph": "k|a2",
+      "method": "stationary branches excluded",
+      "necessary_derivative": "a0"
+    },
+    {
+      "branches": [
+        {
+          "derivative": "a0",
+          "factor": "a3*y + a4*y + a5*(y - 1)",
+          "sign": -1,
+          "solution": "(-a3*y - a4*y)/(y - 1)",
+          "solve_for": "a5"
+        },
+        {
+          "derivative": "a3",
+          "factor": "a0*x + a1*(x - 1) + a2*(x - 1)",
+          "sign": 1,
+          "solution": "(-a1*x + a1 - a2*x + a2)/x",
+          "solve_for": "a0"
+        }
+      ],
+      "graph": "kb|r",
+      "method": "stationary branches excluded",
+      "necessary_derivative": "a6"
+    },
+    {
+      "branches": [
+        {
+          "derivative": "a0",
+          "factor": "a2*a3*y + a2*a4*(y - 1) + a2*a5*(y - 1) + a3*a5*y + a3*a6*y + a4*a5*(y - 1) + a4*a6*(y - 1) + a5*a6*(y - 1)",
+          "sign": -1,
+          "solution": "(-a2*a4*y + a2*a4 - a2*a5*y + a2*a5 - a4*a5*y + a4*a5 - a4*a6*y + a4*a6 - a5*a6*y + a5*a6)/(a2*y + a5*y + a6*y)",
+          "solve_for": "a3"
+        }
+      ],
+      "graph": "kb|rb",
+      "method": "stationary branches excluded",
+      "necessary_derivative": "a1"
+    },
+    {
+      "branches": [
+        {
+          "derivative": "a3",
+          "factor": "a0*a2 + a0*a3*x*y + a0*a4*x*y + a1*a3*(x*y - y) + a1*a4*(x*y - y) + a2*a3*(x*y - x - y + 1) + a2*a4*(x*y - x - y + 1)",
+          "sign": 1,
+          "solution": "(-a0*a2 - a0*a3*x*y - a0*a4*x*y - a2*a3*x*y + a2*a3*x + a2*a3*y - a2*a3 - a2*a4*x*y + a2*a4*x + a2*a4*y - a2*a4)/(a3*x*y - a3*y + a4*x*y - a4*y)",
+          "solve_for": "a1"
+        }
+      ],
+      "graph": "kb|leg2",
+      "method": "stationary branches excluded",
+      "necessary_derivative": "a5"
+    },
+    {
+      "branches": [
+        {
+          "derivative": "a0",
+          "factor": "a2*a3*y + a2*a4*(y - 1) + a3*a4*y + a3*a5*y + a4*a5*(y - 1)",
+          "sign": -1,
+          "solution": "(-a2*a4*y + a2*a4 - a4*a5*y + a4*a5)/(a2*y + a4*y + a5*y)",
+          "solve_for": "a3"
+        }
+      ],
+      "graph": "kb|a2",
+      "method": "stationary branches excluded",
+      "necessary_derivative": "a1"
+    },
+    {
+      "branches": [
+        {
+          "derivative": "a1",
+          "factor": "a0*a2*(x*y - y) + a0*a3*x*y + a0*a4*(x*y - x - y + 1) + a1*a2*(x*y - y) + a1*a3*x*y + a1*a4*(x*y - x - y + 1) + a3*a4",
+          "sign": 1,
+          "solution": "(-a0*a3*x*y - a0*a4*x*y + a0*a4*x + a0*a4*y - a0*a4 - a1*a3*x*y - a1*a4*x*y + a1*a4*x + a1*a4*y - a1*a4 - a3*a4)/(a0*x*y - a0*y + a1*x*y - a1*y)",
+          "solve_for": "a2"
+        }
+      ],
+      "graph": "r|leg1",
+      "method": "stationary branches excluded",
+      "necessary_derivative": "a5"
+    },
+    {
+      "branches": [
+        {
+          "derivative": "a3",
+          "factor": "a0*a1*(x - 1) + a0*a3*x + a0*a5*x + a1*a3*(x - 1) + a1*a5*(x - 1)",
+          "sign": -1,
+          "solution": "(-a0*a3*x - a0*a5*x)/(a0*x - a0 + a3*x - a3 + a5*x - a5)",
+          "solve_for": "a1"
+        }
+      ],
+      "graph": "r|a1",
+      "method": "stationary branches excluded",
+      "necessary_derivative": "a2"
+    },
+    {
+      "branches": [
+        {
+          "derivative": "a0",
+          "factor": "a0*a2*x*y + a0*a3*(x*y - x) + a0*a4*(x*y - x - y + 1) + a1*a2*x*y + a1*a3*(x*y - x) + a1*a4*(x*y - x - y + 1) + a2*a4",
+          "sign": 1,
+          "solution": "(-a0*a2*x*y - a0*a4*x*y + a0*a4*x + a0*a4*y - a0*a4 - a1*a2*x*y - a1*a4*x*y + a1*a4*x + a1*a4*y - a1*a4 - a2*a4)/(a0*x*y - a0*x + a1*x*y - a1*x)",
+          "solve_for": "a3"
+        }
+      ],
+      "graph": "rb|leg1",
+      "method": "stationary branches excluded",
+      "necessary_derivative": "a5"
+    },
+    {
+      "branches": [
+        {
+          "derivative": "a2",
+          "factor": "a0*a1*x + a0*a4*x + a0*a5*x + a1*a4*(x - 1) + a1*a5*(x - 1)",
+          "sign": -1,
+          "solution": "(-a1*a4*x + a1*a4 - a1*a5*x + a1*a5)/(a1*x + a4*x + a5*x)",
+          "solve_for": "a0"
+        }
+      ],
+      "graph": "rb|a1",
+      "method": "stationary branches excluded",
+      "necessary_derivative": "a3"
+    },
+    {
+      "derivative": "a4",
+      "graph": "leg1|leg2",
+      "method": "strict derivative",
+      "sign": -1
+    },
+    {
+      "derivative": "a4",
+      "graph": "leg1|a2",
+      "method": "strict derivative",
+      "sign": -1
+    },
+    {
+      "derivative": "a4",
+      "graph": "leg2|a1",
+      "method": "strict derivative",
+      "sign": -1
+    },
+    {
+      "branches": [
+        {
+          "derivative": "a0",
+          "factor": "a2*y + a3*(y - 1)",
+          "sign": -1,
+          "solution": "(-a3*y + a3)/y",
+          "solve_for": "a2"
+        },
+        {
+          "derivative": "a2",
+          "factor": "a0*x + a1*(x - 1)",
+          "sign": -1,
+          "solution": "(-a1*x + a1)/x",
+          "solve_for": "a0"
+        }
+      ],
+      "graph": "a1|a2",
+      "method": "stationary branches excluded",
+      "necessary_derivative": "a4"
+    }
+  ],
+  "one_loop": {
+    "domain": "0<x,y<1; all alpha>0",
+    "identity": "F/s=-f1*f2+t*(alpha_k+alpha_kb)*(alpha_r+alpha_rb)",
+    "numerator_included": false,
+    "scalar_power_d4": -2
+  },
+  "scope": "All symbolic interior fractions, strictly positive Feynman parameters, equal virtualities of the 16 interjet-exchange graphs. Does not exclude boundary pinches or regulator-defined Glauber phases."
+}

@@ -1,0 +1,58 @@
+Vgh1   S1 (-7/10, -3/10) 1p: |nf/orig - 1| 4.4e-16   integral: direct -1.60954418+0.0e+00i  sectors -1.60954418  rel 6.3e-15
+Vgh1   S2 (-7/10, -3/10) 1p: |nf/orig - 1| 1.0e-15   integral: direct -1.35068112+0.0e+00i  sectors -1.35068112  rel 6.6e-15
+Vgh1   S3 (-7/10, -3/10) 1p: |nf/orig - 1| 1.6e-15   integral: direct +1.43529647+0.0e+00i  sectors +1.43529647  rel 2.9e-15
+Vgh1   T4 (-7/10, -3/10) 1p: |nf/orig - 1| 2.9e-15   integral: direct -0.81040867+0.0e+00i  sectors -0.81040867  rel 6.8e-15
+Vgh1   S1 (-7/10, -3/10) 1p: |nf/orig - 1| 8.9e-16   integral: direct +1.62887853+0.0e+00i  sectors +1.62887853  rel 1.3e-14
+Vgh1   S2 (-7/10, -3/10) 1p: |nf/orig - 1| 1.8e-15   integral: direct +1.33550865+0.0e+00i  sectors +1.33550865  rel 1.4e-14
+Vgh1   S3 (-7/10, -3/10) 1p: |nf/orig - 1| 6.7e-16   integral: direct -1.62887853+0.0e+00i  sectors -1.62887853  rel 1.1e-15
+Vgh1   T4 (-7/10, -3/10) 1p: |nf/orig - 1| 2.3e-15   integral: direct +0.80130519+0.0e+00i  sectors +0.80130519  rel 1.5e-14
+Vgh1   S1 (-3/10, 0)     1p: |nf/orig - 1| 6.7e-16   integral: direct -0.20577888+0.0e+00i  sectors -0.20577888  rel 3.2e-15
+Vgh1   S2 (-3/10, 0)     1p: |nf/orig - 1| 5.3e-15   integral: direct -0.08108859+0.0e+00i  sectors -0.08108859  rel 6.7e-15
+Vgh1   S3 (-3/10, 0)     1p: |nf/orig - 1| 2.8e-15   integral: direct +0.09660140+0.0e+00i  sectors +0.09660140  rel 1.6e-15
+Vgh1   T4 (-3/10, 0)     1p: |nf/orig - 1| 9.0e-15   integral: direct -0.04865315+0.0e+00i  sectors -0.04865315  rel 7.6e-15
+Vgh1   S1 (-3/10, 0)     1p: |nf/orig - 1| 4.4e-16   integral: direct +0.28251915+0.0e+00i  sectors +0.28251915  rel 1.2e-14
+Vgh1   S2 (-3/10, 0)     1p: |nf/orig - 1| 1.8e-15   integral: direct +0.01607785+0.0e+00i  sectors +0.01607785  rel 1.3e-13
+Vgh1   S3 (-3/10, 0)     1p: |nf/orig - 1| 7.8e-16   integral: direct -0.28251915+0.0e+00i  sectors -0.28251915  rel 1.6e-15
+Vgh1   T4 (-3/10, 0)     1p: |nf/orig - 1| 2.2e-15   integral: direct +0.00964671+0.0e+00i  sectors +0.00964671  rel 1.3e-13
+Vgh1   S1 (0, 3/10)      1p: |nf/orig - 1| 5.8e-15   integral: direct +0.02539331+0.0e+00i  sectors +0.02539331  rel 1.3e-14
+Vgh1   S2 (0, 3/10)      1p: |nf/orig - 1| 3.1e-15   integral: direct -0.05329804+0.0e+00i  sectors -0.05329804  rel 1.4e-15
+Vgh1   S3 (0, 3/10)      1p: |nf/orig - 1| 1.2e-15   integral: direct -0.02539331+0.0e+00i  sectors -0.02539331  rel 1.1e-15
+Vgh1   T4 (0, 3/10)      1p: |nf/orig - 1| 2.7e-15   integral: direct -0.03197882+0.0e+00i  sectors -0.03197882  rel 2.2e-15
+Vgh1   S1 (0, 3/10)      2p: |nf/orig - 1| 1.6e-15
+Vgh1   S2 (0, 3/10)      2p: |nf/orig - 1| 4.1e-15
+Vgh1   S3 (0, 3/10)      2p: |nf/orig - 1| 2.0e-15
+Vgh1   T4 (0, 3/10)      2p: |nf/orig - 1| 1.3e-14
+Vbuba1 S1 (0, 3/10)      0p: |nf/orig - 1| 4.4e-16   integral: direct -2.03480294+0.0e+00i  sectors -2.03480294  rel 1.5e-15
+Vbuba1 S2 (0, 3/10)      0p: |nf/orig - 1| 2.2e-16   integral: direct +2.90686134+0.0e+00i  sectors +2.90686134  rel 1.4e-15
+Vbubb2 S1 (0, 3/10)      0p: |nf/orig - 1| 3.3e-16   integral: direct +0.45055285+0.0e+00i  sectors +0.45055285  rel 2.5e-16
+Vbubb2 S3 (0, 3/10)      0p: |nf/orig - 1| 4.4e-16   integral: direct -2.14097649+0.0e+00i  sectors -2.14097649  rel 0.0e+00
+Vbubb2 S1 (3/10, 7/10)   0p: |nf/orig - 1| 1.3e-15   integral: direct +0.86130083+0.0e+00i  sectors +0.86130083  rel 0.0e+00
+Vbubb2 S3 (3/10, 7/10)   0p: |nf/orig - 1| 2.2e-16   integral: direct -2.23186910+0.0e+00i  sectors -2.23186910  rel 2.0e-16
+W1g    S1 (0, 3/10)      1p: |nf/orig - 1| 6.7e-16   integral: direct -11.27125723+0.0e+00i  sectors -11.27144903  rel 1.7e-05
+W1g    S2 (0, 3/10)      1p: |nf/orig - 1| 1.7e-15   integral: direct +14.19919487+0.0e+00i  sectors +14.19943017  rel 1.7e-05
+W1g    S3 (0, 3/10)      1p: |nf/orig - 1| 1.2e-15   integral: direct +36.21546575+0.0e+00i  sectors +36.21605994  rel 1.6e-05
+W1kb   S1 (0, 3/10)      1p: |nf/orig - 1| 8.9e-16   integral: direct -8.00739433+0.0e+00i  sectors -8.00753936  rel 1.8e-05
+W1kb   S2 (0, 3/10)      1p: |nf/orig - 1| 2.7e-15   integral: direct +10.62704093+0.0e+00i  sectors +10.62719685  rel 1.5e-05
+W1kb   S3 (0, 3/10)      1p: |nf/orig - 1| 2.2e-15   integral: direct +26.97212164+0.0e+00i  sectors +26.97260506  rel 1.8e-05
+W1k    S1 (0, 3/10)      0p: |nf/orig - 1| 4.4e-16   integral: direct +7.85374856+0.0e+00i  sectors +7.85374856  rel 2.3e-16
+W1k    S2 (0, 3/10)      0p: |nf/orig - 1| 4.4e-16   integral: direct -11.21964079+0.0e+00i  sectors -11.21964079  rel 4.7e-16
+W1k    S3 (0, 3/10)      0p: |nf/orig - 1| 8.9e-16   integral: direct -26.61077950+0.0e+00i  sectors -26.61077950  rel 2.7e-16
+W2g    S1 (0, 3/10)      1p: |nf/orig - 1| 4.4e-16   integral: direct -11.45443233+0.0e+00i  sectors -11.45457961  rel 1.3e-05
+W2g    S2 (0, 3/10)      1p: |nf/orig - 1| 1.9e-15   integral: direct +15.51926173+0.0e+00i  sectors +15.51946006  rel 1.3e-05
+W2g    S3 (0, 3/10)      1p: |nf/orig - 1| 2.0e-15   integral: direct +33.82880134+0.0e+00i  sectors +33.82923592  rel 1.3e-05
+W2g    S1 (3/10, 7/10)   1p: |nf/orig - 1| 4.0e-15   integral: direct -8.99761794+0.0e+00i  sectors -8.99773493  rel 1.3e-05
+W2g    S2 (3/10, 7/10)   1p: |nf/orig - 1| 1.4e-15   integral: direct +10.89936751+0.0e+00i  sectors +10.89949290  rel 1.2e-05
+W2g    S3 (3/10, 7/10)   1p: |nf/orig - 1| 1.1e-15   integral: direct +14.73630307+0.0e+00i  sectors +14.73649830  rel 1.3e-05
+W2k    S1 (0, 3/10)      1p: |nf/orig - 1| 4.4e-16   integral: direct +8.91568668+0.0e+00i  sectors +8.91583171  rel 1.6e-05
+W2k    S2 (0, 3/10)      1p: |nf/orig - 1| 4.4e-16   integral: direct -12.95076142+0.0e+00i  sectors -12.95096860  rel 1.6e-05
+W2k    S3 (0, 3/10)      1p: |nf/orig - 1| 5.6e-16   integral: direct -23.42347804+0.0e+00i  sectors -23.42384625  rel 1.6e-05
+W2k    S1 (3/10, 7/10)   1p: |nf/orig - 1| 4.1e-15   integral: direct +0.31480769+0.0e+00i  sectors +0.31480769  rel 5.3e-16
+W2k    S2 (3/10, 7/10)   1p: |nf/orig - 1| 1.9e-14   integral: direct -0.54114648+0.0e+00i  sectors -0.54114648  rel 6.2e-16
+W2k    S3 (3/10, 7/10)   1p: |nf/orig - 1| 1.3e-15   integral: direct +2.67786785+0.0e+00i  sectors +2.67790380  rel 1.3e-05
+W2kb   S1 (0, 3/10)      0p: |nf/orig - 1| 4.4e-16   integral: direct +9.76696444+0.0e+00i  sectors +9.76696444  rel 3.6e-16
+W2kb   S2 (0, 3/10)      0p: |nf/orig - 1| 2.2e-16   integral: direct -13.58645117+0.0e+00i  sectors -13.58645117  rel 2.6e-16
+W2kb   S3 (0, 3/10)      0p: |nf/orig - 1| 6.7e-16   integral: direct -32.55654814+0.0e+00i  sectors -32.55654814  rel 4.4e-16
+W2kb   S1 (3/10, 7/10)   0p: |nf/orig - 1| 4.4e-16   integral: direct +3.29062665+0.0e+00i  sectors +3.29062665  rel 1.1e-15
+W2kb   S2 (3/10, 7/10)   0p: |nf/orig - 1| 4.7e-15   integral: direct -5.30243175+0.0e+00i  sectors -5.30243175  rel 5.0e-16
+W2kb   S3 (3/10, 7/10)   0p: |nf/orig - 1| 2.2e-16   integral: direct -10.96875548+0.0e+00i  sectors -10.96875548  rel 8.1e-16
+worst pointwise 1.9e-14, worst integral 1.8e-05

@@ -1,0 +1,26 @@
+CA S1 eps^-2: FDH - CDR = +0.000000000  eps x scalar = +0.000000000  dev 3.5e-13
+CA S1 eps^-1: FDH - CDR = -0.000000000  eps x scalar = -0.000000000  dev 5.0e-12
+CA S1 eps^+0: FDH - CDR = +0.333333333  eps x scalar = +0.333333333  dev 5.1e-11
+CA S2 eps^-2: FDH - CDR = -0.000000000  eps x scalar = +0.000000000  dev 3.9e-12
+CA S2 eps^-1: FDH - CDR = +0.000000000  eps x scalar = +0.000000000  dev 3.8e-12
+CA S2 eps^+0: FDH - CDR = -0.666666667  eps x scalar = -0.666666667  dev 1.3e-10
+CA S3 eps^-2: FDH - CDR = -0.000000000  eps x scalar = +0.000000000  dev 2.1e-12
+CA S3 eps^-1: FDH - CDR = +0.000000000  eps x scalar = +0.000000000  dev 4.5e-12
+CA S3 eps^+0: FDH - CDR = -0.666666667  eps x scalar = -0.666666667  dev 5.8e-11
+CA T4 eps^-2: FDH - CDR = -0.000000000  eps x scalar = +0.000000000  dev 2.0e-14
+CA T4 eps^-1: FDH - CDR = -0.000000000  eps x scalar = -0.000000000  dev 1.1e-17
+CA T4 eps^+0: FDH - CDR = -0.000000000  eps x scalar = -0.000000000  dev 8.6e-17
+nf S1 eps^-2: FDH - CDR = -0.000000000  eps x scalar = +0.000000000  dev 3.3e-18
+nf S1 eps^-1: FDH - CDR = -0.000000000  eps x scalar = +0.000000000  dev 2.2e-15
+nf S1 eps^+0: FDH - CDR = +0.000000000  eps x scalar = +0.000000000  dev 1.0e-15
+nf S2 eps^-2: FDH - CDR = +0.000000000  eps x scalar = +0.000000000  dev 8.0e-17
+nf S2 eps^-1: FDH - CDR = +0.000000000  eps x scalar = +0.000000000  dev 4.6e-16
+nf S2 eps^+0: FDH - CDR = -0.000000000  eps x scalar = +0.000000000  dev 4.5e-15
+nf S3 eps^-2: FDH - CDR = +0.000000000  eps x scalar = +0.000000000  dev 7.1e-17
+nf S3 eps^-1: FDH - CDR = +0.000000000  eps x scalar = +0.000000000  dev 4.0e-15
+nf S3 eps^+0: FDH - CDR = -0.000000000  eps x scalar = +0.000000000  dev 6.1e-15
+nf T4 eps^-2: FDH - CDR = -0.000000000  eps x scalar = +0.000000000  dev 5.5e-18
+nf T4 eps^-1: FDH - CDR = +0.000000000  eps x scalar = +0.000000000  dev 2.0e-17
+nf T4 eps^+0: FDH - CDR = +0.000000000  eps x scalar = +0.000000000  dev 4.4e-17
+largest deviation 1.3e-10
+FDH = CDR + eps x (one complex adjoint scalar): OK

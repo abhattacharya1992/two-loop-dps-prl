@@ -1,0 +1,198 @@
+{
+  "baseline_commit": "98cd34fc7e5c707fabdebeac7401398daea4a532",
+  "check_count": 66,
+  "checks": [
+    "static overlap cancels at finite eta",
+    "static DD eta limit",
+    "static PD eta limit",
+    "static DP eta limit",
+    "static PP eta limit",
+    "omitted-parent negative control is nonzero",
+    "O(eta) PD term retained",
+    "four independent finite-eta PV quadratures",
+    "common factor cancels before eps expansion",
+    "four-dimensional-only subtraction finite defect",
+    "coincident four-line factor is parent factor",
+    "subtracted soft factor",
+    "ultrasoft separation suppression",
+    "two mass-regulated transverse limits",
+    "rapidity coefficient has no finite constant at mu_b",
+    "rapidity coefficient residue",
+    "jet is Hermitian in colour metric",
+    "hard is Hermitian in colour metric",
+    "cross is Hermitian in colour metric",
+    "four-leg colour conservation",
+    "parent-adjoint splitting tensor eigenvalue",
+    "one-exchange colour projection",
+    "two-exchange colour projection",
+    "nonzero projected commutator",
+    "zero projected one-loop operator",
+    "its square does not project to zero",
+    "shifted dipole squares to identity",
+    "exact projected matrix exponential",
+    "matrix exponential initial value",
+    "matrix exponential evolution",
+    "36 explicit-generator dipole actions in SU(2), SU(3), SU(4)",
+    "two-loop nu0 G^3",
+    "two-loop nu0 G^2",
+    "two-loop nu2 G^2",
+    "two-loop nu2 G^1",
+    "three-loop nu0 G^5",
+    "three-loop nu0 G^4",
+    "three-loop nu0 G^3",
+    "three-loop nu2 G^4",
+    "three-loop nu2 G^3",
+    "three-loop nu2 G^2",
+    "quadratic boundary shifts nu0 third logarithm",
+    "quadratic boundary shifts nu2 third logarithm",
+    "quartic boundary shifts highest nu0 logarithm",
+    "cubic boundary shifts next nu0 logarithm",
+    "homogeneous boundary RGE at order a^0",
+    "homogeneous boundary RGE at order a^1",
+    "homogeneous boundary RGE at order a^2",
+    "homogeneous boundary RGE at order a^3",
+    "separation forbids u squared",
+    "separation forbids v squared",
+    "separation forbids w squared",
+    "scalar rapidity boundary quadratic coefficient",
+    "scalar zero gamma1 implies zero quadratic boundary",
+    "joint extra boundary term is regulator independent",
+    "joint extra term is not separately factorised",
+    "crossed-box active line 0 is on shell",
+    "crossed-box active line 1 is on shell",
+    "crossed-box active line 2 is on shell",
+    "crossed-box active line 3 is on shell",
+    "crossed-box stationary Landau equation",
+    "DPS determinant invariant",
+    "external Gram determinant",
+    "two-loop positive-parameter Cauchy-Binet identity",
+    "matrix rapidity evolution quadratic boundary",
+    "operator-zero one-loop generator suffices"
+  ],
+  "colour": {
+    "D_mean": "-1/N",
+    "D_squared_mean": "(N**2 + 1)/N**2",
+    "basis": "S=delta_ij delta_lk, H=delta_ik delta_lj; legs q,qbar,qbar,q",
+    "cross_dipole": "Matrix([[-1/(2*N), 1/2], [1/2, -1/(2*N)]])",
+    "explicit_generator_max_abs_error": 2.220446049250313e-16,
+    "hard_dipole": "Matrix([[1/(2*N), 0], [-1/2, -(N**2 - 1)/(2*N)]])",
+    "jet_dipole": "Matrix([[-(N**2 - 1)/(2*N), -1/2], [0, 1/(2*N)]])",
+    "metric": "Matrix([[N**2, N], [N, N**2]])",
+    "projected_exponential": "exp(-t/N)*cosh(t)",
+    "projected_hard_cross_commutator": "1/4",
+    "scope": "colour obstruction to projection-before-evolution; not a calculated DPS anomalous dimension"
+  },
+  "evolution": {
+    "conclusion": "all six quoted coefficients agree within the stated boundary ansatz; RGE alone does not impose that ansatz",
+    "general_three_loop_boundary_shifts": {
+      "nu0": "16*G**5*r4_3/5 - 2*G**4*r3_3 + 4*G**3*r2_3/3 + G**2*(-r1_3 + 16*r4_3*zeta3) + G*(r0_3 - 4*r3_3*zeta3) + 2*r2_3*zeta3/3 + 24*r4_3*zeta5/5",
+      "nu2": "16*G**4*r4_3 + G**3*(-8*r3_3 - 32*r4_3) + G**2*(4*r2_3 + 12*r3_3 + 48*r4_3) + G*(-2*r1_3 - 4*r2_3 - 12*r3_3 + 32*r4_3*zeta3 - 48*r4_3) + r0_3 + r1_3 + 2*r2_3 - 4*r3_3*zeta3 + 6*r3_3 - 16*r4_3*zeta3 + 24*r4_3"
+    },
+    "integrated_relative_kernel_order1": "B*L + B*X + Delta*L**2 - Delta*X**2 + r0",
+    "integrated_relative_kernel_order2_without_new_boundary": "B**2*L**2/2 + B**2*L*X + B**2*X**2/2 + B*Delta*L**3 + B*Delta*L**2*X - B*Delta*L*X**2 - B*Delta*X**3 + B*Hsum*L + B*Hsum*X + B*L**2*beta0/2 + B*L*X*beta0 + B*L*r0 + B*X**2*beta0/2 + B*X*r0 + Delta**2*L**4/2 - Delta**2*L**2*X**2 + Delta**2*X**4/2 + Delta*Gamma1*L**2/4 - Delta*Gamma1*X**2/4 + Delta*Hsum*L**2 - Delta*Hsum*X**2 + Delta*L**3*beta0/3 + Delta*L**2*r0 - Delta*L*X**2*beta0 - 2*Delta*X**3*beta0/3 - Delta*X**2*r0 + Dgamma1*L + Dgamma1*X + Hsum*r0 + L*beta0*r0 + L*beta1 + X*beta0*r0 + X*beta1",
+    "transforms_nu0": [
+      "G",
+      "-G**2",
+      "4*G**3/3 + 2*zeta3/3",
+      "-2*G**4 - 4*G*zeta3",
+      "16*G**5/5 + 16*G**2*zeta3 + 24*zeta5/5"
+    ],
+    "transforms_nu2": [
+      "1",
+      "1 - 2*G",
+      "4*G**2 - 4*G + 2",
+      "-8*G**3 + 12*G**2 - 12*G - 4*zeta3 + 6",
+      "16*G**4 - 32*G**3 + 48*G**2 + 32*G*zeta3 - 48*G - 16*zeta3 + 24"
+    ]
+  },
+  "not_established": [
+    "complete pinched-surface classification",
+    "complete regulated DPS operator matching",
+    "three-loop factorisation or rapidity closure"
+  ],
+  "overlap": {
+    "J00_prescription": "homogeneous longitudinal integral set to zero",
+    "closed_parts": {
+      "DD": "-2*pi**2*(-I*tan(pi*eta/2) + 1)/(u + v)**eta",
+      "DP": "2*pi**2*(-I*tan(pi*eta/2) + 1)/(u + v)**eta - 2*pi**2*(-I*tan(pi*eta/2) + 1)/u**eta",
+      "PD": "2*pi**2*(-I*tan(pi*eta/2) + 1)/(u + v)**eta - 2*pi**2*(-I*tan(pi*eta/2) + 1)/v**eta",
+      "PP": "-2*pi**2*(-I*tan(pi*eta/2) + 1)/(u + v)**eta + 2*pi**2*(-I*tan(pi*eta/2) + 1)/v**eta + 2*pi**2*(-I*tan(pi*eta/2) + 1)/u**eta"
+    },
+    "eta_zero_limits": {
+      "DD": "-2*pi**2",
+      "DP": "0",
+      "PD": "0",
+      "PP": "2*pi**2"
+    },
+    "finite_defect_if_only_counterterm_uses_4D_Born": "b1*z1 + b2*z2",
+    "quadrature": [
+      {
+        "absolute_error": "5.3455294e-51",
+        "eta": "-0.6"
+      },
+      {
+        "absolute_error": "0.0",
+        "eta": "-0.25"
+      },
+      {
+        "absolute_error": "0.0",
+        "eta": "0.2"
+      },
+      {
+        "absolute_error": "2.6727647e-51",
+        "eta": "0.55"
+      }
+    ],
+    "scope": "complete static eikonal attachment sum; not unexpanded Glauber graphs"
+  },
+  "passed": true,
+  "pinch_and_matrix": {
+    "cycle_identity": "det(C^T diag(alpha) C)=sum alpha_e alpha_f minor(C_e,C_f)^2",
+    "domain": "0<x,y<1 and A,B>0",
+    "matrix_sufficient_condition": "local rapidity evolution in a closed operator basis; Gamma1(mu_b)=0 as an operator; X-independent finite matching",
+    "not_proved": "classification of contracted Landau graphs, all field assignments, or local rapidity closure",
+    "positive_stationary_parameters": [
+      "A*(1 - x)",
+      "A*x",
+      "B*(1 - y)",
+      "B*y"
+    ]
+  },
+  "producer_sha256": "852c4e0c0eb04d10062f29fd027ac99ea2cd22273ea27a7a653fd5bad43346d8",
+  "runtime": {
+    "mp_dps": 50,
+    "mpmath": "1.3.0",
+    "numpy": "2.3.5",
+    "python": "3.13.5",
+    "sympy": "1.14.0"
+  },
+  "scope": "static overlap; common transverse subtraction; colour algebra; conditional RG/boundary analysis",
+  "separation": {
+    "conclusion": "the separation proof is valid under J1 J2 S closure and argument locality, not from A=H1 H2 K alone",
+    "counterexample": "exp[a_s^2*lambda*(u+v+2w)^2] is boost and rapidity-regulator independent but not J1(u)J2(v)S(w)",
+    "separation_solution": {
+      "c1": "c7/2",
+      "c2": "0",
+      "c4": "c7/2",
+      "c5": "0",
+      "c8": "0"
+    }
+  },
+  "transverse": {
+    "mass_regulated_checks": [
+      {
+        "epsilon": "0.2",
+        "mass": "1e-15",
+        "relative_error": "7.6008782e-25"
+      },
+      {
+        "epsilon": "0.35",
+        "mass": "1e-15",
+        "relative_error": "2.5345289e-20"
+      }
+    ],
+    "rapidity_coefficient_series": "-eps**2*zeta(3)/3 - pi**2*eps/12 - 1/eps",
+    "scope": "one-exchange soft/coincident overlap, after colour projection",
+    "subtracted_colour_factor": "Delta*(cos(ell_perp.b)-1)"
+  }
+}

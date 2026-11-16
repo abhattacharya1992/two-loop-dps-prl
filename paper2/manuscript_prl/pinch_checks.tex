@@ -1,0 +1,331 @@
+
+\subsection{Pinch structure and scalar cross-checks}
+\label{sec:pinch}
+
+Feynman parameter space provides a complementary
+description of the DPS pinch and its local power
+counting. We verify the scalar polynomial identities
+and local pinch powers independently of the fitted
+amplitude coefficients. The candidate scalings are
+taken from a separate momentum-space survey; the
+checks here do not repeat that enumeration or replace
+the regulated region integrations of
+Secs.~\ref{app:regions} and~\ref{sec:r0regions}.
+
+\paragraph{The one-loop pinch: }
+For $p_3=xp_1+yp_2+p_{3\perp}$, with
+$p_{3\perp}^2=-p_T^2$ and $0<x,y<1$,
+define $\lambda^2=p_T^2/s$.
+The four daughter propagators of the scalar
+box have Feynman parameters
+$\alpha_k,\alpha_{\bar k},\alpha_r,
+\alpha_{\bar r}$.
+The second Symanzik polynomial is exactly
+\begin{equation}
+\frac{F}{s}=-f_1f_2+\lambda^2(\alpha_k+\alpha_{\bar k})(\alpha_r+\alpha_{\bar r}),
+\qquad
+f_1=x\alpha_k-(1-x)\alpha_{\bar k},\quad
+f_2=y\alpha_r-(1-y)\alpha_{\bar r}.
+\label{eq:pinchparameter}
+\end{equation}
+%
+At $p_T=0$, both $F$ and its gradient
+vanish on $f_1=f_2=0$ within the
+positive Feynman parameter domain.
+These conditions are the two light-cone
+components of the Landau loop equation.
+They correspond to two hard vertices
+coinciding at the DPS pinch
+~\cite{Coleman:1965xm,Gaunt:2011xd}.
+The singularity is therefore an
+interior pinch rather than an endpoint
+singularity in the original parameters.
+%
+In massless $2\to2$ scattering,
+Ref.~\cite{Gardi:2024dissecting}
+identified analogous parameter-space
+pinches beginning at three loops
+in particular nonplanar graphs.
+With two massive final-state particles,
+the DPS box develops such a pinch
+already at one loop.
+It arises from cancellations between
+terms of opposite sign in $F$,
+associated with two distinct
+hard subgraphs.
+%
+Taking the normal coordinates
+$f_1,f_2\sim\lambda$ gives a
+measure proportional to $\lambda^2$,
+while $F^{-2}\sim\lambda^{-4}$.
+The scalar box therefore scales
+as $\lambda^{-2}$ in four dimensions.
+The QCD splitting numerators provide
+two powers of transverse momentum,
+changing this to $\lambda^0$,
+up to logarithms.
+The scalar singularity alone does not
+determine the power of the QCD amplitude.
+
+\paragraph{Input from momentum space: }
+The candidate scalings come from a
+separate survey of 54 two-loop graphs
+containing the DPS box, together with
+16 additional loop-momentum
+parametrisations.
+%
+The box momentum is assigned its
+DPS pinch or a hard, collinear, soft
+or intermediate scaling.
+The additional loop momentum is
+assigned hard, collinear, soft,
+Glauber, ultrasoft or intermediate
+longitudinal scalings.
+%
+Each record specifies the scaling
+$|p_e^2|\sim\lambda^{w_e}s$
+of the squared momentum of each
+internal line $e$, the momentum
+routing and the type of reduced
+diagram. The supplied labels
+distinguish DPS-type configurations,
+with two hard vertices, from
+single parton scattering (SPS)
+configurations, with one hard
+vertex producing both final-state
+particles.
+%
+The pointwise power $P$ includes
+the integration measure, propagator
+denominators and QCD numerators,
+evaluated at generic points of the
+assigned scaling. The survey uses
+Feynman gauge and the axial gauges
+$n=p_1+p_2$ and $n=3p_1+2p_2$.
+The scalar power $P_{\rm den}$
+instead sets the numerators to unity.
+
+The released \texttt{vectors.json.xz}
+contains the squared-momentum scalings,
+momentum assignments and original
+surface labels. The polynomial
+checks below are reproducible from
+these inputs, but the programs used
+to generate the original momentum-space
+survey are not included.
+Consequently, neither the candidate
+scalings nor their DPS/SPS labels
+are independently determined by the
+parameter-space calculation.
+
+\paragraph{Two-loop polynomials and local powers: }
+For an $L$-loop scalar graph with
+$E$ propagators, the Feynman parameter
+integrand, apart from the projective
+measure and overall factors, is
+$U^a/(F-i0)^b$, where
+$a=E-2(L+1)$ and $b=E-2L$
+in four dimensions.
+These expressions describe the
+integrand without assuming that
+the scalar integral is finite.
+%
+We construct the first and second
+Symanzik polynomials from spanning
+trees and two-forests and independently
+from the determinant and adjugate
+of the loop-momentum quadratic form.
+The two constructions agree
+identically in $x,y,\lambda^2$
+for all 54 canonical two-loop
+graphs containing the DPS box.
+%
+For a supplied parameter scaling
+$\alpha_e\sim\lambda^{-w_e}$,
+write
+$U\sim\lambda^{\mu_U}U_0$
+and $F\sim\lambda^{\mu_F}F_0$.
+
+The survey contains 2823 records,
+representing 2363 distinct
+graph-parameter vectors in
+70 parametrisations.
+Of these, 1709 records, corresponding
+to 1305 distinct vectors, have
+a leading polynomial $F_0$ with
+exactly two factors that change
+sign within the positive parameter
+domain. The factors are associated
+with the two incoming parton families.
+%
+This algebraic property does not
+by itself identify the reduced
+diagram. In particular, the same
+two-factor structure occurs in
+678 records labelled SPS.
+The parameter-space check verifies
+the factors without using the
+supplied DPS/SPS labels.
+%
+For the 142 selected DPS-type
+scalings with the box at its
+DPS pinch and the additional
+loop hard, collinear or ultrasoft,
+the local scalar powers agree
+with the supplied $P_{\rm den}$.
+Of these, 127 have
+$P_{\rm den}\le0$; the remaining
+15 have $P_{\rm den}=2$.
+This agreement concerns the
+measure and propagators.
+It does not test the
+numerator-inclusive power $P$.
+
+To determine the local power
+near an interior pinch, consider
+two normal coordinates $z_1,z_2$.
+By multiaffinity, the polynomial
+takes the form
+$F=Az_1z_2+Bz_1+Cz_2+D$,
+with the remaining parameters
+held positive.
+Its stationary point is
+$z_1=-C/A$, $z_2=-B/A$,
+and the critical value is
+$F_{\rm crit}=(AD-BC)/A$.
+%
+Suppose the first nonzero term
+in $F_{\rm crit}$ occurs at
+relative order $\lambda^\delta$
+with respect to $\lambda^{\mu_F}$.
+For $b\ge2$, the resulting
+local scalar power is
+\begin{equation}
+\omega=-\sum_e w_e+a\mu_U-b\mu_F+\delta(1-b).
+\label{eq:pinchlocalpower}
+\end{equation}
+For $b=1$, the normal integration
+is logarithmic.
+%
+This local analysis applies away
+from zeros of the critical value
+along the tangent directions and
+away from tangent boundaries.
+Such configurations require
+additional analysis.
+
+A complete region classification
+also requires dissecting the
+parameter domain at the pinch,
+turning the interior singularity
+into endpoint singularities.
+The regions can then be identified
+from the Newton polytopes of
+the dissected integrals
+~\cite{Gardi:2024dissecting}.
+The present calculation determines
+the stated local powers without
+performing this full dissection.
+
+\paragraph{Interjet exchange and gauge dependence: }
+For the 16 graphs in which the
+additional gluon connects the two
+incoming jets, we examine the
+common squared-momentum assignments
+at the Glauber scaling.
+The leading polynomial has no
+stationary point with all Feynman
+parameters strictly positive.
+%
+This follows from exact algebra
+at arbitrary interior $x,y$:
+either a derivative has a fixed
+nonzero sign, or every solution
+of a necessary stationary equation
+forces another derivative to have
+a fixed nonzero sign.
+%
+The result excludes a stationary
+point in the positive interior
+for these scalar configurations.
+It does not exclude boundary
+pinches or imply that the regulated
+Glauber contribution vanishes.
+In particular, it does not
+eliminate the Glauber phase
+found in Sec.~\ref{app:regions}.
+
+In other graphs, a Glauber
+assignment can give the same
+squared-momentum scalings as a
+collinear or soft assignment.
+These possibilities cannot be
+distinguished by the scalar
+polynomial check alone.
+%
+The momentum-space survey also
+includes intermediate longitudinal
+scalings between the soft,
+collinear and Glauber regions.
+For $gg\to HH$, $gg\to AA$
+and $gg\to ZZ$, the only
+negative pointwise power found
+at these intermediate scalings
+is $P=-\tfrac12$, occurring
+in individual daughter
+self-energy graphs in the
+two axial gauges.
+No negative power is found
+in Feynman gauge at these
+scalings.
+%
+The half-integer powers arise
+from gauge-vector terms in
+the exchanged-gluon numerator.
+They characterise individual
+integrands rather than a
+demonstrated singularity of
+the gauge-invariant amplitude.
+Their cancellation in the
+complete axial-gauge sum,
+including axial-pole
+prescriptions and regulated
+overlaps, is not established
+by the pointwise survey.
+
+\paragraph{Reproduction and scope: }
+The released package
+\texttt{checks/pinch\_regions/}
+contains the supplied scaling
+vectors, exact Symanzik
+polynomial identities, algebraic
+sign checks and regression tests.
+%
+The scalar polynomial and
+local-power calculations are
+reproducible from these data.
+The original momentum-space
+enumeration that selected the
+candidate vectors is not
+regenerated by this package.
+%
+The checks establish the
+one-loop interior pinch,
+the stated two-loop polynomial
+identities, the local scalar
+powers and the absence of
+positive-interior stationary
+points in the selected
+interjet-exchange configurations.
+They provide complementary
+evidence for the DPS singular
+structure alongside the
+two-loop amplitude comparisons
+and regulated momentum-region
+calculations.
+%
+A complete classification of
+the momentum regions and
+renormalised matching of
+all overlaps are separate
+extensions of these results.

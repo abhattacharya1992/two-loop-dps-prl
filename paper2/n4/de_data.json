@@ -1,0 +1,121 @@
+{
+ "_source": "L. J. Dixon and I. Esterlis, All orders results for self-crossing Wilson loops mimicking double parton scattering, JHEP 07 (2016) 116 [arXiv:1602.02107v3]. Transcribed on 15 October 2026 from the arXiv PDF text (equation numbers of v3). a = g^2 N_c/(8 pi^2); E = Sum_L a^L E^(L) is the BDS-like normalised amplitude, eq. (2.13): E = exp[R_6 - gamma_K/8 Y].",
+ "_conventions": "The 3->3 entries give the coefficients c_k of 2 pi i * c_k * ln^k|delta| in E^(L)(v<0), eqs. (3.17)-(3.21); only the delta-dependent, v-independent parts are listed; '...' in the paper means further terms not transcribed. zeta values are written as z2, z3, ... Missing k means the paper prints no such term (coefficient zero) within the transcribed range; 'unknown' means the term is beyond what was transcribed.",
+ "three_to_three": {
+  "1": {
+   "eq": "3.17",
+   "coefficients": {
+    "1": "1/2"
+   },
+   "note": "E^(1) = i pi [ln|delta| + L] - h2 - h3 + z2, L = ln(1 - 1/v)"
+  },
+  "2": {
+   "eq": "3.18",
+   "coefficients": {
+    "3": "-1/12",
+    "2": "0",
+    "1": "z2/2"
+   }
+  },
+  "3": {
+   "eq": "3.19",
+   "coefficients": {
+    "5": "1/80",
+    "4": "0",
+    "3": "0",
+    "2": "-z3/4",
+    "1": "z4/4"
+   }
+  },
+  "4": {
+   "eq": "3.20",
+   "coefficients": {
+    "7": "-1/672",
+    "6": "0",
+    "5": "-z2/80",
+    "4": "-z3/48",
+    "3": "-7*z4/24",
+    "2": "(4*z5 - 3*z2*z3)/4",
+    "1": "-(13*z6 + 48*z3**2)/48"
+   }
+  },
+  "5": {
+   "eq": "3.21",
+   "coefficients": {
+    "9": "1/6912",
+    "8": "0",
+    "7": "z2/336",
+    "6": "5*z3/288",
+    "5": "9*z4/80",
+    "4": "(6*z5 + 7*z2*z3)/24",
+    "3": "(115*z6 + 48*z3**2)/72",
+    "2": "(-55*z7 + 68*z2*z5 + 44*z3*z4)/16",
+    "1": "(257*z8 + 810*z3*z5 + 18*z2*z3**2)/72"
+   }
+  }
+ },
+ "two_to_four": {
+  "Y": {
+   "eq": "2.32",
+   "expr": "2*pi*I*lnd + 2*Li2(1-v) + ln(v)**2 - 2*pi**2",
+   "note": "Y(1-delta, v, v) for 2->4, delta > 0"
+  },
+  "R6_2": {
+   "eq": "3.10",
+   "lnd_terms": {
+    "3": "2*pi*I/12",
+    "1": "2*pi*I*(-H2v/2 - ln(v)**2/4 + z2/2)"
+   },
+   "note": "R_6^(2)(1-delta,v,v); H2v = H_2^v = H_{0,1}(1-v) = Li2(1-v): Dixon-Esterlis write H^u_w for H_w(1-u) (their H^u_{3,1} = H_{0,0,1,1}(1-u) after eq. (3.7); eq. (3.9) is the value at v = 1, where every H^v vanishes, with the ln(delta) coefficient zeta_2/2). Until 20 October 2026 H2v had been read as Li2(v), which produced a spurious v-dependent single logarithm i pi [Li2(1-v) - Li2(v)]; the remaining terms do not depend on delta"
+  },
+  "gamma_K": {
+   "eq": "2.5 and App. B",
+   "expr": "4*a - 4*z2*a**2 + 22*z4*a**3 + G4*a**4",
+   "note": "f_0^(L) = gamma_K^(L)/4 with the BDS values f_0^(1) = 1, f_0^(2) = -z2, f_0^(3) = 11 z4/2; the four-loop term is left as a symbol G4 and solved from the data (literature value, Beisert-Eden-Staudacher: -(219/2) z6 - 4 z3^2)"
+  }
+ },
+ "Gaussian_integral_LL": {
+  "note": "the paper states a simple all-orders formula for the leading logarithms (Sec. 6); not transcribed; the LL coefficients above are used instead"
+ },
+ "_transcription": "Transcribed twice from the arXiv PDF text with the AI assistant, in separate sessions (15 October 2026); the two transcriptions agree on every coefficient. Dixon and Esterlis state that none of the ln|delta| coefficients depends on v.",
+ "nmhv_three_to_three": {
+  "_source": "Erratum: L. J. Dixon and I. Esterlis, JHEP 08 (2016) 131, eqs. (D.14)-(D.17): rho^(L) in 3->3 kinematics, v -> 0^-. Coefficients c_k of pi i (1+w)/(1+w*) c_k ln^k|delta|, including the constant (k = 0); the terms without the prefactor and the terms in ln|v| are not listed; there are no mixed terms ln|delta| ln|v|. Transcribed three times from the erratum PDF text (15 October 2026): the first two readings agreed with each other but had distributed the minus sign in front of the bracket of the four-loop ln^2|delta| coefficient, printed as -(7/4 zeta_4 - 1/2 zeta_3 + 3/2 zeta_2 + 15/2), onto its first term only; the third reading, made term by term with attention to the brackets, gives the coefficient recorded here and the constants k = 0, and agrees with the first two on everything else.",
+  "1": {
+   "eq": "D.14",
+   "coefficients": {
+    "0": "1"
+   },
+   "note": "rho^(1) = -ln^2|v|/2 + 2 z2 + pi i (1+w)/(1+w*) + 1; the k = 0 coefficient 1 defines the normalisation K"
+  },
+  "2": {
+   "eq": "D.15",
+   "coefficients": {
+    "2": "-1/2",
+    "1": "1",
+    "0": "z2 - 1"
+   }
+  },
+  "3": {
+   "eq": "D.16",
+   "coefficients": {
+    "4": "1/8",
+    "3": "-1/2",
+    "2": "3/2",
+    "1": "-(z3 + 3)",
+    "0": "z4/2 + z3 + 3"
+   }
+  },
+  "4": {
+   "eq": "D.17",
+   "coefficients": {
+    "6": "-1/48",
+    "5": "1/8",
+    "4": "-(z2 + 5)/8",
+    "3": "-z3/6 + z2/2 + 5/2",
+    "2": "-(7*z4/4 - z3/2 + 3*z2/2 + 15/2)",
+    "1": "4*z5 - 3*z2*z3 + 7*z4/2 - z3 + 3*z2 + 15",
+    "0": "-13*z6/24 - 2*z3**2 - 4*z5 + 3*z2*z3 - 7*z4/2 + z3 - 3*z2 - 15"
+   }
+  }
+ }
+}

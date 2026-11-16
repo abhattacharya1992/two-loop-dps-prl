@@ -1,0 +1,148 @@
+{
+  "decimal_inputs": [
+    "15625",
+    "-2384.89727896833",
+    "6467.215561",
+    "625"
+  ],
+  "finite_coefficients": [
+    {
+      "family": "MN13m",
+      "index": 40,
+      "value": [
+        "-0.2489150390855865895536036156819176890327626331735879609643166042860296008391938",
+        "0.0"
+      ]
+    },
+    {
+      "family": "MN13cm",
+      "index": 40,
+      "value": [
+        "0.84313172801923909795111219153443772809552487257949856117624489767217473165356023",
+        "0.0"
+      ]
+    },
+    {
+      "family": "MN13m",
+      "index": 42,
+      "value": [
+        "-0.31355233082927039072677729819546222236609596650692129429764993761936293417252713",
+        "0.0"
+      ]
+    },
+    {
+      "family": "MN13cm",
+      "index": 42,
+      "value": [
+        "0.77849443627555529677793850902089319476219153924616522784291156433884139832022689",
+        "0.0"
+      ]
+    },
+    {
+      "family": "MN13m",
+      "index": 43,
+      "value": [
+        "-0.14760897143887933102437488774085042967758754439119598698810553476200986694639793",
+        "0.0"
+      ]
+    },
+    {
+      "family": "MN13cm",
+      "index": 43,
+      "value": [
+        "0.21640661759606256481053038133126804269850829085983285372541496589072491055118674",
+        "0.0"
+      ]
+    }
+  ],
+  "bare_residues_over_four": {
+    "N13x34,40": [
+      "0.84313172801923909795111219153443772809552487257974394883078328792056124278525239",
+      "0.0"
+    ],
+    "N13x34x12,40": [
+      "-0.24891503908558658955360361568191768903276263317361886976772469581705591226516785",
+      "0.0"
+    ],
+    "N13x34,42": [
+      "0.77849443627555529677793850902089319476219153924640904594784937767215676899285408",
+      "0.0"
+    ],
+    "N13x34x12,42": [
+      "-0.31355233082927039072677729819546222236609596650697348053791649601046889240276231",
+      "0.0"
+    ],
+    "N13x34,43": [
+      "0.21640661759606256481053038133126804269850829085989398651654880979600374523066166",
+      "0.0"
+    ],
+    "N13x34x12,43": [
+      "-0.14760897143887933102437488774085042967758754439121996274906087046226617672641346",
+      "0.0"
+    ]
+  },
+  "tolerance": "1e-45",
+  "bare_working_dps": 160,
+  "finite_working_dps": 80,
+  "symmetric_epsilon": "1e-25",
+  "method": "One quarter of the symmetric epsilon^-4 residue; the symmetric-limit error begins at epsilon^2",
+  "scope": "Six nonplanar weight-four coefficients; no finite C++ amplitude values are used",
+  "old_mapping_rejected": true,
+  "passed": true,
+  "mapping": {
+    "MP12": "P12",
+    "MP12c": "P12x12",
+    "MP13": "P13",
+    "MP13c": "P13x12",
+    "MP23": "P23",
+    "MP23c": "P23x12",
+    "Maddon": "addon",
+    "Maddonc": "addonx12",
+    "MN12": "N12",
+    "MN13": "N13",
+    "MN13c": "N13x12",
+    "MN13m": "N13x34x12",
+    "MN13cm": "N13x34",
+    "MN34": "N34"
+  },
+  "hashes": {
+    "<VALIDATION_ROOT>/inputs/gg_Aj_A_qT-1.0.inc.gz": "ae23d66b4f62fb4d0db19daacb49ce5fe2793a6c743fda66853782d7d97b0a11",
+    "<VALIDATION_ROOT>/inputs/gg_Aj_A-1.0.inc.gz": "573e4d4a5031b080515fa80f476f0905a1834de918e13313ef15114c7b8d43fc",
+    "<REPO_ROOT>/checks/native_form.cpp": "0be21de2e0bc27eb480fd9f11f5313eda69f1cb395b93554ca6d6393ea7e16c0",
+    "<REPO_ROOT>/checks/check_zz_ca_mapping.py": "c4c68de381ac3ba2d30c04aa3e6b9374b4167ee7d219184304a098b2e7fe9fd0",
+    "<REPO_ROOT>/paper2/zz/scripts/zz_master_families.py": "0a5130f2b5366d0d58c7d50d9ec0059016e5228cd7a3caba561517b2a03cf97d",
+    "<VALIDATION_ROOT>/zz-primary-work/native_form": "c173d3d297a08931a386f683e5c7b55dbd35fbaddc6a0e60323b72493fb83f88"
+  },
+  "library_hashes": {
+    "shared/libginac.so.13.0.0": "f678592bccd9f7ca545a1d6e2a15a2e623d0531aac7f7794cbefe43604d30fbb",
+    "shared/libcln.so.6.0.7": "6d4619fce7a06c392cb509f54126afa8def7f790e3039cdd869c4214ae848d4a",
+    "shared/libstdc++.so.6.0.33": "972bb2a18b71140dab0240f8a1f68ab3fb1d56bcd4c4f824a91b70888faf5a00",
+    "shared/libgcc_s.so.1": "30c61ab012a4241bed033725a09b61f5fdd3bb7df95ee852d0b096520524c7af",
+    "shared/libc.so.6": "9792e3cbb541c8f44c7acf5f14f4022ea62998ecc787d326bed4d8b6547dfd92",
+    "shared/libm.so.6": "6d567d53e895273ca14a1f9dc164fc6c8d39aed2f60aa46a733c2784228915f3",
+    "shared/libgmp.so.10.5.0": "d15e1585c6c267296459570c8ac217ca9123044bcd4e896d2f686b32333445d2",
+    "shared/ld-linux-x86-64.so.2": "c8438e4fde1934e61c88311633f00949ff645d5c04cdb8671fa3d78164d2f307"
+  },
+  "compiler": "g++ (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+  "compile_command": [
+    "g++",
+    "-O2",
+    "-std=c++17",
+    "-I<VALIDATION_ROOT>/sysroot/usr/include",
+    "<REPO_ROOT>/checks/native_form.cpp",
+    "-L<VALIDATION_ROOT>/sysroot/usr/lib/x86_64-linux-gnu",
+    "-Wl,-rpath,<VALIDATION_ROOT>/sysroot/usr/lib/x86_64-linux-gnu",
+    "-lginac",
+    "-lcln",
+    "-o",
+    "<VALIDATION_ROOT>/zz-primary-work/native_form"
+  ],
+  "validation_date": "2026-11-15",
+  "base_git_commit": "fce4a2d1db51868889093db847f1a3594d7a8723",
+  "record_notes": "Fresh evaluation using the restored native reader and published inputs. Only local directory prefixes are normalized; numeric values and hashes are unchanged.",
+  "path_variables": {
+    "<REPO_ROOT>": "repository checkout",
+    "<VALIDATION_ROOT>": "temporary validation directory"
+  },
+  "raw_record_sha256": "e708af01e83f71166cd28d2c59a9d063857f4d545457e30c2c55e989cc5b22c3"
+}

@@ -1,0 +1,12 @@
+Vtri 51.2s support: [(-1/2, 0), (0, 1/2)] params: [[1, 1], [1, 2]]
+Vgh1 1.4s support: [(-1/2, 0), (0, 1/2)] params: [[1, 1], [1, 2]]
+Vgh2 1.3s support: [(-1/2, 0), (0, 1/2)] params: [[1, 1], [1, 2]]
+Vq1 19.3s support: [(-1/2, 0), (0, 1/2)] params: [[1, 1], [1, 2]]
+Vq2 23.3s support: [(-1/2, 0), (0, 1/2)] params: [[1, 1], [1, 2]]
+Vbuba1 0.2s support: [(0, 1/2)] params: [[0]]
+Vbubb1 0.2s support: [(0, 1/2)] params: [[0]]
+Vbuba2 0.2s support: [(0, 1/2)] params: [[0]]
+Vbubb2 0.2s support: [(0, 1/2)] params: [[0]]
+Vbuba3 0.3s support: [(0, 1/2)] params: [[0]]
+Vbubb3 0.2s support: [(0, 1/2)] params: [[0]]
+tree (S1 normalised to its own value): {'S1': 1, 'S2': -2, 'S3': -2, 'T4': 0}

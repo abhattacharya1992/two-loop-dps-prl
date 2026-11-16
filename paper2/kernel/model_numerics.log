@@ -1,0 +1,26 @@
+(1) l_perp = c lambda^2 (direction 0.7):  lambda^6 F
+    c =  0.1:  +5.63697e+02-1.05752e+03i  +5.72856e+02-1.05464e+03i  +5.74852e+02-1.05563e+03i  +5.75306e+02-1.05619e+03i
+             relative changes between successive lambdas: 8.0e-03, 1.9e-03, 6.0e-04
+    c =  1.0:  +3.87343e+02-1.56252e+02i  +4.23715e+02-1.58882e+02i  +4.35134e+02-1.61324e+02i  +4.38260e+02-1.62272e+02i
+             relative changes between successive lambdas: 7.8e-02, 2.5e-02, 7.0e-03
+    c =  3.0:  +9.58444e+01+2.49870e+01i  +1.34624e+02+4.28559e+01i  +1.46589e+02+4.80548e+01i  +1.49820e+02+4.92870e+01i
+             relative changes between successive lambdas: 2.7e-01, 8.3e-02, 2.2e-02
+    largest change between the last two lambdas: 2.2e-02 (power corrections, shrinking like lambda)
+(2), (3) l_perp = lambda lhat: lambda^4 F, the slope in ln lambda, and the eikonal prediction
+    lhat = (0.2, -0.5):  lambda^4 F = 2.38699e+04+4.26086e+04j, 2.38841e+04+6.09538e+04j, 2.38833e+04+7.76636e+04j
+        slope d(lambda^4 F)/d ln lambda: -1.17616e+01-1.52372e+04j -> 7.14405e-01-1.52099e+04j;  eikonal prediction -0.00000e+00-1.52061e+04j;  rel. diff 2.5e-04
+        real part changes by 9.7e-06 of |lambda^4 F| (no logarithm in the real part)
+    lhat = (-3.0, 2.0):  lambda^4 F = 1.87753e+01+1.40898e+01j, 1.89555e+01+2.89783e+01j, 1.89714e+01+4.22885e+01j
+        slope d(lambda^4 F)/d ln lambda: -1.49654e-01-1.23662e+01j -> -1.44800e-02-1.21154e+01j;  eikonal prediction -0.00000e+00-1.20788e+01j;  rel. diff 3.3e-03
+        real part changes by 3.4e-04 of |lambda^4 F| (no logarithm in the real part)
+    lhat = (0.15, 0.1):  lambda^4 F = 1.26402e+04+1.69004e+04j, 1.27599e+04+2.68589e+04j, 1.27705e+04+3.58148e+04j
+        slope d(lambda^4 F)/d ln lambda: -9.94547e+01-8.27143e+03j -> -9.66665e+00-8.15193e+03j;  eikonal prediction -0.00000e+00-8.13097e+03j;  rel. diff 2.8e-03
+        real part changes by 2.8e-04 of |lambda^4 F| (no logarithm in the real part)
+    lhat = (0.9, 0.4):  lambda^4 F = -2.18300e+03-3.14400e+03j, -2.18696e+03-4.82945e+03j, -2.18731e+03-6.36032e+03j
+        slope d(lambda^4 F)/d ln lambda: 3.29197e+00+1.39991e+03j -> 3.17155e-01+1.39345e+03j;  eikonal prediction 0.00000e+00+1.39252e+03j;  rel. diff 7.1e-04
+        real part changes by 5.2e-05 of |lambda^4 F| (no logarithm in the real part)
+    lhat = (-0.3, -1.1):  lambda^4 F = 1.38147e+03+2.00599e+03j, 1.38301e+03+3.07000e+03j, 1.38315e+03+4.03782e+03j
+        slope d(lambda^4 F)/d ln lambda: -1.27764e+00-8.83748e+02j -> -1.23181e-01-8.80942e+02j;  eikonal prediction -0.00000e+00-8.80555e+02j;  rel. diff 4.6e-04
+        real part changes by 3.2e-05 of |lambda^4 F| (no logarithm in the real part)
+    worst relative difference of the slope from the eikonal prediction: 3.3e-03
+all checks passed

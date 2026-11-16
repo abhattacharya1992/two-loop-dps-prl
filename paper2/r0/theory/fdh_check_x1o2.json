@@ -1,0 +1,59 @@
+{
+ "x": "1/2",
+ "largest deviation": 2.1827616664305985e-13,
+ "graphs": [
+  "Vbuba1",
+  "Vbuba2",
+  "Vbuba3",
+  "Vbubb1",
+  "Vbubb2",
+  "Vbubb3",
+  "Vgh1",
+  "Vgh2",
+  "Vq1",
+  "Vq2",
+  "Vtri"
+ ],
+ "passed": true,
+ "absolute_tolerance": 1e-09,
+ "provenance": {
+  "inputs": {
+   "fdh_laurent_x1o2.json": "dd3d6f2748c22d0b9f154b8e6cff58905a9221f2e234dc019eb75700a1d61f77",
+   "gg_laurent_x1o2.json": "8a951798e5da83195e86b3563032c300b1e8cb2f7130ccedb9402624bbd9c186",
+   "n4_laurent_x1o2.json": "e7e67f61fe3a253bfb7c10b6d378799fe9c345dea7361fdfb1be5d0fb69f03b7"
+  },
+  "parameters": {
+   "absolute_tolerance": 1e-09,
+   "input_provenance_status": {
+    "fdh": "tagged",
+    "gg": "legacy-unverified",
+    "n4": "legacy-unverified"
+   },
+   "x": "1/2"
+  },
+  "runtime": {
+   "implementation": "CPython",
+   "machine": "x86_64",
+   "mpmath": "1.3.0",
+   "mpmath_backend": "python",
+   "numpy": "2.3.5",
+   "python": "3.12.14",
+   "sympy": "1.14.0"
+  },
+  "schema": 1,
+  "sources": {
+   "cache_utils.py": "0ac3205cf0cf39dcd75e6459b31973a50435131bce379d77c94002be2f20b3b3",
+   "check_fdh.py": "4c17e3e6b3f1e84fe7a2210b6fe5c34e4276aada6622f49edb402f5435701aa6",
+   "dps/provenance.py": "5dd0f6af9c92bb793184996e844de760f2231bbffe940c404168467d012ac33d",
+   "gg_diagrams.py": "a742c76ea47d4d314fe2444ef4c05795992b93e82513dc067f5aa474e09fcf5f",
+   "gg_driver.py": "f82132e329b496619c12124b8bb116838f473dda571af4587e1f92ec8b67e620",
+   "laurent_inputs.py": "8a221ed88c49477dab529d82163a75c955844ec7854e3e92af73cd57ea482b06",
+   "lc_engine.py": "d87d35d83437dfd2618ce9ff9ffbc02033f03e3abc063eaaf9345e099c6d6146",
+   "n4_diagrams.py": "a597f5561f12d770138301fcfffe325d4e036a11e96e2b358e8ea758a26ff50a",
+   "vec_engine.py": "c08a2458f7f5b4ce8de274c413551011f0110550727c2d2958a748c6057f5892"
+  },
+  "stage": "fdh-scheme-check",
+  "fingerprint": "c4be028500057b21c75cfbf85c5f0be21dbde370c9988ece4b107f697e282abb"
+ },
+ "statement": "gluon-loop graphs of J1 in the FDH scheme minus CDR = eps x the graphs of one complex adjoint scalar"
+}

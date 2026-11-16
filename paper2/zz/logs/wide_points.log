@@ -1,0 +1,26 @@
+# zz_wide.py on 14 October 2026, two processes in parallel (time, point file, seconds);
+# make wide runs the same points one velocity after the other
+21:00:33 zzw_b1o2_j0_p30.json 25.1
+21:01:23 zzw_b1o4_j0_p35.json 27.9
+21:01:27 zzw_b1o2_j1_p35.json 41.2
+21:02:57 zzw_b1o4_j1_p40.json 94.2
+21:03:40 zzw_b1o2_j2_p40.json 132.7
+21:04:36 zzw_b1o4_j2_p40.json 98.5
+21:05:35 zzw_b1o2_j3_p40.json 115.1
+21:07:08 zzw_b1o4_j3_p45.json 152.1
+21:08:13 zzw_b1o2_j4_p45.json 158.7
+21:09:06 zzw_b1o4_j4_p45.json 118.4
+21:10:30 zzw_b1o2_j5_p45.json 136.2
+21:13:03 zzw_b1o4_j5_p50.json 237.2
+21:14:49 zzw_b1o2_j6_p50.json 259.1
+21:16:55 zzw_b1o4_j6_p50.json 231.5
+21:18:34 zzw_b1o2_j7_p50.json 225.3
+21:19:09 zzw_b2o3_j0_p30.json 30.1
+21:19:54 zzw_b2o3_j1_p35.json 45.1
+21:20:49 zzw_b2o3_j2_p35.json 55.6
+21:20:59 zzw_b1o4_j7_p55.json 244.3
+21:22:52 zzw_b2o3_j3_p40.json 122.9
+21:24:41 zzw_b2o3_j7_p50.json 217.6
+21:25:39 zzw_b2o3_j4_p40.json 131.3
+21:27:50 zzw_b2o3_j6_p45.json 189.5
+21:28:36 zzw_b2o3_j5_p45.json 177.0

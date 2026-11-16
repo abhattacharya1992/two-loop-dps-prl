@@ -1,0 +1,3 @@
+benchmark point: largest relative difference between the Python translation and the compiled C++ code: 1l 1.9842371621492667e-30, 2l_CF 1.904656633585405e-28, 2l_CA 1.547959270840633e-28
+beta = 1/2, delta = 10^-4: largest relative difference between the Python translation and the compiled C++ code: 1l 2.9055002300094045e-19, 2l_CF 9.086118260034272e-17, 2l_CA 3.4130312266346714e-16
+largest relative difference over all points: 1l 2.9055002300094045e-19, 2l_CF 9.086118260034272e-17, 2l_CA 3.4130312266346714e-16

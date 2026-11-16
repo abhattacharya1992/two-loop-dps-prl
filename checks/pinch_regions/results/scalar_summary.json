@@ -1,0 +1,18 @@
+{
+  "SPS_rows_passing_jet_split": 0,
+  "b1_logarithmic_rows": 140,
+  "distinct_hidden_vectors": 1305,
+  "distinct_vectors": 2363,
+  "factors_checked": 7359,
+  "hidden_DPS_labels": 1031,
+  "hidden_SPS_labels": 678,
+  "hidden_rows": 1709,
+  "input_rows": 2823,
+  "local_power_greater_than_grid": 85,
+  "local_power_less_than_grid": 422,
+  "scalar_power_checks": 142,
+  "scope": "Supplied momentum-space vectors; exact polynomial and local scalar checks. No numerator powers, global dissection, or regulated overlap cancellation.",
+  "selected_scalar_power_checks": 127,
+  "source_commit": "2542267940bd82143bf71cdc01867619234b10af",
+  "two_factor_rows": 1709
+}

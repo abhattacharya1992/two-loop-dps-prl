@@ -1,0 +1,3 @@
+beta = 1/4: p_T^2/m^2 from 0.0667 to 6.67e-13; M_1/C_1 - G from -1.47542 to -1.443158868 (real part), M_2/K from 0.262213 to 0.999999999990 (real part)
+beta = 1/2: p_T^2/m^2 from 0.333 to 3.33e-12; M_1/C_1 - G from -1.66803 to -1.524196433 (real part), M_2/K from -0.27426 to 0.999999999958 (real part)
+beta = 2/3: p_T^2/m^2 from 0.8 to 8.0e-12; M_1/C_1 - G from -1.94546 to -1.651566997 (real part), M_2/K from -0.25001 to 0.999999999893 (real part)

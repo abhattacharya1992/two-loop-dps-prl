@@ -1,0 +1,31 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+.env
+.env.*
+.DS_Store
+
+# Temporary PRL LaTeX files only
+/paper2/manuscript_prl/*.aux
+/paper2/manuscript_prl/*.blg
+/paper2/manuscript_prl/*.log
+/paper2/manuscript_prl/*.out
+/paper2/manuscript_prl/*Notes.bib
+
+# Temporary repository-only derivation build files
+/derivations/*.aux
+/derivations/*.log
+/derivations/*.out
+/derivations/*.toc
+
+# Reproducible plots no longer included in the compact Letter and Supplement
+/paper2/manuscript_prl/figures/fit_windows.pdf
+/paper2/manuscript_prl/figures/forward_approach.pdf
+/paper2/manuscript_prl/figures/zz_coefficients.pdf
+
+# Generated publication documents and upload package
+/paper2/manuscript_prl/letter.pdf
+/paper2/manuscript_prl/supplement.pdf
+/paper2/manuscript_prl/release/

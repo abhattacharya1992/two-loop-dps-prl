@@ -1,0 +1,88 @@
+=== re-running stage_d_blind.py (MHV data -> constants) ===
+gamma ratio series done (24.6s)
+F0,F1,F2 = -G | G**2 | -4*G**3/3 - 2*z3/3
+F_0..F_2 verified.  (25.3s)
+exp expanded (25.4s)
+S has 8 X-monomials
+kernel expanded and transformed.  (25.6s)
+L=1 k=1  PASS
+L=2 k=3  PASS
+L=2 k=2  PASS
+L=2 k=1  fixes r0 = z2
+L=3 k=5  PASS
+L=3 k=4  PASS
+L=3 k=3  PASS
+L=3 k=2  fixes B2 = 3*z3
+L=3 k=1  fixes r0b = z4/2
+L=4 k=7  PASS
+L=4 k=6  PASS
+L=4 k=5  PASS
+L=4 k=4  PASS
+L=4 k=3  PASS
+L=4 k=2  fixes B3 = -2*(z2*z3 + 5*z5)
+L=4 k=1  fixes r0c = -(112*z3**2 + 13*z6)/24
+L=5 k=9  PASS
+L=5 k=8  PASS
+L=5 k=7  PASS
+L=5 k=6  PASS
+L=5 k=5  PASS
+L=5 k=4  PASS
+L=5 k=3  fixes G4 = -(8*z3**2 + 219*z6)/2
+L=5 k=2  fixes B4 = (20*z2*z5 + 42*z3*z4 + 175*z7)/4
+L=5 k=1  fixes r0d = -(78*z2*z3**2 - 1170*z3*z5 - 257*z8)/36
+
+Solved constants (pi powers -> zeta):
+  r0 = z2
+  r0b = z4/2
+  r0c = -(112*z3**2 + 13*z6)/24
+  r0d = -(78*z2*z3**2 - 1170*z3*z5 - 257*z8)/36
+  B2 = 3*z3
+  B3 = -2*(z2*z3 + 5*z5)
+  B4 = (20*z2*z5 + 42*z3*z4 + 175*z7)/4
+  G4 = -(8*z3**2 + 219*z6)/2
+G4 == -(219/2) z6 - 4 z3^2 ? True
+  LL L=1 k=1: integral 1/2  data 1/2  pred 1/2
+  LL L=2 k=3: integral -1/12  data -1/12  pred -1/12
+  LL L=3 k=5: integral 1/80  data 1/80  pred 1/80
+  LL L=4 k=7: integral -1/672  data -1/672  pred -1/672
+  LL L=5 k=9: integral 1/6912  data 1/6912  pred 1/6912
+LL tower: data match True | prediction match True
+done (25.9s)
+=== stage_d_blind.py finished (25.9s) ===
+
+constants solved from the MHV data: r0, B2, r0b, B3, r0c, G4, B4, r0d | not fixed: none
+kernel built and identical to stage_d_blind.S; 8 X-monomials (26.0s)
+generating-function series done (283.3s)
+R_0 = 1 | R_1 = 1 - 2*G | R_2 = 4*G**2 - 4*G + 2 | R_3 = -8*G**3 + 12*G**2 - 12*G - 4*z3 + 6
+R_0, R_1, R_2 sanity checks passed.
+closed-form cross-check of R_0..R_8 (exp(-2G x - 2 sum zeta_odd x^k/k)/(1-x)): agree
+transform applied, constants substituted (286.7s)
+
+L=1 k=0  PASS  pred = 1  data = 1   [normalisation: defines K; pred == 1 exactly: True]
+L=2 k=2  PASS  -1/2
+L=2 k=1  PASS  1
+L=2 k=0  PASS  z2 - 1
+L=3 k=4  PASS  1/8
+L=3 k=3  PASS  -1/2
+L=3 k=2  PASS  3/2
+L=3 k=1  PASS  -z3 - 3
+L=3 k=0  PASS  (2*z3 + z4 + 6)/2
+L=4 k=6  PASS  -1/48
+L=4 k=5  PASS  1/8
+L=4 k=4  PASS  -(z2 + 5)/8
+L=4 k=3  PASS  (3*z2 - z3 + 15)/6
+L=4 k=2  PASS  -(6*z2 - 2*z3 + 7*z4 + 30)/4
+L=4 k=1  PASS  -(6*z2*z3 - 6*z2 + 2*z3 - 7*z4 - 8*z5 - 30)/2
+L=4 k=0  PASS  (72*z2*z3 - 72*z2 - 48*z3**2 + 24*z3 - 84*z4 - 96*z5 - 13*z6 - 360)/24
+
+SUMMARY: 15 coefficients compared (L=2..4, excluding the L=1 normalisation), 15 PASS, 0 FAIL
+L=1 normalisation coefficient == 1: True
+
+Leading-log check: coefficient of G^(2L-2) in P_L vs (-2)^(L-1)/(L-1)!  [from K exp(-2 a G^2)]
+  L=1 k=0: pred 1  expected 1  PASS   | Ld^0: pred 1  data 1  ok
+  L=2 k=2: pred -2  expected -2  PASS   | Ld^2: pred -1/2  data -1/2  ok
+  L=3 k=4: pred 2  expected 2  PASS   | Ld^4: pred 1/8  data 1/8  ok
+  L=4 k=6: pred -4/3  expected -4/3  PASS   | Ld^6: pred -1/48  data -1/48  ok
+  L=5 k=8: pred 2/3  expected 2/3  PASS
+LL tower (L=1..5) equals K exp(-2 a G^2): True
+done (286.8s)

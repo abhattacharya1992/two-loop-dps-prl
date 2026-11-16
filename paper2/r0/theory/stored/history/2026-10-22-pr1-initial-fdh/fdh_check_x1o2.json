@@ -1,0 +1,18 @@
+{
+ "x": "1/2",
+ "largest deviation": 1.2779728801307832e-10,
+ "graphs": [
+  "Vbuba1",
+  "Vbuba2",
+  "Vbuba3",
+  "Vbubb1",
+  "Vbubb2",
+  "Vbubb3",
+  "Vgh1",
+  "Vgh2",
+  "Vq1",
+  "Vq2",
+  "Vtri"
+ ],
+ "statement": "gluon-loop graphs of J1 in the FDH scheme minus CDR = eps x the graphs of one complex adjoint scalar"
+}

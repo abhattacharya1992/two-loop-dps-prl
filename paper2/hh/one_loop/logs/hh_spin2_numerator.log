@@ -1,0 +1,5 @@
+N_+-^AA = -8*I*(k_x + I*k_y)*(x**2*(1 - I) - 2*x + 1)*(x**2*(1 - I) + 2*I*x - I)*(k_x + I*k_y - q_x - I*q_y)
+N_+-^HH = -8*I*(k_x + I*k_y)*(x**2*(1 - I) - 2*x + 1)*(x**2*(1 - I) + 2*I*x - I)*(k_x + I*k_y - q_x - I*q_y)
+ok   (AA20) N_+-^AA = -8[x^4+(1-x)^4] k+(k+-q+)   (verify_dps_one_loop.py, reproduced)
+ok          N_+-^HH = -8[x^4+(1-x)^4] k+(k+-q+)   (same numerator for CP-even vertices)
+ok   M_2^(1)|DPS = m^2 K_1(x), K_1 = pi N_c [x^4+(1-x)^4]/[x(1-x)], for HH as for AA

@@ -1,0 +1,536 @@
+{
+ "arithmetic": "exact (rational numbers; zeta values symbolic)",
+ "A1 invariant tensors": {
+  "(8; 3, 3bar)": 1,
+  "(8; 8, 8)": 2,
+  "(3bar; 3, 8) for q -> q g": 1,
+  "singlets of q qbar qbar q": 2,
+  "singlets of four gluons": 8
+ },
+ "A2 integer basis against us_kit.py": {
+  "sum_a t^a (x) t^a": "equal",
+  "f^abc t^a (x) t^b (x) t^c": "equal",
+  "d^abc t^a (x) t^b (x) t^c": "equal",
+  "structure constants of the kit": 54,
+  "nonzero d^abc of the kit": 58
+ },
+ "A3 charge conjugation": {
+  "f^ABC": "even",
+  "d^ABC": "odd"
+ },
+ "A4 the collinear tensor": {
+  "Casimirs": {
+   "fundamental": "4/3",
+   "antifundamental": "4/3",
+   "adjoint": "3"
+  },
+  "p = (C_a - C_k - C_kbar)/2": {
+   "g -> q qbar (t^A)": "1/6",
+   "g -> g g (f^ABC)": "-3/2",
+   "g -> g g (d^ABC)": "-3/2",
+   "singlet q qbar": "-4/3",
+   "singlet g g": "-3"
+  },
+  "eigenvalues of invariant operators on the tensor": {
+   "g -> q qbar (t^A)": {
+    "P = T_k.T_kbar": "1/6",
+    "P^2": "1/36",
+    "T_k^a T_k^b T_kbar^b T_kbar^a": "5/18",
+    "T_k^a T_k^b T_k^c T_kbar^c T_kbar^b T_kbar^a": "7/54",
+    "f^abc T_k^a T_k^b T_kbar^c": "(i/2) C_A p = i*(1/4)"
+   },
+   "g -> g g (f^ABC)": {
+    "P = T_k.T_kbar": "-3/2",
+    "P^2": "9/4",
+    "T_k^a T_k^b T_kbar^b T_kbar^a": "0",
+    "T_k^a T_k^b T_k^c T_kbar^c T_kbar^b T_kbar^a": "-9/2",
+    "f^abc T_k^a T_k^b T_kbar^c": "(i/2) C_A p = i*(-9/4)"
+   },
+   "g -> g g (d^ABC)": {
+    "P = T_k.T_kbar": "-3/2",
+    "P^2": "9/4",
+    "T_k^a T_k^b T_kbar^b T_kbar^a": "0",
+    "f^abc T_k^a T_k^b T_kbar^c": "(i/2) C_A p = i*(-9/4)"
+   },
+   "singlet q qbar": {
+    "P = T_k.T_kbar": "-4/3",
+    "P^2": "16/9",
+    "T_k^a T_k^b T_kbar^b T_kbar^a": "-2/9",
+    "T_k^a T_k^b T_k^c T_kbar^c T_kbar^b T_kbar^a": "-10/27",
+    "f^abc T_k^a T_k^b T_kbar^c": "(i/2) C_A p = i*(-2)"
+   },
+   "singlet g g": {
+    "P = T_k.T_kbar": "-3",
+    "P^2": "9",
+    "T_k^a T_k^b T_kbar^b T_kbar^a": "9/2",
+    "T_k^a T_k^b T_k^c T_kbar^c T_kbar^b T_kbar^a": "0",
+    "f^abc T_k^a T_k^b T_kbar^c": "(i/2) C_A p = i*(-9/2)"
+   }
+  },
+  "d^abc T_k^a T_k^b T_kbar^c": {
+   "on t^A": "(1/4)*(5/9) = 5/36, a number; (N^2-4)/(2N) p = 5/36",
+   "on f^ABC": "(1/4)*(-9) d^ABC: maps f to d, not an eigenvector"
+  }
+ },
+ "A5 four lines, g -> q qbar": {
+  "<Phi|(T_k + T_r) = 0 and <Phi|(T_kbar + T_rbar) = 0": true,
+  "T_k.T_kbar Psi = T_r.T_rbar Psi = p Psi": "1/6",
+  "<D>/<1>": "-1/3 = -2p = Delta_C",
+  "<D^2>/<1>": "10/9 = 4p^2 + 2 C_A p",
+  "<D^2> - <D>^2": "1 = 2 C_A p",
+  "Psi is an eigenvector of D": false,
+  "matrix of D on the two singlets (columns: images)": {
+   "delta_{k r} delta_{kbar rbar}": [
+    "-1/3",
+    "1"
+   ],
+   "delta_{k kbar} delta_{r rbar}": [
+    "1",
+    "-1/3"
+   ]
+  }
+ },
+ "A5 four lines, g -> g g": {
+  "<Phi|(T_k + T_r) = 0 and <Phi|(T_kbar + T_rbar) = 0": true,
+  "T_k.T_kbar Psi = T_r.T_rbar Psi = p Psi": "-3/2",
+  "<D>/<1>": "3 = -2p = Delta_C",
+  "<D^2>/<1>": "0 = 4p^2 + 2 C_A p",
+  "<D^2> - <D>^2": "-9 = 2 C_A p",
+  "Psi is an eigenvector of D": false
+ },
+ "A6 reduction with the vertex conditions": {
+  "two exchanges": {
+   "[k,kbar] before [k,kbar]": {
+    "value on t^A (four lines, direct)": "1/36",
+    "c_p": "0",
+    "c_C": "0"
+   },
+   "[k,kbar] before [r,rbar]": {
+    "value on t^A (four lines, direct)": "1/36",
+    "c_p": "0",
+    "c_C": "0"
+   },
+   "[k,kbar] before [k,r]": {
+    "value on t^A (four lines, direct)": "-2/9",
+    "c_p": "0",
+    "c_C": "0"
+   },
+   "[k,kbar] before [kbar,rbar]": {
+    "value on t^A (four lines, direct)": "-2/9",
+    "c_p": "0",
+    "c_C": "0"
+   },
+   "[k,kbar] before [k,rbar]": {
+    "value on t^A (four lines, direct)": "-1/36",
+    "c_p": "0",
+    "c_C": "0"
+   },
+   "[k,kbar] before [kbar,r]": {
+    "value on t^A (four lines, direct)": "-1/36",
+    "c_p": "0",
+    "c_C": "0"
+   },
+   "[r,rbar] before [k,kbar]": {
+    "value on t^A (four lines, direct)": "1/36",
+    "c_p": "0",
+    "c_C": "0"
+   },
+   "[r,rbar] before [r,rbar]": {
+    "value on t^A (four lines, direct)": "1/36",
+    "c_p": "0",
+    "c_C": "0"
+   },
+   "[r,rbar] before [k,r]": {
+    "value on t^A (four lines, direct)": "-2/9",
+    "c_p": "0",
+    "c_C": "0"
+   },
+   "[r,rbar] before [kbar,rbar]": {
+    "value on t^A (four lines, direct)": "-2/9",
+    "c_p": "0",
+    "c_C": "0"
+   },
+   "[r,rbar] before [k,rbar]": {
+    "value on t^A (four lines, direct)": "-1/36",
+    "c_p": "0",
+    "c_C": "0"
+   },
+   "[r,rbar] before [kbar,r]": {
+    "value on t^A (four lines, direct)": "-1/36",
+    "c_p": "0",
+    "c_C": "0"
+   },
+   "[k,r] before [k,kbar]": {
+    "value on t^A (four lines, direct)": "1/36",
+    "c_p": "1/2",
+    "c_C": "0"
+   },
+   "[k,r] before [r,rbar]": {
+    "value on t^A (four lines, direct)": "1/36",
+    "c_p": "1/2",
+    "c_C": "0"
+   },
+   "[k,r] before [k,r]": {
+    "value on t^A (four lines, direct)": "16/9",
+    "c_p": "0",
+    "c_C": "0"
+   },
+   "[k,r] before [kbar,rbar]": {
+    "value on t^A (four lines, direct)": "16/9",
+    "c_p": "0",
+    "c_C": "0"
+   },
+   "[k,r] before [k,rbar]": {
+    "value on t^A (four lines, direct)": "-1/36",
+    "c_p": "-1/2",
+    "c_C": "0"
+   },
+   "[k,r] before [kbar,r]": {
+    "value on t^A (four lines, direct)": "-1/36",
+    "c_p": "-1/2",
+    "c_C": "0"
+   },
+   "[kbar,rbar] before [k,kbar]": {
+    "value on t^A (four lines, direct)": "1/36",
+    "c_p": "1/2",
+    "c_C": "0"
+   },
+   "[kbar,rbar] before [r,rbar]": {
+    "value on t^A (four lines, direct)": "1/36",
+    "c_p": "1/2",
+    "c_C": "0"
+   },
+   "[kbar,rbar] before [k,r]": {
+    "value on t^A (four lines, direct)": "16/9",
+    "c_p": "0",
+    "c_C": "0"
+   },
+   "[kbar,rbar] before [kbar,rbar]": {
+    "value on t^A (four lines, direct)": "16/9",
+    "c_p": "0",
+    "c_C": "0"
+   },
+   "[kbar,rbar] before [k,rbar]": {
+    "value on t^A (four lines, direct)": "-1/36",
+    "c_p": "-1/2",
+    "c_C": "0"
+   },
+   "[kbar,rbar] before [kbar,r]": {
+    "value on t^A (four lines, direct)": "-1/36",
+    "c_p": "-1/2",
+    "c_C": "0"
+   },
+   "[k,rbar] before [k,kbar]": {
+    "value on t^A (four lines, direct)": "-5/18",
+    "c_p": "-1/2",
+    "c_C": "0"
+   },
+   "[k,rbar] before [r,rbar]": {
+    "value on t^A (four lines, direct)": "-5/18",
+    "c_p": "-1/2",
+    "c_C": "0"
+   },
+   "[k,rbar] before [k,r]": {
+    "value on t^A (four lines, direct)": "2/9",
+    "c_p": "0",
+    "c_C": "0"
+   },
+   "[k,rbar] before [kbar,rbar]": {
+    "value on t^A (four lines, direct)": "2/9",
+    "c_p": "0",
+    "c_C": "0"
+   },
+   "[k,rbar] before [k,rbar]": {
+    "value on t^A (four lines, direct)": "5/18",
+    "c_p": "1/2",
+    "c_C": "0"
+   },
+   "[k,rbar] before [kbar,r]": {
+    "value on t^A (four lines, direct)": "5/18",
+    "c_p": "1/2",
+    "c_C": "0"
+   },
+   "[kbar,r] before [k,kbar]": {
+    "value on t^A (four lines, direct)": "-5/18",
+    "c_p": "-1/2",
+    "c_C": "0"
+   },
+   "[kbar,r] before [r,rbar]": {
+    "value on t^A (four lines, direct)": "-5/18",
+    "c_p": "-1/2",
+    "c_C": "0"
+   },
+   "[kbar,r] before [k,r]": {
+    "value on t^A (four lines, direct)": "2/9",
+    "c_p": "0",
+    "c_C": "0"
+   },
+   "[kbar,r] before [kbar,rbar]": {
+    "value on t^A (four lines, direct)": "2/9",
+    "c_p": "0",
+    "c_C": "0"
+   },
+   "[kbar,r] before [k,rbar]": {
+    "value on t^A (four lines, direct)": "5/18",
+    "c_p": "1/2",
+    "c_C": "0"
+   },
+   "[kbar,r] before [kbar,r]": {
+    "value on t^A (four lines, direct)": "5/18",
+    "c_p": "1/2",
+    "c_C": "0"
+   },
+   "[k,kbar] twice, crossed": {
+    "value on t^A (four lines, direct)": "5/18",
+    "c_p": "1/2",
+    "c_C": "0"
+   },
+   "[r,rbar] twice, crossed": {
+    "value on t^A (four lines, direct)": "5/18",
+    "c_p": "1/2",
+    "c_C": "0"
+   },
+   "[k,r] twice, crossed": {
+    "value on t^A (four lines, direct)": "-2/9",
+    "c_p": "0",
+    "c_C": "-1/2"
+   },
+   "[kbar,rbar] twice, crossed": {
+    "value on t^A (four lines, direct)": "-2/9",
+    "c_p": "0",
+    "c_C": "-1/2"
+   },
+   "[k,rbar] twice, crossed": {
+    "value on t^A (four lines, direct)": "1/36",
+    "c_p": "0",
+    "c_C": "0"
+   },
+   "[kbar,r] twice, crossed": {
+    "value on t^A (four lines, direct)": "1/36",
+    "c_p": "0",
+    "c_C": "0"
+   }
+  },
+  "colour factors of two exchanges": 42,
+  "of which between the two transverse positions, all of the form product + C_A c_p p": 36,
+  "three-gluon vertex on three lines": {
+   "k,kbar,r": "f^abc T^a T^b T^c = (-1/2)*i*C_A*p",
+   "k,kbar,rbar": "f^abc T^a T^b T^c = (1/2)*i*C_A*p",
+   "k,r,rbar": "f^abc T^a T^b T^c = (-1/2)*i*C_A*p",
+   "kbar,r,rbar": "f^abc T^a T^b T^c = (1/2)*i*C_A*p"
+  }
+ },
+ "B anomalous dimensions": {
+  "planar N = 4, coupling a = 2 g^2": {
+   "B^(2)": {
+    "D_gamma": {
+     "zeta_3": "-1/2"
+    },
+    "gamma_rap": {
+     "zeta_3": "7/2"
+    },
+    "sum": {
+     "zeta_3": "3"
+    },
+    "paper2/n4/results_stage_d.json": {
+     "zeta_3": "3"
+    },
+    "difference": "0"
+   },
+   "B^(3)": {
+    "D_gamma": {
+     "zeta_2 zeta_3": "5/3",
+     "zeta_5": "2"
+    },
+    "gamma_rap": {
+     "zeta_2 zeta_3": "-11/3",
+     "zeta_5": "-12"
+    },
+    "sum": {
+     "zeta_2 zeta_3": "-2",
+     "zeta_5": "-10"
+    },
+    "paper2/n4/results_stage_d.json": {
+     "zeta_2 zeta_3": "-2",
+     "zeta_5": "-10"
+    },
+    "difference": "0"
+   },
+   "B^(4)": {
+    "D_gamma": {
+     "zeta_2 zeta_5": "-8",
+     "zeta_3 zeta_4": "-12",
+     "zeta_7": "-75/8"
+    },
+    "gamma_rap": {
+     "zeta_2 zeta_5": "13",
+     "zeta_3 zeta_4": "45/2",
+     "zeta_7": "425/8"
+    },
+    "sum": {
+     "zeta_2 zeta_5": "5",
+     "zeta_3 zeta_4": "21/2",
+     "zeta_7": "175/4"
+    },
+    "paper2/n4/results_stage_d.json": {
+     "zeta_2 zeta_5": "5",
+     "zeta_3 zeta_4": "21/2",
+     "zeta_7": "175/4"
+    },
+    "difference": "0"
+   }
+  },
+  "loops through which B = D_gamma + gamma_rap is checked": 4,
+  "identity": "D_gamma + gamma_rap = G_0/2 - G_0,eik/2 = B_delta, the virtual anomalous dimension",
+  "conventions": "D_gamma = gamma_a - gamma_k - gamma_kbar = -gamma = G_0/2; gamma_rap = gamma^r/2; a = 2 g^2",
+  "sources": {
+   "G_0, G_0,eik, B_delta, gamma^r": "arXiv:1712.07274, eqs. (2.9), (3.11), (3.15)-(3.17)",
+   "gamma^r through three loops, terms of highest weight": "arXiv:1604.01404",
+   "two-loop coefficient in QCD, numerically": "arXiv:2205.02242, eq. (11)"
+  },
+  "QCD": {
+   "gamma_rap^(2)/Delta_C": {
+    "C_A": "-404/27",
+    "C_A zeta_3": "14",
+    "T_F n_f": "112/27"
+   },
+   "d_2 = -gamma_rap^(2)/Delta_C": {
+    "C_A": "404/27",
+    "C_A zeta_3": "-14",
+    "T_F n_f": "-112/27"
+   },
+   "largest difference from the numbers of arXiv:2205.02242, eq. (11)": "5.3e-06",
+   "cases": {
+    "g -> q qbar": {
+     "Delta_C": "-1/3",
+     "gamma_rap^(2), n_f = 5": {
+      "1": "932/81",
+      "zeta_3": "-14"
+     },
+     "value": "-5.322624"
+    },
+    "g -> g g": {
+     "Delta_C": "3",
+     "gamma_rap^(2), n_f = 5": {
+      "1": "-932/9",
+      "zeta_3": "126"
+     },
+     "value": "47.903614"
+    }
+   },
+   "two-loop relation for quarks and gluons": "-gamma_i - C_i d_2 = B_i - zeta_2 C_i beta0, B_i the coefficient of delta(1-x) in P_ii",
+   "kernel": "D_gamma^(2) + gamma_rap^(2) = B_k + B_kbar - B_a - zeta_2 Delta_C beta0",
+   "input of the fourth logarithm": {
+    "g -> q qbar": {
+     "D_gamma^(2) + gamma_rap^(2)": {
+      "C_A C_F": "17/3",
+      "C_A C_F zeta_2": "22",
+      "C_A C_F zeta_3": "-24",
+      "C_A T_F n_f": "16/3",
+      "C_A T_F n_f zeta_2": "-4/3",
+      "C_A^2": "-32/3",
+      "C_A^2 zeta_2": "11/3",
+      "C_A^2 zeta_3": "-12",
+      "C_F T_F n_f": "8/3",
+      "C_F T_F n_f zeta_2": "-8",
+      "C_F^2": "3",
+      "C_F^2 zeta_2": "-24",
+      "C_F^2 zeta_3": "48"
+     },
+     "S_2 = D_gamma^(2) + beta1 + gamma_rap^(2)": {
+      "C_A C_F": "17/3",
+      "C_A C_F zeta_2": "22",
+      "C_A C_F zeta_3": "-24",
+      "C_A T_F n_f": "-4/3",
+      "C_A T_F n_f zeta_2": "-4/3",
+      "C_A^2": "2/3",
+      "C_A^2 zeta_2": "11/3",
+      "C_A^2 zeta_3": "-12",
+      "C_F T_F n_f": "-4/3",
+      "C_F T_F n_f zeta_2": "-8",
+      "C_F^2": "3",
+      "C_F^2 zeta_2": "-24",
+      "C_F^2 zeta_3": "48"
+     }
+    },
+    "g -> g g": {
+     "D_gamma^(2) + gamma_rap^(2)": {
+      "C_A T_F n_f": "-16/3",
+      "C_A T_F n_f zeta_2": "4/3",
+      "C_A^2": "32/3",
+      "C_A^2 zeta_2": "-11/3",
+      "C_A^2 zeta_3": "12",
+      "C_F T_F n_f": "-4"
+     },
+     "S_2 = D_gamma^(2) + beta1 + gamma_rap^(2)": {
+      "C_A T_F n_f": "-12",
+      "C_A T_F n_f zeta_2": "4/3",
+      "C_A^2": "22",
+      "C_A^2 zeta_2": "-11/3",
+      "C_A^2 zeta_3": "12",
+      "C_F T_F n_f": "-8"
+     }
+    }
+   }
+  }
+ },
+ "C lemma": {
+  "scalar functions through a_s^2, logarithms to the fourth power": "ln K = D_1 U + D_2 V + constant: linear in ln(p1+ b) and ln(p2- b) (D_1 = D_2 by boost invariance)",
+  "free coefficients left": 10,
+  "two colour components (v^T exp[a X Gamma_1] v, Gamma_1 = ((0, h), (k, 0)), v = (1, 0))": "no a X term, a^2 X^2 coefficient h k/2",
+  "boundary term exp[X gamma_rap] times constants": "coefficient of a^2 X^2 = gamma_rap1^2/2",
+  "matrix evolution with Gamma_1(mu_b) = 0": "no a^2 X^2 term",
+  "one loop": "dS/dln(nu) = 2 dln(K)/dX = -4 Delta_C X_mu; no finite term at mu_b"
+ },
+ "D three-loop model": {
+  "d ln K/dX": "a (-2 Delta_C X_mu) + a^2 (-Delta_C (beta0 X_mu^2 + Gamma_1 X_mu/2) + r1_3): eq. (C.7), no dependence on X",
+  "conformal limit": "exponent -Delta_C gamma_cusp X^2/4 + (DG1 + r1_3) a^2 X: B^(2) = D_gamma^(2) + gamma_rap^(2)",
+  "fourth logarithm": {
+   "nu = 0": {
+    "fourth power of G": 2,
+    "coefficient": "-1*(DG1 + beta1 + r1_3) + known terms",
+    "known terms": {
+     "DG0 Delta_C L_*^2": "-1",
+     "DG0 L_* beta0": "-3",
+     "DG0 h": "-2",
+     "DG0 r0": "-1",
+     "DG0^2 L_*": "-1",
+     "Delta_C L_*^2 beta0": "-1",
+     "Delta_C^2 zeta3": "8",
+     "L_* beta0^2": "-2",
+     "beta0 h": "-2",
+     "beta0 r0": "-2"
+    }
+   },
+   "nu = 2": {
+    "fourth power of G": 1,
+    "coefficient": "-2*(DG1 + beta1 + r1_3) + known terms",
+    "known terms": {
+     "DG0 Delta_C": "12",
+     "DG0 Delta_C L_*": "4",
+     "DG0 Delta_C L_*^2": "-2",
+     "DG0 L_* beta0": "-6",
+     "DG0 beta0": "-6",
+     "DG0 h": "-4",
+     "DG0 r0": "-2",
+     "DG0^2": "-2",
+     "DG0^2 L_*": "-2",
+     "Delta_C L_* beta0": "8",
+     "Delta_C L_*^2 beta0": "-2",
+     "Delta_C beta0": "20",
+     "Delta_C g1": "1",
+     "Delta_C h": "8",
+     "Delta_C r0": "4",
+     "Delta_C^2": "-24",
+     "Delta_C^2 L_*^2": "4",
+     "Delta_C^2 zeta3": "16",
+     "L_* beta0^2": "-4",
+     "beta0 h": "-4",
+     "beta0 r0": "-4",
+     "beta0^2": "-4"
+    }
+   }
+  }
+ },
+ "passed": true
+}

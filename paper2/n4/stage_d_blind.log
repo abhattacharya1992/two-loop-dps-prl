@@ -1,0 +1,49 @@
+gamma ratio series done (28.1s)
+F0,F1,F2 = -G | G**2 | -4*G**3/3 - 2*z3/3
+F_0..F_2 verified.  (28.9s)
+exp expanded (29.0s)
+S has 8 X-monomials
+kernel expanded and transformed.  (29.3s)
+L=1 k=1  PASS
+L=2 k=3  PASS
+L=2 k=2  PASS
+L=2 k=1  fixes r0 = z2
+L=3 k=5  PASS
+L=3 k=4  PASS
+L=3 k=3  PASS
+L=3 k=2  fixes B2 = 3*z3
+L=3 k=1  fixes r0b = z4/2
+L=4 k=7  PASS
+L=4 k=6  PASS
+L=4 k=5  PASS
+L=4 k=4  PASS
+L=4 k=3  PASS
+L=4 k=2  fixes B3 = -2*(z2*z3 + 5*z5)
+L=4 k=1  fixes r0c = -(112*z3**2 + 13*z6)/24
+L=5 k=9  PASS
+L=5 k=8  PASS
+L=5 k=7  PASS
+L=5 k=6  PASS
+L=5 k=5  PASS
+L=5 k=4  PASS
+L=5 k=3  fixes G4 = -(8*z3**2 + 219*z6)/2
+L=5 k=2  fixes B4 = (20*z2*z5 + 42*z3*z4 + 175*z7)/4
+L=5 k=1  fixes r0d = -(78*z2*z3**2 - 1170*z3*z5 - 257*z8)/36
+
+Solved constants (pi powers -> zeta):
+  r0 = z2
+  r0b = z4/2
+  r0c = -(112*z3**2 + 13*z6)/24
+  r0d = -(78*z2*z3**2 - 1170*z3*z5 - 257*z8)/36
+  B2 = 3*z3
+  B3 = -2*(z2*z3 + 5*z5)
+  B4 = (20*z2*z5 + 42*z3*z4 + 175*z7)/4
+  G4 = -(8*z3**2 + 219*z6)/2
+G4 == -(219/2) z6 - 4 z3^2 ? True
+  LL L=1 k=1: integral 1/2  data 1/2  pred 1/2
+  LL L=2 k=3: integral -1/12  data -1/12  pred -1/12
+  LL L=3 k=5: integral 1/80  data 1/80  pred 1/80
+  LL L=4 k=7: integral -1/672  data -1/672  pred -1/672
+  LL L=5 k=9: integral 1/6912  data 1/6912  pred 1/6912
+LL tower: data match True | prediction match True
+done (29.6s)

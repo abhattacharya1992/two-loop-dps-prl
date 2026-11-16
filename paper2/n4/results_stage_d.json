@@ -1,0 +1,364 @@
+{
+ "loops_compared": 5,
+ "source": "L. J. Dixon and I. Esterlis, All orders results for self-crossing Wilson loops mimicking double parton scattering, JHEP 07 (2016) 116 [arXiv:1602.02107v3]. Transcribed on 15 October 2026 from the arXiv PDF text (equation numbers of v3). a = g^2 N_c/(8 pi^2); E = Sum_L a^L E^(L) is the BDS-like normalised amplitude, eq. (2.13): E = exp[R_6 - gamma_K/8 Y].",
+ "three_to_three": [
+  {
+   "L": 1,
+   "k": 1,
+   "status": "normalisation",
+   "DE": "1/2",
+   "DE_eq": "3.17"
+  },
+  {
+   "L": 2,
+   "k": 3,
+   "status": "PASS",
+   "DE": "-1/12",
+   "DE_eq": "3.18"
+  },
+  {
+   "L": 2,
+   "k": 2,
+   "status": "PASS",
+   "DE": "0",
+   "DE_eq": "3.18"
+  },
+  {
+   "L": 2,
+   "k": 1,
+   "status": "fixes r0 = zeta_2",
+   "DE": "z2/2",
+   "DE_eq": "3.18"
+  },
+  {
+   "L": 3,
+   "k": 5,
+   "status": "PASS",
+   "DE": "1/80",
+   "DE_eq": "3.19"
+  },
+  {
+   "L": 3,
+   "k": 4,
+   "status": "PASS",
+   "DE": "0",
+   "DE_eq": "3.19"
+  },
+  {
+   "L": 3,
+   "k": 3,
+   "status": "PASS",
+   "DE": "0",
+   "DE_eq": "3.19"
+  },
+  {
+   "L": 3,
+   "k": 2,
+   "status": "fixes B2 = 3*zeta_3",
+   "DE": "-z3/4",
+   "DE_eq": "3.19"
+  },
+  {
+   "L": 3,
+   "k": 1,
+   "status": "fixes r0b = zeta_4/2",
+   "DE": "z4/4",
+   "DE_eq": "3.19"
+  },
+  {
+   "L": 4,
+   "k": 7,
+   "status": "PASS",
+   "DE": "-1/672",
+   "DE_eq": "3.20"
+  },
+  {
+   "L": 4,
+   "k": 6,
+   "status": "PASS",
+   "DE": "0",
+   "DE_eq": "3.20"
+  },
+  {
+   "L": 4,
+   "k": 5,
+   "status": "PASS",
+   "DE": "-z2/80",
+   "DE_eq": "3.20"
+  },
+  {
+   "L": 4,
+   "k": 4,
+   "status": "PASS",
+   "DE": "-z3/48",
+   "DE_eq": "3.20"
+  },
+  {
+   "L": 4,
+   "k": 3,
+   "status": "PASS",
+   "DE": "-7*z4/24",
+   "DE_eq": "3.20"
+  },
+  {
+   "L": 4,
+   "k": 2,
+   "status": "fixes B3 = -2*zeta_2*zeta_3 - 10*zeta_5",
+   "DE": "(4*z5 - 3*z2*z3)/4",
+   "DE_eq": "3.20"
+  },
+  {
+   "L": 4,
+   "k": 1,
+   "status": "fixes r0c = -14*zeta_3**2/3 - 13*zeta_6/24",
+   "DE": "-(13*z6 + 48*z3**2)/48",
+   "DE_eq": "3.20"
+  },
+  {
+   "L": 5,
+   "k": 9,
+   "status": "PASS",
+   "DE": "1/6912",
+   "DE_eq": "3.21"
+  },
+  {
+   "L": 5,
+   "k": 8,
+   "status": "PASS",
+   "DE": "0",
+   "DE_eq": "3.21"
+  },
+  {
+   "L": 5,
+   "k": 7,
+   "status": "PASS",
+   "DE": "z2/336",
+   "DE_eq": "3.21"
+  },
+  {
+   "L": 5,
+   "k": 6,
+   "status": "PASS",
+   "DE": "5*z3/288",
+   "DE_eq": "3.21"
+  },
+  {
+   "L": 5,
+   "k": 5,
+   "status": "PASS",
+   "DE": "9*z4/80",
+   "DE_eq": "3.21"
+  },
+  {
+   "L": 5,
+   "k": 4,
+   "status": "PASS",
+   "DE": "(6*z5 + 7*z2*z3)/24",
+   "DE_eq": "3.21"
+  },
+  {
+   "L": 5,
+   "k": 3,
+   "status": "fixes G4 = -4*zeta_3**2 - 219*zeta_6/2",
+   "DE": "(115*z6 + 48*z3**2)/72",
+   "DE_eq": "3.21"
+  },
+  {
+   "L": 5,
+   "k": 2,
+   "status": "fixes B4 = 5*zeta_2*zeta_5 + 21*zeta_3*zeta_4/2 + 175*zeta_7/4",
+   "DE": "(-55*z7 + 68*z2*z5 + 44*z3*z4)/16",
+   "DE_eq": "3.21"
+  },
+  {
+   "L": 5,
+   "k": 1,
+   "status": "fixes r0d = -13*zeta_2*zeta_3**2/6 + 65*zeta_3*zeta_5/2 + 257*zeta_8/36",
+   "DE": "(257*z8 + 810*z3*z5 + 18*z2*z3**2)/72",
+   "DE_eq": "3.21"
+  }
+ ],
+ "n_checked": 25,
+ "n_pass": 16,
+ "n_fixed": 8,
+ "n_norm": 1,
+ "three_loop_ln3_coefficient": "C_1 (-2/3) (kappa_1 + gamma_K^(2)/4) G^3, in the notation of the paper",
+ "components_related": true,
+ "nmhv_five_loop_prediction": {
+  "8": "1/384",
+  "7": "-1/48",
+  "6": "zeta_2/24 + 7/48",
+  "5": "-zeta_2/4 + 5*zeta_3/24 - 7/8",
+  "4": "5*zeta_2/4 - 25*zeta_3/24 + 9*zeta_4/8 + 35/8",
+  "3": "7*zeta_2*zeta_3/3 - 5*zeta_2 + 25*zeta_3/6 - 9*zeta_4/2 + 2*zeta_5 - 35/2",
+  "2": "-7*zeta_2*zeta_3 + 15*zeta_2 + 4*zeta_3**2 - 25*zeta_3/2 + 27*zeta_4/2 - 6*zeta_5 + 115*zeta_6/12 + 105/2",
+  "1": "14*zeta_2*zeta_3 + 17*zeta_2*zeta_5 - 30*zeta_2 - 8*zeta_3**2 + 11*zeta_3*zeta_4 + 25*zeta_3 - 27*zeta_4 + 12*zeta_5 - 115*zeta_6/6 - 55*zeta_7/4 - 105",
+  "0": "zeta_2*zeta_3**2/2 - 14*zeta_2*zeta_3 - 17*zeta_2*zeta_5 + 30*zeta_2 + 8*zeta_3**2 - 11*zeta_3*zeta_4 + 45*zeta_3*zeta_5/2 - 25*zeta_3 + 27*zeta_4 - 12*zeta_5 + 115*zeta_6/6 + 55*zeta_7/4 + 257*zeta_8/36 + 105"
+ },
+ "solved_constants": {
+  "r0": "zeta_2",
+  "B2": "3*zeta_3",
+  "r0b": "zeta_4/2",
+  "B3": "-2*zeta_2*zeta_3 - 10*zeta_5",
+  "r0c": "-14*zeta_3**2/3 - 13*zeta_6/24",
+  "G4": "-4*zeta_3**2 - 219*zeta_6/2",
+  "B4": "5*zeta_2*zeta_5 + 21*zeta_3*zeta_4/2 + 175*zeta_7/4",
+  "r0d": "-13*zeta_2*zeta_3**2/6 + 65*zeta_3*zeta_5/2 + 257*zeta_8/36"
+ },
+ "solved_order": [
+  "r0",
+  "B2",
+  "r0b",
+  "B3",
+  "r0c",
+  "G4",
+  "B4",
+  "r0d"
+ ],
+ "four_loop_cusp_agrees": true,
+ "LL_Gaussian_integral": true,
+ "nmhv": [
+  {
+   "L": 1,
+   "k": 0,
+   "status": "normalisation",
+   "DE": "1",
+   "DE_eq": "D.14"
+  },
+  {
+   "L": 2,
+   "k": 2,
+   "status": "PASS",
+   "DE": "-1/2",
+   "DE_eq": "D.15"
+  },
+  {
+   "L": 2,
+   "k": 1,
+   "status": "PASS",
+   "DE": "1",
+   "DE_eq": "D.15"
+  },
+  {
+   "L": 2,
+   "k": 0,
+   "status": "PASS",
+   "DE": "z2 - 1",
+   "DE_eq": "D.15"
+  },
+  {
+   "L": 3,
+   "k": 4,
+   "status": "PASS",
+   "DE": "1/8",
+   "DE_eq": "D.16"
+  },
+  {
+   "L": 3,
+   "k": 3,
+   "status": "PASS",
+   "DE": "-1/2",
+   "DE_eq": "D.16"
+  },
+  {
+   "L": 3,
+   "k": 2,
+   "status": "PASS",
+   "DE": "3/2",
+   "DE_eq": "D.16"
+  },
+  {
+   "L": 3,
+   "k": 1,
+   "status": "PASS",
+   "DE": "-(z3 + 3)",
+   "DE_eq": "D.16"
+  },
+  {
+   "L": 3,
+   "k": 0,
+   "status": "PASS",
+   "DE": "z4/2 + z3 + 3",
+   "DE_eq": "D.16"
+  },
+  {
+   "L": 4,
+   "k": 6,
+   "status": "PASS",
+   "DE": "-1/48",
+   "DE_eq": "D.17"
+  },
+  {
+   "L": 4,
+   "k": 5,
+   "status": "PASS",
+   "DE": "1/8",
+   "DE_eq": "D.17"
+  },
+  {
+   "L": 4,
+   "k": 4,
+   "status": "PASS",
+   "DE": "-(z2 + 5)/8",
+   "DE_eq": "D.17"
+  },
+  {
+   "L": 4,
+   "k": 3,
+   "status": "PASS",
+   "DE": "-z3/6 + z2/2 + 5/2",
+   "DE_eq": "D.17"
+  },
+  {
+   "L": 4,
+   "k": 2,
+   "status": "PASS",
+   "DE": "-(7*z4/4 - z3/2 + 3*z2/2 + 15/2)",
+   "DE_eq": "D.17"
+  },
+  {
+   "L": 4,
+   "k": 1,
+   "status": "PASS",
+   "DE": "4*z5 - 3*z2*z3 + 7*z4/2 - z3 + 3*z2 + 15",
+   "DE_eq": "D.17"
+  },
+  {
+   "L": 4,
+   "k": 0,
+   "status": "PASS",
+   "DE": "-13*z6/24 - 2*z3**2 - 4*z5 + 3*z2*z3 - 7*z4/2 + z3 - 3*z2 - 15",
+   "DE_eq": "D.17"
+  }
+ ],
+ "nmhv_n_checked": 15,
+ "nmhv_n_pass": 15,
+ "nmhv_LL_exponential": true,
+ "two_to_four_two_loops": [
+  {
+   "L": "1",
+   "k": 1,
+   "DE": "-I*pi",
+   "prediction": "-I*pi"
+  },
+  {
+   "L": "2",
+   "k": 3,
+   "DE": "I*pi/6",
+   "prediction": "I*pi/6"
+  },
+  {
+   "L": "2",
+   "k": 2,
+   "DE": "-pi**2/2",
+   "prediction": "-pi**2/2"
+  },
+  {
+   "L": "2",
+   "k": 1,
+   "DE": "-2*I*pi**3/3",
+   "prediction": "-2*I*pi**3/3"
+  }
+ ],
+ "two_to_four_single_log_difference": "0"
+}

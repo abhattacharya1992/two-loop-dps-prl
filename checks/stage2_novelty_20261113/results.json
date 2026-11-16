@@ -1,0 +1,405 @@
+{
+  "baseline": "da14291dc48904a77ffb93b98cb625d704d2c607",
+  "source_sha256": "9ec6cb900be50d0216b4c558a2380403dcd59ee201610a199b2c5167018cc71a",
+  "inputs_sha256": "72f403a0ab6dd9ba445af4a5bda717b12e02245bb8036c8a27b8647d25eae788",
+  "runtime": {
+    "python": "3.13.5",
+    "sympy": "1.14.0",
+    "mpmath": "1.3.0"
+  },
+  "n4": {
+    "coefficient_comparisons": [
+      {
+        "loop": 1,
+        "power": 0,
+        "derived": "1",
+        "difference": "0"
+      },
+      {
+        "loop": 2,
+        "power": 0,
+        "derived": "(p2 - 6)/6",
+        "difference": "0"
+      },
+      {
+        "loop": 2,
+        "power": 1,
+        "derived": "1",
+        "difference": "0"
+      },
+      {
+        "loop": 2,
+        "power": 2,
+        "derived": "-1/2",
+        "difference": "0"
+      },
+      {
+        "loop": 3,
+        "power": 0,
+        "derived": "(p2**2 + 180*z3 + 540)/180",
+        "difference": "0"
+      },
+      {
+        "loop": 3,
+        "power": 1,
+        "derived": "-z3 - 3",
+        "difference": "0"
+      },
+      {
+        "loop": 3,
+        "power": 2,
+        "derived": "3/2",
+        "difference": "0"
+      },
+      {
+        "loop": 3,
+        "power": 3,
+        "derived": "-1/2",
+        "difference": "0"
+      },
+      {
+        "loop": 3,
+        "power": 4,
+        "derived": "1/8",
+        "difference": "0"
+      },
+      {
+        "loop": 4,
+        "power": 0,
+        "derived": "-(13*p2**3 + 882*p2**2 - 11340*p2*z3 + 11340*p2 + 45360*z3**2 - 22680*z3 + 90720*z5 + 340200)/22680",
+        "difference": "0"
+      },
+      {
+        "loop": 4,
+        "power": 1,
+        "derived": "-(-7*p2**2 + 90*p2*z3 - 90*p2 + 180*z3 - 720*z5 - 2700)/180",
+        "difference": "0"
+      },
+      {
+        "loop": 4,
+        "power": 2,
+        "derived": "(-7*p2**2 - 90*p2 + 180*z3 - 2700)/360",
+        "difference": "0"
+      },
+      {
+        "loop": 4,
+        "power": 3,
+        "derived": "-(-p2 + 2*z3 - 30)/12",
+        "difference": "0"
+      },
+      {
+        "loop": 4,
+        "power": 4,
+        "derived": "-(p2 + 30)/48",
+        "difference": "0"
+      },
+      {
+        "loop": 4,
+        "power": 5,
+        "derived": "1/8",
+        "difference": "0"
+      },
+      {
+        "loop": 4,
+        "power": 6,
+        "derived": "-1/48",
+        "difference": "0"
+      },
+      {
+        "loop": 5,
+        "power": 0,
+        "derived": "(257*p2**4 + 6900*p2**3 - 41580*p2**2*z3 + 102060*p2**2 + 28350*p2*z3**2 - 793800*p2*z3 - 963900*p2*z5 + 1701000*p2 + 2721600*z3**2 + 7654500*z3*z5 - 8505000*z3 - 4082400*z5 + 4677750*z7 + 35721000)/340200",
+        "difference": "0"
+      },
+      {
+        "loop": 5,
+        "power": 1,
+        "derived": "-(230*p2**3 - 1386*p2**2*z3 + 3402*p2**2 - 26460*p2*z3 - 32130*p2*z5 + 56700*p2 + 90720*z3**2 - 283500*z3 - 136080*z5 + 155925*z7 + 1190700)/11340",
+        "difference": "0"
+      },
+      {
+        "loop": 5,
+        "power": 2,
+        "derived": "(115*p2**3 + 1701*p2**2 - 13230*p2*z3 + 28350*p2 + 45360*z3**2 - 141750*z3 - 68040*z5 + 595350)/11340",
+        "difference": "0"
+      },
+      {
+        "loop": 5,
+        "power": 3,
+        "derived": "(-9*p2**2 + 70*p2*z3 - 150*p2 + 750*z3 + 360*z5 - 3150)/180",
+        "difference": "0"
+      },
+      {
+        "loop": 5,
+        "power": 4,
+        "derived": "-(-3*p2**2 - 50*p2 + 250*z3 - 1050)/240",
+        "difference": "0"
+      },
+      {
+        "loop": 5,
+        "power": 5,
+        "derived": "(-p2 + 5*z3 - 21)/24",
+        "difference": "0"
+      },
+      {
+        "loop": 5,
+        "power": 6,
+        "derived": "(p2 + 21)/144",
+        "difference": "0"
+      },
+      {
+        "loop": 5,
+        "power": 7,
+        "derived": "-1/48",
+        "difference": "0"
+      },
+      {
+        "loop": 5,
+        "power": 8,
+        "derived": "1/384",
+        "difference": "0"
+      }
+    ],
+    "known_kappa": {
+      "1": "p2/6",
+      "2": "p2**2/180",
+      "3": "-(13*p2**3 + 105840*z3**2)/22680",
+      "4": "-(-257*p2**4 + 122850*p2*z3**2 - 11056500*z3*z5)/340200"
+    },
+    "B_from_known_virtual_anomalous_dimension": {
+      "2": "3*z3",
+      "3": "-2*z2*z3 - 10*z5",
+      "4": "5*z2*z5 + 21*z3*z4/2 + 175*z7/4"
+    },
+    "principal_symbol_checks": [
+      {
+        "angle": "0.31",
+        "R100_error": "0.000465282509776",
+        "R1000_error": "4.64832668234e-6",
+        "ratio": "100.096774941"
+      },
+      {
+        "angle": "1.13",
+        "R100_error": "0.00061693117924",
+        "R1000_error": "6.17397418194e-6",
+        "ratio": "99.9244831707"
+      },
+      {
+        "angle": "2.2",
+        "R100_error": "0.000761000628303",
+        "R1000_error": "7.61278851482e-6",
+        "ratio": "99.9634531843"
+      },
+      {
+        "angle": "-0.61",
+        "R100_error": "0.00075158906431",
+        "R1000_error": "7.5128258312e-6",
+        "ratio": "100.040794396"
+      }
+    ],
+    "scope": "leading nonanalytic selected helicity component in the perturbative self-crossing/MRK overlap; not full NMHV or nonperturbative resummation",
+    "primary_ancillary_freshly_expanded": false
+  },
+  "r0": {
+    "symbolic_rational_projections": {
+      "S_R_0": "-2*c*x*(x - 1)/(3*(2*x**4 - 4*x**3 + 2*x**2 + 1))",
+      "S_R_2": "0",
+      "S_spin3_0": "0",
+      "S_spin3_2": "-2*c*x*(x - 1)/(3*(2*x**4 - 4*x**3 + 6*x**2 - 4*x + 1))",
+      "S_total_0": "-2*c*x*(x - 1)/(3*(2*x**4 - 4*x**3 + 2*x**2 + 1))",
+      "S_total_2": "-2*c*x*(x - 1)/(3*(2*x**4 - 4*x**3 + 6*x**2 - 4*x + 1))",
+      "A_R_0": "2*c*x*(x - 1)/(3*(2*x**4 - 4*x**3 + 2*x**2 - 1))",
+      "A_R_2": "0",
+      "A_spin3_0": "0",
+      "A_spin3_2": "2*c*x*(x - 1)/(3*(2*x**4 - 4*x**3 + 6*x**2 - 4*x + 1))",
+      "A_total_0": "2*c*x*(x - 1)/(3*(2*x**4 - 4*x**3 + 2*x**2 - 1))",
+      "A_total_2": "2*c*x*(x - 1)/(3*(2*x**4 - 4*x**3 + 6*x**2 - 4*x + 1))"
+    },
+    "self_energies": {
+      "q_CF": "-2*lx - 2*ly - 4",
+      "g_CA": "10*lx/3 + 10*ly/3 + 124/9",
+      "g_TFnf": "-8*lx/3 - 8*ly/3 - 80/9"
+    },
+    "soft_per_Delta": "-z2",
+    "remaining_collinear_targets": {
+      "quark_CF": "lx + ly - 2*z2 + (lx - ly)**2 + 8",
+      "quark_CA": "-lx**2 - ly**2 + 1",
+      "gluon_CA": "-2*lx*ly - 5*lx/3 - 5*ly/3 - 2*z2 + 5/9",
+      "gluon_TFnf": "4*lx/3 + 4*ly/3 + 20/9"
+    },
+    "target_status": "Inferred by exact subtraction from reconstructed r0; not an independent integration of the common collinear functions.",
+    "stored_quark_support": [
+      {
+        "x": "1/10",
+        "colour": "CF",
+        "max_abs_error": "1.03343457053e-7"
+      },
+      {
+        "x": "1/10",
+        "colour": "CA",
+        "max_abs_error": "5.13125210718e-8"
+      },
+      {
+        "x": "3/10",
+        "colour": "CF",
+        "max_abs_error": "3.06501603422e-8"
+      },
+      {
+        "x": "3/10",
+        "colour": "CA",
+        "max_abs_error": "1.49818602434e-8"
+      },
+      {
+        "x": "1/2",
+        "colour": "CF",
+        "max_abs_error": "3.58645332082e-8"
+      },
+      {
+        "x": "1/2",
+        "colour": "CA",
+        "max_abs_error": "1.75854409543e-8"
+      }
+    ],
+    "max_abs_stored_quark_error": "1.03343457053e-7",
+    "symmetric_ambiguity": "(x*(1 - x) - 1/4)*(x*(1 - x) - 99/400)*(x*(1 - x) - 15/64)*(x*(1 - x) - 21/100)*(x*(1 - x) - 3/16)*(x*(1 - x) - 5/36)*(x*(1 - x) - 9/100)",
+    "full_common_collinear_integrals_analytically_evaluated": false
+  },
+  "checks": [
+    "L1 endpoint differential equation",
+    "L1 NMHV coefficient ell^0",
+    "L2 endpoint differential equation",
+    "L2 NMHV coefficient ell^0",
+    "L2 NMHV coefficient ell^1",
+    "L2 NMHV coefficient ell^2",
+    "L3 endpoint differential equation",
+    "L3 NMHV coefficient ell^0",
+    "L3 NMHV coefficient ell^1",
+    "L3 NMHV coefficient ell^2",
+    "L3 NMHV coefficient ell^3",
+    "L3 NMHV coefficient ell^4",
+    "L4 endpoint differential equation",
+    "L4 NMHV coefficient ell^0",
+    "L4 NMHV coefficient ell^1",
+    "L4 NMHV coefficient ell^2",
+    "L4 NMHV coefficient ell^3",
+    "L4 NMHV coefficient ell^4",
+    "L4 NMHV coefficient ell^5",
+    "L4 NMHV coefficient ell^6",
+    "L5 endpoint differential equation",
+    "L5 NMHV coefficient ell^0",
+    "L5 NMHV coefficient ell^1",
+    "L5 NMHV coefficient ell^2",
+    "L5 NMHV coefficient ell^3",
+    "L5 NMHV coefficient ell^4",
+    "L5 NMHV coefficient ell^5",
+    "L5 NMHV coefficient ell^6",
+    "L5 NMHV coefficient ell^7",
+    "L5 NMHV coefficient ell^8",
+    "L1 transverse helicity differential identity",
+    "L2 transverse helicity differential identity",
+    "L3 transverse helicity differential identity",
+    "L4 transverse helicity differential identity",
+    "L5 transverse helicity differential identity",
+    "generic degree-nine polynomial inverse",
+    "homogeneous solution is excluded inverse-power term",
+    "endpoint-independent normalization commutes",
+    "endpoint-dependent normalization is not silently allowed",
+    "known representation kappa1",
+    "known representation kappa2",
+    "known representation kappa3",
+    "known representation kappa4",
+    "Bessel component identity X^0",
+    "Bessel component identity X^1",
+    "Bessel component identity X^2",
+    "Bessel component identity X^3",
+    "Bessel component identity X^4",
+    "Bessel component identity X^5",
+    "Bessel component identity X^6",
+    "Bessel component identity X^7",
+    "Bessel component identity X^8",
+    "known Sudakov MHV L1 ell^1",
+    "known Sudakov plus endpoint NMHV L1",
+    "known Sudakov MHV L2 ell^1",
+    "known Sudakov MHV L2 ell^2",
+    "known Sudakov MHV L2 ell^3",
+    "known Sudakov plus endpoint NMHV L2",
+    "known Sudakov MHV L3 ell^1",
+    "known Sudakov MHV L3 ell^2",
+    "known Sudakov MHV L3 ell^3",
+    "known Sudakov MHV L3 ell^4",
+    "known Sudakov MHV L3 ell^5",
+    "known Sudakov plus endpoint NMHV L3",
+    "known Sudakov MHV L4 ell^1",
+    "known Sudakov MHV L4 ell^2",
+    "known Sudakov MHV L4 ell^3",
+    "known Sudakov MHV L4 ell^4",
+    "known Sudakov MHV L4 ell^5",
+    "known Sudakov MHV L4 ell^6",
+    "known Sudakov MHV L4 ell^7",
+    "known Sudakov plus endpoint NMHV L4",
+    "known Sudakov MHV L5 ell^1",
+    "known Sudakov MHV L5 ell^2",
+    "known Sudakov MHV L5 ell^3",
+    "known Sudakov MHV L5 ell^4",
+    "known Sudakov MHV L5 ell^5",
+    "known Sudakov MHV L5 ell^6",
+    "known Sudakov MHV L5 ell^7",
+    "known Sudakov MHV L5 ell^8",
+    "known Sudakov MHV L5 ell^9",
+    "known Sudakov plus endpoint NMHV L5",
+    "Zhukovsky principal helicity symbol",
+    "Fourier derivative intertwiner",
+    "four numerical Zhukovsky subleading-power checks",
+    "finite rational b-space tensor simplifies",
+    "arbitrary-x S R harmonic0",
+    "arbitrary-x S R harmonic2",
+    "arbitrary-x S spin3 harmonic0",
+    "arbitrary-x S spin3 harmonic2",
+    "arbitrary-x S total harmonic0",
+    "arbitrary-x S total harmonic2",
+    "arbitrary-x A R harmonic0",
+    "arbitrary-x A R harmonic2",
+    "arbitrary-x A spin3 harmonic0",
+    "arbitrary-x A spin3 harmonic2",
+    "arbitrary-x A total harmonic0",
+    "arbitrary-x A total harmonic2",
+    "supersymmetric rational cancellation",
+    "CP-even versus CP-odd spin-zero difference",
+    "CP-even versus CP-odd spin-two difference",
+    "threshold rational scalar spin-zero",
+    "threshold rational pseudoscalar spin-zero",
+    "threshold rational scalar spin-two",
+    "threshold rational pseudoscalar spin-two",
+    "symmetric weight-two dilogarithm reduction derivative",
+    "Gamma recurrence for bubble times Fourier factor",
+    "four quark daughter finite self-energies",
+    "four gluon CA finite self-energies",
+    "four gluon nf finite self-energies",
+    "finite soft coefficient per Delta",
+    "quark CF assembly from remaining target",
+    "quark CA assembly from remaining target",
+    "gluon CA assembly from remaining target",
+    "gluon nf assembly from remaining target",
+    "24 stored quark collinear finite parts support inferred targets",
+    "symmetric reconstruction ambiguity",
+    "finite-data ambiguity vanishes at 1/10",
+    "finite-data ambiguity vanishes at 3/10",
+    "finite-data ambiguity vanishes at 1/2",
+    "finite-data ambiguity vanishes at 11/20",
+    "finite-data ambiguity vanishes at 5/8",
+    "finite-data ambiguity vanishes at 3/4",
+    "finite-data ambiguity vanishes at 5/6",
+    "finite-data ambiguity vanishes at 9/10",
+    "finite-data ambiguity survives at unmeasured fraction",
+    "cusp constant relation is known input"
+  ],
+  "number_of_named_checks": 127,
+  "passed": true,
+  "not_established": [
+    "complete DPS factorisation",
+    "full arbitrary-x evaluation of common collinear loop integrals",
+    "new general N=4 all-order law",
+    "exhaustive literature priority",
+    "fresh raw-amplitude or primary-ancillary regeneration"
+  ]
+}

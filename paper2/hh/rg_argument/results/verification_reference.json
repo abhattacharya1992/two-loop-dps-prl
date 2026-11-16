@@ -1,0 +1,299 @@
+{
+  "python": "3.13.16",
+  "sympy": "1.15.0.dev",
+  "mpmath": "1.3.0",
+  "representation_table": {
+    "gluon parent, two gluon fusions": {
+      "Delta_C": "C_A",
+      "B": "2*beta0"
+    },
+    "gluon parent, two quark fusions": {
+      "Delta_C": "-C_A + 2*C_F",
+      "B": "6*C_F"
+    },
+    "quark parent, quark and gluon fusions": {
+      "Delta_C": "C_A",
+      "B": "2*beta0"
+    }
+  },
+  "A0_over_C1": "-B*G**2 - 4*Delta_C*G**3/3 - 2*Delta_C*zeta(3)/3",
+  "A2_over_K1": "-2*B*G + B - 4*Delta_C*G**2 + 4*Delta_C*G - 2*Delta_C",
+  "gluon_channel": {
+    "A0_over_C1": "-4*C_A*G**3/3 - 2*C_A*zeta(3)/3 - 2*G**2*beta0",
+    "A2_over_K1": "-4*C_A*G**2 + 4*C_A*G - 2*C_A - 4*G*beta0 + 2*beta0"
+  },
+  "boundary_shift": {
+    "dA0_over_C1": "4*G**3*r_2/3 - G**2*r_1 + 2*r_2*zeta(3)/3",
+    "dA2_over_K1": "4*G**2*r_2 - 2*G*r_1 - 4*G*r_2 + r_1 + 2*r_2",
+    "note": "r1, r2 are not determined by the RG argument"
+  },
+  "kinematics": "-q_T^2/Q*^2 = 1 - yz exactly; 4C_A - 4beta0 = -(8/3)(4N_c - n_f)",
+  "checks": [
+    {
+      "name": "integrated anomalous dimension [integratedgamma]",
+      "kind": "symbolic",
+      "residual": "0"
+    },
+    {
+      "name": "endpoint with Born running coupling [RGendpoint]",
+      "kind": "symbolic",
+      "residual": "0"
+    },
+    {
+      "name": "d/dln(mu) of the candidate reproduces gamma_K [fullcandidate]",
+      "kind": "symbolic",
+      "residual": "0"
+    },
+    {
+      "name": "candidate at mu^2 = Q*^2 e^{-i pi} [RGendpoint]",
+      "kind": "symbolic",
+      "residual": "0"
+    },
+    {
+      "name": "timelike continuation differs by b-independent term",
+      "kind": "symbolic",
+      "residual": "0"
+    },
+    {
+      "name": "table row Delta_C, B: gluon parent, two gluon fusions",
+      "kind": "symbolic",
+      "residual": "0"
+    },
+    {
+      "name": "table row Delta_C, B: gluon parent, two quark fusions",
+      "kind": "symbolic",
+      "residual": "0"
+    },
+    {
+      "name": "table row Delta_C, B: quark parent, quark and gluon fusions",
+      "kind": "symbolic",
+      "residual": "0"
+    },
+    {
+      "name": "C_a - Delta_C = 2(C_A - C_F) for quark fusions [colourdiscriminator]",
+      "kind": "symbolic",
+      "residual": "0"
+    },
+    {
+      "name": "C_a = Delta_C for gluon fusions",
+      "kind": "symbolic",
+      "residual": "0"
+    },
+    {
+      "name": "FP F_0(0) = -G [F0a]",
+      "kind": "symbolic",
+      "residual": "0"
+    },
+    {
+      "name": "FP F_0'(0) = G^2 [F0b]",
+      "kind": "symbolic",
+      "residual": "0"
+    },
+    {
+      "name": "FP F_0''(0) = -4G^3/3 - 2 zeta_3/3 [F0c]",
+      "kind": "symbolic",
+      "residual": "0"
+    },
+    {
+      "name": "F_2'(0)/F_2(0) = 1 - 2G [F2moments]",
+      "kind": "symbolic",
+      "residual": "0"
+    },
+    {
+      "name": "F_2''(0)/F_2(0) = 4G^2 - 4G + 2 [F2moments]",
+      "kind": "symbolic",
+      "residual": "0"
+    },
+    {
+      "name": "A_0^(2)/C_1 = -(4/3) Delta_C G^3 - B G^2 + O(G) [scalarRG]",
+      "kind": "symbolic",
+      "residual": "0"
+    },
+    {
+      "name": "A_2^(2)/K_1 = -4 Delta_C G^2 + (4 Delta_C - 2B) G + const [spinRG]",
+      "kind": "symbolic",
+      "residual": "0"
+    },
+    {
+      "name": "gluon channel: -4C_A/3, -2 beta0, -4C_A, 4C_A - 4beta0 [adjointcandidate]",
+      "kind": "symbolic",
+      "residual": "0"
+    },
+    {
+      "name": "delta A_0^(2)/C_1 = (4/3) r2 G^3 - r1 G^2 [boundarychanges]",
+      "kind": "symbolic",
+      "residual": "0"
+    },
+    {
+      "name": "delta A_2^(2)/K_1 = 4 r2 G^2 + (-4 r2 - 2 r1) G [boundarychanges]",
+      "kind": "symbolic",
+      "residual": "0"
+    },
+    {
+      "name": "shifted coefficients -(4/3)(Delta_C - r2), -(B + r1), -4(Delta_C - r2)",
+      "kind": "symbolic",
+      "residual": "0"
+    },
+    {
+      "name": "tu - m^4 = s p_T^2",
+      "kind": "symbolic",
+      "residual": "0"
+    },
+    {
+      "name": "-q_T^2/Q*^2 = 1 - yz, i.e. G = (1/2) ln(-q_T^2/Q*^2) = (1/2) ln(1 - yz)",
+      "kind": "symbolic",
+      "residual": "0"
+    },
+    {
+      "name": "y + z = s/m^2 - 2 for y = rho + delta, z = 1/rho - delta",
+      "kind": "symbolic",
+      "residual": "0"
+    },
+    {
+      "name": "1 - yz = -delta (1/rho - rho - delta)",
+      "kind": "symbolic",
+      "residual": "0"
+    },
+    {
+      "name": "Q*^2 = m^2 (1 - beta^2)/4 for rho = (1 - beta)/(1 + beta)",
+      "kind": "symbolic",
+      "residual": "0"
+    },
+    {
+      "name": "G from (1/2) log(1 - yz) equals (1/2) log(q_T^2/Q*^2) + i pi/2",
+      "kind": "numerical",
+      "error": "0.0",
+      "tol": "1.0e-25"
+    },
+    {
+      "name": "4C_A - 4beta0 = -(8/3)(4N_c - n_f) for T_F = 1/2",
+      "kind": "symbolic",
+      "residual": "0"
+    },
+    {
+      "name": "R_n1 [Rn1]",
+      "kind": "symbolic",
+      "residual": "0"
+    },
+    {
+      "name": "R_n2 [Rn2]",
+      "kind": "symbolic",
+      "residual": "0"
+    },
+    {
+      "name": "R_b3 [Rb3]",
+      "kind": "symbolic",
+      "residual": "0"
+    },
+    {
+      "name": "R_b4 [Rb4]",
+      "kind": "symbolic",
+      "residual": "0"
+    },
+    {
+      "name": "all four pairs reduce to the common residue [commonresidue]",
+      "kind": "symbolic",
+      "residual": "0"
+    },
+    {
+      "name": "Omega Xi -> A B / Q_kin^2 in the diagonal limit [diagscale]",
+      "kind": "symbolic",
+      "residual": "0"
+    },
+    {
+      "name": "I_low + I_high = ln(T/(Omega Xi)) - i pi + O(eta) [cancel]",
+      "kind": "symbolic",
+      "residual": "0"
+    },
+    {
+      "name": "real-axis integral of triplet n1 at finite delta",
+      "kind": "numerical",
+      "error": "9.72346e-63",
+      "tol": "1.0e-40"
+    },
+    {
+      "name": "real-axis integral of triplet n2 at finite delta",
+      "kind": "numerical",
+      "error": "5.01136e-63",
+      "tol": "1.0e-40"
+    },
+    {
+      "name": "real-axis integral of triplet b3 at finite delta",
+      "kind": "numerical",
+      "error": "0.0",
+      "tol": "1.0e-40"
+    },
+    {
+      "name": "real-axis integral of triplet b4 at finite delta",
+      "kind": "numerical",
+      "error": "1.94469e-62",
+      "tol": "1.0e-40"
+    },
+    {
+      "name": "J by principal-value quadrature, set 1 [Janswer]",
+      "kind": "numerical",
+      "error": "8.13794e-20",
+      "tol": "1.0e-16"
+    },
+    {
+      "name": "J with Omega, Xi interchanged, set 1",
+      "kind": "numerical",
+      "error": "8.13794e-20",
+      "tol": "1.0e-16"
+    },
+    {
+      "name": "J by principal-value quadrature, set 2 [Janswer]",
+      "kind": "numerical",
+      "error": "2.4113e-20",
+      "tol": "1.0e-16"
+    },
+    {
+      "name": "J with Omega, Xi interchanged, set 2",
+      "kind": "numerical",
+      "error": "2.4113e-20",
+      "tol": "1.0e-16"
+    },
+    {
+      "name": "J by principal-value quadrature, set 3 [Janswer]",
+      "kind": "numerical",
+      "error": "5.73274e-22",
+      "tol": "1.0e-16"
+    },
+    {
+      "name": "J with Omega, Xi interchanged, set 3",
+      "kind": "numerical",
+      "error": "5.73274e-22",
+      "tol": "1.0e-16"
+    },
+    {
+      "name": "radial log integral, R=0.3 [radial]",
+      "kind": "numerical",
+      "error": "0.0",
+      "tol": "1.0e-45"
+    },
+    {
+      "name": "radial log integral, R=2.0 [radial]",
+      "kind": "numerical",
+      "error": "7.77877e-62",
+      "tol": "1.0e-45"
+    },
+    {
+      "name": "radial log integral, R=1000.0 [radial]",
+      "kind": "numerical",
+      "error": "0.0",
+      "tol": "1.0e-45"
+    },
+    {
+      "name": "Bessel-Mellin integral m=0 [Besselmellin]",
+      "kind": "numerical",
+      "error": "1.8279e-14",
+      "tol": "1.0e-12"
+    },
+    {
+      "name": "Bessel-Mellin integral m=2 [Besselmellin]",
+      "kind": "numerical",
+      "error": "0.0",
+      "tol": "1.0e-12"
+    }
+  ]
+}

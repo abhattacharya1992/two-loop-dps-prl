@@ -1,0 +1,8 @@
+1  the function G(eps)
+  [ok] G = F_eps times the momentum space factor, at eps = 0.3 + 0.2i: 6.7e-14 (tolerance 1e-12)
+  [ok] Int_0^1 dt t^(-1-eps) (1-t)^(1-eps) = B(-eps, 2-eps) at eps = -0.37: 0.0e+00 (tolerance 1e-08)
+  [ok] Laurent expansion 2/eps^2 + 2/eps + 4 + zeta2: 7.2e-14 (tolerance 1e-11)
+2  result against the stored Laurent coefficients (five x, two helicity structures, six orders)
+  [ok] W1q: 4.2e-11 (tolerance 1e-09)
+  [ok] W2qb: 4.2e-11 (tolerance 1e-09)
+All checks passed.

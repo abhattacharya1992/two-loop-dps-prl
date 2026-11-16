@@ -1,0 +1,14 @@
+ 1  Dc X_mu^2 - 2 Dc X X_mu + B X_mu = -Dc X^2 + B X + Dc L_*^2 + B L_*
+ 2  FP Phi_0, Phi_0', Phi_0'' = -G, G^2, -4/3 G^3 - 2/3 zeta3 (no G^1 from X, X^2); Phi_2'/Phi_2 = 1 - 2G, Phi_2''/Phi_2 = 4G^2 - 4G + 2; nu = 2 constant B - 2 Dc
+ 3  gluon variable: -Dc X_g^2 + (B - 2 Dc kappa) X_g + Dc L_g^2 - 2 Dc kappa L_g + B L_g, Dc kappa = 2 (C_A - C_F) L_x
+ 4  [2 I^(1)]_{eps^0} = 7 zeta2 C_A - i pi beta0 at mu^2 = s; remainders = MS - [2I]_0 c1 (Catani), MS - C_A zeta2 c1 (qT)
+ 5  C_A(134/9 - 5 zeta2) - (40/9) T_F n_f = 2 gamma^(1)/gamma^(0) - C_A zeta2
+ 6  F_eps = e^{-eps gamma} Gamma(1-2eps)/(Gamma(1+eps) Gamma(1-eps)): transform of k^i (mu^2 e^gamma/k^2)^eps relative to k^i, at mu b = b0
+ 7  S = 2 Dc e^{-eps gamma} Gamma(-eps)[2/eta + ln(nu^2 b^2/b0^2) - gamma - psi(-eps)]; e^{-eps gamma} Gamma(-eps) = -1/eps - zeta2 eps/2 + ..., no eps^0 term
+ 8  T_F n_f: 1/eps of J1 = +4/3 times the tree (to 4e-14), of each daughter self-energy -4/3; kernel 2(4/3) - 4(4/3) = -8/3
+ 9  k-space T4 = spin 3 + (S1+S2+S3)/4; spin 1 -> i^1, spin 3 -> i^3 = -i^1: T4 -> (S1 + S2 + S3)/2 - T4 in b space (eps^0)
+10  R/tree = x(1-x)c/3 in (+;++), 0 in (+;+-), (+;-+); the flip (+;--) has T4 only; T4 of J1 = 2c/3, finite, at the five x (to 3e-13)
+11  poles of 2 I_K + beta0/eps: C_A[2/eps^2 + (22/3 - 4L_x)/eps] - (8/3)T_F n_f/eps (gluons), C_F[4/eps^2 + (6 - 4L_x)/eps] - 2C_A/eps^2 (quarks); imaginary pole 2 pi i Dc/eps
+12  h = C_A(-L^2 + c + zeta_2) from the renormalised form factors, c = 0 (gg -> H), 4 (gg -> A); poles -8C_A/eps^2 + (2 beta0 - 4 C_A L)/eps; the two hard functions differ by 4 C_A
+13  N = 4, FDH: daughter self-energies (5-3eps)/(3-2eps) - 8(1-eps)/(3-2eps) - (3+eps)/(3-2eps) = -2; hexagon: h_1 + h_2 - M6hat/2 + kernel poles finite, = -X^2/2 + ln x ln(1-x) + ln y ln(1-y) + 7 zeta_2/2
+passed

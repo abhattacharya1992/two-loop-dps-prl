@@ -1,0 +1,6 @@
+dps 76: 231 s
+dps 96: 356 s
+  N2         agreeing digits   29.7   loss  46.3   |value| 523169.0
+  N_Nf       agreeing digits   63.6   loss  12.4   |value| 92438.2
+  Nf2        agreeing digits   73.4   loss   2.6   |value| 625.936
+  Nf_over_N  agreeing digits   62.5   loss  13.5   |value| 2517.24

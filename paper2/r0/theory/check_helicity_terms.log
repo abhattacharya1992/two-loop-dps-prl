@@ -1,0 +1,8 @@
+x = 1/10 CA  spin-1 part minus R, deviation from the tree 1.9e-07   nu=0: R +0.059043495, spin 3 -0.000000000, (2/3)c/F +0.059043495   nu=2: R +0.000000000, spin 3 +0.091435538, (2/3)c/F +0.091435538
+x = 1/10 nf  spin-1 part minus R, deviation from the tree 8.1e-08   nu=0: R -0.118086991, spin 3 +0.000000000, (2/3)c/F -0.118086991   nu=2: R +0.000000000, spin 3 -0.182871076, (2/3)c/F -0.182871076
+x = 3/10 CA  spin-1 part minus R, deviation from the tree 2.7e-08   nu=0: R +0.128652821, spin 3 +0.000000000, (2/3)c/F +0.128652821   nu=2: R +0.000000000, spin 3 +0.564061241, (2/3)c/F +0.564061241
+x = 3/10 nf  spin-1 part minus R, deviation from the tree 2.8e-09   nu=0: R -0.257305642, spin 3 +0.000000000, (2/3)c/F -0.257305642   nu=2: R +0.000000000, spin 3 -1.128122482, (2/3)c/F -1.128122482
+x = 1/2 CA  spin-1 part minus R, deviation from the tree 2.0e-08   nu=0: R +0.148148148, spin 3 +0.000000000, (2/3)c/F +0.148148148   nu=2: R -0.000000000, spin 3 +1.333333333, (2/3)c/F +1.333333333
+x = 1/2 nf  spin-1 part minus R, deviation from the tree 1.3e-09   nu=0: R -0.296296296, spin 3 +0.000000000, (2/3)c/F -0.296296296   nu=2: R +0.000000000, spin 3 -2.666666667, (2/3)c/F -2.666666667
+largest deviation 1.9e-07
+passed: the nu = 0 term comes from R, the nu = 2 term from the helicity flip

@@ -1,0 +1,4 @@
+A2_A_2l_qT 2l_CA: route A (81.7460193812477 + 80.7532466072436j)  route B (81.7460193812477 + 80.7532466072436j)  rel. diff 2.15e-58  (masters 15 s)
+A2_A_2l_qT 2l_CF: route A (-34.9004809731954 + 27.535302991909j)  route B (-34.9004809731954 + 27.535302991909j)  rel. diff 2.03e-58  (masters 15 s)
+A2_A_2l_qT colour-free part (CA = CF = 0): (0.0 + 0.0j)
+largest relative difference: 2.15e-58

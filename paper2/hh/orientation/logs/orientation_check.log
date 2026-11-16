@@ -1,0 +1,9 @@
+Crossed box, orientations A and B, 3 kinematic points x 4 gluon helicities x 9 Z polarisations,
+generic loop momenta and loop momenta collinear to p1:
+   v^2 Z couplings              expected B/A = +1
+   a^2 Z couplings              expected B/A = +1
+   v a cross terms              expected B/A = -1
+   scalar (Yukawa) vertices     expected B/A = +1
+largest deviation of B/A from the expected value: 3.2e-10
+So the full amplitude contains the crossed box twice for the v^2 + a^2 and scalar parts:
+a coefficient extracted from the full gg -> ZZ or gg -> HH amplitude is 2 x the single-box value.

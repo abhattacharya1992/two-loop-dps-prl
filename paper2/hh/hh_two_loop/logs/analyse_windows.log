@@ -1,0 +1,12 @@
+beta = 1/4  spin0 G^3 (N^2): paper model, smallest window: rel. dev. 7.2e-14; plain: 6.7e-8; pT2: 1.5e-8; pT2 G: 2.0e-9; pT2 G^2: 7.2e-14
+beta = 1/4  spin0 G^2 (N^2): paper model, smallest window: rel. dev. 4.7e-13; plain: 4.3e-7; pT2: 9.6e-8; pT2 G: 1.3e-8; pT2 G^2: 4.7e-13
+beta = 1/4  spin2 G^2 (N^2): paper model, smallest window: rel. dev. 2.9e-14; plain: 4.0e-8; pT2: 1.1e-8; pT2 G: 1.6e-9; pT2 G^2: 2.9e-14
+beta = 1/4  spin2 G^1 (N^2): paper model, smallest window: rel. dev. 2.7e-13; plain: 3.7e-7; pT2: 1.1e-7; pT2 G: 1.5e-8; pT2 G^2: 2.7e-13
+beta = 1/2  spin0 G^3 (N^2): paper model, smallest window: rel. dev. 3.7e-13; plain: 1.3e-7; pT2: 2.9e-8; pT2 G: 3.9e-9; pT2 G^2: 3.7e-13
+beta = 1/2  spin0 G^2 (N^2): paper model, smallest window: rel. dev. 2.3e-12; plain: 7.8e-7; pT2: 1.8e-7; pT2 G: 2.5e-8; pT2 G^2: 2.3e-12
+beta = 1/2  spin2 G^2 (N^2): paper model, smallest window: rel. dev. 1.1e-13; plain: 6.6e-8; pT2: 2.0e-8; pT2 G: 2.8e-9; pT2 G^2: 1.1e-13
+beta = 1/2  spin2 G^1 (N^2): paper model, smallest window: rel. dev. 1.0e-12; plain: 5.8e-7; pT2: 1.8e-7; pT2 G: 2.6e-8; pT2 G^2: 1.0e-12
+beta = 2/3  spin0 G^3 (N^2): paper model, smallest window: rel. dev. 1.1e-12; plain: 1.7e-7; pT2: 3.8e-8; pT2 G: 5.2e-9; pT2 G^2: 1.1e-12
+beta = 2/3  spin0 G^2 (N^2): paper model, smallest window: rel. dev. 6.6e-12; plain: 1.0e-6; pT2: 2.3e-7; pT2 G: 3.2e-8; pT2 G^2: 6.6e-12
+beta = 2/3  spin2 G^2 (N^2): paper model, smallest window: rel. dev. 2.7e-13; plain: 9.2e-8; pT2: 3.0e-8; pT2 G: 4.3e-9; pT2 G^2: 2.7e-13
+beta = 2/3  spin2 G^1 (N^2): paper model, smallest window: rel. dev. 2.4e-12; plain: 8.0e-7; pT2: 2.7e-7; pT2 G: 3.8e-8; pT2 G^2: 2.4e-12

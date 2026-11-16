@@ -1,0 +1,12 @@
+(-7/10, -3/10) 1p: nf/orig at points ['1.000000', '1.000000', '1.000000', '1.000000', '1.000000']
+     orig -51.77251198  normal form -51.77251198  sectors (tanh-sinh) -51.77251198  Sector.value -51.77251198
+(-7/10, -3/10) 1p: nf/orig at points ['1.000000', '1.000000', '1.000000', '1.000000', '1.000000']
+     orig +47.69333219  normal form +47.69333219  sectors (tanh-sinh) +47.69333219  Sector.value +47.69333219
+(-3/10, 0) 1p: nf/orig at points ['1.000000', '1.000000', '1.000000', '1.000000', '1.000000']
+     orig -15.24837747  normal form -15.24837747  sectors (tanh-sinh) -15.24837747  Sector.value -15.24837747
+(-3/10, 0) 1p: nf/orig at points ['1.000000', '1.000000', '1.000000', '1.000000', '1.000000']
+     orig +13.07336758  normal form +13.07336758  sectors (tanh-sinh) +13.07336758  Sector.value +13.07336758
+(0, 3/10) 1p: nf/orig at points ['1.000000', '1.000000', '1.000000', '1.000000', '1.000000']
+     orig +1.70643027  normal form +1.70643027  sectors (tanh-sinh) +1.70643027  Sector.value +1.70643027
+(0, 3/10) 2p: nf/orig at points ['1.000000', '1.000000', '1.000000', '1.000000', '1.000000']
+     orig +0.47087313  normal form +0.47087313  sectors (tanh-sinh) +0.47087313  Sector.value +0.47087313

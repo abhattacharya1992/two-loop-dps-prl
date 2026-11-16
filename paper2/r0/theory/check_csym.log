@@ -1,0 +1,4 @@
+/workspace/scratch/acabc0c35705/DPS_fixes/paper2/r0/theory/check_csym.py:37: IntegrationWarning: The integral is probably divergent, or slowly convergent.
+  re_ = integrate.quad(lambda a: complex(f(a)).real, 0, 1, limit=400, epsabs=1e-11, epsrel=1e-10)[0]
+z = +0.100: x=3/10 ek (11.79898099837485+0j)   x=7/10 (-z) ke (11.798980998272683+0j)   |   x=3/10 ke (-19.963445503447716+0j)   x=7/10 (-z) ek (-19.963445503068105+0j)
+z = -0.100: x=3/10 ek (-6.955557536108728+0j)   x=7/10 (-z) ke (-6.955557536034643+0j)   |   x=3/10 ke (7.572457165809941+0j)   x=7/10 (-z) ek (7.5724571663885065+0j)

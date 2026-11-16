@@ -1,0 +1,9 @@
+spacelike s = -c:  c * sum of regions = -log(a)*log(b) + log(a)*log(c) + log(b)*log(c) - log(c)**2 - pi**2/3
+   a=0.001, b=0.001: regions -51.006951+0.000000j   exact -51.077533   rel.diff 1.4e-03
+   a=0.002, b=0.0005: regions -50.526498+0.000000j   exact -50.615621   rel.diff 1.8e-03
+timelike s = +c:  c * sum of regions = log(a)*log(b) - log(a)*log(c) + I*pi*log(a) - log(b)*log(c) + I*pi*log(b) + log(c)**2 - 2*I*pi*log(c) - 2*pi**2/3
+   a=0.001, b=0.001: regions 41.13735-43.40271j   continued leading-power result 41.13735-43.40271j
+   exact timelike integral (41.0868417240926 - 43.3286831555021j)  relative power correction 0.0015
+   a=0.002, b=0.0005: regions 40.65689-43.40271j   continued leading-power result 40.65689-43.40271j
+   exact timelike integral (40.5928934247239 - 43.3101994893249j)  relative power correction 0.0019
+laboratory passed: h + c1 + c2 + us reproduces the Sudakov limit, with the Coulomb phase from the ultrasoft region

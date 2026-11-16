@@ -1,0 +1,8 @@
+W2q 0.7s support: [(0, 3/10)] params: [[1]]
+W2qb 0.3s support: [(0, 3/10)] params: [[0]]
+W1q 0.6s support: [(0, 3/10), (3/10, 7/10)] params: [[0], [0]]
+W1qb 1.0s support: [(0, 3/10), (3/10, 7/10)] params: [[1], [1]]
+Vqq 10.4s support: [(-3/10, 0), (0, 3/10), (3/10, 7/10)] params: [[1, 1], [1, 2], [1, 2]]
+Vggq 2.7s support: [(0, 3/10), (3/10, 7/10), (7/10, 1)] params: [[1], [1], [1]]
+W1g 1.0s support: [(0, 3/10), (3/10, 7/10)] params: [[1], [1]]
+W2g 0.5s support: [(0, 3/10)] params: [[1]]

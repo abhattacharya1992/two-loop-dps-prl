@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "status": "predictions fixed before unequal-virtuality amplitude extraction",
+  "base_main": "3d59dd953735bfbe2e3f8ca48dfd12b9e7b86195",
+  "configuration": {"s": "15/2", "ma2": "1", "mb2": "2"},
+  "scheme": "VVamp class A massless quarks; qT finite remainder; mu2=s; alpha_s/(2*pi) per loop",
+  "forward_scan": "t=t_plus-sqrt(ma2*mb2)*10^(-k), k=4,...,12",
+  "logarithm": "G=0.5*log(s*pT2/(ma2*mb2))+i*pi/2",
+  "L": "log(sqrt(ma2*mb2)/s)",
+  "assumption": "Same r1=r2=0 two-loop kernel boundary as the current Letter; this is what the extension tests, not a separately established unequal-virtuality theorem.",
+  "helicities": ["++++", "++--", "----", "--++"],
+  "normalization": "c1 is the independently extracted one-loop coefficient of G for the same helicity",
+  "predictions_over_c1": {
+    "2l_CF": {"G3": "-4/3", "G2": "-2*L-3"},
+    "2l_CA": {"G3": "2/3", "G2": "2*L"}
+  },
+  "benchmark_values": {
+    "L": "-1.6683294302622921018701563879614484920598417105509",
+    "CF_G3": "-1.3333333333333333333333333333333333333333333333333",
+    "CF_G2": "0.33665886052458420374031277592289698411968342110177",
+    "CA_G3": "0.66666666666666666666666666666666666666666666666667",
+    "CA_G2": "-3.3366588605245842037403127759228969841196834211018"
+  },
+  "fit_plan": "Unconstrained complex polynomial in G through degree 3, plus pT2/sqrt(ma2*mb2) times polynomial through degree P; compare P=0,1,2,3, sliding windows and overdetermined fits. One-loop degree 1 plus power corrections through degree 2. No predicted coefficients are fixed in fits.",
+  "out_of_scope": ["unequal-virtuality finite matching r0", "complete operator factorisation theorem", "phenomenological rates", "changes to main or publication manuscripts"]
+}

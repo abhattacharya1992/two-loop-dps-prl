@@ -1,0 +1,254 @@
+{
+  "arithmetic": "exact (Gaussian rationals; colour in Q(i, sqrt 3))",
+  "seed": 20261112,
+  "dimension": 6,
+  "vector dimension": 6,
+  "sections": "ABCDEF",
+  "generators": "one per section, seeded with the seed and the letter of the section",
+  "A conventions": [
+    "Clifford algebra and gamma5",
+    "off-shell Ward identity of the quark graphs (a), (b), (c)",
+    "gauge invariance of the gggg tree (three- and four-gluon vertices)",
+    "gauge invariance of the gggH tree (ggH and gggH vertices)"
+  ],
+  "B explicit SU(3), (U.4) and (U.6)": {
+    "fundamental": 1,
+    "adjoint": 1
+  },
+  "C g->qqbar, one gluon": {
+    "points": 3,
+    "leading orders": {
+      "tree (numerator order, lines)": [
+        1,
+        2
+      ],
+      "graphs (numerator order, lines)": {
+        "a": [
+          1,
+          3
+        ],
+        "b": [
+          1,
+          3
+        ],
+        "c": [
+          1,
+          3
+        ],
+        "W": [
+          1,
+          3
+        ]
+      }
+    },
+    "contracted with the hard vertices and the second sector: numerator orders": {
+      "a": 2,
+      "b": 2,
+      "c": 2,
+      "W": 2
+    },
+    "relative power of the other polarisations (at least)": {
+      "G": 1,
+      "transverse x": 1,
+      "transverse y": 1,
+      "transverse 4": 1,
+      "transverse 5": 1,
+      "p1": 2
+    }
+  },
+  "D g->gg, one gluon": {
+    "points": 2,
+    "polarisation pairs per point": 16,
+    "leading orders": {
+      "a": {
+        "numerator order": 2,
+        "lines": 3
+      },
+      "b": {
+        "numerator order": 2,
+        "lines": 3
+      },
+      "c": {
+        "numerator order": 2,
+        "lines": 3
+      },
+      "d1": {
+        "numerator order": 2,
+        "lines": 2
+      },
+      "d2": {
+        "numerator order": 2,
+        "lines": 2
+      },
+      "d3": {
+        "numerator order": 2,
+        "lines": 2
+      },
+      "e1": {
+        "numerator order": 2,
+        "lines": 2
+      },
+      "e2": {
+        "numerator order": 2,
+        "lines": 2
+      },
+      "W": {
+        "numerator order": 2,
+        "lines": 3
+      }
+    },
+    "relative power (at least)": {
+      "a": 0,
+      "b": 0,
+      "c": 0,
+      "d1": 2,
+      "d2": 2,
+      "d3": 2,
+      "e1": 2,
+      "e2": 2,
+      "W": 0,
+      "polarisation G": 1,
+      "polarisation transverse x": 1,
+      "polarisation transverse y": 1,
+      "polarisation transverse 4": 1,
+      "polarisation transverse 5": 1,
+      "polarisation p1": 2
+    },
+    "Wilson-line term at the first point, by polarisation pair": [
+      "-1160535352*I/1147703125",
+      "1269901248*I/1147703125",
+      "-299642112*I/229540625",
+      "-183725696*I/1147703125",
+      "-1795827264*I/1147703125",
+      "-2152623064*I/1147703125",
+      "4790016*I/229540625",
+      "308497728*I/1147703125",
+      "2516887296*I/1147703125",
+      "1345994496*I/1147703125",
+      "-444094424*I/229540625",
+      "-483259392*I/1147703125",
+      "133637504*I/1147703125",
+      "-110421696*I/1147703125",
+      "40449024*I/229540625",
+      "-1549857208*I/1147703125"
+    ]
+  },
+  "E g->qqbar, two gluons": {
+    "points": 2,
+    "numerator orders (None: vanishes identically)": {
+      "pp12": 1,
+      "pp21": 1,
+      "p1k2": 1,
+      "p2k1": 1,
+      "p1kb2": 1,
+      "p2kb1": 1,
+      "kk12": 1,
+      "kk21": 1,
+      "kbkb12": 1,
+      "kbkb21": 1,
+      "k1kb2": 1,
+      "k2kb1": 1,
+      "s1": null,
+      "s2": null,
+      "s3": null,
+      "W12": 1,
+      "W21": 1
+    }
+  },
+  "F generic g->gg builder reproduces section D": true,
+  "F g->gg, two gluons": {
+    "points": 2,
+    "polarisation pairs per point": 16,
+    "graphs": 41,
+    "leading-power graphs": [
+      "K(1) Kb(2)",
+      "K(1) P(2)",
+      "KK (1 then 2)",
+      "KK (2 then 1)",
+      "Kb(1) K(2)",
+      "Kb(1) P(2)",
+      "KbKb (1 then 2)",
+      "KbKb (2 then 1)",
+      "P(1) K(2)",
+      "P(1) Kb(2)",
+      "PP (1 then 2)",
+      "PP (2 then 1)"
+    ],
+    "relative power of the other graphs (at least)": {
+      "P(1) S(2)": 2,
+      "P(1) H1(2)": 2,
+      "P(1) H2(2)": 2,
+      "K four-gluon": 2,
+      "K(1) S(2)": 2,
+      "K(1) H1(2)": 2,
+      "K(1) H2(2)": 2,
+      "Kb four-gluon": 2,
+      "Kb(1) S(2)": 2,
+      "Kb(1) H1(2)": 2,
+      "Kb(1) H2(2)": 2,
+      "S(1) P(2)": 2,
+      "S(1) K(2)": 2,
+      "S(1) Kb(2)": 2,
+      "S(1) H1(2)": 4,
+      "S(1) H2(2)": 4,
+      "H1(1) P(2)": 2,
+      "H1(1) K(2)": 2,
+      "H1(1) Kb(2)": 2,
+      "H1(1) S(2)": 4,
+      "H1 ggggH": 4,
+      "H1(1) H2(2)": 4,
+      "H2(1) P(2)": 2,
+      "H2(1) K(2)": 2,
+      "H2(1) Kb(2)": 2,
+      "H2(1) S(2)": 4,
+      "H2(1) H1(2)": 4,
+      "H2 ggggH": 4
+    },
+    "vanish identically (all colour structures)": [
+      "P four-gluon"
+    ],
+    "Wilson-line terms at the first point, by polarisation pair and order": [
+      "81436/818125",
+      "162872/350625",
+      "16988/116875",
+      "237832/350625",
+      "-51336/818125",
+      "-34224/116875",
+      "1767/163625",
+      "1178/23375",
+      "-20708/163625",
+      "-41416/70125",
+      "546/2125",
+      "2548/2125",
+      "-6572/163625",
+      "-13144/70125",
+      "-1767/65450",
+      "-589/4675",
+      "51336/818125",
+      "34224/116875",
+      "-67084/818125",
+      "-134168/350625",
+      "127564/818125",
+      "255128/350625",
+      "1767/163625",
+      "1178/23375",
+      "-186/6545",
+      "-124/935",
+      "93/1309",
+      "62/187",
+      "-186/6545",
+      "-124/935",
+      "76/595",
+      "152/255"
+    ]
+  },
+  "passed": true,
+  "assumed": [
+    "Feynman gauge; the effective ggH, gggH and ggggH vertices of L = -(C/4) H G^2",
+    "the second sector enters through its tree with the ultrasoft momentum removed and its current proportional to p2 at leading power (the mirror image of the suppression of the transverse and p1 polarisations of the first sector, checked in C and D)"
+  ],
+  "not checked here": [
+    "ultrasoft gluons that first meet at a three-gluon vertex or carry a self-energy (one-gluon attachments, covered by (U.4))",
+    "completeness of the region list (item 2) and statement (ii) of Sec. 7"
+  ]
+}

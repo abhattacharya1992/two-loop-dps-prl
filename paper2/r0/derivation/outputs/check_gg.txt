@@ -1,0 +1,120 @@
+1  numerators, with x a symbol
+  [ok] tree splitting on the pole of (p1 - K)^2: -2 [S1 - S2/(1-x) - S3/x]
+  [ok] gluon from the Wilson line entering a four-gluon vertex: the six numerators vanish
+  [ok] the two orientations of the ghost loop have opposite numerators
+  [ok] triangles: numerators linear in K^- and in l^-, with no term K^- l^-
+  [ok] all other numerators are independent of K^- and l^-
+2  residues in the minus components, against quadrature in two variables with finite imaginary parts (x = 0.3, z = 0.12)
+  [ok] bubble: quadrature against residues: 1.1e-13 (tolerance 1e-09)
+  [ok] bubble: residues/(2 pi)^2 = -1/(x k^2 D): 8.9e-16 (tolerance 1e-12)
+  [ok] W1kb: K^- integral against its residue at three values of l^-: 2.9e-15 (tolerance 1e-09)
+  [ok] W1kb: l^- integral against its residue: 1.0e-14 (tolerance 1e-09)
+  [ok] W1kb: residues/(2 pi)^2 = -(1-zeta)/((1-x) q_perp^2 D), zeta = z/x: 2.2e-16 (tolerance 1e-12)
+3  parameter integrals against quadrature (x = 0.3), V = 1 - x zeta - (1-x) s
+  [ok] Int dzeta zeta^a Int ds s^b (s V)^(-eps) to order eps, and Int dzeta zeta^a Int ds s^(b-1-eps) V^(-1-eps) to order eps^0: 2.5e-14 (tolerance 1e-10)
+  [ok] a = -1, b = 0: 1/eps^2 + ln(1-x)/eps + zeta2 - 2 Li2(x) - ln^2(1-x)/2, approached linearly in eps (ratios 1.937, 1.968)
+  [ok] W1kb: Int dzeta (1-zeta)^(-1-eta) Int ds s^(b-1-eps) V^(-1-eps) = B(-eps-eta, b-eps) Int drho rho^(-1-eta) [(1-x) + x rho]^(-1-eps), relative, at eps = -0.3, eta = -0.2: 7.3e-10 (tolerance 1e-06)
+  [ok] W1kb: Int drho/rho {[1 + x rho/(1-x)]^(-1-eps) - 1} = ln(1-x) - eps Li2(x) + O(eps^2): 2.2e-11 (tolerance 1e-08)
+4  the nine independent diagrams in closed form, with x a symbol (c4 is absent where not listed)
+  [ok] W1k: computed result equals the closed form
+       eta^0  c1:  eps^-2: 2;  eps^-1: 1 + 2 ln(1-x);  eps^0: 2 + zeta2 + ln(1-x) + ln^2(1-x)
+       eta^0  c2:  eps^-2: 2;  eps^-1: 1 + 2 ln(1-x);  eps^0: 2 + zeta2 + ln(1-x) + ln^2(1-x)
+       eta^0  c3:  eps^-2: 2;  eps^-1: 1 + 2 ln(1-x);  eps^0: 2 + zeta2 + ln(1-x) + ln^2(1-x)
+  [ok] Vbuba1: computed result equals the closed form
+       eta^0  c1:  eps^-1: 3/4;  eps^0: 3/2 + (3/4) ln(1-x)
+       eta^0  c2:  eps^-1: 3/4;  eps^0: 3/2 + (3/4) ln(1-x)
+  [ok] Vbuba2: computed result equals the closed form
+       eta^0  c1:  eps^-1: 3/8;  eps^0: 3/4 + (3/8) ln(1-x)
+       eta^0  c2:  eps^-1: 3/8;  eps^0: 3/4 + (3/8) ln(1-x)
+  [ok] Vbuba3: computed result equals the closed form
+       eta^0  c1:  eps^-1: -3/8;  eps^0: -3/4 - (3/8) ln(1-x)
+       eta^0  c2:  eps^-1: -3/8;  eps^0: -3/4 - (3/8) ln(1-x)
+  [ok] W1g: computed result equals the closed form
+       eta^0  c1:  eps^-2: -2;  eps^-1: -3 ln(1-x);  eps^0: -3 zeta2 + 2 Li2(x) - (1/2) ln(1-x) - (3/2) ln^2(1-x)
+       eta^0  c2:  eps^-2: -2;  eps^-1: -x - 2 ln(1-x);  eps^0: -2 x - 3 zeta2 + 2 Li2(x) - ln(1-x) - ln^2(1-x)
+       eta^0  c3:  eps^-2: -2;  eps^-1: -1/2 x - (5/2) ln(1-x);  eps^0: -5/4 x - 3 zeta2 + 2 Li2(x) + (3/4 - 3/4 x) ln(1-x) - (5/4) ln^2(1-x)
+  [ok] W1kb: computed result equals the closed form
+       1/eta  c1:  eps^-1: -2
+       1/eta  c2:  eps^-1: -2
+       1/eta  c3:  eps^-1: -2
+       eta^0  c1:  eps^-2: 2;  eps^-1: 2 ln x + 2 ln(1-x);  eps^0: 3 zeta2 - 2 Li2(x) + ln(1-x)
+       eta^0  c2:  eps^-2: 2;  eps^-1: 1/2 x + 2 ln x + 3 ln(1-x);  eps^0: x + 3 zeta2 - 2 Li2(x) + (1/2) ln(1-x) + (1/2) ln^2(1-x)
+       eta^0  c3:  eps^-2: 2;  eps^-1: 2 ln x + 2 ln(1-x);  eps^0: -1/4 x + 3 zeta2 - 2 Li2(x) + (7/4 - 3/4 x) ln(1-x)
+  [ok] Vtri: computed result equals the closed form
+       eta^0  c1:  eps^-1: 5/4 - ln x - ln(1-x);  eps^0: 7/3 - (3/2) ln x - (3/2) ln(1-x) - (1/2) ln^2 x - (1/2) ln^2(1-x)
+       eta^0  c2:  eps^-1: -1/2 + x - (3/2) ln x - ln(1-x);  eps^0: -5/12 + 5/4 x - (17/4) ln x - (3/2) ln(1-x) - (3/4) ln^2 x - (1/2) ln^2(1-x)
+       eta^0  c3:  eps^-1: 1/2 - x - ln x - (3/2) ln(1-x);  eps^0: 5/6 - 5/4 x - (3/2) ln x - (17/4) ln(1-x) - (1/2) ln^2 x - (3/4) ln^2(1-x)
+       eta^0  c4:  eps^0: 3/2
+  [ok] Vgh1: computed result equals the closed form
+       eta^0  c1:  eps^-1: -1/24;  eps^0: -1/9 - (1/24) ln x - (1/24) ln(1-x)
+       eta^0  c2:  eps^-1: -1/24;  eps^0: -11/72 + 1/24 x - (1/24) ln x - (1/24) ln(1-x)
+       eta^0  c3:  eps^-1: -1/24;  eps^0: -1/9 - 1/24 x - (1/24) ln x - (1/24) ln(1-x)
+       eta^0  c4:  eps^0: -1/12
+  [ok] Vq1: computed result equals the closed form (factor -i left out)
+       eta^0  c1:  eps^-1: -4/3;  eps^0: -20/9 - (4/3) ln x - (4/3) ln(1-x)
+       eta^0  c2:  eps^-1: -4/3;  eps^0: -14/9 - 2/3 x - (4/3) ln x - (4/3) ln(1-x)
+       eta^0  c3:  eps^-1: -4/3;  eps^0: -20/9 + 2/3 x - (4/3) ln x - (4/3) ln(1-x)
+       eta^0  c4:  eps^0: 4/3
+  [ok] W1kb: at zeta = 1 the numerator is s times the tree splitting, so the coefficient of 1/eta is 2 e^(-eps gamma_E) Gamma(-eps) to all orders in eps
+5  all entries against the stored Laurent coefficients (five x, four helicity structures, eta^-1 and eta^0, eps^-2 to eps^0)
+  [ok] the stored files hold the same 23 entries
+  [ok] Vtri: 8.7e-07 (tolerance 2e-06)
+  [ok] Vgh1: 1.4e-09 (tolerance 5e-08)
+  [ok] Vgh2: 1.4e-09 (tolerance 5e-08)
+  [ok] Vq1: 1.4e-08 (tolerance 5e-08)
+  [ok] Vq2: 1.4e-08 (tolerance 5e-08)
+  [ok] Vbuba1: 1.6e-10 (tolerance 5e-08)
+  [ok] Vbubb1: 1.6e-10 (tolerance 5e-08)
+  [ok] Vbuba2: 5.8e-11 (tolerance 5e-08)
+  [ok] Vbubb2: 5.8e-11 (tolerance 5e-08)
+  [ok] Vbuba3: 9.8e-11 (tolerance 5e-08)
+  [ok] Vbubb3: 9.8e-11 (tolerance 5e-08)
+  [ok] W1g: 1.8e-09 (tolerance 5e-08)
+  [ok] W1kb: 5.5e-09 (tolerance 5e-08)
+  [ok] W1k: 1.6e-10 (tolerance 5e-08)
+  [ok] W1v41: stored coefficients vanish
+  [ok] W1v42: stored coefficients vanish
+  [ok] W1v43: stored coefficients vanish
+  [ok] W2g: 2.0e-09 (tolerance 5e-08)
+  [ok] W2k: 5.5e-09 (tolerance 5e-08)
+  [ok] W2kb: 1.6e-10 (tolerance 5e-08)
+  [ok] W2v41: stored coefficients vanish
+  [ok] W2v42: stored coefficients vanish
+  [ok] W2v43: stored coefficients vanish
+  [ok] Vtri at x = 1/2, stored with quadrature orders 96, 72, 40: 1.1e-08 (tolerance 5e-08)
+6  colour sum, with x a symbol
+       colour factors in units of C_A (the quark triangles in units of T_F n_f, with the factor -i absorbed):
+         Vq1 -1/2, Vq2 1/2, Vtri 1/2, Vgh1 1/2, Vgh2 -1/2, Vbuba1 -1, Vbubb1 1, Vbuba2 -1/2, Vbubb2 1/2
+         Vbuba3 1/2, Vbubb3 -1/2, W1g 1/2, W1kb -1/2, W1k 1, W2g 1/2, W2k 1/2, W2kb 1
+  [ok] C_A:      tree splitting times 2/(eta eps) + (1/3 - 2L)/eps + 5/9 - 2 zeta2 - (5/3) L - 2 ln x ln(1-x) + rho/3,  c4 = 2/3
+  [ok] T_F n_f:  tree splitting times 4/(3 eps) + 20/9 + (4/3) L - (2/3) rho,  c4 = -4/3
+       with L = ln(x(1-x)) and rho = 0, 1-x, x for S1, S2, S3
+7  daughter self-energies, Eq. (eq:sigma), and soft function, Eq. (eq:softeta), of the Supplement
+  [ok] the two daughters: C_A [10/(3 eps) + 62/9 + (5/3) L] + T_F n_f [-8/(3 eps) - 40/9 - (4/3) L]: 2.7e-15 (tolerance 1e-10)
+  [ok] S/Delta_C = -4/(eta eps) + 2/eps^2 - zeta2: 3.8e-14 (tolerance 1e-10)
+  [ok] rapidity integral Int_0^inf dt/t |1/t - t|^(-eta) = B(eta/2, 1-eta) at eta = 0.3: 5.2e-14 (tolerance 1e-08)
+  [ok] B(eta/2, 1-eta) = 2/eta + O(eta) (ratios 2.008, 2.004)
+  [ok] rapidity divergences cancel: J1 + J2 gives 4 C_A/(eta eps), the soft function -4 Delta_C/(eta eps) with Delta_C = C_A
+  [ok] single pole of J1 + J2 + the four daughter self-energies: (B - 4 C_A L)/eps times the tree splitting, with B = 2 beta_0 as in the Letter
+8  r0 from J1, J2, the soft function and the daughter self-energies, against Eq. (7) of the Letter, with x a symbol
+  [ok] T4 - (S1 + S2 + S3)/4 is symmetric and traceless in two transverse dimensions: the third harmonic in the direction of k
+  [ok] Int_0^inf dt e^(-a t) J_m(t) = [sqrt(1+a^2) - a]^m/sqrt(1+a^2) for m = 1, 3 at a = 0.1; both tend to 1 as a -> 0: 1.6e-14 (tolerance 1e-08)
+       The transform of the harmonic m with radial dependence 1/|k| is i^m/b, so the third harmonic changes sign
+       relative to the tree splitting: T4 -> (S1 + S2 + S3)/4 - [T4 - (S1 + S2 + S3)/4] = (S1 + S2 + S3)/2 - T4.
+  [ok] the colour sum is symmetric under the exchange of the two daughters: x <-> 1-x with S2 <-> S3
+  [ok] gg -> HH: every overlap has the form alpha (e.e') + beta (e.b)(e'.b)/b^2
+  [ok] gg -> HH, nu = 0: tree overlap = F_0/(2x(1-x))
+  [ok] gg -> HH, nu = 0, C_A part: 134/9 - 5 zeta2 - 4 ln x ln(1-x) + (2/3)/F_0
+  [ok] gg -> HH, nu = 0, T_F n_f part: -40/9 - (4/3)/F_0
+  [ok] gg -> HH, nu = 2: tree overlap = F_2/(x(1-x))
+  [ok] gg -> HH, nu = 2, C_A part: 134/9 - 5 zeta2 - 4 ln x ln(1-x) + (2/3)/F_2
+  [ok] gg -> HH, nu = 2, T_F n_f part: -40/9 - (4/3)/F_2
+  [ok] gg -> AA: every overlap has the form alpha (e.e') + beta (e.b)(e'.b)/b^2
+  [ok] gg -> AA, nu = 0: tree overlap = -F_A/(2x(1-x))
+  [ok] gg -> AA, nu = 0, C_A part: 134/9 - 5 zeta2 - 4 ln x ln(1-x) + (2/3)/F_A
+  [ok] gg -> AA, nu = 0, T_F n_f part: -40/9 - (4/3)/F_A
+  [ok] gg -> AA, nu = 2: tree overlap = F_2/(x(1-x))
+  [ok] gg -> AA, nu = 2, C_A part: 134/9 - 5 zeta2 - 4 ln x ln(1-x) - (2/3)/F_2
+  [ok] gg -> AA, nu = 2, T_F n_f part: -40/9 + (4/3)/F_2
+       Eq. (7) holds for nu = 0 and 2 as an equality in x. For gg -> AA, F_A replaces F_0 and the last term changes sign for nu = 2.
+All checks passed.

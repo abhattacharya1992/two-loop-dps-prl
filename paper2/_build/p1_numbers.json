@@ -1,0 +1,18 @@
+{
+ "_about": "Numbers the draft quotes from P1 (A. Bhattacharya, two-loop gg -> AA near threshold). They are not computed in this round; make_tables.py takes them from here so that nothing in the tables or the text is typed by hand. Check them against the final version of P1.",
+ "AA_log": {
+  "value": 3e-15,
+  "beta_range": [0.001, 0.7],
+  "source": "P1 Sec. 4.3: D(beta) from the exact one-loop gg -> AA remainders against Eq. (4.11), 1 - c = 1e-14 and 1e-18, N_c = 3 and 4, n_f = 0, 2 and 5; largest relative deviation"
+ },
+ "HH_log": {
+  "value": 3e-15,
+  "beta_range": [0.001, 0.7],
+  "source": "P1 Sec. 4.3: one-loop gg -> HH from P1's own code (the code of its Ref. [8] with CP-even vertices) against D = -F_S((1+beta)/2); relative accuracy"
+ },
+ "AA_K1": {
+  "value": 2e-34,
+  "beta_range": [0.05, 0.9],
+  "source": "P1 Eq. (4.17): forward limit of the exact one-loop M_2/m^2 against pi N_c [x^4 + (1-x)^4]/[x(1-x)], both sets of (N_c, n_f)"
+ }
+}

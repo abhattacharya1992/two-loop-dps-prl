@@ -1,0 +1,7 @@
+l^+ integral (l^- > 0):   closed (-0.743676872135 + 8.91393511121j)   numeric (-0.743676872135 + 8.91393511121j)
+l^+ integral (l^- < 0):   numeric (4.363435e-34 - 6.9130353e-33j)  (vanishes: both poles in the upper half plane)
+l^- integral:  closed 11.2177518072628   numeric (11.2177518072628 + 3.99864620771805e-33j)
+Fourier master, alpha=0.15: closed 19.989025949  numeric (damped, extrapolated) 19.9888842916
+S^(1)/(2 a_s Delta_C) = -L_b**2/2 + L_b*R - L_b/epsilon + R/epsilon + pi**2/12 - 1/epsilon**2
+coefficient of the rapidity logarithm: L_b**2*epsilon/2 + L_b + pi**2*epsilon/12 + 1/epsilon   (no constant term)
+checks passed

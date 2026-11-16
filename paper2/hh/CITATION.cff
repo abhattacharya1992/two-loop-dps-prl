@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite this repository and the associated manuscript. Publication identifiers will be added when assigned."
+type: software
+title: "Code and data for: Double parton scattering singularities in two-loop gluon-fusion amplitudes"
+authors:
+  - family-names: Bhattacharya
+    given-names: Arunima
+    affiliation: "IFIC, University of Valencia-CSIC"
+repository-code: "https://github.com/abhattacharya1992/two-loop-dps-prl"

@@ -1,0 +1,29 @@
+three-loop coefficients, nu = 0 (units of C_1), general Delta_C, B = beta0 + DG0, L_* = ln[mu^2/(Q_*^2 e^{-i pi})]:
+  G^5: 8*Delta_C**2/5
+  G^4: 2*B*Delta_C + 4*Delta_C*beta0/3
+  G^3: 2*B**2/3 - 4*B*Delta_C*L_*/3 + 2*B*beta0/3 - 4*Delta_C**2*L_***2/3 - 4*Delta_C*L_**beta0/3 - Delta_C*g1/3 - 8*Delta_C*h/3 - 4*Delta_C*r0/3
+  G^2: -B**2*L_* - B*Delta_C*L_***2 - B*L_**beta0 - 2*B*h - B*r0 - DG1 + 8*Delta_C**2*zeta3 - beta0*r0 - beta1 - r1_3  [open: DG1, beta1, r1_3]
+  G^1: B**2*L_***2/2 + B*Delta_C*L_***3 + 4*B*Delta_C*zeta3 + B*L_***2*beta0/2 + 2*B*L_**h + B*L_**r0 + DG1*L_* + Delta_C**2*L_***4/2 + Delta_C*L_***3*beta0/3 + Delta_C*L_***2*g1/4 + 2*Delta_C*L_***2*h + Delta_C*L_***2*r0 + 8*Delta_C*beta0*zeta3/3 + L_**beta0*r0 + L_**beta1 + h**2 + 2*h*r0 + 2*h2 + r0_3  [open: DG1, beta1, h2, r0_3]
+  G^0: B**2*zeta3/3 - 2*B*Delta_C*L_**zeta3/3 + B*beta0*zeta3/3 - 2*Delta_C**2*L_***2*zeta3/3 + 12*Delta_C**2*zeta5/5 - 2*Delta_C*L_**beta0*zeta3/3 - Delta_C*g1*zeta3/6 - 4*Delta_C*h*zeta3/3 - 2*Delta_C*r0*zeta3/3
+nu = 2 (units of K):
+  G^4: 8*Delta_C**2
+  G^3: 8*B*Delta_C - 16*Delta_C**2 + 16*Delta_C*beta0/3
+  G^2: 2*B**2 - 4*B*Delta_C*L_* - 12*B*Delta_C + 2*B*beta0 - 4*Delta_C**2*L_***2 + 24*Delta_C**2 - 4*Delta_C*L_**beta0 - 8*Delta_C*beta0 - Delta_C*g1 - 8*Delta_C*h - 4*Delta_C*r0
+  G^1: -2*B**2*L_* - 2*B**2 - 2*B*Delta_C*L_***2 + 4*B*Delta_C*L_* + 12*B*Delta_C - 2*B*L_**beta0 - 2*B*beta0 - 4*B*h - 2*B*r0 - 2*DG1 + 4*Delta_C**2*L_***2 + 16*Delta_C**2*zeta3 - 24*Delta_C**2 + 4*Delta_C*L_**beta0 + 8*Delta_C*beta0 + Delta_C*g1 + 8*Delta_C*h + 4*Delta_C*r0 - 2*beta0*r0 - 2*beta1 - 2*r1_3  [open: DG1, beta1, r1_3]
+  G^0: B**2*L_***2/2 + B**2*L_* + B**2 + B*Delta_C*L_***3 + B*Delta_C*L_***2 - 2*B*Delta_C*L_* + 4*B*Delta_C*zeta3 - 6*B*Delta_C + B*L_***2*beta0/2 + B*L_**beta0 + 2*B*L_**h + B*L_**r0 + B*beta0 + 2*B*h + B*r0 + DG1*L_* + DG1 + Delta_C**2*L_***4/2 - 2*Delta_C**2*L_***2 - 8*Delta_C**2*zeta3 + 12*Delta_C**2 + Delta_C*L_***3*beta0/3 + Delta_C*L_***2*g1/4 + 2*Delta_C*L_***2*h + Delta_C*L_***2*r0 - 2*Delta_C*L_**beta0 + 8*Delta_C*beta0*zeta3/3 - 4*Delta_C*beta0 - Delta_C*g1/2 - 4*Delta_C*h - 2*Delta_C*r0 + L_**beta0*r0 + L_**beta1 + beta0*r0 + beta1 + h**2 + 2*h*r0 + 2*h2 + r0_3 + r1_3  [open: DG1, beta1, h2, r0_3, r1_3]
+gluon splittings (gg -> HH):
+  nu=0 G^5: 8*C_A**2/5
+  nu=0 G^4: 176*C_A**2/9 - 32*C_A*n_f/9
+  nu=0 G^3: C_A**2*(16*log(x)*log(1 - x)/3 - 4*log(-x**2 + x)**2/3 + 44*log(-x**2 + x)/3 + 8*I*pi*log(-x**2 + x)/3 - 2*pi**2/9 + 24 - 44*I*pi/3 - 8/(-18*x**2 + 18*x + 9/(-x**2 + x))) + C_A*(-8*n_f*log(-x**2 + x)/3 - 136*n_f/9 + 8*I*pi*n_f/3 + 8*n_f/(-18*x**2 + 18*x + 9/(-x**2 + x))) + 16*n_f**2/9
+  nu=2 G^4: 8*C_A**2
+  nu=2 G^3: 560*C_A**2/9 - 128*C_A*n_f/9
+  nu=2 G^2: C_A**2*(8*x**2/(6*x**4 - 12*x**3 + 18*x**2 - 12*x + 3) - 8*x/(6*x**4 - 12*x**3 + 18*x**2 - 12*x + 3) + 16*log(x)*log(1 - x) - 4*log(-x**2 + x)**2 + 44*log(-x**2 + x) + 8*I*pi*log(-x**2 + x) - 64/3 - 2*pi**2/3 - 44*I*pi) + C_A*(-8*n_f*x**2/(6*x**4 - 12*x**3 + 18*x**2 - 12*x + 3) + 8*n_f*x/(6*x**4 - 12*x**3 + 18*x**2 - 12*x + 3) - 8*n_f*log(-x**2 + x) - 24*n_f + 8*I*pi*n_f) + 16*n_f**2/3
+quark splittings (gg -> ZZ):
+  nu=0 G^5: 8*C_A**2/5 - 32*C_A*C_F/5 + 32*C_F**2/5
+  nu=0 G^4: -44*C_A**2/9 + C_A*(-20*C_F/9 + 8*n_f/9) + 24*C_F**2 - 16*C_F*n_f/9
+  nu=0 G^3: C_A**2*(-4*L_***2/3 + 44*L_*/9 - 8*log(x)**2/3 - 8*log(1 - x)**2/3 - 2*pi**2/9 + 340/27) + C_A*(16*C_F*L_***2/3 - 16*C_F*L_*/9 + 8*C_F*log(x)**2 - 16*C_F*log(x)*log(1 - x)/3 + 8*C_F*log(1 - x)**2 - 428*C_F/27 + 20*pi**2*C_F/9 - 8*I*pi*C_F - 8*L_**n_f/9 - 40*n_f/27) + C_F**2*(-16*L_***2/3 - 16*L_* - 16*log(x)**2/3 + 32*log(x)*log(1 - x)/3 - 16*log(1 - x)**2/3 - 32*pi**2/9 + 104/3 + 16*I*pi) + C_F*(16*L_**n_f/9 + 8*n_f/27)
+  nu=2 G^4: 8*C_A**2 - 32*C_A*C_F + 32*C_F**2
+  nu=2 G^3: -320*C_A**2/9 + C_A*(496*C_F/9 + 32*n_f/9) + 32*C_F**2 - 64*C_F*n_f/9
+  nu=2 G^2: C_A**2*(-4*L_***2 + 44*L_*/3 - 8*log(x)**2 - 8*log(1 - x)**2 - 2*pi**2/3 + 820/9) + C_A*(16*C_F*L_***2 - 16*C_F*L_*/3 + 24*C_F*log(x)**2 - 16*C_F*log(x)*log(1 - x) + 24*C_F*log(1 - x)**2 - 1172*C_F/9 + 20*pi**2*C_F/3 - 24*I*pi*C_F - 8*L_**n_f/3 - 88*n_f/9) + C_F**2*(-16*L_***2 - 48*L_* - 16*log(x)**2 + 32*log(x)*log(1 - x) - 16*log(1 - x)**2 - 32*pi**2/3 + 56 + 48*I*pi) + C_F*(16*L_**n_f/3 + 104*n_f/9)
+wrote three_loop.json
+passed

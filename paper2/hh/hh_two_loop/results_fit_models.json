@@ -1,0 +1,368 @@
+{
+ "summary": {
+  "selected_by_window_shift": {
+   "P=2": 12
+  },
+  "selected_by_deviation": {
+   "P=2": 12
+  },
+  "paper_model_deviation_in_window_shifts": [
+   "0.0108",
+   "0.0204"
+  ],
+  "lsq_one_more_point_deviation_in_window_shifts": [
+   "0.511",
+   "0.548"
+  ],
+  "lsq_two_more_points_deviation_in_window_shifts": [
+   "17.2",
+   "29.2"
+  ],
+  "lsq_one_more_point_in_window_shifts": [
+   "0.5",
+   "0.532"
+  ],
+  "lsq_two_more_points_in_window_shifts": [
+   "17.2",
+   "29.2"
+  ]
+ },
+ "fits": {
+  "1/4": {
+   "spin0 G^3": {
+    "models": {
+     "plain": {
+      "window_shift": "4.68935e-7",
+      "deviation": "6.66719e-8"
+     },
+     "P=0": {
+      "window_shift": "1.16867e-7",
+      "deviation": "1.49102e-8"
+     },
+     "P=1": {
+      "window_shift": "1.75884e-8",
+      "deviation": "1.95432e-9"
+     },
+     "P=2": {
+      "window_shift": "6.05408e-12",
+      "deviation": "7.24072e-14"
+     }
+    },
+    "selected_by_window_shift": "P=2",
+    "selected_by_deviation": "P=2",
+    "lsq_change_in_window_shifts": {
+     "8 points": "0.5"
+    }
+   },
+   "spin0 G^2": {
+    "models": {
+     "plain": {
+      "window_shift": "2.67245e-6",
+      "deviation": "4.27117e-7"
+     },
+     "P=0": {
+      "window_shift": "6.74084e-7",
+      "deviation": "9.64329e-8"
+     },
+     "P=1": {
+      "window_shift": "1.02663e-7",
+      "deviation": "1.27577e-8"
+     },
+     "P=2": {
+      "window_shift": "3.57554e-11",
+      "deviation": "4.73205e-13"
+     }
+    },
+    "selected_by_window_shift": "P=2",
+    "selected_by_deviation": "P=2",
+    "lsq_change_in_window_shifts": {
+     "8 points": "0.5294"
+    }
+   },
+   "spin2 G^2": {
+    "models": {
+     "plain": {
+      "window_shift": "2.60822e-7",
+      "deviation": "4.00565e-8"
+     },
+     "P=0": {
+      "window_shift": "8.90906e-8",
+      "deviation": "1.14762e-8"
+     },
+     "P=1": {
+      "window_shift": "1.44437e-8",
+      "deviation": "1.60488e-9"
+     },
+     "P=2": {
+      "window_shift": "1.65879e-12",
+      "deviation": "2.89281e-14"
+     },
+     "P=3": {
+      "window_shift": "9.70332e-12",
+      "deviation": "1.56966e-13"
+     }
+    },
+    "selected_by_window_shift": "P=2",
+    "selected_by_deviation": "P=2",
+    "lsq_change_in_window_shifts": {
+     "7 points": "0.5",
+     "8 points": "17.24"
+    }
+   },
+   "spin2 G^1": {
+    "models": {
+     "plain": {
+      "window_shift": "2.15521e-6",
+      "deviation": "3.70239e-7"
+     },
+     "P=0": {
+      "window_shift": "7.44632e-7",
+      "deviation": "1.06978e-7"
+     },
+     "P=1": {
+      "window_shift": "1.22095e-7",
+      "deviation": "1.50925e-8"
+     },
+     "P=2": {
+      "window_shift": "1.41795e-11",
+      "deviation": "2.72417e-13"
+     },
+     "P=3": {
+      "window_shift": "8.38676e-11",
+      "deviation": "1.49322e-12"
+     }
+    },
+    "selected_by_window_shift": "P=2",
+    "selected_by_deviation": "P=2",
+    "lsq_change_in_window_shifts": {
+     "7 points": "0.5289",
+     "8 points": "17.53"
+    }
+   }
+  },
+  "1/2": {
+   "spin0 G^3": {
+    "models": {
+     "plain": {
+      "window_shift": "8.86932e-7",
+      "deviation": "1.26353e-7"
+     },
+     "P=0": {
+      "window_shift": "2.23464e-7",
+      "deviation": "2.86742e-8"
+     },
+     "P=1": {
+      "window_shift": "3.51755e-8",
+      "deviation": "3.90862e-9"
+     },
+     "P=2": {
+      "window_shift": "3.28442e-11",
+      "deviation": "3.72089e-13"
+     }
+    },
+    "selected_by_window_shift": "P=2",
+    "selected_by_deviation": "P=2",
+    "lsq_change_in_window_shifts": {
+     "8 points": "0.5"
+    }
+   },
+   "spin0 G^2": {
+    "models": {
+     "plain": {
+      "window_shift": "4.83559e-6",
+      "deviation": "7.78181e-7"
+     },
+     "P=0": {
+      "window_shift": "1.23374e-6",
+      "deviation": "1.78362e-7"
+     },
+     "P=1": {
+      "window_shift": "1.96628e-7",
+      "deviation": "2.45474e-8"
+     },
+     "P=2": {
+      "window_shift": "1.85861e-10",
+      "deviation": "2.33944e-12"
+     }
+    },
+    "selected_by_window_shift": "P=2",
+    "selected_by_deviation": "P=2",
+    "lsq_change_in_window_shifts": {
+     "8 points": "0.5306"
+    }
+   },
+   "spin2 G^2": {
+    "models": {
+     "plain": {
+      "window_shift": "4.14005e-7",
+      "deviation": "6.55369e-8"
+     },
+     "P=0": {
+      "window_shift": "1.55711e-7",
+      "deviation": "2.00867e-8"
+     },
+     "P=1": {
+      "window_shift": "2.55174e-8",
+      "deviation": "2.83535e-9"
+     },
+     "P=2": {
+      "window_shift": "6.29148e-12",
+      "deviation": "1.14279e-13"
+     },
+     "P=3": {
+      "window_shift": "4.84829e-11",
+      "deviation": "5.98264e-13"
+     }
+    },
+    "selected_by_window_shift": "P=2",
+    "selected_by_deviation": "P=2",
+    "lsq_change_in_window_shifts": {
+     "7 points": "0.5",
+     "8 points": "21.41"
+    }
+   },
+   "spin2 G^1": {
+    "models": {
+     "plain": {
+      "window_shift": "3.28025e-6",
+      "deviation": "5.83579e-7"
+     },
+     "P=0": {
+      "window_shift": "1.24851e-6",
+      "deviation": "1.80401e-7"
+     },
+     "P=1": {
+      "window_shift": "2.07023e-7",
+      "deviation": "2.56977e-8"
+     },
+     "P=2": {
+      "window_shift": "5.16402e-11",
+      "deviation": "1.03728e-12"
+     },
+     "P=3": {
+      "window_shift": "4.0255e-10",
+      "deviation": "5.48678e-12"
+     }
+    },
+    "selected_by_window_shift": "P=2",
+    "selected_by_deviation": "P=2",
+    "lsq_change_in_window_shifts": {
+     "7 points": "0.5301",
+     "8 points": "21.78"
+    }
+   }
+  },
+  "2/3": {
+   "spin0 G^3": {
+    "models": {
+     "plain": {
+      "window_shift": "1.19042e-6",
+      "deviation": "1.68174e-7"
+     },
+     "P=0": {
+      "window_shift": "2.91558e-7",
+      "deviation": "3.75182e-8"
+     },
+     "P=1": {
+      "window_shift": "4.6898e-8",
+      "deviation": "5.21146e-9"
+     },
+     "P=2": {
+      "window_shift": "9.99978e-11",
+      "deviation": "1.07636e-12"
+     }
+    },
+    "selected_by_window_shift": "P=2",
+    "selected_by_deviation": "P=2",
+    "lsq_change_in_window_shifts": {
+     "8 points": "0.5"
+    }
+   },
+   "spin0 G^2": {
+    "models": {
+     "plain": {
+      "window_shift": "6.30186e-6",
+      "deviation": "1.00897e-6"
+     },
+     "P=0": {
+      "window_shift": "1.56353e-6",
+      "deviation": "2.27424e-7"
+     },
+     "P=1": {
+      "window_shift": "2.54729e-7",
+      "deviation": "3.19023e-8"
+     },
+     "P=2": {
+      "window_shift": "5.50034e-10",
+      "deviation": "6.59617e-12"
+     }
+    },
+    "selected_by_window_shift": "P=2",
+    "selected_by_deviation": "P=2",
+    "lsq_change_in_window_shifts": {
+     "8 points": "0.5315"
+    }
+   },
+   "spin2 G^2": {
+    "models": {
+     "plain": {
+      "window_shift": "5.62499e-7",
+      "deviation": "9.21581e-8"
+     },
+     "P=0": {
+      "window_shift": "2.34425e-7",
+      "deviation": "3.02863e-8"
+     },
+     "P=1": {
+      "window_shift": "3.88485e-8",
+      "deviation": "4.31668e-9"
+     },
+     "P=2": {
+      "window_shift": "1.45235e-11",
+      "deviation": "2.66676e-13"
+     },
+     "P=3": {
+      "window_shift": "1.54558e-10",
+      "deviation": "1.40979e-12"
+     }
+    },
+    "selected_by_window_shift": "P=2",
+    "selected_by_deviation": "P=2",
+    "lsq_change_in_window_shifts": {
+     "7 points": "0.5",
+     "8 points": "28.64"
+    }
+   },
+   "spin2 G^1": {
+    "models": {
+     "plain": {
+      "window_shift": "4.33424e-6",
+      "deviation": "8.00741e-7"
+     },
+     "P=0": {
+      "window_shift": "1.82855e-6",
+      "deviation": "2.65392e-7"
+     },
+     "P=1": {
+      "window_shift": "3.06709e-7",
+      "deviation": "3.81803e-8"
+     },
+     "P=2": {
+      "window_shift": "1.16041e-10",
+      "deviation": "2.36238e-12"
+     },
+     "P=3": {
+      "window_shift": "1.24957e-9",
+      "deviation": "1.26178e-11"
+     }
+    },
+    "selected_by_window_shift": "P=2",
+    "selected_by_deviation": "P=2",
+    "lsq_change_in_window_shifts": {
+     "7 points": "0.5309",
+     "8 points": "29.15"
+    }
+   }
+  }
+ }
+}

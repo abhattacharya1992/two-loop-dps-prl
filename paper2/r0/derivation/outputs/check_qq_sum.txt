@@ -1,0 +1,29 @@
+1  the eight closed forms against the stored Laurent coefficients (five x, two helicity structures, six orders)
+  [ok] colour factors agree with the stored prefactors up to the sign convention of each entry
+  [ok] W1q: 4.2e-11 (tolerance 1e-08)
+  [ok] W2qb: 4.2e-11 (tolerance 1e-08)
+  [ok] W2q: 9.2e-10 (tolerance 1e-08)
+  [ok] W1qb: 9.2e-10 (tolerance 1e-08)
+  [ok] Vqq: 1.0e-07 (tolerance 5e-07)
+  [ok] Vggq: 5.2e-10 (tolerance 1e-08)
+  [ok] W1g: 2.1e-10 (tolerance 1e-08)
+  [ok] W2g: 2.0e-10 (tolerance 1e-08)
+2  sum of the eight diagrams, with x a symbol
+       C_F:  1/eta  eps^-1: 4
+             eta^0  eps^-1: 5 - 2 ln x - 2 ln(1-x);  eps^0: 8 - 2 zeta2 + ln x + ln(1-x) + ln^2 x - 2 ln x ln(1-x) + ln^2(1-x)
+       C_A:  1/eta  eps^-1: -2
+             eta^0  eps^0: 1 - ln^2 x - ln^2(1-x)
+  [ok] C_F part: 4/(eta eps) + (5 - 2L)/eps + 8 - 2 zeta2 + L + ln^2(x/(1-x)),  L = ln(x(1-x))
+  [ok] C_A part: -2/(eta eps) + 1 - ln^2 x - ln^2(1-x)
+  [ok] B cancels in the C_F part and in the C_A part, poles and finite part
+3  daughter self-energies, Eq. (eq:sigma), and soft function, Eq. (eq:softeta), of the Supplement
+  [ok] quark and antiquark: C_F [-2/eps - 2 - L]: 2.0e-15 (tolerance 1e-10)
+  [ok] S/Delta_C = -4/(eta eps) + 2/eps^2 - zeta2: 3.8e-14 (tolerance 1e-10)
+  [ok] rapidity divergences cancel: J1 + J2 gives 4 Delta_C/(eta eps) with Delta_C = 2 C_F - C_A, the soft function -4 Delta_C/(eta eps)
+  [ok] single pole of J1 + J2 + the four daughter self-energies: (B - 4 C_F L)/eps with B = 6 C_F as in the Letter
+4  r0 = finite part of J1 + J2 + S + the four daughter self-energies, with x a symbol
+       C_F: 12 - 6 zeta2 + 2 ln^2 x - 4 ln x ln(1-x) + 2 ln^2(1-x)
+       C_A: 2 + zeta2 - 2 ln^2 x - 2 ln^2(1-x)
+  [ok] Eq. (8), C_F part: 12 - 6 zeta2 + 2 ln^2(x/(1-x))
+  [ok] Eq. (8), C_A part: 2 + zeta2 - 2 ln^2 x - 2 ln^2(1-x)
+All checks passed.

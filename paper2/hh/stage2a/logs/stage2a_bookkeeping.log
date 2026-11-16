@@ -1,0 +1,18 @@
+spin0: d = 4-2eps and d = 4+eps give the same O(eps^0) terms: True
+spin2: d = 4-2eps and d = 4+eps give the same O(eps^0) terms: True
+
+Coefficients that do not depend on the scheme, the branch of the logs or mu_R:
+                            finite remainder  UV + Catani add  two-loop amplitude
+                                  (measured)                  before both, O(eps^0)
+  spin 0, C_1 G^3                   -4*C_A/3          4*C_A/3            -8*C_A/3
+  spin 0, C_1 beta0 G^2                   -2                2                  -4
+  spin 2, K G^2                       -4*C_A            4*C_A              -8*C_A
+  spin 2, K beta0 G                       -4                4                  -8
+
+Pieces that do depend on conventions (not claimed; a0, k1 are the O(eps^0), O(eps) terms of the region):
+  spin 0, G^2 without beta0: 2*C_A*(C_1*L_s + C_1*c + 2*a0)
+  spin 2, G   without beta0: 4*C_A*(K*L_s + K*c - k1)
+
+In each convention-independent coefficient UV renormalisation plus the Catani subtraction
+contribute exactly minus the measured value, so the two-loop amplitude itself carries twice it.
+wrote results_stage2a.json

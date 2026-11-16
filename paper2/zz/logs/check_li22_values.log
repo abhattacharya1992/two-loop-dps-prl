@@ -1,0 +1,5 @@
+benchmark point: 401 distinct arguments, max(|a|, |ab|) up to 0.98937261754724; largest relative difference from the reference: 3.01091273500564e-30
+beta = 1/4, delta = 10^-12: 318 distinct arguments, max(|a|, |ab|) up to 0.99999999999991; largest relative difference from the reference: 1.965051692216243e-30
+beta = 1/2, delta = 10^-12: 386 distinct arguments, max(|a|, |ab|) up to 0.999999999999972; largest relative difference from the reference: 1.9536867488429486e-30
+beta = 2/3, delta = 10^-12: 385 distinct arguments, max(|a|, |ab|) up to 0.999999999999993; largest relative difference from the reference: 2.9843751365629746e-25
+largest relative difference over all points: 2.9843751365629746e-25

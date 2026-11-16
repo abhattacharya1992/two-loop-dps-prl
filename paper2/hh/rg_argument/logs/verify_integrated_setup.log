@@ -1,0 +1,55 @@
+ok  integrated anomalous dimension [integratedgamma]
+ok  endpoint with Born running coupling [RGendpoint]
+ok  d/dln(mu) of the candidate reproduces gamma_K [fullcandidate]
+ok  candidate at mu^2 = Q*^2 e^{-i pi} [RGendpoint]
+ok  timelike continuation differs by b-independent term
+ok  table row Delta_C, B: gluon parent, two gluon fusions
+ok  table row Delta_C, B: gluon parent, two quark fusions
+ok  table row Delta_C, B: quark parent, quark and gluon fusions
+ok  C_a - Delta_C = 2(C_A - C_F) for quark fusions [colourdiscriminator]
+ok  C_a = Delta_C for gluon fusions
+ok  FP F_0(0) = -G [F0a]
+ok  FP F_0'(0) = G^2 [F0b]
+ok  FP F_0''(0) = -4G^3/3 - 2 zeta_3/3 [F0c]
+ok  F_2'(0)/F_2(0) = 1 - 2G [F2moments]
+ok  F_2''(0)/F_2(0) = 4G^2 - 4G + 2 [F2moments]
+ok  A_0^(2)/C_1 = -(4/3) Delta_C G^3 - B G^2 + O(G) [scalarRG]
+ok  A_2^(2)/K_1 = -4 Delta_C G^2 + (4 Delta_C - 2B) G + const [spinRG]
+ok  gluon channel: -4C_A/3, -2 beta0, -4C_A, 4C_A - 4beta0 [adjointcandidate]
+ok  delta A_0^(2)/C_1 = (4/3) r2 G^3 - r1 G^2 [boundarychanges]
+ok  delta A_2^(2)/K_1 = 4 r2 G^2 + (-4 r2 - 2 r1) G [boundarychanges]
+ok  shifted coefficients -(4/3)(Delta_C - r2), -(B + r1), -4(Delta_C - r2)
+ok  tu - m^4 = s p_T^2
+ok  -q_T^2/Q*^2 = 1 - yz, i.e. G = (1/2) ln(-q_T^2/Q*^2) = (1/2) ln(1 - yz)
+ok  y + z = s/m^2 - 2 for y = rho + delta, z = 1/rho - delta
+ok  1 - yz = -delta (1/rho - rho - delta)
+ok  Q*^2 = m^2 (1 - beta^2)/4 for rho = (1 - beta)/(1 + beta)
+ok  G from (1/2) log(1 - yz) equals (1/2) log(q_T^2/Q*^2) + i pi/2  (err 0.0)
+ok  4C_A - 4beta0 = -(8/3)(4N_c - n_f) for T_F = 1/2
+ok  R_n1 [Rn1]
+ok  R_n2 [Rn2]
+ok  R_b3 [Rb3]
+ok  R_b4 [Rb4]
+ok  all four pairs reduce to the common residue [commonresidue]
+ok  Omega Xi -> A B / Q_kin^2 in the diagonal limit [diagscale]
+ok  I_low + I_high = ln(T/(Omega Xi)) - i pi + O(eta) [cancel]
+ok  real-axis integral of triplet n1 at finite delta  (err 9.72e-63)
+ok  real-axis integral of triplet n2 at finite delta  (err 5.01e-63)
+ok  real-axis integral of triplet b3 at finite delta  (err 0.0)
+ok  real-axis integral of triplet b4 at finite delta  (err 1.94e-62)
+ok  J by principal-value quadrature, set 1 [Janswer]  (err 8.14e-20)
+ok  J with Omega, Xi interchanged, set 1  (err 8.14e-20)
+ok  J by principal-value quadrature, set 2 [Janswer]  (err 2.41e-20)
+ok  J with Omega, Xi interchanged, set 2  (err 2.41e-20)
+ok  J by principal-value quadrature, set 3 [Janswer]  (err 5.73e-22)
+ok  J with Omega, Xi interchanged, set 3  (err 5.73e-22)
+ok  radial log integral, R=0.3 [radial]  (err 0.0)
+ok  radial log integral, R=2.0 [radial]  (err 7.78e-62)
+ok  radial log integral, R=1000.0 [radial]  (err 0.0)
+ok  Bessel-Mellin integral m=0 [Besselmellin]  (err 1.83e-14)
+ok  Bessel-Mellin integral m=2 [Besselmellin]  (err 0.0)
+
+gluon channel: Delta_C = C_A, B = 2 beta0
+A0/C1 = -4*C_A*G**3/3 - 2*C_A*zeta(3)/3 - 2*G**2*beta0
+A2/K1 = -4*C_A*G**2 + 4*C_A*G - 2*C_A - 4*G*beta0 + 2*beta0
+boundary shift dA0/C1 = 4*G**3*r_2/3 - G**2*r_1 + 2*r_2*zeta(3)/3 ;  dA2/K1 = 4*G**2*r_2 - 2*G*r_1 - 4*G*r_2 + r_1 + 2*r_2

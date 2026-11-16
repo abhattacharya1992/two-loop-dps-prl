@@ -1,0 +1,19 @@
+{
+  "dimensions": [
+    5,
+    6,
+    7
+  ],
+  "vector dimension": 5,
+  "seed": 20261112,
+  "sections": {
+    "D g->gg, one gluon": {
+      "points": 1,
+      "polarisation pairs per point": 9,
+      "Wilson-line terms compared": 9,
+      "of which depend on the dimension": 9,
+      "linear in the dimension": true
+    }
+  },
+  "passed": true
+}

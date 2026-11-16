@@ -1,0 +1,11 @@
+% Fig. 1 of the Letter: the tree diagram and the crossed box, drawn with TikZ-Feynman.
+% The picture is dps_diagram_tikz.tex, the diagram of Paper I (paper1/scripts/make_diagrams.py);
+% make_figure.py copies it from there and compiles this file to dps_diagram.pdf. The vertices are
+% placed by hand, so pdflatex suffices. The fonts are those of the Letter.
+\documentclass[border=1pt]{standalone}
+\pdfinfoomitdate=1 \pdftrailerid{} \pdfsuppressptexinfo=-1     % the same bytes at every build
+\usepackage[compat=1.1.0]{tikz-feynman}
+\tikzfeynmanset{warn luatex=false}
+\begin{document}
+\input{dps_diagram_tikz.tex}
+\end{document}

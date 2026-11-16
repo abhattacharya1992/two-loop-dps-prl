@@ -1,0 +1,16 @@
+part 1: the general bookkeeping
+   b-independence of the single pole:  g = -c - 2*c_u
+   finite part:  X_mu^2: c/2 + c_u/2   X X_mu: -c - c_u   X^2: c_u/2
+                 X_mu: -c*kappa_r - 2*c_u*kappa_r + c_u*kappa_u + d + d_u   X: c_u*kappa_u + d_u + g1   1: c_u*kappa_u**2/2 + d_u*kappa_u + e0 + e_u + g1*kappa_r
+   matching X_mu^2 and X X_mu (both fixed by gamma_K): {c: 2*Delta_C - c_u}  (consistent: one relation, c + cu = 2 Delta_C)
+   => r2 = c_u/2 ,  r1 = c_u*kappa_u + d_u + g1
+part 2: the bookkeeping on the laboratory triangle (spacelike s = -Q^2, legs a = b = mu_b^2)
+   ultrasoft double pole c_u = -1;  X^2 coefficient of the finite part = -1/2;  c_u/2 = -1/2
+   (with the hard region added the poles cancel and the X^2 term is that of ln(a/Q^2) ln(b/Q^2))
+part 3: the DPS kernel
+   ultrasoft region summed over attachments: scaleless (us_telescoping.py)  =>  c_u = d_u = e_u = 0
+   => r2 = 0,  r1 = g1 (the eps^0 term of the rapidity coefficient at mu = mu_b)
+   e^{-eps gamma_E} Gamma(-eps) = -pi**2*epsilon/12 - 1/epsilon  + O(eps^2)
+   no eps^0 term: g1 = 0  =>  r1 = 0  (b0 = 2 e^{-gamma_E}; the same for the Fourier transform of
+   1/l_perp^2 in 2 - 2 eps dimensions, which is what the rapidity divergence multiplies)
+all checks passed

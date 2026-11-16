@@ -1,0 +1,9 @@
+beta = 1/4: done
+beta = 1/2: done
+beta = 2/3: done
+selected_by_window_shift: {'group 1: P=3': 48, 'group 2: P=2': 48}
+selected_by_deviation: {'group 1: P=3': 48, 'group 2: P=2': 48}
+paper_model_largest_deviation_over_shift: 0.0181
+lsq_one_more_point_change_in_window_shifts: ['0.5', '0.556']
+lsq_one_more_point_deviation_in_window_shifts: ['0.512', '0.57']
+paper_model_deviation_in_window_shifts: ['0.00979', '0.0181']

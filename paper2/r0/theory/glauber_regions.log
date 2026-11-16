@@ -1,0 +1,32 @@
+
+=== s1 = 1.0, s2 = 2.0: two incoming parents
+A/|s1 s2| = 5e+03:  exact x A = (19.7352617498 + 53.5044022383j)  (quadrature: (19.7352617498 + 53.5044022383j))
+   eta =  0.01562: poles x eta/(2 pi i/A): C_n + C_nb = -1.742058, S = 1.86152;  sum x A = (19.4032608161 + 47.5622371045j)
+   eta =  0.00781: poles x eta/(2 pi i/A): C_n + C_nb = -1.866384, S = 1.92942;  sum x A = (19.5705139609 + 50.45637957j)
+   eta =  0.00391: poles x eta/(2 pi i/A): C_n + C_nb = -1.931987, S = 1.964368;  sum x A = (19.6546803952 + 51.9645260942j)
+   eta =  0.00195: poles x eta/(2 pi i/A): C_n + C_nb = -1.965687, S = 1.982098;  sum x A = (19.696899255 + 52.7344281195j)
+   eta -> 0: sum x A = (19.7392088011 + 53.5150959641j)   exact x A = (19.7352617498 + 53.5044022383j)   rel diff 0.0002  (power correction |s1 s2|/A = 2e-04)
+             Glauber region x A = (19.7392088 - 3.133412334e-8j) (2 pi^2 = 19.7392088);  real part of the sum = 19.7392088;  real part of C_n + C_nb + S = 1.786e-25
+A/|s1 s2| = 5e+05:  exact x A = (19.7391693238 + 82.4500758682j)  (quadrature: (19.7391693238 + 82.4500758682j))
+   eta =  0.01562: poles x eta/(2 pi i/A): C_n + C_nb = -1.62111, S = 1.795737;  sum x A = (19.4032608161 + 69.7451678893j)
+   eta =  0.00781: poles x eta/(2 pi i/A): C_n + C_nb = -1.800429, S = 1.895022;  sum x A = (19.5705139609 + 75.8360893354j)
+   eta =  0.00391: poles x eta/(2 pi i/A): C_n + C_nb = -1.897544, S = 1.946779;  sum x A = (19.6546803952 + 79.0748226622j)
+   eta =  0.00195: poles x eta/(2 pi i/A): C_n + C_nb = -1.948086, S = 1.973204;  sum x A = (19.696899255 + 80.7450636276j)
+   eta -> 0: sum x A = (19.7392088011 + 82.4501945663j)   exact x A = (19.7391693238 + 82.4500758682j)   rel diff 1.5e-6  (power correction |s1 s2|/A = 2e-06)
+             Glauber region x A = (19.7392088 - 3.133412334e-8j) (2 pi^2 = 19.7392088);  real part of the sum = 19.7392088;  real part of C_n + C_nb + S = -1.186e-24
+
+=== s1 = 1.0, s2 = -2.0: an incoming and an outgoing parent (3 -> 3)
+A/|s1 s2| = 5e+03:  exact x A = (0.0 + 53.5258082804j)  (quadrature: (0.0 + 53.5258082804j))
+   eta =  0.01562: poles x eta/(2 pi i/A): C_n + C_nb = -1.741003, S = 1.86152;  sum x A = (2.45962273501 + 48.9473208281j)
+   eta =  0.00781: poles x eta/(2 pi i/A): C_n + C_nb = -1.866103, S = 1.92942;  sum x A = (1.27071245312 + 51.1654605904j)
+   eta =  0.00391: poles x eta/(2 pi i/A): C_n + C_nb = -1.931914, S = 1.964368;  sum x A = (0.645924493388 + 52.3234034001j)
+   eta =  0.00195: poles x eta/(2 pi i/A): C_n + C_nb = -1.965668, S = 1.982098;  sum x A = (0.32564844632 + 52.9149772074j)
+   eta -> 0: sum x A = (3.83540125102e-6 + 53.5150989669j)   exact x A = (0.0 + 53.5258082804j)   rel diff 0.0002  (power correction |s1 s2|/A = 2e-04)
+             Glauber region x A = (19.7392088 - 6.869785533e-10j) (2 pi^2 = 19.7392088);  real part of the sum = 3.835401251e-6;  real part of C_n + C_nb + S = -19.74
+A/|s1 s2| = 5e+05:  exact x A = (0.0 + 82.4504056692j)  (quadrature: (0.0 + 82.4504056692j))
+   eta =  0.01562: poles x eta/(2 pi i/A): C_n + C_nb = -1.620129, S = 1.795737;  sum x A = (3.65930912923 + 71.100800965j)
+   eta =  0.00781: poles x eta/(2 pi i/A): C_n + C_nb = -1.800158, S = 1.895022;  sum x A = (1.92335919677 + 76.5371607732j)
+   eta =  0.00391: poles x eta/(2 pi i/A): C_n + C_nb = -1.897472, S = 1.946779;  sum x A = (0.98632168181 + 79.4316112908j)
+   eta =  0.00195: poles x eta/(2 pi i/A): C_n + C_nb = -1.948067, S = 1.973204;  sum x A = (0.499480256468 + 80.9250794045j)
+   eta -> 0: sum x A = (2.10408658894e-5 + 82.4502047364j)   exact x A = (0.0 + 82.4504056692j)   rel diff 2.5e-6  (power correction |s1 s2|/A = 2e-06)
+             Glauber region x A = (19.7392088 - 6.869785533e-10j) (2 pi^2 = 19.7392088);  real part of the sum = 2.104086589e-5;  real part of C_n + C_nb + S = -19.74

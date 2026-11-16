@@ -1,0 +1,44 @@
+{
+  "checker_sha256": "9ec6cb900be50d0216b4c558a2380403dcd59ee201610a199b2c5167018cc71a",
+  "guard_sha256": "c086a23f21131884547400cc1cbe40f93b427ef97fcbe567759403536a290ec0",
+  "checks": [
+    {
+      "case": "normal replay",
+      "passed": true
+    },
+    {
+      "case": "optimized replay",
+      "passed": true
+    },
+    {
+      "case": "existing output is rejected and preserved",
+      "passed": true
+    },
+    {
+      "case": "wrong MHV-to-NMHV normalization",
+      "rejected": true,
+      "error": "ArithmeticError: L1 NMHV coefficient ell^0: -1/2"
+    },
+    {
+      "case": "wrong helicity principal symbol",
+      "rejected": true,
+      "error": "ArithmeticError: Zhukovsky principal helicity symbol: p_minus/p_plus - p_plus/p_minus"
+    },
+    {
+      "case": "wrong spin-three Fourier sign",
+      "rejected": true,
+      "error": "ArithmeticError: finite rational b-space tensor simplifies: Matrix([[0], [0], [0], [4*c/3]])"
+    },
+    {
+      "case": "wrong pseudoscalar parity",
+      "rejected": true,
+      "error": "ArithmeticError: arbitrary-x A spin3 harmonic2: -2*c*x*(1 - x)/(3*(x**4 + (1 - x)**4)) + 2*c*x*(x - 1)/(3*(2*x**4 - 4*x**3 + 6*x**2 - 4*x + 1))"
+    },
+    {
+      "case": "wrong known Sudakov normalization",
+      "rejected": true,
+      "error": "ArithmeticError: known representation kappa2: -z2**2/2 + 3*z4/8"
+    }
+  ],
+  "passed": true
+}

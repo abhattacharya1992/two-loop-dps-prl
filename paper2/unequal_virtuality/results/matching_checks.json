@@ -1,0 +1,132 @@
+{
+  "description": "Independent extraction from retained unequal-mass VVamp points; no new amplitudes",
+  "interpretation": "Two numerical tests of the mean matching expression, not a general proof",
+  "results": [
+    {
+      "configuration": {
+        "s": "15/2",
+        "ma2": "1",
+        "mb2": "2"
+      },
+      "x1": "0.66666666666666666667",
+      "x2": "0.2",
+      "expected_CF": "4.5326606685016485",
+      "expected_CA": "-0.366500286330873279",
+      "precision_control": {
+        "k": 10,
+        "dps_low": 80,
+        "dps_high": 95,
+        "scaled_difference": {
+          "1l": "2.54168696917833e-59",
+          "2l_CF": "5.99130663301205e-57",
+          "2l_CA": "6.93978109598594e-57"
+        }
+      },
+      "helicities": {
+        "++++": {
+          "c1_prediction": "(0.0 - 13.40412865531645115j)",
+          "c1_absolute_deviation": "3.260439445833321e-18",
+          "2l_CF": {
+            "extracted_real": "4.53266066834637989",
+            "extracted_imag": "1.254762929451582e-10",
+            "complex_deviation": "1.9963126768141e-10",
+            "fit_window_shift": "1.050186577965983e-8",
+            "change_for_P2": "1.06356245696246e-6"
+          },
+          "2l_CA": {
+            "extracted_real": "-0.36650028617072466",
+            "extracted_imag": "-6.436943679105929e-11",
+            "complex_deviation": "1.726007080642909e-10",
+            "fit_window_shift": "1.051898081108769e-8",
+            "change_for_P2": "5.316921864546815e-7"
+          }
+        },
+        "++--": {
+          "c1_prediction": "(0.0 - 1.675516081914556394j)",
+          "c1_absolute_deviation": "4.075549307291652e-19",
+          "2l_CF": {
+            "extracted_real": "4.532660668399177",
+            "extracted_imag": "8.645368685258131e-11",
+            "complex_deviation": "1.340695718769847e-10",
+            "fit_window_shift": "7.431808183499846e-9",
+            "change_for_P2": "1.063632720621395e-6"
+          },
+          "2l_CA": {
+            "extracted_real": "-0.366500286215127433",
+            "extracted_imag": "-3.718647032654856e-11",
+            "complex_deviation": "1.21572753407835e-10",
+            "fit_window_shift": "7.858697541501673e-9",
+            "change_for_P2": "5.317490327858286e-7"
+          }
+        }
+      },
+      "leading_log_max_deviation": "7.7657948785761577e-12",
+      "leading_log_window_shift": "4.4971344952353845e-10",
+      "leading_log_P2_change": "4.1433219560119606e-8",
+      "finite_matching_max_deviation": "1.9963126768141e-10"
+    },
+    {
+      "configuration": {
+        "s": "17",
+        "ma2": "2",
+        "mb2": "3"
+      },
+      "x1": "0.79277797500303889027",
+      "x2": "0.14839849558519640385",
+      "expected_CF": "6.98346411237506201",
+      "expected_CA": "-2.55206387744808865",
+      "precision_control": {
+        "k": 10,
+        "dps_low": 80,
+        "dps_high": 95,
+        "scaled_difference": {
+          "1l": "5.94347188237702e-59",
+          "2l_CF": "5.59159910086942e-56",
+          "2l_CA": "2.60928595987014e-55"
+        }
+      },
+      "helicities": {
+        "++++": {
+          "c1_prediction": "(0.0 - 16.96789061184714765j)",
+          "c1_absolute_deviation": "6.409437483052714e-18",
+          "2l_CF": {
+            "extracted_real": "6.98346411223962037",
+            "extracted_imag": "1.248273699529895e-10",
+            "complex_deviation": "1.841909583729108e-10",
+            "fit_window_shift": "9.298341880847934e-9",
+            "change_for_P2": "5.618815750663713e-7"
+          },
+          "2l_CA": {
+            "extracted_real": "-2.55206387727813521",
+            "extracted_imag": "-4.153380557044021e-11",
+            "complex_deviation": "1.749549399991829e-10",
+            "fit_window_shift": "1.057811682241406e-8",
+            "change_for_P2": "2.808368129940285e-7"
+          }
+        },
+        "++--": {
+          "c1_prediction": "(0.0 - 0.7728679025422729907j)",
+          "c1_absolute_deviation": "2.91942505837708e-19",
+          "2l_CF": {
+            "extracted_real": "6.9834641122922192",
+            "extracted_imag": "8.17044497398802e-11",
+            "complex_deviation": "1.163552641845139e-10",
+            "fit_window_shift": "6.51725895819229e-9",
+            "change_for_P2": "5.619536919721964e-7"
+          },
+          "2l_CA": {
+            "extracted_real": "-2.55206387732307773",
+            "extracted_imag": "-1.13441710357014e-11",
+            "complex_deviation": "1.255245863236698e-10",
+            "fit_window_shift": "8.395209659714132e-9",
+            "change_for_P2": "2.808956521729804e-7"
+          }
+        }
+      },
+      "leading_log_max_deviation": "7.3322202305867206e-12",
+      "leading_log_window_shift": "4.6384912885625428e-10",
+      "leading_log_P2_change": "2.2402332770430116e-8",
+      "finite_matching_max_deviation": "1.8419095837291082e-10"
+    }
+  ]
+}

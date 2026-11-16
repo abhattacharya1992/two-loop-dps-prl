@@ -1,0 +1,17 @@
+boxes (cyclic order of the external legs; the three orderings up to reflection):
+  (1, 2, 3, 4): det Y = s**2*(-2*m2 + s + t)**2
+  (1, 2, 4, 3): det Y = s**2*t**2
+  (1, 3, 2, 4): det Y = (m2**2 - 2*m2*t + s*t + t**2)**2   <- massive legs at opposite corners: zero at tu = m^4
+  ok: (1,3,2,4) gives (tu - m^4)^2; (1,2,3,4) gives (s u)^2; (1,2,4,3) gives (s t)^2
+triangles (two adjacent legs joined at one vertex):
+  external invariants [0, 0, s]: det Y = 0, vanishes for all kinematics (massless leg: collinear singularity, gives the 1/eps poles)
+  external invariants [0, m2, t]: det Y = 0, vanishes for all kinematics (massless leg: collinear singularity, gives the 1/eps poles)
+  external invariants [0, m2, u]: det Y = 0, vanishes for all kinematics (massless leg: collinear singularity, gives the 1/eps poles)
+  external invariants [0, m2, u]: det Y = 0, vanishes for all kinematics (massless leg: collinear singularity, gives the 1/eps poles)
+  external invariants [0, m2, t]: det Y = 0, vanishes for all kinematics (massless leg: collinear singularity, gives the 1/eps poles)
+  external invariants [m2, m2, s]: det Y = -2*m2**2*s, zero only at s = 0
+Each triangle and bubble depends on one of s, t, u only. On the forward line at fixed
+beta, s stays fixed above 4 m^2 while t -> -m^2 (1-beta)/(1+beta) and
+u -> -m^2 (1+beta)/(1-beta) stay away from zero, so none of them is singular at p_T = 0;
+nor are the two boxes with adjacent massive legs. Only the box (1,3,2,4) depends on t and
+u together, and it is singular exactly at tu = m^4.

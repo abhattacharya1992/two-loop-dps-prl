@@ -1,0 +1,54 @@
+
+beta = 1/4
+  one loop, read from the L^1 part of the two-loop remainder (per unit N or n_f):
+    spin 0, G slope of m_A  =     -29.75350042337333   DPS: -2 pi F_S = -29.75350042337333   rel 1.1e-18 (shift 1.1e-16)
+    spin 0, G slope of m_F  =                3.5e-18   (no DPS pinch: 0)
+    spin 2, forward m_A2    =      2.310379597327494   DPS: pi Kt     = 2.310379597327494   rel 8.4e-21
+    spin 2, forward m_F2    =                1.9e-21 (from N n_f), 1.6e-21 (from n_f^2)   (0)
+    largest |coefficient| of the powers that must be absent, relative to |c_1|: 5.6e-13 (spin 0), 8.6e-13 (spin 2)
+  tree: 3 C_N2/121 vs Feynman rules (-i s/2 here), largest relative difference over the deltas 4.7e-37;
+        colour ratios of the L^2 part against -4/11, 4/121, 0: largest deviation 1.7e-37
+  ratios, every number from the HH files (expect -(4/3) C_A, -2 beta0 = -(22/3) N + (4/3) n_f, -4 C_A,
+  4 C_A - 4 beta0 = -(32/3) N + (8/3) n_f):
+    c13(N^2)/slope    =   -1.3333333333333   expect  -1.33333   rel 7.2e-14
+    c12(N^2)/slope    =   -7.3333333333313   expect  -7.33333   rel 4.7e-13
+    c12(N n_f)/slope  =    1.3333333333332   expect   1.33333   rel 3.1e-13
+    c22(N^2)/K        =   -3.9999999999999   expect      -4.0   rel 2.9e-14
+    c21(N^2)/K        =   -10.666666666665   expect  -10.6667   rel 2.7e-13
+    c21(N n_f)/K      =     2.666666666667   expect   2.66667   rel 1.4e-13
+
+beta = 1/2
+  one loop, read from the L^1 part of the two-loop remainder (per unit N or n_f):
+    spin 0, G slope of m_A  =     -35.86651612848347   DPS: -2 pi F_S = -35.86651612848347   rel 6.8e-18 (shift 6.7e-16)
+    spin 0, G slope of m_F  =                2.7e-17   (no DPS pinch: 0)
+    spin 2, forward m_A2    =      5.366887449882563   DPS: pi Kt     = 5.366887449882563   rel 3.7e-20
+    spin 2, forward m_F2    =                1.8e-20 (from N n_f), 1.5e-20 (from n_f^2)   (0)
+    largest |coefficient| of the powers that must be absent, relative to |c_1|: 3.2e-12 (spin 0), 3.6e-12 (spin 2)
+  tree: 3 C_N2/121 vs Feynman rules (-i s/2 here), largest relative difference over the deltas 1.3e-35;
+        colour ratios of the L^2 part against -4/11, 4/121, 0: largest deviation 4.6e-36
+  ratios, every number from the HH files (expect -(4/3) C_A, -2 beta0 = -(22/3) N + (4/3) n_f, -4 C_A,
+  4 C_A - 4 beta0 = -(32/3) N + (8/3) n_f):
+    c13(N^2)/slope    =    -1.333333333333   expect  -1.33333   rel 3.7e-13
+    c12(N^2)/slope    =   -7.3333333333248   expect  -7.33333   rel 2.3e-12
+    c12(N n_f)/slope  =    1.3333333333323   expect   1.33333   rel 2.0e-12
+    c22(N^2)/K        =   -3.9999999999997   expect      -4.0   rel 1.1e-13
+    c21(N^2)/K        =   -10.666666666659   expect  -10.6667   rel 1.0e-12
+    c21(N n_f)/K      =    2.6666666666681   expect   2.66667   rel 6.3e-13
+
+beta = 2/3
+  one loop, read from the L^1 part of the two-loop remainder (per unit N or n_f):
+    spin 0, G slope of m_A  =     -46.98426346368735   DPS: -2 pi F_S = -46.98426346368735   rel 2.1e-17 (shift 2.1e-15)
+    spin 0, G slope of m_F  =                1.2e-16   (no DPS pinch: 0)
+    spin 2, forward m_A2    =       10.9257611174845   DPS: pi Kt     = 10.9257611174845   rel 1.0e-19
+    spin 2, forward m_F2    =                9.5e-20 (from N n_f), 7.8e-20 (from n_f^2)   (0)
+    largest |coefficient| of the powers that must be absent, relative to |c_1|: 9.6e-12 (spin 0), 9.7e-12 (spin 2)
+  tree: 3 C_N2/121 vs Feynman rules (-i s/2 here), largest relative difference over the deltas 2.5e-35;
+        colour ratios of the L^2 part against -4/11, 4/121, 0: largest deviation 9.3e-36
+  ratios, every number from the HH files (expect -(4/3) C_A, -2 beta0 = -(22/3) N + (4/3) n_f, -4 C_A,
+  4 C_A - 4 beta0 = -(32/3) N + (8/3) n_f):
+    c13(N^2)/slope    =   -1.3333333333326   expect  -1.33333   rel 1.1e-12
+    c12(N^2)/slope    =   -7.3333333333134   expect  -7.33333   rel 6.6e-12
+    c12(N n_f)/slope  =    1.3333333333301   expect   1.33333   rel 7.0e-12
+    c22(N^2)/K        =   -3.9999999999993   expect      -4.0   rel 2.7e-13
+    c21(N^2)/K        =   -10.666666666652   expect  -10.6667   rel 2.4e-12
+    c21(N n_f)/K      =    2.6666666666705   expect   2.66667   rel 1.8e-12

@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: >-
+  Please cite this repository when using its code or data, and cite the
+  accompanying research article when its bibliographic record is available.
+  This citation describes the reproducibility package, not a separate paper.
+type: software
+title: Double parton scattering singularities in two-loop gluon-fusion amplitudes
+authors:
+  - family-names: Bhattacharya
+    given-names: Arunima
+repository-code: https://github.com/abhattacharya1992/two-loop-dps-prl
+abstract: >-
+  Reproducible code, retained numerical data and validation checks for
+  leading two-loop double-parton-scattering logarithms and finite matching
+  in scalar, pseudoscalar and massless-quark-loop vector-boson pair amplitudes.
+keywords:
+  - QCD
+  - scattering amplitudes
+  - double parton scattering
+  - reproducibility

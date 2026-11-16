@@ -1,0 +1,92 @@
+{
+  "arithmetic": "exact (Gaussian rationals; colour in Q(i, sqrt 3))",
+  "seed": 20261112,
+  "dimension": 7,
+  "vector dimension": 5,
+  "sections": "AD",
+  "generators": "one per section, seeded with the seed and the letter of the section",
+  "A conventions": [
+    "Clifford algebra and gamma5",
+    "off-shell Ward identity of the quark graphs (a), (b), (c)",
+    "gauge invariance of the gggg tree (three- and four-gluon vertices)",
+    "gauge invariance of the gggH tree (ggH and gggH vertices)"
+  ],
+  "D g->gg, one gluon": {
+    "points": 1,
+    "polarisation pairs per point": 9,
+    "leading orders": {
+      "a": {
+        "numerator order": 2,
+        "lines": 3
+      },
+      "b": {
+        "numerator order": 2,
+        "lines": 3
+      },
+      "c": {
+        "numerator order": 2,
+        "lines": 3
+      },
+      "d1": {
+        "numerator order": 2,
+        "lines": 2
+      },
+      "d2": {
+        "numerator order": 2,
+        "lines": 2
+      },
+      "d3": {
+        "numerator order": 2,
+        "lines": 2
+      },
+      "e1": {
+        "numerator order": 2,
+        "lines": 2
+      },
+      "e2": {
+        "numerator order": 2,
+        "lines": 2
+      },
+      "W": {
+        "numerator order": 2,
+        "lines": 3
+      }
+    },
+    "relative power (at least)": {
+      "a": 0,
+      "b": 0,
+      "c": 0,
+      "d1": 2,
+      "d2": 2,
+      "d3": 2,
+      "e1": 2,
+      "e2": 2,
+      "W": 0,
+      "polarisation G": 1,
+      "polarisation transverse x": 1,
+      "polarisation transverse y": 1,
+      "polarisation transverse 4": 1,
+      "polarisation p1": 2
+    },
+    "Wilson-line term at the first point, by polarisation pair": [
+      "266323756*I/44805625",
+      "93414384*I/44805625",
+      "4843584*I/8961125",
+      "-57809808*I/44805625",
+      "10767164*I/2635625",
+      "15821568*I/8961125",
+      "-210333888*I/44805625",
+      "-10596096*I/2635625",
+      "55422908*I/8961125"
+    ]
+  },
+  "passed": true,
+  "assumed": [
+    "Feynman gauge; the effective ggH, gggH and ggggH vertices of L = -(C/4) H G^2",
+    "the second sector enters through its tree with the ultrasoft momentum removed and its current proportional to p2 at leading power (the mirror image of the suppression of the transverse and p1 polarisations of the first sector, checked in C and D)"
+  ],
+  "not checked here": [
+    "ultrasoft gluons that first meet at a three-gluon vertex or carry a self-energy (one-gluon attachments, covered by (U.4))",
+    "completeness of the region list (item 2) and statement (ii) of Sec. 7"
+  ]
+}

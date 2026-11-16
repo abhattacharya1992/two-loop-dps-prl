@@ -1,0 +1,187 @@
+{
+  "scope": "Selected NMHV self-crossing component in the multi-Regge overlap",
+  "primary_sha256": "56d7ae8ef863b218613ba549dfb86155d03ceb3dc08f8fe8caeb1ce323c65fcc",
+  "primary_reference": "arXiv:1903.10890v2, hexMRKL1-7.m",
+  "method_reference": "arXiv:1207.0186, Brown associator construction",
+  "sympy_version": "1.14.0",
+  "comparisons": [
+    {
+      "loop": 1,
+      "power": 0,
+      "primary": "1",
+      "target": "1",
+      "difference": "0"
+    },
+    {
+      "loop": 2,
+      "power": 2,
+      "primary": "-1/2",
+      "target": "-1/2",
+      "difference": "0"
+    },
+    {
+      "loop": 2,
+      "power": 1,
+      "primary": "1",
+      "target": "1",
+      "difference": "0"
+    },
+    {
+      "loop": 2,
+      "power": 0,
+      "primary": "p2/6 - 1",
+      "target": "p2/6 - 1",
+      "difference": "0"
+    },
+    {
+      "loop": 3,
+      "power": 4,
+      "primary": "1/8",
+      "target": "1/8",
+      "difference": "0"
+    },
+    {
+      "loop": 3,
+      "power": 3,
+      "primary": "-1/2",
+      "target": "-1/2",
+      "difference": "0"
+    },
+    {
+      "loop": 3,
+      "power": 2,
+      "primary": "3/2",
+      "target": "3/2",
+      "difference": "0"
+    },
+    {
+      "loop": 3,
+      "power": 1,
+      "primary": "-z3 - 3",
+      "target": "-z3 - 3",
+      "difference": "0"
+    },
+    {
+      "loop": 3,
+      "power": 0,
+      "primary": "p2**2/180 + z3 + 3",
+      "target": "p2**2/180 + z3 + 3",
+      "difference": "0"
+    },
+    {
+      "loop": 4,
+      "power": 6,
+      "primary": "-1/48",
+      "target": "-1/48",
+      "difference": "0"
+    },
+    {
+      "loop": 4,
+      "power": 5,
+      "primary": "1/8",
+      "target": "1/8",
+      "difference": "0"
+    },
+    {
+      "loop": 4,
+      "power": 4,
+      "primary": "-p2/48 - 5/8",
+      "target": "-p2/48 - 5/8",
+      "difference": "0"
+    },
+    {
+      "loop": 4,
+      "power": 3,
+      "primary": "p2/12 - z3/6 + 5/2",
+      "target": "p2/12 - z3/6 + 5/2",
+      "difference": "0"
+    },
+    {
+      "loop": 4,
+      "power": 2,
+      "primary": "-7*p2**2/360 - p2/4 + z3/2 - 15/2",
+      "target": "-7*p2**2/360 - p2/4 + z3/2 - 15/2",
+      "difference": "0"
+    },
+    {
+      "loop": 4,
+      "power": 1,
+      "primary": "7*p2**2/180 - p2*z3/2 + p2/2 - z3 + 4*z5 + 15",
+      "target": "7*p2**2/180 - p2*z3/2 + p2/2 - z3 + 4*z5 + 15",
+      "difference": "0"
+    },
+    {
+      "loop": 4,
+      "power": 0,
+      "primary": "-13*p2**3/22680 - 7*p2**2/180 + p2*z3/2 - p2/2 - 2*z3**2 + z3 - 4*z5 - 15",
+      "target": "-13*p2**3/22680 - 7*p2**2/180 + p2*z3/2 - p2/2 - 2*z3**2 + z3 - 4*z5 - 15",
+      "difference": "0"
+    },
+    {
+      "loop": 5,
+      "power": 8,
+      "primary": "1/384",
+      "target": "1/384",
+      "difference": "0"
+    },
+    {
+      "loop": 5,
+      "power": 7,
+      "primary": "-1/48",
+      "target": "-1/48",
+      "difference": "0"
+    },
+    {
+      "loop": 5,
+      "power": 6,
+      "primary": "p2/144 + 7/48",
+      "target": "p2/144 + 7/48",
+      "difference": "0"
+    },
+    {
+      "loop": 5,
+      "power": 5,
+      "primary": "-p2/24 + 5*z3/24 - 7/8",
+      "target": "-p2/24 + 5*z3/24 - 7/8",
+      "difference": "0"
+    },
+    {
+      "loop": 5,
+      "power": 4,
+      "primary": "p2**2/80 + 5*p2/24 - 25*z3/24 + 35/8",
+      "target": "p2**2/80 + 5*p2/24 - 25*z3/24 + 35/8",
+      "difference": "0"
+    },
+    {
+      "loop": 5,
+      "power": 3,
+      "primary": "-p2**2/20 + 7*p2*z3/18 - 5*p2/6 + 25*z3/6 + 2*z5 - 35/2",
+      "target": "-p2**2/20 + 7*p2*z3/18 - 5*p2/6 + 25*z3/6 + 2*z5 - 35/2",
+      "difference": "0"
+    },
+    {
+      "loop": 5,
+      "power": 2,
+      "primary": "23*p2**3/2268 + 3*p2**2/20 - 7*p2*z3/6 + 5*p2/2 + 4*z3**2 - 25*z3/2 - 6*z5 + 105/2",
+      "target": "23*p2**3/2268 + 3*p2**2/20 - 7*p2*z3/6 + 5*p2/2 + 4*z3**2 - 25*z3/2 - 6*z5 + 105/2",
+      "difference": "0"
+    },
+    {
+      "loop": 5,
+      "power": 1,
+      "primary": "-23*p2**3/1134 + 11*p2**2*z3/90 - 3*p2**2/10 + 7*p2*z3/3 + 17*p2*z5/6 - 5*p2 - 8*z3**2 + 25*z3 + 12*z5 - 55*z7/4 - 105",
+      "target": "-23*p2**3/1134 + 11*p2**2*z3/90 - 3*p2**2/10 + 7*p2*z3/3 + 17*p2*z5/6 - 5*p2 - 8*z3**2 + 25*z3 + 12*z5 - 55*z7/4 - 105",
+      "difference": "0"
+    },
+    {
+      "loop": 5,
+      "power": 0,
+      "primary": "257*p2**4/340200 + 23*p2**3/1134 - 11*p2**2*z3/90 + 3*p2**2/10 + p2*z3**2/12 - 7*p2*z3/3 - 17*p2*z5/6 + 5*p2 + 8*z3**2 + 45*z3*z5/2 - 25*z3 - 12*z5 + 55*z7/4 + 105",
+      "target": "257*p2**4/340200 + 23*p2**3/1134 - 11*p2**2*z3/90 + 3*p2**2/10 + p2*z3**2/12 - 7*p2*z3/3 - 17*p2*z5/6 + 5*p2 + 8*z3**2 + 45*z3*z5/2 - 25*z3 - 12*z5 + 55*z7/4 + 105",
+      "difference": "0"
+    }
+  ],
+  "passed": true,
+  "lower_loop_coefficients": 16,
+  "five_loop_coefficients": 9
+}

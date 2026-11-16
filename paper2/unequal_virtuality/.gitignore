@@ -1,0 +1,5 @@
+/build/
+/inputs/
+/runs/
+__pycache__/
+*.pyc

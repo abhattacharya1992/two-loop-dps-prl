@@ -1,0 +1,8 @@
+W2q 0.3s support: [(0, 1/2)] params: [[1]]
+W2qb 0.1s support: [(0, 1/2)] params: [[0]]
+W1q 0.1s support: [(0, 1/2)] params: [[0]]
+W1qb 0.4s support: [(0, 1/2)] params: [[1]]
+Vqq 2.9s support: [(-1/2, 0), (0, 1/2)] params: [[1, 1], [1, 2]]
+Vggq 1.0s support: [(0, 1/2), (1/2, 1)] params: [[1], [1]]
+W1g 0.3s support: [(0, 1/2)] params: [[1]]
+W2g 0.2s support: [(0, 1/2)] params: [[1]]
