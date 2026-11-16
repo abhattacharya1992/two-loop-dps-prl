@@ -1,0 +1,33 @@
+name: Build DPS reference diagram
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - paper2/diagrams/dps_sketch.tex
+
+permissions:
+  contents: write
+
+jobs:
+  diagram:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install LaTeX packages
+        run: |
+          sudo apt-get update -qq
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+            texlive-latex-base texlive-latex-extra texlive-pictures texlive-fonts-recommended
+      - name: Compile reference diagram
+        working-directory: paper2/diagrams
+        run: |
+          pdflatex -interaction=nonstopmode -halt-on-error dps_sketch.tex > dps_sketch-build.log || { tail -80 dps_sketch-build.log; exit 1; }
+          test -s dps_sketch.pdf
+      - name: Save compiled PDF
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f paper2/diagrams/dps_sketch.pdf
+          git commit -m "Add compiled DPS reference diagram"
+          git push origin HEAD:main
