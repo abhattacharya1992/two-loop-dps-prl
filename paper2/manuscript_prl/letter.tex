@@ -64,7 +64,7 @@ E-46980 Paterna, Valencia, Spain}
 %\affiliation{Theory Division, IFIC, University of Valencia-CSIC, E-46980 Paterna, Valencia, Spain}
 
 \begin{abstract}
-Soft and collinear factorisation underpins collider predictions. We test factorisation in double parton scattering at small transverse momentum, where incoming gluons split and the daughter partons undergo two hard collisions. We derive its two-loop logarithms and finite matching functions analytically. Normalised to the one-loop term, the cubic coefficient changes sign between gluon and quark splittings. Higgs, pseudoscalar and $Z$ pair amplitudes support a common factorised form with a Glauber phase. The resulting kernel predicts leading DPS logarithms for colour-singlet pair production.
+We derive the leading double parton scattering (DPS) singularity in two-loop gluon-fusion amplitudes in terms of a common kernel and hard subprocess amplitudes. We determine its logarithms and finite matching functions analytically for gluon and quark splittings. Normalised to one loop, the cubic coefficient changes sign between these splittings. Tests in $gg\to HH$, $gg\to AA$ and $gg\to ZZ$ confirm the predicted colour, helicity and parity dependence and the Glauber phase. The kernel predicts leading DPS logarithms for further colour-singlet pairs without computing full two-loop amplitudes.
 \end{abstract}
 
 \maketitle
@@ -156,8 +156,12 @@ $\gamma_g=-\beta_0$ and $\gamma_q=-3C_F$ are the one-loop non-cusp anomalous dim
 $\beta_0=\frac{11}3C_A-\frac43T_Fn_f$. The scale $Q_*$ is fixed by
 the two outgoing masses and the incoming energy:
 $\DD\ln Q_*^2=C_{R_1}\ln m_1^2+C_{R_2}\ln m_2^2-C_a\ln s$.
-It sets the logarithmic scale of the DPS singularity. Integrating from $\mu_b=b_0/b$,
-$b_0=2e^{-\gamma_E}$, with the coupling of the lowest-order kernel at $\mu_b$, gives
+It sets the logarithmic scale of the DPS singularity.
+Solving the renormalisation group equation with the
+anomalous dimension in Eq.~(\ref{eq:gammaK}) from
+$\mu_b=b_0/b$ to $\mu$, where $b_0=2e^{-\gamma_E}$,
+and evaluating the coupling of the lowest-order kernel
+at $\mu_b$, gives
 \begin{equation}
 \Kt=a_s\Kt_0\big\{1+a_s\big[\DD X_\mu^2-2\DD XX_\mu+BX_\mu\big]\big\}+a_s^2\widetilde R,
 \label{eq:kernel}
@@ -251,10 +255,14 @@ The remaining finite matching function $r_0$ is determined below.
 The Supplemental Material~\cite{SM} gives the regulator and overlap
 calculations.
 
-In the subtraction scheme used here, Glauber exchange between
-daughters of the two incoming splittings generates a phase.
-The poles of the daughter propagators produce an imaginary
-contribution to the rapidity logarithm. At fixed momentum
+For the leading DPS contribution in Eq.~(\ref{eq:factorised}),
+Glauber exchange between partons from the two incoming
+splittings generates a phase. Its coefficient is determined
+by the colour factor $\DD$, independently of the hard
+subprocess amplitudes. With the rapidity regulator and
+IR subtraction used here, the poles of the parton
+propagators produce an imaginary contribution to the
+rapidity logarithm. At fixed momentum
 fractions, the dependence of the regions at scale $\mu_b$
 on the hard scales enters through $X$ in
 Eq.~(\ref{eq:kernel}), with $\operatorname{Im}X=-\pi$.
@@ -304,7 +312,7 @@ $\ln[x(1-x)]$ terms arising from the different
 scale $Q_*$ for quark splittings.
 %
 We further test Eq.~(\ref{eq:rg}) using the
-massless-quark $gg\to V_1^*V_2^*$ amplitudes
+massless quark $gg\to V_1^*V_2^*$ amplitudes
 with different invariant masses for the two
 off-shell vector bosons.
 For $(m_1^2,m_2^2,s)=(1,2,15/2)$
@@ -324,7 +332,7 @@ while the $ZZ$ result depends on the splitting momentum fraction
 through the scale $Q_*$. The extracted coefficients agree with both
 predictions. Table~\ref{tab:tests} gives the corresponding numerical
 deviations, fit-window tests and additional velocities.
-Together, the comparisons support the absence of additional two-loop
+Together, they support the absence of additional two-loop
 boundary logarithms in both splitting channels.
 %
 \begin{table}[!htb]
@@ -366,7 +374,7 @@ text are applied.}
 
 
 
-\begin{figure*}[t]
+\begin{figure*}[!htb]
 \centering
 \includegraphics[width=0.94\textwidth]{figures/three_process_comparison.pdf}
 \caption{Coefficients of the cubic and quadratic DPS logarithms in the
@@ -383,8 +391,9 @@ slightly in $\beta$ to show both sets.}
 \end{figure*}
 
 \textit{Finite matching and parity:}
-The finite boundary coefficient $r_0$ contributes
-to the single logarithm in $\M_1^{(2)}$ and the constant term in
+The finite matching coefficient $r_0$ enters
+the term proportional to $\mathcal G$ in
+$\M_1^{(2)}$ and the constant term in
 $\M_2^{(2)}$. We derive $r_0$ analytically from the collinear and soft contributions
 and parton self-energy corrections~\cite{SM}.
 Independent extraction from the complete two-loop amplitudes,
@@ -503,22 +512,25 @@ tested at three loops~\cite{SM}.
 
 Under both conditions, the relative boundary correction
 is $a_sr_0+a_s^2(r_0^{(3)}+r_1^{(3)}X)$, with $a_s$
-evaluated at $\mu_b$. Using
-$\gamma_{\mathcal K}=-\DD\gamma_{\rm cusp}(a_s)\ln(Q_*^2e^{-i\pi}/\mu^2)+2\DG(a_s)$,
-$\gamma_{\rm cusp}=4a_s+\Gamma_1a_s^2$ per unit Casimir,
-and
-$\Gamma_1=4[(\frac{67}9-2\zeta_2)C_A-\frac{20}9T_Fn_f]$,
-together with the two-loop running of $a_s(\mu_b)$,
-we obtain in minimal subtraction
+evaluated at $\mu_b$.
+The leading three-loop logarithms follow from the
+renormalisation group evolution with the known
+two-loop cusp anomalous dimension
+$\gamma_{\rm cusp}(a_s)=4a_s+\Gamma_1a_s^2$,
+where
+$\Gamma_1=4[(67/9-2\zeta_2)C_A-20T_Fn_f/9]$.
+Using the running coupling and the boundary
+conditions stated above, we obtain in
+minimal subtraction
 \begin{equation}
 \begin{aligned}
 \M_1^{(3)}&\supset C_1\Big[\tfrac85\DD^2\G^5+c_4\G^4+c_3^{(0)}\G^3\Big],\\
 \M_2^{(3)}&\supset K\Big[8\DD^2\G^4+(4c_4-16\DD^2)\G^3\\
-&\qquad+\big(3c_3^{(2)}-4\DD(3B+2\beta_0-6\DD)\big)\G^2\Big],
+&\qquad+\big(3c_3^{(2)}-4\DD(3B+2\beta_0-6\DD)\big)\G^2\Big].
 \end{aligned}
 \label{eq:threeloop}
 \end{equation}
-where
+Here
 $c_4=2\DD(B+\frac23\beta_0)$ and
 $c_3^{(\nu)}=\frac23B(B+\beta_0)-\frac13\DD\Gamma_1-\frac83\DD h-\frac43\DD r_0^{(\nu)}-\frac43\DD L_*(B+\beta_0+\DD L_*)$.
 Here $r_0^{(\nu)}$ is the finite matching coefficient
@@ -560,21 +572,24 @@ Independent numerical region integrations confirm
 the finite matching at the tested momentum fractions,
 while the Glauber contribution reproduces the phase
 after IR subtraction.
-Results for off-shell vector bosons of different
-invariant masses and known planar $\mathcal N=4$
-amplitudes provide further tests. The kernel predicts
-leading DPS logarithms for further colour-singlet
-pairs from their hard amplitudes, subject to the stated
-boundary condition, providing checks on future
-two-loop calculations. Its evolution gives conditional
-three-loop predictions.
+The predicted logarithms also agree with amplitudes
+for off-shell vector bosons of unequal invariant
+masses and with known planar $\mathcal N=4$
+results through five loops. For massive colour-singlet
+pair production with the DPS configuration studied here,
+the kernel determines the leading two-loop logarithms
+from the hard subprocess amplitudes. These predictions provide
+analytic benchmarks for complete two-loop calculations.
+Under the stated boundary conditions, the kernel
+evolution also determines the leading three-loop
+logarithms.
 
 \begin{acknowledgments}
 I thank IFIC, University of Valencia, and Prof. Francisco Campanario for providing the computing resources used in this work.
 ChatGPT 6 Pro (OpenAI) and Claude fable 5.2 (Anthropic) were used to
 draft notes, draft and debug code, and organise the Git
-repository. Their use in the computational work and the verification
-procedures are described in the Supplemental Material~\cite{SM}.
+repository.
+%Their use in the computational work and the verification procedures are described in the Supplemental Material~\cite{SM}.
 The author takes full responsibility for the content of this Letter.
 \end{acknowledgments}
 
@@ -630,10 +645,17 @@ scale is $\mu_b$, while the hard-scale dependence
 enters via a regulated rapidity logarithm at
 this order~\cite{Chiu:2012ir}.
 
-An ultrasoft gluon has all momentum components of
-order $p_T^2/\sqrt{s}$ and cannot resolve $b$, but
-is sensitive to the small virtualities of the
-daughter partons. Denoting the dimensionful
+An ultrasoft gluon has light-cone and transverse
+momentum components
+$\ell^+\sim\ell^-\sim|\boldsymbol\ell_\perp|
+\sim p_T^2/\sqrt{s}$.
+Since $|\boldsymbol\ell_\perp|b\ll1$,
+it does not resolve the transverse separation $b$.
+However, $p_1^+\ell^-$ and $p_2^-\ell^+$
+are of order $p_T^2$ and therefore contribute
+to the denominators of the nearly on-shell
+parton propagators.
+Denoting the dimensionful
 light-cone energy denominators of the two splittings
 by $\sigma_1$ and $\sigma_2$, their product scales as
 $\sigma_1\sigma_2\sim\mu_b^4s/(m_1^2m_2^2)$, or
@@ -653,10 +675,12 @@ contribution $-2\pi^2$ cancels the parent-parent
 term $+2\pi^2$; mixed terms vanish~\cite{SM}.
 The Glauber phase is treated separately in Appendix C.
 
-The regions have poles
+After combining the momentum-region contributions
+with the required overlap subtractions, their
+dimensional poles have the form
 $(\mu^2/\Lambda^2)^\epsilon
 (e_2/\epsilon^2+e_1/\epsilon+e_0)$.
-Collinear, soft and Glauber terms use
+For the collinear, soft and Glauber contributions,
 $\Lambda=\mu_b$ and carry the rapidity logarithm
 $(g/\epsilon+g_1)\ln(Q_*^2e^{-i\pi}/\mu_b^2)$;
 ultrasoft terms use

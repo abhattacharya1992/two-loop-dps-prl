@@ -87,7 +87,10 @@ def letter_threeloop_table():
         'the layout of the three-loop table has changed'
     s = s.replace(head, '$x$ & $N_c^2$ & $N_cn_f$ & $n_f^2$\\\\')
     s = s.replace('\\small', '\\footnotesize', 1)
-    s = s.replace(r'\setlength{\tabcolsep}{5pt}',r'\setlength{\tabcolsep}{7pt}')
+    s = s.replace(r'\setlength{\tabcolsep}{5pt}',r'\setlength{\tabcolsep}{7pt}')   
+    s = s.replace(r'\begin{tabular}{lccc}', r'\renewcommand{\arraystretch}{1.35}' + '\n'
+    + r'\begin{tabular}{lccc}', 1 )
+
     # The same six data rows, with a compact heading for each component.
     s = s.replace(r'\multicolumn{4}{l}{coefficient of $\G^3$ in $\M_1^{(3)}/C_1$}',
                   r'\multicolumn{4}{@{}l}{$[\G^3]\,\M_1^{(3)}/C_1$}')
