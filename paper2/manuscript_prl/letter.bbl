@@ -6,7 +6,7 @@
 %Control: page (0) single
 %Control: year (1) truncated
 %Control: production of eprint (0) enabled
-\begin{thebibliography}{49}%
+\begin{thebibliography}{57}%
 \makeatletter
 \providecommand \@ifxundefined [1]{%
  \@ifx{#1\undefined}
@@ -113,6 +113,27 @@
   {\bibinfo  {number} { (2015)},\ \bibinfo {pages} {197}},\ }\Eprint
   {https://arxiv.org/abs/1503.08835} {arXiv:1503.08835 [hep-ph]} \BibitemShut
   {NoStop}%
+\bibitem [{\citenamefont {Manohar}\ and\ \citenamefont
+  {Waalewijn}(2012)}]{Manohar:2012pe}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.~V.}\ \bibnamefont
+  {Manohar}}\ and\ \bibinfo {author} {\bibfnamefont {W.~J.}\ \bibnamefont
+  {Waalewijn}},\ }\bibfield  {title} {\bibinfo {title} {{What is double parton
+  scattering?}},\ }\href {https://doi.org/10.1016/j.physletb.2012.05.044}
+  {\bibfield  {journal} {\bibinfo  {journal} {Phys. Lett. B}\ }\textbf
+  {\bibinfo {volume} {713}},\ \bibinfo {pages} {196} (\bibinfo {year}
+  {2012})},\ \Eprint {https://arxiv.org/abs/1202.5034} {arXiv:1202.5034
+  [hep-ph]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Gaunt}(2013)}]{Gaunt:2012dd}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.~R.}\ \bibnamefont
+  {Gaunt}},\ }\bibfield  {title} {\bibinfo {title} {{Single perturbative
+  splitting diagrams in double parton scattering}},\ }\href
+  {https://doi.org/10.1007/JHEP01(2013)042} {\bibfield  {journal} {\bibinfo
+  {journal} {JHEP}\ }\textbf {\bibinfo {volume} {01}}\bibfield  {number}
+  {\bibinfo  {number} { (2013)},\ \bibinfo {pages} {042}},\ }\Eprint
+  {https://arxiv.org/abs/1207.0480} {arXiv:1207.0480 [hep-ph]} \BibitemShut
+  {NoStop}%
 \bibitem [{\citenamefont {Diehl}\ \emph {et~al.}(2017)\citenamefont {Diehl},
   \citenamefont {Gaunt},\ and\ \citenamefont {Sch{\"o}nwald}}]{Diehl:2017kgu}%
   \BibitemOpen
@@ -125,6 +146,51 @@
   {06}}\bibfield  {number} {\bibinfo  {number} { (2017)},\ \bibinfo {pages}
   {083}},\ }\Eprint {https://arxiv.org/abs/1702.06486} {arXiv:1702.06486
   [hep-ph]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Blok}\ \emph {et~al.}(2011)\citenamefont {Blok},
+  \citenamefont {Dokshitzer}, \citenamefont {Frankfurt},\ and\ \citenamefont
+  {Strikman}}]{BDFS2011}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {B.}~\bibnamefont
+  {Blok}}, \bibinfo {author} {\bibfnamefont {{\relax{Yu}}.}~\bibnamefont
+  {Dokshitzer}}, \bibinfo {author} {\bibfnamefont {L.}~\bibnamefont
+  {Frankfurt}},\ and\ \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {Strikman}},\ }\bibfield  {title} {\bibinfo {title} {The four jet production
+  at {LHC} and {Tevatron} in {QCD}},\ }\href
+  {https://doi.org/10.1103/PhysRevD.83.071501} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Rev. D}\ }\textbf {\bibinfo {volume} {83}},\ \bibinfo
+  {pages} {071501} (\bibinfo {year} {2011})},\ \Eprint
+  {https://arxiv.org/abs/1009.2714} {arXiv:1009.2714 [hep-ph]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Blok}\ \emph {et~al.}(2012)\citenamefont {Blok},
+  \citenamefont {Dokshitzer}, \citenamefont {Frankfurt},\ and\ \citenamefont
+  {Strikman}}]{BDFS2012}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {B.}~\bibnamefont
+  {Blok}}, \bibinfo {author} {\bibfnamefont {{\relax{Yu}}.}~\bibnamefont
+  {Dokshitzer}}, \bibinfo {author} {\bibfnamefont {L.}~\bibnamefont
+  {Frankfurt}},\ and\ \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {Strikman}},\ }\bibfield  {title} {\bibinfo {title} {{pQCD} physics of
+  multiparton interactions},\ }\href
+  {https://doi.org/10.1140/epjc/s10052-012-1963-8} {\bibfield  {journal}
+  {\bibinfo  {journal} {Eur. Phys. J. C}\ }\textbf {\bibinfo {volume} {72}},\
+  \bibinfo {pages} {1963} (\bibinfo {year} {2012})},\ \Eprint
+  {https://arxiv.org/abs/1106.5533} {arXiv:1106.5533 [hep-ph]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Blok}\ \emph {et~al.}(2014)\citenamefont {Blok},
+  \citenamefont {Dokshitzer}, \citenamefont {Frankfurt},\ and\ \citenamefont
+  {Strikman}}]{BDFS2014}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {B.}~\bibnamefont
+  {Blok}}, \bibinfo {author} {\bibfnamefont {{\relax{Yu}}.}~\bibnamefont
+  {Dokshitzer}}, \bibinfo {author} {\bibfnamefont {L.}~\bibnamefont
+  {Frankfurt}},\ and\ \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {Strikman}},\ }\bibfield  {title} {\bibinfo {title} {Perturbative {QCD}
+  correlations in multi-parton collisions},\ }\href
+  {https://doi.org/10.1140/epjc/s10052-014-2926-z} {\bibfield  {journal}
+  {\bibinfo  {journal} {Eur. Phys. J. C}\ }\textbf {\bibinfo {volume} {74}},\
+  \bibinfo {pages} {2926} (\bibinfo {year} {2014})},\ \Eprint
+  {https://arxiv.org/abs/1306.3763} {arXiv:1306.3763 [hep-ph]} \BibitemShut
+  {NoStop}%
 \bibitem [{\citenamefont {Bhattacharya}(2026)}]{P1}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
@@ -132,6 +198,45 @@
   amplitudes near threshold and the double parton scattering singularity}}}
   (\bibinfo {year} {2026}),\ \Eprint {https://arxiv.org/abs/2610.19024}
   {arXiv:2610.19024 [hep-ph]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Diehl}\ \emph {et~al.}(2019)\citenamefont {Diehl},
+  \citenamefont {Gaunt}, \citenamefont {Pl{\"o}{\ss}l},\ and\ \citenamefont
+  {Sch{\"a}fer}}]{Diehl:2019rdh}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {Diehl}}, \bibinfo {author} {\bibfnamefont {J.~R.}\ \bibnamefont {Gaunt}},
+  \bibinfo {author} {\bibfnamefont {P.}~\bibnamefont {Pl{\"o}{\ss}l}},\ and\
+  \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Sch{\"a}fer}},\
+  }\bibfield  {title} {\bibinfo {title} {{Two-loop splitting in double parton
+  distributions}},\ }\href {https://doi.org/10.21468/SciPostPhys.7.2.017}
+  {\bibfield  {journal} {\bibinfo  {journal} {SciPost Phys.}\ }\textbf
+  {\bibinfo {volume} {7}},\ \bibinfo {pages} {017} (\bibinfo {year} {2019})},\
+  \Eprint {https://arxiv.org/abs/1902.08019} {arXiv:1902.08019 [hep-ph]}
+  \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Diehl}\ \emph {et~al.}(2021)\citenamefont {Diehl},
+  \citenamefont {Gaunt},\ and\ \citenamefont {Plossl}}]{Diehl:2021non}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {Diehl}}, \bibinfo {author} {\bibfnamefont {J.~R.}\ \bibnamefont {Gaunt}},\
+  and\ \bibinfo {author} {\bibfnamefont {P.}~\bibnamefont {Plossl}},\
+  }\bibfield  {title} {\bibinfo {title} {{Two-loop splitting in double parton
+  distributions: the colour non-singlet case}},\ }\href
+  {https://doi.org/10.1007/JHEP08(2021)040} {\bibfield  {journal} {\bibinfo
+  {journal} {JHEP}\ }\textbf {\bibinfo {volume} {08}}\bibfield  {number}
+  {\bibinfo  {number} { (2021)},\ \bibinfo {pages} {040}},\ }\Eprint
+  {https://arxiv.org/abs/2105.08425} {arXiv:2105.08425 [hep-ph]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Diehl}\ and\ \citenamefont
+  {Plossl}(2026)}]{Diehl:2026quant}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {Diehl}}\ and\ \bibinfo {author} {\bibfnamefont {P.}~\bibnamefont {Plossl}},\
+  }\bibfield  {title} {\bibinfo {title} {{A quantitative study of two-loop
+  splitting in double parton distributions}},\ }\href
+  {https://doi.org/10.1007/JHEP05(2026)158} {\bibfield  {journal} {\bibinfo
+  {journal} {JHEP}\ }\textbf {\bibinfo {volume} {05}}\bibfield  {number}
+  {\bibinfo  {number} { (2026)},\ \bibinfo {pages} {158}},\ }\Eprint
+  {https://arxiv.org/abs/2602.18233} {arXiv:2602.18233 [hep-ph]} \BibitemShut
+  {NoStop}%
 \bibitem [{\citenamefont {Diehl}\ \emph {et~al.}(2016)\citenamefont {Diehl},
   \citenamefont {Gaunt}, \citenamefont {Ostermeier}, \citenamefont
   {Pl{\"o}{\ss}l},\ and\ \citenamefont {Sch{\"a}fer}}]{Diehl:2015bca}%
@@ -219,6 +324,18 @@
   {journal} {Phys. Rev. D}\ }\textbf {\bibinfo {volume} {60}},\ \bibinfo
   {pages} {116001} (\bibinfo {year} {1999})},\ \Eprint
   {https://arxiv.org/abs/hep-ph/9903516} {arXiv:hep-ph/9903516} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Korchemskaya}\ and\ \citenamefont
+  {Korchemsky}(1995)}]{Korchemskaya:1994qp}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {I.~A.}\ \bibnamefont
+  {Korchemskaya}}\ and\ \bibinfo {author} {\bibfnamefont {G.~P.}\ \bibnamefont
+  {Korchemsky}},\ }\bibfield  {title} {\bibinfo {title} {{High-energy
+  scattering in QCD and cross singularities of Wilson loops}},\ }\href
+  {https://doi.org/10.1016/0550-3213(94)00553-Q} {\bibfield  {journal}
+  {\bibinfo  {journal} {Nucl. Phys. B}\ }\textbf {\bibinfo {volume} {437}},\
+  \bibinfo {pages} {127} (\bibinfo {year} {1995})},\ \Eprint
+  {https://arxiv.org/abs/hep-ph/9409446} {arXiv:hep-ph/9409446} \BibitemShut
   {NoStop}%
 \bibitem [{\citenamefont {Dixon}\ and\ \citenamefont
   {Esterlis}(2016)}]{Dixon:2016epj}%
@@ -443,20 +560,6 @@
   {journal} {\bibinfo  {journal} {Nuovo Cim.}\ }\textbf {\bibinfo {volume}
   {38}},\ \bibinfo {pages} {438} (\bibinfo {year} {1965})}\BibitemShut
   {NoStop}%
-\bibitem [{\citenamefont {Diehl}\ \emph {et~al.}(2019)\citenamefont {Diehl},
-  \citenamefont {Gaunt}, \citenamefont {Pl{\"o}{\ss}l},\ and\ \citenamefont
-  {Sch{\"a}fer}}]{Diehl:2019rdh}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
-  {Diehl}}, \bibinfo {author} {\bibfnamefont {J.~R.}\ \bibnamefont {Gaunt}},
-  \bibinfo {author} {\bibfnamefont {P.}~\bibnamefont {Pl{\"o}{\ss}l}},\ and\
-  \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Sch{\"a}fer}},\
-  }\bibfield  {title} {\bibinfo {title} {{Two-loop splitting in double parton
-  distributions}},\ }\href {https://doi.org/10.21468/SciPostPhys.7.2.017}
-  {\bibfield  {journal} {\bibinfo  {journal} {SciPost Phys.}\ }\textbf
-  {\bibinfo {volume} {7}},\ \bibinfo {pages} {017} (\bibinfo {year} {2019})},\
-  \Eprint {https://arxiv.org/abs/1902.08019} {arXiv:1902.08019 [hep-ph]}
-  \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Dixon}(1996)}]{Dixon:1996wi}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {L.~J.}\ \bibnamefont

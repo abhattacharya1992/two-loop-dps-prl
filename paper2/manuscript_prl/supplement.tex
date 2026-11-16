@@ -746,7 +746,7 @@ sign determined by $M_{--}/M_{++}$.
 This accounts for the different finite
 terms in $HH$ and $AA$ without changing
 their leading logarithms.
-
+%
 The parton representations enter through
 their Casimirs, non-cusp anomalous dimensions
 and splitting amplitudes. The leading-power
@@ -812,7 +812,7 @@ The region calculations and amplitude comparisons
 support $r_1=r_2=0$ for the DPS terms studied,
 leaving the finite matching coefficient $r_0$
 (Sec.~\ref{app:boundary}).
-
+%
 The separation between evolution and matching
 depends on the scale convention.
 At $\mu^2=Q_*^2$, $X_\mu=X+i\pi$, so the
@@ -851,7 +851,7 @@ $-\frac43\G^3-\frac23\zeta_3$, respectively.
 For $\nu=2$, there is no pole, and
 $\Phi_2'(0)/\Phi_2(0)=1-2\G$ and
 $\Phi_2''(0)/\Phi_2(0)=4\G^2-4\G+2$.
-
+%
 With $r_1=r_2=0$, applying these transforms
 to $-\DD X^2+BX$ gives the logarithms
 of Eq.~(\Lref{eq:rg}), in units of the
@@ -861,7 +861,7 @@ component one additional power of $\G$
 and accounts for the factor $1/3$ in
 the cubic coefficient.
 
-\paragraph{Infrared scheme: }
+\paragraph{IR scheme: }
 Equation~(\Lref{eq:gammaK}) uses minimally
 subtracted amplitudes, whereas the $HH$
 remainders of Sec.~\ref{sec:hh} use Catani's
@@ -1073,7 +1073,7 @@ vanish. The regulated static overlap therefore
 cancels. Taking the longitudinal offsets to
 zero before summing the diagrams would miss
 the parent contribution.
-
+%
 The subtraction associated with the transverse
 separation is proportional to
 $\DD[\cos(\boldsymbol\ell\cdot\bb)-1]$.
@@ -1113,7 +1113,7 @@ where the superscripts b and us refer to
 the regions at scale $\mu_b$ and the ultrasoft
 regions, respectively. Here $g_1$ is the finite
 coefficient of the rapidity logarithm at $\mu_b$.
-
+%
 Comparison with Eq.~(\Lref{eq:kernel}) gives
 $e_2^{\rm b}+e_2^{\rm us}=2\DD$ and
 \[
@@ -1235,7 +1235,7 @@ parton self-energy corrections separately, checking the cancellation of their po
 and the resulting finite terms. With $p_1^+=p_2^-=\mu=1$ and $b=b_0$,
 the bare correction, normalised to the lowest-order kernel, is
 \begin{equation}
-\widetilde{\mathcal K}^{(1)}_{\rm bare}/\widetilde{\mathcal K}_0=J_1+J_2+S+\sum_{\rm daughters}\Sigma+G,
+\dfrac{\widetilde{\mathcal K}^{(1)}_{\rm bare}}{\widetilde{\mathcal K}_0}=J_1+J_2+S+\sum_{\rm daughters}\Sigma+G,
 \label{eq:Kregions}
 \end{equation}
 for helicity structures present at tree level. Contributions that
@@ -1422,7 +1422,7 @@ $2\pi^2/A$ to $\glauberG$. The collinear and soft longitudinal
 integrals are imaginary, but become real after division by the
 lowest-order factor $2\pi i$. For $\sigma_2<0$, the outgoing
 collinear contribution cancels $2\pi^2/A$ to $\glauberCancel$.
-
+%
 We take $\eta\to0$ before expanding the transverse integral in
 $\epsilon$. The Glauber contribution to the normalised kernel is
 $-i\pi$ times $2\DD$ times Eq.~(\Lref{eq:rapcoef}), reproducing
@@ -1456,10 +1456,9 @@ and carries the third angular harmonic, whereas the
 tree splitting carries the first.
 For their common radial dependence $1/|\kk|$,
 the Fourier transforms differ by $i^3/i=-1$.
-Thus, at $\epsilon=0$,
-$T_4\to(S_1+S_2+S_3)/2-T_4$,
+Thus, at $\epsilon=0$, $T_4\to(S_1+S_2+S_3)/2-T_4$,
 with $\kk$ replaced by $\bb$.
-
+%
 At one loop, the corrected splitting from either incoming gluon
 is contracted with the lowest-order splitting from the other.
 Combining these splittings with the hard amplitudes gives
@@ -1502,8 +1501,9 @@ J_1^{g\to q\bar q}
 \frac4{\eta\epsilon}
 +\frac{5-2L}{\epsilon}
 +8-2\zeta_2+L
-+\ln^2\frac{x}{1-x}\Big]\\
-&+C_A\Big[
++\ln^2\frac{x}{1-x}\Big]
+%\\&
++C_A\Big[
 -\frac2{\eta\epsilon}
 +1-\ln^2x-\ln^2(1-x)\Big],
 \end{aligned}
@@ -1530,10 +1530,10 @@ of the two outgoing partons, the 23 diagram entries give
 c_s={}&C_A\Big[
 \frac2{\eta\epsilon}
 +\frac{1/3-2L}{\epsilon}
-+\frac59-2\zeta_2-\frac53L\\
-&\hspace{12mm}-2\ln x\ln(1-x)
-+\frac{\rho_s}{3}\Big]\\
-&+T_Fn_f\Big[
++\frac59-2\zeta_2-\frac53L
+-2\ln x\ln(1-x)
++\frac{\rho_s}{3}\Big]
++T_Fn_f\Big[
 \frac4{3\epsilon}
 +\frac{20}9+\frac43L
 -\frac{2\rho_s}{3}\Big],\\
@@ -1580,7 +1580,7 @@ fraction and at most two Feynman parameters. The integrands are
 products of polynomials raised to powers linear in $\epsilon$
 and $\eta$. We factor the polynomials, resolve endpoint zeros
 using iterated sector decomposition~\cite{Binoth:2000ps},
-subtract the endpoint singularities and use Gauss--Legendre
+subtract the endpoint singularities and use Gauss-Legendre
 quadrature. We extract the Laurent coefficients from discrete
 Fourier sums on $|\epsilon|=0.2$ and
 $|\eta|=0.05|\epsilon|$, using 32 points on the
@@ -1677,7 +1677,7 @@ Repeating the calculation at higher precision
 for $(\beta,\delta)=(\ctrlBeta,\ctrlDelta)$
 changes the physical colour sum by less
 than $\precisionCtrl$.
-
+%
 We extract the forward coefficients by fitting
 the $J+P+2$ points closest to $\delta=0$ to
 \begin{equation}
@@ -1699,7 +1699,7 @@ Let $c_{ij}$ denote the coefficient of $\G^j$
 in $A_i^{(2)}$ at $\mu_R=m_H$.
 The four leading DPS logarithmic coefficients
 are $c_{13}$, $c_{12}$, $c_{22}$ and $c_{21}$.
-
+%
 The one-loop coefficients are
 $c_1=C_1/m_H^2=-2\pi NF_S(x)$ and
 $K_1(x)=K/m_H^2=\pi NW(x)$.
@@ -1813,7 +1813,7 @@ in the released code.
 \subsection{Scale independence of the leading logarithms}
 \label{sec:scale}
 
-Equation~(\ref{eq:Ldep}) implies that
+Eq.~(\ref{eq:Ldep}) implies that
 the coefficients of $\G^3$ and $\G^2$
 in $\M_1^{(2)}$, and of $\G^2$ and
 $\G$ in $\M_2^{(2)}$, are independent
@@ -1830,15 +1830,12 @@ The extracted leading coefficients
 agree across these scales to
 $\scaleSpread$.
 %
-At leading DPS power, the only
-scale-dependent coefficient multiplying
-a positive power of $\G$ at two loops
-is the single-logarithm coefficient
-of $\M_1^{(2)}$. According to
-Eq.~(\ref{eq:Ldep}), its dependence
-on $L$ has slope $-3\beta_0c_1$,
-which the fits reproduce to
-$\scaleSlopeDev$.
+At leading DPS power, among terms containing
+positive powers of $\G$, only the coefficient
+of $\G$ in $\M_1^{(2)}$ depends on $\mu_R$.
+Eq.~(\ref{eq:Ldep}) gives its slope
+$-3\beta_0c_1$ with respect to $L$,
+in agreement with the fits to $\scaleSlopeDev$.
 %
 The same relation holds for $gg\to AA$
 at threshold. In Eq.~(4.6) of
@@ -1901,7 +1898,7 @@ Terms proportional to $\M^{(0)}$, including
 $4I^{(2)}\M^{(0)}$, do not generate leading
 DPS logarithms: $\M_1^{(0)}$ is independent
 of $p_T$, while $\M_2^{(0)}=O(p_T^2)$.
-
+%
 Expanding
 $(p_T^2/\mu_R^2)^{-\epsilon}
 =\sum_n(-\epsilon\ell)^n/n!$
@@ -1995,7 +1992,7 @@ For $g\to q\bar q$, each incoming gluon splits into a
 quark-antiquark pair, and partons from the two splittings
 produce the final colour singlets
 [Fig.~\Lref{fig:dps}(b)]. The relevant colour and
-non-cusp anomalous-dimension combinations are
+non-cusp anomalous dimension combinations are
 $\DD=2C_F-C_A=-1/N_c$ and
 $B=\beta_0+\DG=\beta_0-\beta_0+6C_F=6C_F$.
 %
@@ -2014,11 +2011,15 @@ The logarithm in Eq.~(\Lref{eq:rg}) is therefore
 where $\G$ is defined in Eq.~(\ref{eq:Gdef})
 and $x=(1+\beta)/2$.
 
-The attachment identities of Sec.~\ref{app:boundary}
-follow from colour conservation and eikonal couplings
-and apply to quark as well as gluon splittings.
+At leading power, the sum of ultrasoft gluon
+attachments to the parent and daughter partons
+reduces to the eikonal coupling of the parent,
+as shown in Sec.~\ref{app:boundary}.
+This follows from Ward identities and colour
+conservation for both $g\to gg$ and
+$g\to q\bar q$.
 Together with the two-loop amplitude comparisons,
-they support $r_1=r_2=0$ for the quark channel.
+the result supports $r_1=r_2=0$ for quark splittings.
 With this boundary condition, a helicity amplitude
 whose one-loop DPS term is $C_1\G$ contains
 \begin{equation}
@@ -2264,7 +2265,7 @@ Sec.~\ref{sec:K1complete}.
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.66\textwidth]{figures/zz_prediction.pdf}
+\includegraphics[width=0.55\textwidth]{figures/zz_prediction.pdf}
 \caption{The $C_F$ and $C_A$ contributions to the two-loop
 $gg\to ZZ$ DPS logarithms in the $\Delta J_z=0$ component.
 Lines are the predictions of Eq.~(\Lref{eq:rg}); symbols are
@@ -2411,8 +2412,9 @@ numerical results.
 
 The analytic collinear calculation in Sec.~\ref{app:regions}
 determines the finite boundary coefficient $r_0$.
-It contributes to the single logarithm of $\M_1^{(2)}$
-and the constant term of $\M_2^{(2)}$.
+It enters the coefficient of $\G$ in
+$\M_1^{(2)}$ and the constant term
+in $\M_2^{(2)}$.
 We independently extract this coefficient from the complete
 two-loop amplitudes by converting to a common IR subtraction
 scheme and subtracting the known hard contributions.
@@ -2535,7 +2537,7 @@ Here $T_F=1/2$, $F_0=F_S$ and $F_2=W$.
 The eight $ZZ$ helicity projections,
 including parity partners, agree with
 one another to $\rzZZspread$.
-The results are given in
+The results are in
 Tables~\ref{tab:r0zz} and~\ref{tab:r0amp}.
 
 \paragraph{Independent reconstruction and numerical tests: }
@@ -2638,7 +2640,7 @@ $4+\zeta_2$, with the same operator
 renormalisation at this order.
 The finite hard functions therefore
 differ by $4C_A$.
-
+%
 Using the pseudoscalar hard function
 in Eq.~(\ref{eq:r0read}) cancels the
 extracted imaginary parts to
@@ -2726,9 +2728,9 @@ Together with the soft and parton self-energy terms,
 they determine the complete finite matching functions.
 Independent numerical comparisons are presented
 in Secs.~\ref{sec:r0} and~\ref{sec:r0regions}.
-
+%
 \input{tables/table_r0_amp.tex}
-
+%
 The common gluon constant obeys
 \[
 C_A\Big(\frac{134}9-5\zeta_2\Big)
@@ -3031,7 +3033,7 @@ along lines of fixed $\beta$.
 We extract the forward coefficients
 using Eq.~(\ref{eq:fit}), including
 terms proportional to $p_T^2$.
-
+%
 For each velocity, colour structure
 and power of $L$, we use $P=2$
 and solve the linear system defined
