@@ -1,0 +1,88 @@
+# Figures
+
+## Figures of the Letter and the Supplement
+
+| File | Used as |
+|---|---|
+| `dps_diagram.pdf` | Fig. 1 of the Letter (`fig:dps`): tree diagram and crossed box. Sources: `dps_diagram.tex` and `dps_diagram_tikz.tex`, built by `make_figure.py`. |
+| `three_process_comparison.pdf` | Fig. 2 of the Letter (`fig:threeprocess`). |
+| `zz_prediction.pdf` | Supplement (`fig:zz_prediction`). |
+
+## Reference diagrams for the one-loop DPS kernel
+
+Three figures show the one-loop diagrams that enter the finite matching functions $r_0$ of Eqs. (7) and (8) of the Letter. These are reference diagrams; they are not included in the Letter or the Supplemental Material. The second collinear function $J_2$ repeats the diagrams of $J_1$ for the second incoming gluon and is not drawn.
+
+| File | Content | Panels |
+|---|---|---|
+| `collinear_diagrams_qq.pdf` | collinear function $J_1$ for $g\to q\bar q$ | 9 |
+| `collinear_diagrams_gg.pdf` | collinear function $J_1$ for $g\to gg$ | 14 |
+| `selfenergy_soft_diagrams.pdf` | parton self-energy corrections and soft exchanges | 10 |
+| `r0_diagrams_captions.tex` | the three `figure` environments with captions (`fig:J1qq`, `fig:J1gg`, `fig:r0rest`) | |
+
+Each PDF has a source of the same name with the extension `.tex`.
+
+### Conventions
+
+- Crossed circles are the hard vertices $H_1$ and $H_2$, as in Fig. 1 of the Letter. The daughter with momentum $k$ enters $H_1$ and the daughter with momentum $p_1-k$ enters $H_2$.
+- Double lines are Wilson lines. In the soft panels they are the soft Wilson lines of the four partons $k$, $\bar k=p_1-k$, $r$ and $\bar r$.
+- In the two collinear figures each panel carries the name of the diagram in `paper2/r0/theory/gqq_diagrams.py` or `gg_diagrams.py`. The same names are used in `paper2/r0/derivation`. A name with 1 or 2 refers to the Wilson line at $H_1$ or $H_2$.
+- A panel for $H_2$ is the mirror image of the corresponding panel for $H_1$.
+
+### `collinear_diagrams_qq`
+
+| Panel | Diagram |
+|---|---|
+| (a) | tree splitting, with the momentum labels |
+| (b) Vqq | Abelian vertex correction: gluon exchanged between the quark and the antiquark |
+| (c) Vggq | non-Abelian vertex correction |
+| (d) W1q | Wilson line at $H_1$ to the quark |
+| (e) W1qb | Wilson line at $H_1$ to the antiquark |
+| (f) W1g | Wilson line at $H_1$ to the parent gluon |
+| (g) W2qb | Wilson line at $H_2$ to the antiquark |
+| (h) W2q | Wilson line at $H_2$ to the quark |
+| (i) W2g | Wilson line at $H_2$ to the parent gluon |
+
+Only (e) and (h) have a rapidity divergence.
+
+### `collinear_diagrams_gg`
+
+| Panel | Diagram |
+|---|---|
+| (a) | tree splitting, with the momentum labels |
+| (b) Vtri | gluon triangle |
+| (c) Vgh1, Vgh2 | ghost triangle, both orientations of the loop |
+| (d) Vq1, Vq2 | quark triangle, both orientations of the loop |
+| (e) Vbuba1–3 | four-gluon vertex bubble on the daughter entering $H_1$ |
+| (f) Vbubb1–3 | four-gluon vertex bubble on the daughter entering $H_2$ |
+| (g) W1g, (h) W2g | Wilson line to the parent gluon |
+| (i) W1k, (j) W2kb | Wilson line to the daughter entering the same hard vertex |
+| (k) W1kb, (l) W2k | Wilson line to the other daughter |
+| (m) W1v41–3, (n) W2v41–3 | the gluon from a Wilson line enters the four-gluon vertex |
+
+The 14 panels cover the 23 entries of `gg_diagrams.py`. Only (k) and (l) have a rapidity divergence, and (m) and (n) vanish in Feynman gauge.
+
+### `selfenergy_soft_diagrams`
+
+| Panel | Diagram |
+|---|---|
+| (a), (b) | $g\to q\bar q$: self-energy of the quark and of the antiquark |
+| (c), (d) | $g\to gg$: gluon loop on either daughter |
+| (e), (f) | $g\to gg$: ghost loop on either daughter |
+| (g), (h) | $g\to gg$: quark loop on either daughter |
+| (i), (j) | soft exchanges between Wilson lines entering different hard vertices: the pairs $k,\bar r$ and $\bar k,r$ |
+
+### Building and using the figures
+
+```
+pdflatex collinear_diagrams_qq.tex
+pdflatex collinear_diagrams_gg.tex
+pdflatex selfenergy_soft_diagrams.tex
+```
+
+The sources need TikZ-Feynman. All vertices are placed by hand, so pdflatex is sufficient; the warnings of TikZ-Feynman about LuaTeX do not affect the output. These three figures are not built by `make_figure.py`.
+
+The style `mgluon` in the sources is the gluon coil of TikZ-Feynman reflected about its path. It makes the mirrored panels exact mirror images.
+
+For possible future use in the Supplement, the environments are provided in `r0_diagrams_captions.tex`. The widths there, 0.72, 0.96 and 0.96 of the text width, give the three figures the same scale.
+
+These reference files are held in the GitHub repository and are excluded from the arXiv source and ancillary archive.

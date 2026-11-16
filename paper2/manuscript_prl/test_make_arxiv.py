@@ -61,6 +61,18 @@ class Selection(unittest.TestCase):
         self.assertEqual(selected, ["checks/README.md", "derivations-extra/keep.txt"])
         self.assertEqual(dirty, selected)
 
+    def test_reference_diagrams_are_excluded_from_arxiv_archive(self):
+        reference_files = [
+            f"{PREFIX}/figures/{name}"
+            for name in ("README.md", "collinear_diagrams_qq.tex", "collinear_diagrams_qq.pdf",
+                         "collinear_diagrams_gg.tex", "collinear_diagrams_gg.pdf",
+                         "selfenergy_soft_diagrams.tex", "selfenergy_soft_diagrams.pdf",
+                         "r0_diagrams_captions.tex")
+        ]
+        selected, changed = ma.select_ancillary(reference_files, reference_files, PREFIX, self.TOP)
+        self.assertEqual(selected, [])
+        self.assertEqual(changed, [])
+
     def test_changes_count_only_for_files_that_go_into_anc(self):
         changed = [f"{PREFIX}/letter.pdf", f"{PREFIX}/tables/table_r0.tex",
                    f"{PREFIX}/figures/dps_diagram.tex",
