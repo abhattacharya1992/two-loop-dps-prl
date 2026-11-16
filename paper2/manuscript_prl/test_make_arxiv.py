@@ -61,13 +61,6 @@ class Selection(unittest.TestCase):
         self.assertEqual(selected, ["checks/README.md", "derivations-extra/keep.txt"])
         self.assertEqual(dirty, selected)
 
-    def test_reference_diagrams_not_in_arxiv_archive(self):
-        tracked = ["paper2/diagrams/README.md", "paper2/diagrams/dps_sketch.tex",
-                   "paper2/diagrams/dps_sketch.pdf"]
-        paths, dirty = ma.select_ancillary(tracked, tracked, PREFIX, self.TOP)
-        self.assertEqual(paths, [])
-        self.assertEqual(dirty, [])
-
     def test_changes_count_only_for_files_that_go_into_anc(self):
         changed = [f"{PREFIX}/letter.pdf", f"{PREFIX}/tables/table_r0.tex",
                    f"{PREFIX}/figures/dps_diagram.tex",

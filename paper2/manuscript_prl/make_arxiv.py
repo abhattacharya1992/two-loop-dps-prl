@@ -87,8 +87,7 @@ def select_ancillary(tracked: list[str], changed: list[str], prefix: str,
             return False
         # Repository-only notes, internal reviews, and CI files are not arXiv ancillary data.
         if (path == 'revision' or path.startswith('revision/')
-                or path.startswith('.github/') or path.startswith('derivations/')
-                or path.startswith('paper2/diagrams/')):
+                or path.startswith('.github/') or path.startswith('derivations/')):
             return False
         if not path.startswith(prefix + "/"):
             return True

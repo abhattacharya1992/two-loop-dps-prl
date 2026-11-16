@@ -32,7 +32,6 @@ The complete classification of pinched surfaces and matching onto renormalised o
 | Directory | Contents |
 |---|---|
 | `paper2/manuscript_prl/` | Letter, Supplemental Material, figures, tables, bibliography and arXiv source package |
-| [`paper2/diagrams/`](paper2/diagrams/) | Reference diagrams for gluon and quark splitting configurations (not used in the manuscripts) |
 | `paper2/_build/` | Scripts required to generate manuscript tables and figures |
 | `common/dps/` | Shared DPS calculations, numerical data and fitting procedures |
 | `paper2/hh/` | Scalar pair amplitude analysis and validation |
