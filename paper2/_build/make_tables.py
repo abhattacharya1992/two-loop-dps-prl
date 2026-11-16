@@ -1009,8 +1009,8 @@ def r0_part(fits, bhh, bzz, rq, rg):
           '\\caption{The constant $r_0$ of the one-loop kernel from the regions (appendix~\\ref{app:regions}), '
           'coefficient by colour factor, for quark splittings ($gg\\to ZZ$) and for the two components of '
           'gluon splittings ($gg\\to HH$); by the symmetry $x\\to1-x$, $x=0.7$ and $0.9$ give the same. The '
-          'last row gives the largest difference from eqs.~(\\ref{eq:r0g}) and~(\\ref{eq:r0q}), which were '
-          'identified in the two-loop amplitudes, over the three values of $x$.}',
+          'last row gives the largest difference between numerical region integrations and the analytic '
+          'expressions of eqs.~(\\ref{eq:r0g}) and~(\\ref{eq:r0q}) over the three values of $x$.}',
           '\\label{tab:r0}', '\\end{table}']
     (HERE/'tables'/'table_r0.tex').write_text('\n'.join(t)+'\n')
     # the finite part of J1 is the same for the two helicity structures of g -> q qbar, at x and at 1 - x

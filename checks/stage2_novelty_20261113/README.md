@@ -24,5 +24,7 @@ an output and five deliberately incorrect physical/algebraic variants.
 This does not prove complete DPS factorisation, exhaustive originality or a new
 all-order NMHV law. It does not evaluate the full common collinear functions at
 symbolic x, regenerate raw amplitudes or rerun the primary NMHV ancillary data.
-See `../../paper2/derivations/stage2_novelty_r0_20261113.md` and
-`../../docs/STAGE2_NOVELTY_STATUS_20261113.md` for the detailed conclusions.
+The [inputs](inputs.json) and [results](results.json) document
+the source records and checked identities. The analytic finite
+matching derivation is in
+`../../paper2/r0/derivation/README.md`.

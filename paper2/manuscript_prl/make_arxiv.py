@@ -79,7 +79,7 @@ def select_ancillary(tracked: list[str], changed: list[str], prefix: str,
     """
     def wanted(path: str) -> bool:
         # Exclude obsolete release helpers and historical superseded evaluator copies.
-        if path == "compile_manuscipt.sh" or (path.startswith("paper2/kernel/")
+        if path in {"compile_manuscipt.sh", "manuscipt_compile.sh"} or (path.startswith("paper2/kernel/")
             and path.endswith("_before_z6p_fix.py")):
             return False
         # Manuscript TeX files belong at archive top level, not in anc/.

@@ -1,7 +1,9 @@
 # Bounded Stage 1 physics checks
 
-Start with [the status summary](../../docs/STAGE1_PHYSICS_STATUS_20261113.md)
-and [the derivation](../../paper2/derivations/stage1_physics_20261113.md).
+The checked identities and momentum-region arguments are described
+in the [Supplemental Material](../../paper2/manuscript_prl/supplement.tex).
+The retained [results](results.json) and [guard results](guard_results.json)
+document the tests.
 
 The checker independently integrates the RG equation and constructs the
 Fourier–Bessel transforms, evaluates a static rapidity-overlap integral by a

@@ -20,7 +20,7 @@ __pycache__/
 /derivations/*.out
 /derivations/*.toc
 
-# Reproducible plots no longer included in the compact Letter and Supplement
+# Generated plots: fit_windows.pdf is included in the Supplement; other plots are retained for reference
 /paper2/manuscript_prl/figures/fit_windows.pdf
 /paper2/manuscript_prl/figures/forward_approach.pdf
 /paper2/manuscript_prl/figures/zz_coefficients.pdf

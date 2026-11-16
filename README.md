@@ -64,7 +64,7 @@ Manuscript compilation additionally requires:
 ```bash
 git clone https://github.com/abhattacharya1992/two-loop-dps-prl.git
 
-cd two-loop-dps-amplitudes
+cd two-loop-dps-prl
 
 python3 -m venv .venv
 source .venv/bin/activate

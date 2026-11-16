@@ -44,7 +44,7 @@ class Selection(unittest.TestCase):
             f"{PREFIX}/make_tables.py"]))
 
     def test_unsafe_helper_and_old_model_copies_are_excluded(self):
-        names = ['compile_manuscipt.sh',
+        names = ['compile_manuscipt.sh', 'manuscipt_compile.sh',
                  'paper2/kernel/model_exact2_before_z6p_fix.py',
                  'paper2/kernel/model_fast_before_z6p_fix.py',
                  'paper2/kernel/model_exact2.py', 'paper2/kernel/model_fast.py']
