@@ -92,6 +92,13 @@ def select_ancillary(tracked: list[str], changed: list[str], prefix: str,
         if not path.startswith(prefix + "/"):
             return True
         rel = path[len(prefix) + 1:]
+        if rel in {
+            "figures/README.md", "figures/r0_diagrams_captions.tex",
+            "figures/collinear_diagrams_qq.tex", "figures/collinear_diagrams_qq.pdf",
+            "figures/collinear_diagrams_gg.tex", "figures/collinear_diagrams_gg.pdf",
+            "figures/selfenergy_soft_diagrams.tex", "figures/selfenergy_soft_diagrams.pdf",
+        }:
+            return False
         return not (rel in top_level or rel in BUILD_OUTPUTS or rel.startswith(RELEASE + "/"))
 
     paths = sorted(p for p in tracked if p and wanted(p))

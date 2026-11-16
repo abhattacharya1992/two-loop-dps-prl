@@ -1,0 +1,293 @@
+% One-loop diagrams of the collinear function J_1 for g -> gg, drawn with TikZ-Feynman.
+% The vertices are placed by hand, so pdflatex suffices. Same set-up as figures/dps_diagram.tex.
+% Crossed circles: the hard vertices H_1 and H_2 entered by the two daughters. Double lines: the Wilson
+% lines of the two collinear fields. Compile with pdflatex; the Supplement includes the resulting PDF.
+% The names are those of the entries in paper2/r0/theory/gg_diagrams.py and paper2/r0/derivation.
+% "mgluon" is the gluon coil of TikZ-Feynman reflected about its path. A line or panel that is the
+% mirror image of another one under y -> -y uses it, so that the two are exact mirror images.
+\documentclass[border=2pt]{standalone}
+\pdfinfoomitdate=1 \pdftrailerid{} \pdfsuppressptexinfo=-1     % the same bytes at every build
+\usepackage[compat=1.1.0]{tikz-feynman}
+\tikzfeynmanset{warn luatex=false, arrow size=1.15pt,
+  mgluon/.style={/tikz/draw=none, /tikz/decoration={name=none},
+    /tikz/postaction={/tikz/draw, /tikz/decoration={coil, aspect=0.75, segment length=1.5mm}, /tikz/decorate=true}}}
+\tikzset{wilson/.style={double, double distance=1.0pt, line width=0.45pt}}
+% the two crossed circles, their Wilson lines, and the panel label
+\newcommand{\operators}{%
+  \vertex[crossed dot] (o1) at (3.0, 0.8) {};
+  \vertex[crossed dot] (o2) at (3.0,-0.8) {};}
+\newcommand{\wilsonlines}{%
+  \draw[wilson] (o1) -- (3.93, 1.29);
+  \draw[wilson] (o2) -- (3.93,-1.29);}
+\newcommand{\panel}[1]{\node[anchor=north west] at (-0.5, 1.95) {#1};}
+\begin{document}
+{\small
+\begin{tikzpicture}
+
+% ================================================================ tree splitting and triangles
+% (a) tree splitting
+\begin{feynman}
+  \vertex (p) at (0.0, 0.0) {\(g(p_1)\)};
+  \vertex (s) at (1.5, 0.0);
+  \operators
+  \diagram* {
+    (p) -- [gluon] (s),
+    (s) -- [gluon] (o1),
+    (s) -- [mgluon] (o2),
+  };
+\end{feynman}
+\wilsonlines
+\node at (2.00, 0.85) {\(k\)};
+\node at (1.90,-0.90) {\(p_1-k\)};
+\node[anchor=west] at (3.15, 0.45) {\(H_1\)};
+\node[anchor=west] at (3.15,-0.45) {\(H_2\)};
+\panel{(a)}
+
+% (b) Vtri: gluon triangle
+\begin{scope}[xshift=4.6cm]
+\begin{feynman}
+  \vertex (p) at (0.0, 0.0);
+  \vertex (s) at (1.0, 0.0);
+  \vertex (a) at (2.15, 0.60);
+  \vertex (b) at (2.15, -0.60);
+  \operators
+  \diagram* {
+    (p) -- [gluon] (s),
+    (s) -- [gluon] (a) -- [gluon] (o1),
+    (s) -- [mgluon] (b) -- [mgluon] (o2),
+    (a) -- [gluon] (b),
+  };
+\end{feynman}
+\wilsonlines
+\panel{(b)~Vtri}
+\end{scope}
+
+% (c) Vgh1, Vgh2: ghost triangle, both orientations
+\begin{scope}[xshift=9.2cm]
+\begin{feynman}
+  \vertex (p) at (0.0, 0.0);
+  \vertex (s) at (1.0, 0.0);
+  \vertex (a) at (2.15, 0.60);
+  \vertex (b) at (2.15, -0.60);
+  \operators
+  \diagram* {
+    (p) -- [gluon] (s),
+    (a) -- [gluon] (o1),
+    (b) -- [mgluon] (o2),
+    (s) -- [ghost, with arrow=0.55] (a) -- [ghost, with arrow=0.55] (b) -- [ghost, with arrow=0.55] (s),
+  };
+\end{feynman}
+\wilsonlines
+\panel{(c)~Vgh1, Vgh2}
+\end{scope}
+
+% (d) Vq1, Vq2: quark triangle, both orientations
+\begin{scope}[xshift=13.8cm]
+\begin{feynman}
+  \vertex (p) at (0.0, 0.0);
+  \vertex (s) at (1.0, 0.0);
+  \vertex (a) at (2.15, 0.60);
+  \vertex (b) at (2.15, -0.60);
+  \operators
+  \diagram* {
+    (p) -- [gluon] (s),
+    (a) -- [gluon] (o1),
+    (b) -- [mgluon] (o2),
+    (s) -- [fermion] (a) -- [fermion] (b) -- [fermion] (s),
+  };
+\end{feynman}
+\wilsonlines
+\panel{(d)~Vq1, Vq2}
+\end{scope}
+
+% ================================================================ four-gluon vertex bubbles and couplings to the parent gluon
+% (e) Vbuba1-3: four-gluon vertex bubble on the daughter entering H_1
+\begin{scope}[yshift=-3.8cm]
+\begin{feynman}
+  \vertex (p) at (0.3, 0.0);
+  \vertex (s) at (1.3, 0.0);
+  \vertex (c) at (2.15, 0.85);
+  \operators
+  \diagram* {
+    (p) -- [gluon] (s),
+    (s) -- [gluon, half left] (c) -- [gluon, half left] (s),
+    (c) -- [gluon] (o1),
+    (s) -- [mgluon, bend right=45] (o2),
+  };
+\end{feynman}
+\wilsonlines
+\panel{(e)~Vbuba1--3}
+\end{scope}
+
+% (f) Vbubb1-3: four-gluon vertex bubble on the daughter entering H_2
+\begin{scope}[xshift=4.6cm, yshift=-3.8cm]
+\begin{feynman}
+  \vertex (p) at (0.3, 0.0);
+  \vertex (s) at (1.3, 0.0);
+  \vertex (c) at (2.15, -0.85);
+  \operators
+  \diagram* {
+    (p) -- [gluon] (s),
+    (s) -- [mgluon, half right] (c) -- [mgluon, half right] (s),
+    (c) -- [mgluon] (o2),
+    (s) -- [gluon, bend left=45] (o1),
+  };
+\end{feynman}
+\wilsonlines
+\panel{(f)~Vbubb1--3}
+\end{scope}
+
+% (g) W1g: Wilson line of H_1 to the parent gluon
+\begin{scope}[xshift=9.2cm, yshift=-3.8cm]
+\begin{feynman}
+  \vertex (p) at (0.1, 0.0);
+  \vertex (g) at (0.8, 0.0);
+  \vertex (s) at (1.5, 0.0);
+  \vertex (w) at (3.79, 1.22);
+  \operators
+  \diagram* {
+    (p) -- [gluon] (g) -- [gluon] (s),
+    (s) -- [gluon] (o1),
+    (s) -- [mgluon] (o2),
+    (w) -- [gluon, bend right=58] (g),
+  };
+\end{feynman}
+\wilsonlines
+\panel{(g)~W1g}
+\end{scope}
+
+% (h) W2g: Wilson line of H_2 to the parent gluon
+\begin{scope}[xshift=13.8cm, yshift=-3.8cm]
+\begin{feynman}
+  \vertex (p) at (0.1, 0.0);
+  \vertex (g) at (0.8, 0.0);
+  \vertex (s) at (1.5, 0.0);
+  \vertex (w) at (3.79, -1.22);
+  \operators
+  \diagram* {
+    (p) -- [gluon] (g) -- [gluon] (s),
+    (s) -- [gluon] (o1),
+    (s) -- [mgluon] (o2),
+    (w) -- [mgluon, bend left=58] (g),
+  };
+\end{feynman}
+\wilsonlines
+\panel{(h)~W2g}
+\end{scope}
+
+% ================================================================ couplings to the daughters
+% (i) W1k: Wilson line of H_1 to the daughter entering H_1
+\begin{scope}[yshift=-7.6cm]
+\begin{feynman}
+  \vertex (p) at (0.3, 0.0);
+  \vertex (s) at (1.5, 0.0);
+  \vertex (a) at (2.12, 0.33);
+  \vertex (w) at (3.79, 1.22);
+  \operators
+  \diagram* {
+    (p) -- [gluon] (s),
+    (s) -- [gluon] (a) -- [gluon] (o1),
+    (s) -- [mgluon] (o2),
+    (w) -- [gluon, bend right=85] (a),
+  };
+\end{feynman}
+\wilsonlines
+\panel{(i)~W1k}
+\end{scope}
+
+% (j) W2kb: Wilson line of H_2 to the daughter entering H_2
+\begin{scope}[xshift=4.6cm, yshift=-7.6cm]
+\begin{feynman}
+  \vertex (p) at (0.3, 0.0);
+  \vertex (s) at (1.5, 0.0);
+  \vertex (a) at (2.12, -0.33);
+  \vertex (w) at (3.79, -1.22);
+  \operators
+  \diagram* {
+    (p) -- [gluon] (s),
+    (s) -- [gluon] (o1),
+    (s) -- [mgluon] (a) -- [mgluon] (o2),
+    (w) -- [mgluon, bend left=85] (a),
+  };
+\end{feynman}
+\wilsonlines
+\panel{(j)~W2kb}
+\end{scope}
+
+% (k) W1kb: Wilson line of H_1 to the daughter entering H_2
+\begin{scope}[xshift=9.2cm, yshift=-7.6cm]
+\begin{feynman}
+  \vertex (p) at (0.3, 0.0);
+  \vertex (s) at (1.5, 0.0);
+  \vertex (a) at (2.25, -0.40);
+  \vertex (w) at (3.79, 1.22);
+  \operators
+  \diagram* {
+    (p) -- [gluon] (s),
+    (s) -- [gluon] (o1),
+    (s) -- [mgluon] (a) -- [mgluon] (o2),
+    (w) -- [gluon, bend left=25] (a),
+  };
+\end{feynman}
+\wilsonlines
+\panel{(k)~W1kb}
+\end{scope}
+
+% (l) W2k: Wilson line of H_2 to the daughter entering H_1
+\begin{scope}[xshift=13.8cm, yshift=-7.6cm]
+\begin{feynman}
+  \vertex (p) at (0.3, 0.0);
+  \vertex (s) at (1.5, 0.0);
+  \vertex (a) at (2.25, 0.40);
+  \vertex (w) at (3.79, -1.22);
+  \operators
+  \diagram* {
+    (p) -- [gluon] (s),
+    (s) -- [gluon] (a) -- [gluon] (o1),
+    (s) -- [mgluon] (o2),
+    (w) -- [mgluon, bend right=25] (a),
+  };
+\end{feynman}
+\wilsonlines
+\panel{(l)~W2k}
+\end{scope}
+
+% ================================================================ the gluon from a Wilson line enters a four-gluon vertex (these vanish)
+% (m) W1v41-3
+\begin{scope}[xshift=4.6cm, yshift=-11.4cm]
+\begin{feynman}
+  \vertex (p) at (0.3, 0.0);
+  \vertex (s) at (1.5, 0.0);
+  \vertex (w) at (3.79, 1.22);
+  \operators
+  \diagram* {
+    (p) -- [gluon] (s),
+    (s) -- [gluon] (o1),
+    (s) -- [mgluon] (o2),
+    (s) -- [gluon, bend left=70] (w),
+  };
+\end{feynman}
+\wilsonlines
+\panel{(m)~W1v41--3}
+\end{scope}
+
+% (n) W2v41-3
+\begin{scope}[xshift=9.2cm, yshift=-11.4cm]
+\begin{feynman}
+  \vertex (p) at (0.3, 0.0);
+  \vertex (s) at (1.5, 0.0);
+  \vertex (w) at (3.79, -1.22);
+  \operators
+  \diagram* {
+    (p) -- [gluon] (s),
+    (s) -- [gluon] (o1),
+    (s) -- [mgluon] (o2),
+    (s) -- [mgluon, bend right=70] (w),
+  };
+\end{feynman}
+\wilsonlines
+\panel{(n)~W2v41--3}
+\end{scope}
+
+\end{tikzpicture}}
+\end{document}

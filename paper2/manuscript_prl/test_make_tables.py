@@ -70,27 +70,27 @@ class NestedInputs(unittest.TestCase):
         self.assertEqual(result.count(r'\begin{tabular}{@{}r@{'), 1)
         self.assertEqual(result.count(r'\end{tabular}'), 1)
         self.assertEqual(result.count(r'\caption{ONE CAPTION}'), 1)
-        self.assertEqual(result.count(r'\addlinespace[3pt]'), 3)
+        self.assertEqual(result.count(r'\addlinespace[3pt]'), 4)
         self.assertEqual(result.count(r'\multicolumn{4}{@{}l@{}}'), 0)
-        self.assertIn(r'\multicolumn{6}{@{}l}{\textbf{MHV}, $L=5$', result)
-        self.assertNotIn(r'\begin{tabular*}{\textwidth}',result)
+        self.assertNotIn(r'\textbf{MHV}, $L=5$', result)
+        self.assertNotIn(r'\begin{tabular*}{\textwidth}', result)
         self.assertIn(
             '4 & 7 & $' + r'\mathrm{MHV}_{47}' +
-            '$ & 4 & 6 & $' + r'\mathrm{NMHV}_{46}' + '$',
-            result)
-        self.assertIn(
-            '5 & 9 & $' + r'\mathrm{MHV}_{59}' +
-            '$ & 5 & 4 & $' + r'\mathrm{MHV}_{54}' + '$', result)
-        self.assertIn(
-            ' & 6 & $' + r'\mathrm{MHV}_{56}' +
-            '$ &  & 1 & $' + r'\mathrm{MHV}_{51}' + '$', result)
-        self.assertIn(
-            ' & 5 & $' + r'\mathrm{MHV}_{55}' +
-            '$ & & & ' + r'\\', result)
-        five_loop = result.split(r'\cmidrule(l){1-6}', 1)[1].split(r'\bottomrule', 1)[0]
-        five_rows = [line for line in five_loop.splitlines() if '&' in line]
-        self.assertEqual(len(five_rows), 5)
+            '$ & 4 & 6 & $' + r'\mathrm{NMHV}_{46}' + '$', result)
+        five_loop = result.split(
+            '5 & 9 & $' + r'\mathrm{MHV}_{59}' + '$', 1)[1].split(
+            r'\bottomrule', 1)[0]
+        five_rows = [
+            '5 & 9 & $' + r'\mathrm{MHV}_{59}' + '$' +
+            five_loop.splitlines()[0],
+            *five_loop.splitlines()[1:],
+        ]
+        self.assertEqual(len(five_rows), 9)
         self.assertTrue(all(row.count('&') == 5 for row in five_rows))
-        self.assertNotIn('$ &  & &',result)
+        for k in range(9, 0, -1):
+            self.assertIn(
+                '& ' + str(k) + ' & $' + rf'\mathrm{{MHV}}_{{5{k}}}' +
+                '$ & & & ' + r'\\', result)
+        self.assertNotIn('$ &  & &', result)
 
 if __name__=='__main__':unittest.main()

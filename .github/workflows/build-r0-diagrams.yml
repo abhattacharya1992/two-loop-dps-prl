@@ -1,0 +1,43 @@
+name: Build DPS reference figures
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - paper2/manuscript_prl/figures/collinear_diagrams_gg.tex
+      - paper2/manuscript_prl/figures/collinear_diagrams_qq.tex
+      - paper2/manuscript_prl/figures/selfenergy_soft_diagrams.tex
+      - .github/workflows/build-r0-diagrams.yml
+
+permissions:
+  contents: write
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install LaTeX
+        run: |
+          sudo apt-get update -qq
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+            texlive-latex-base texlive-latex-recommended texlive-latex-extra \
+            texlive-pictures texlive-science texlive-fonts-recommended
+      - name: Compile reference figures
+        working-directory: paper2/manuscript_prl/figures
+        run: |
+          for name in collinear_diagrams_gg collinear_diagrams_qq selfenergy_soft_diagrams; do
+            pdflatex -interaction=nonstopmode -halt-on-error "$name.tex" > "$name-build.log" || { tail -80 "$name-build.log"; exit 1; }
+            test -s "$name.pdf"
+          done
+      - name: Commit compiled figures
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add paper2/manuscript_prl/figures/{collinear_diagrams_gg,collinear_diagrams_qq,selfenergy_soft_diagrams}.pdf
+          if ! git diff --cached --quiet; then
+            git commit -m "Compile DPS kernel reference diagrams"
+            git fetch origin main
+            git rebase origin/main
+            git push origin HEAD:main
+          fi
