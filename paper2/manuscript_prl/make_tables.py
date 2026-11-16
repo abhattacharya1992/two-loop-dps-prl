@@ -174,8 +174,8 @@ def format_planar_rows(s):
     """Keep all 41 known planar coefficients in one compact table.
 
     MHV and NMHV coefficients at loops 1--4 are paired across 16 rows.
-    The nine MHV coefficients at five loops are placed in a full-width
-    section below, paired across five rows.
+    The nine MHV coefficients at five loops continue in the MHV column,
+    with the NMHV column empty at this order.
     Expressions are copied directly from the common data generator.
     """
     old = r'\begin{tabular}{cp{0.9\textwidth}}'
@@ -218,20 +218,11 @@ def format_planar_rows(s):
             out.append(left + ' & ' + right + r'\\')
         if L < 4:
             out.append(r'\addlinespace[3pt]')
-    out += [
-        r'\midrule',
-        r'\multicolumn{6}{@{}l}{\textbf{MHV}, $L=5$: $2\pi i\,\ell^k$}\\',
-        r'\cmidrule(l){1-6}',
-    ]
+    out.append(r'\addlinespace[3pt]')
     five_loop = groups['MHV'][5]
     assert len(five_loop) == 9
-    for i in range(5):
-        left = f'{5 if i == 0 else ""} & {9-i} & $' + five_loop[i] + '$'
-        if i < 4:
-            right = f'{5 if i == 0 else ""} & {4-i} & $' + five_loop[i + 5] + '$'
-            out.append(left + ' & ' + right + r'\\')
-        else:
-            out.append(left + r' & & & \\')
+    for i, coeff in enumerate(five_loop):
+        out.append(f'{5 if i == 0 else ""} & {9-i} & $' + coeff + '$ & & & ' + r'\\')
     out += [r'\bottomrule', r'\end{tabular}']
     return before + '\n'.join(out) + after
 
