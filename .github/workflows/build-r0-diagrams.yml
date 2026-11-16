@@ -7,6 +7,7 @@ on:
       - paper2/manuscript_prl/figures/collinear_diagrams_gg.tex
       - paper2/manuscript_prl/figures/collinear_diagrams_qq.tex
       - paper2/manuscript_prl/figures/selfenergy_soft_diagrams.tex
+      - .github/workflows/build-r0-diagrams.yml
 
 permissions:
   contents: write
@@ -36,5 +37,7 @@ jobs:
           git add paper2/manuscript_prl/figures/{collinear_diagrams_gg,collinear_diagrams_qq,selfenergy_soft_diagrams}.pdf
           if ! git diff --cached --quiet; then
             git commit -m "Compile DPS kernel reference diagrams"
+            git fetch origin main
+            git rebase origin/main
             git push origin HEAD:main
           fi
