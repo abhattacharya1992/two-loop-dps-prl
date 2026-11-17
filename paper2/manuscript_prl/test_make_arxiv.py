@@ -43,7 +43,7 @@ class Selection(unittest.TestCase):
                  "for the two-loop DPS derivation.")
         for name in ("sm.bib", "letter.bbl"):
             if name == "letter.bbl":
-                raw = original.replace("be inserted", "be\\n  inserted").encode()
+                raw = original.replace("be inserted", "be\n  inserted").encode()
             else:
                 raw = original.encode()
             self.assertEqual(ma.arxiv_member_bytes(Path(name), raw).decode(), arxiv)
