@@ -36,6 +36,22 @@ class Selection(unittest.TestCase):
     ]
     TOP = {"letter.tex", "supplement.tex", "tables/table_r0.tex", "figures/dps_diagram.pdf"}
 
+    def test_arxiv_only_supplemental_material_citation(self):
+        original = ("See Supplemental Material at [URL will be inserted by publisher] "
+                    "for the two-loop DPS derivation.")
+        arxiv = ("See Supplemental Material accompanying this arXiv submission "
+                 "for the two-loop DPS derivation.")
+        for name in ("sm.bib", "letter.bbl"):
+            if name == "letter.bbl":
+                raw = original.replace("be inserted", "be\\n  inserted").encode()
+            else:
+                raw = original.encode()
+            self.assertEqual(ma.arxiv_member_bytes(Path(name), raw).decode(), arxiv)
+        self.assertEqual(ma.arxiv_member_bytes(Path("supplement.tex"), original.encode()),
+                         original.encode())
+        with self.assertRaisesRegex(RuntimeError, "Expected one APS"):
+            ma.arxiv_member_bytes(Path("sm.bib"), b"Reference already edited")
+
     def test_top_level_files_pdfs_and_release_are_left_out(self):
         paths, dirty = ma.select_ancillary(self.TRACKED, [], PREFIX, self.TOP)
         self.assertEqual(dirty, [])
@@ -104,6 +120,12 @@ class Archive(unittest.TestCase):
         anc = [n for n in names if n.startswith("anc/")]
         self.assertEqual((len(top), len(anc)), (top_count, anc_count))
         self.assertIn("letter.tex", top)
+        self.assertIn("supplement.tex", top)
+        with tarfile.open(dest, "r:gz") as bundle:
+            for member in ("sm.bib", "letter.bbl"):
+                note = bundle.extractfile(member).read().decode("utf-8")
+                self.assertIn("accompanying this arXiv submission", note)
+                self.assertNotIn("[URL will be", note)
         self.assertIn("anc/common/dps/results_hh.json", anc)
         self.assertIn(f"anc/{PREFIX}/make_tables.py", anc)
         self.assertFalse(any(n.startswith("anc/derivations/") or n.startswith("derivations/") for n in names))

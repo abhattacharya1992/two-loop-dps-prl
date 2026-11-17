@@ -38,6 +38,22 @@ ANC_README = "README_ANCILLARY.txt"
 BUILD_OUTPUTS = frozenset({"letter.pdf", "supplement.pdf"})
 RELEASE = "release"
 
+# The journal bibliography retains APS's required publisher URL placeholder.
+# The arXiv source archive instead cites the Supplemental Material supplied
+# with this preprint. Do not change the journal sources or the local PDFs.
+PUBLISHER_SM_URL = re.compile(r"at \[URL will be\s+inserted by publisher\]")
+ARXIV_SM_CITATION = "accompanying this arXiv submission"
+
+
+def arxiv_member_bytes(path: Path, data: bytes) -> bytes:
+    """Use a self-contained Supplemental Material citation only in arXiv."""
+    if path.name not in {"sm.bib", "letter.bbl"}:
+        return data
+    text, count = PUBLISHER_SM_URL.subn(ARXIV_SM_CITATION, data.decode("utf-8"))
+    if count != 1:
+        raise RuntimeError(f"Expected one APS Supplemental Material URL placeholder in {path.name}; found {count}")
+    return text.encode("utf-8")
+
 
 def source_list() -> list[Path]:
     names = set(REQUIRED)
@@ -166,7 +182,7 @@ def build_archive(dest: Path, with_anc: bool = True,
     dest.parent.mkdir(parents=True, exist_ok=True)
     with tarfile.open(dest, "w:gz", compresslevel=9) as bundle:
         for path in files:
-            add_member(bundle, path.relative_to(HERE).as_posix(), path.read_bytes())
+            add_member(bundle, path.relative_to(HERE).as_posix(), arxiv_member_bytes(path, path.read_bytes()))
         if anc:
             root, paths, readme = anc
             add_member(bundle, f"{ANC}/{ANC_README}", readme.encode())
