@@ -75,11 +75,14 @@ parton scattering (DPS) singularity as the transverse momentum $p_T$
 vanishes~\cite{Gaunt:2011xd,Diehl:2011yj}: each incoming gluon splits
 into two nearly on-shell partons, which fuse pairwise in two hard
 subprocesses [Fig.~\ref{fig:dps}(b)]. This occurs in a loop amplitude and has the kinematic structure of double parton scattering. Such amplitudes arise, for example, in calculations of Higgs and electroweak boson pairs at higher orders in QCD~\cite{Glover:1988rg,Banerjee:2018lfq,vonManteuffel:2015msa}.
-At two loops, DPS singularities probe the interplay of
-parton splitting, colour correlations and Glauber exchange
-in QCD amplitudes. The resulting analytic coefficients
-provide benchmarks for higher-order calculations at small
-transverse momentum, where direct numerical evaluation
+At two loops, the colour factor $\DD$ controls
+the cubic DPS logarithm, whose coefficient
+changes sign between gluon and quark splittings.
+The same colour factor determines the phase
+in Eq.~(\ref{eq:gammaK}), tested against
+complete amplitudes below.
+These analytic coefficients provide benchmarks
+at small $p_T$, where direct numerical evaluation
 requires high precision.
 These splitting configurations also overlap with single hard scattering
 and require a consistent treatment to avoid double
@@ -99,8 +102,7 @@ away from the endpoints. The coefficients agree with the two-loop
 $gg\to HH$, $gg\to AA$ and $gg\to ZZ$ amplitudes across the tested
 colour and helicity channels. The scalar and pseudoscalar channels use
 effective gluon vertices, while the vector channel uses massless
-quark loops. Normalised to the one-loop DPS term, the cubic coefficient
-changes sign between gluon and quark splittings.
+quark loops.
 We organise these results in a common tensor kernel contracted with
 the two hard subprocess amplitudes. We derive the finite matching
 functions from the collinear and soft contributions and parton
@@ -154,7 +156,7 @@ the DPS pinch, retaining the leading power in
 $\lambda=p_T/\sqrt{s}$ at fixed momentum fractions
 away from the endpoints. Hard corrections confined
 to either fusion subprocess enter $\mathcal H_i$.
-The factorised description is based on the cancellation
+The factorised description assumes the cancellation
 of leading hard exchanges between the subprocesses
 and the eikonal reduction of soft attachments.
 We calculate the collinear, soft, Glauber and ultrasoft
@@ -303,7 +305,6 @@ subprocesses~\cite{Catani:1998bh}. After subtraction, the
 phase is given by the $2\pi i\DD X_\mu$ term in
 Eq.~(\ref{eq:kernel}). The calculated regions leave no
 additional imaginary matching constant at $\mu=\mu_b$.
-Glauber contributions cancel in the double Drell-Yan cross section, whereas a Glauber phase survives in the IR-subtracted amplitude studied here.
 
 \textit{Two-loop QCD amplitudes:}
 We study the two-loop finite remainders for $gg\to HH$
@@ -315,8 +316,9 @@ with $x=(1+\beta)/2$, we approach $p_T=0$
 and evaluate the amplitudes using multiprecision
 arithmetic. We extract the logarithmic coefficients
 by fitting polynomials in $\G$ with $p_T^2$
-corrections~\cite{SM}; omitting these corrections
-increases the deviations to approximately $\plainDevMax$.
+corrections~\cite{SM}; for $gg\to HH$, omitting
+these corrections increases the deviations
+to approximately $\plainDevMax$.
 
 For $gg\to HH$ and $gg\to AA$, the coefficients of
 $\G^3$ and $\G^2$ in the equal-helicity amplitude,
@@ -371,7 +373,7 @@ Logarithms, Eq.~(\ref{eq:rg}) & $\devLeadMax$ & $\rzAAlead$ & $\zzDevMax$\\
 Fit-window shift & $\shiftMax$ & $\rzAALogShift$ & $\zzShiftMax$\\
 $r_0$, fitted points & $\rzFitHH$ & $\rzFitAA$ & $\rzFitZZ$\\
 $r_0$, extra velocities & $\rzBlindHH$ & $\rzBlindAA$ & $\rzBlindZZ$\\
-$r_0$, numerical region integration & $\rzRegG$ & --- & $\rzRegQ$\\
+$r_0$, region numerics & $\rzRegG$ & --- & $\rzRegQ$\\
 \bottomrule
 \end{tabular}
 \caption{Tests of Eqs.~(\ref{eq:rg}), (\ref{eq:r0g})
@@ -426,6 +428,9 @@ and parton self-energy corrections~\cite{SM}.
 After conversion to a common IR subtraction scheme,
 the complete amplitude comparisons confirm the
 predicted colour and helicity dependence.
+The imaginary part of the extracted $r_0$ is below
+$\glauberImag$ in all \glauberValues{} fitted components,
+testing the predicted phase in Eq.~(\ref{eq:gammaK}).
 We obtain
 \begin{align}
 r_0^{g\to gg}&=C_A\Big[\tfrac{134}9-5\zeta_2-4\ln x\ln(1-x)\Big]-\tfrac{40}9T_Fn_f\notag\\
@@ -580,11 +585,6 @@ renormalisation scale and IR subtraction
 scheme. Table~\ref{tab:threeloop}
 (\hyperref[sec:endmatter]{End Matter})
 gives the third coefficient for $gg\to HH$.
-A nonzero boundary term $r_2^{(3)}X^2$ would
-shift the displayed third-logarithm coefficients
-by $\frac43r_2^{(3)}$ and $4r_2^{(3)}$,
-respectively, leaving the two highest powers
-unchanged.
 
 
 \textit{Conclusion:}

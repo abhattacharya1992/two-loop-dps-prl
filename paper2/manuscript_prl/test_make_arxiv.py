@@ -116,16 +116,18 @@ class Archive(unittest.TestCase):
             with tarfile.open(dest, "r:gz") as bundle:
                 names = bundle.getnames()
                 readme = bundle.extractfile(f"anc/{ma.ANC_README}").read().decode()
+                arxiv_citations = {
+                    member: bundle.extractfile(member).read().decode("utf-8")
+                    for member in ("sm.bib", "letter.bbl")
+                }
         top = [n for n in names if not n.startswith("anc/")]
         anc = [n for n in names if n.startswith("anc/")]
         self.assertEqual((len(top), len(anc)), (top_count, anc_count))
         self.assertIn("letter.tex", top)
         self.assertIn("supplement.tex", top)
-        with tarfile.open(dest, "r:gz") as bundle:
-            for member in ("sm.bib", "letter.bbl"):
-                note = bundle.extractfile(member).read().decode("utf-8")
-                self.assertIn("accompanying this arXiv submission", note)
-                self.assertNotIn("[URL will be", note)
+        for note in arxiv_citations.values():
+            self.assertIn("accompanying this arXiv submission", note)
+            self.assertNotIn("[URL will be", note)
         self.assertIn("anc/common/dps/results_hh.json", anc)
         self.assertIn(f"anc/{PREFIX}/make_tables.py", anc)
         self.assertFalse(any(n.startswith("anc/derivations/") or n.startswith("derivations/") for n in names))
