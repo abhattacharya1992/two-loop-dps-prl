@@ -3,7 +3,7 @@ SHELL := /bin/bash
 .SHELLFLAGS := -e -o pipefail -c
 PY ?= python3
 .NOTPARALLEL:
-.PHONY: help threshold independent-checks test-science test pinch-checks pinch-figures derivation-tests build archive reproduce
+.PHONY: help threshold independent-checks test-science test pinch-checks pinch-figures manuscript-tests derivation-tests build archive reproduce
 
 help:
 	@printf '%s\n' 'make threshold: earlier AA threshold coefficients vs PRL at x=1/2' \
@@ -23,12 +23,11 @@ independent-checks:
 	$(PY) checks/stage2_novelty_20261113/verify_stage2.py --output "$$d/stage2.json"; \
 	$(PY) checks/stage2_novelty_20261113/test_stage2_guards.py --output "$$d/stage2-guards.json"
 
-test: test-science pinch-figures
+test: pinch-figures manuscript-tests test-science
 
 test-science: threshold independent-checks pinch-checks
 	$(PY) checks/blind_point_provenance.py
 	$(PY) checks/test_boundary_coefficients.py
-	$(MAKE) -C paper2/manuscript_prl test PY="$(PY)"
 	$(MAKE) -C common/dps test PY="$(PY)"
 	$(MAKE) -C paper2/hh test PY="$(PY)"
 	$(MAKE) -C paper2/zz test PY="$(PY)"
@@ -50,8 +49,11 @@ derivation-tests:
 reproduce: test derivation-tests archive
 
 pinch-checks:
-	$(PY) -m unittest discover -s paper2/manuscript_prl -p 'test_make_tables.py' -v
 	$(MAKE) -C checks/pinch_regions check PY="$(PY)"
+
+manuscript-tests:
+	$(PY) -m unittest discover -s paper2/manuscript_prl -p 'test_make_tables.py' -v
+	$(MAKE) -C paper2/manuscript_prl test PY="$(PY)"
 
 pinch-figures:
 	$(MAKE) -C paper2/manuscript_prl figure PY="$(PY)"
