@@ -27,7 +27,7 @@ independent-checks:
 
 test: pinch-figures manuscript-tests test-science
 
-test-science: threshold independent-checks pinch-checks
+test-science: threshold independent-checks pinch-checks dps-links
 	$(PY) checks/blind_point_provenance.py
 	$(PY) checks/test_boundary_coefficients.py
 	$(MAKE) -C common/dps test PY="$(PY)"
@@ -69,3 +69,8 @@ release-check-quick: release-check-tests
 
 release-check: release-check-tests
 	$(PY) checks/release_compare.py --python "$(PY)" --output release-check --benchmark-runs "$(BENCH_RUNS)"
+
+.PHONY: dps-links
+dps-links:
+	$(PY) checks/dps_links/check_couplings.py
+	$(PY) checks/dps_links/check_dpd_kernels.py

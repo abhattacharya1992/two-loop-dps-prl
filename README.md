@@ -42,6 +42,7 @@ The complete classification of pinched surfaces and matching onto renormalised o
 | `checks/` | Independent analytical and numerical validation |
 | `checks/threshold_ggAA/` | Comparison with the published pseudoscalar threshold expansion |
 | `checks/pinch_regions/` | Exact scalar-pinch identities and bounded checks on supplied momentum-region data |
+| `checks/dps_links/` | Exact checks of the coupling structure of the massless quark loop and of the relation of the one-loop DPS term to the lowest-order splitting kernels of double parton distributions |
 | `common/aa_source/` | Published pseudoscalar amplitude evaluator and input checksums, retained as a shared dependency |
 
 The repository contains one manuscript and its Supplemental Material. Earlier manuscript versions and unrelated development files are not included.
@@ -158,6 +159,17 @@ and the recovery command are documented in
 [the historical FDH record](paper2/r0/theory/stored/history/2026-10-22-pr1-initial-fdh/README.md).
 The current numerical checkpoints and independent reference implementations
 remain in the active repository.
+
+## PRL manuscript v2
+
+This branch starts from the validated cleanup commit `6d54247406102e201bb09e0d365ab1c1d3a0d940`.
+It contains revised manuscripts and figures, independent coupling and DPD
+splitting checks, and an additional near-endpoint validation at `beta=19/20`.
+The original `main` and frozen cleanup branch are unchanged.
+
+The frozen-baseline `make release-check` tests identical publication sources;
+this new manuscript intentionally differs. Validate v2 with `make reproduce`
+and independently compare the unchanged scientific inputs and calculations.
 
 ## Frozen-baseline comparison
 

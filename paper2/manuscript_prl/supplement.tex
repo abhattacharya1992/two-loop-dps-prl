@@ -108,7 +108,7 @@ with $s=2p_1\cdot p_2$. We consider two final-state
 particles of equal mass $m$ and take $p_T\to0$ at
 fixed $s$ and $m$. At $p_T=0$, the momentum of the
 first final-state particle is
-$p_3=xp_1+(1-x)p_2$ [Fig.~\Lref{fig:dps}(b)],
+$p_3=xp_1+(1-x)p_2$ [Fig.~\Lref{fig:dps}],
 so that $sx(1-x)=m^2$, with $x=(1+\beta)/2$
 and $\beta=\sqrt{1-4m^2/s}$.
 %
@@ -187,7 +187,7 @@ V_H^{\rho\sigma}(k_a,k_b)
 We route the momenta as $r=p_3-k$,
 $\bar k=p_1-k$ and
 $\bar r=p_2-r=p_4-p_1+k$
-[Fig.~\Lref{fig:dps}(b)].
+[Fig.~\Lref{fig:dps}].
 Expanding the numerators to quadratic order in the
 transverse momenta, with $\sigma=x(1-x)$ and
 $E=\sqrt{s}/2$ the incoming gluon energy in the
@@ -277,6 +277,27 @@ $W=w_{+-}(x)w_{-+}(1-x)+w_{-+}(x)w_{+-}(1-x)$
 is the same for both processes. These terms
 are products of amplitudes, not splitting
 probabilities.
+They are nevertheless linear combinations of the
+lowest-order kernels for the splitting of a gluon
+into two gluons in double parton distributions (DPDs).
+With the kernels of Ref.~\cite{Diehl:2014vaa} for two
+unpolarised, two longitudinally polarised and two
+linearly polarised gluons,
+$T_{g\to gg}=2C_A[\frac{1-x}{x}+\frac{x}{1-x}+x(1-x)]$,
+$T_{g\to\Delta g\Delta g}=2C_A[2-x(1-x)]$ and
+$T_{g\to\delta g\delta g}=2C_Ax(1-x)$,
+\begin{equation}
+\begin{aligned}
+2C_AF_S&=T_{g\to gg}+T_{g\to\Delta g\Delta g}
++2T_{g\to\delta g\delta g},\\
+2C_AF_A&=T_{g\to gg}+T_{g\to\Delta g\Delta g}
+-2T_{g\to\delta g\delta g},\\
+2C_AW&=T_{g\to gg}-T_{g\to\Delta g\Delta g}.
+\end{aligned}
+\label{eq:dpdkernels}
+\end{equation}
+The term with linearly polarised gluons changes
+sign between the scalar and pseudoscalar vertices.
 
 The logarithmic variable used in the Letter is
 \begin{equation}
@@ -387,7 +408,7 @@ At fixed $\beta$, neither $t$ nor $u$
 vanishes as $p_T\to0$. Only the crossed
 box develops the additional Landau pinch,
 corresponding to the two collinear splittings
-in Fig.~\Lref{fig:dps}(b), as expected from
+in Fig.~\Lref{fig:dps}, as expected from
 the Coleman-Norton interpretation~\cite{Coleman:1965xm}.
 %
 The reduced triangle and bubble integrals
@@ -452,7 +473,7 @@ The daughter parton momenta are $k$,
 $\bar k=p_1-k$, $r=p_3-k$ and
 $\bar r=p_4-p_1+k$. The pairs $k,r$ and
 $\bar k,\bar r$ enter the two hard vertices,
-respectively [Fig.~\Lref{fig:dps}(b)].
+respectively [Fig.~\Lref{fig:dps}].
 The parent partons have quadratic Casimir $C_a$,
 while the partons entering hard vertex $i$
 have Casimir $C_{R_i}$. We retain these
@@ -765,6 +786,66 @@ The collinear function $J_1$ retains open colour
 and helicity indices. A comparison with DPD splitting
 kernels requires the corresponding operator
 projections and subtraction conventions.
+
+\paragraph{Relation to DPS cross sections: }
+In a hadronic cross section, the square of the one-loop
+amplitude contributes to single parton scattering when
+its loop is hard and to DPS when both splittings are
+collinear~\cite{Gaunt:2011xd,Manohar:2012pe,Diehl:2017kgu}.
+The double counting is removed by subtracting the DPS
+cross section evaluated with the lowest-order perturbative
+splitting form of both DPDs~\cite{Diehl:2017kgu}.
+The helicity-projected square of the one-loop DPS term
+shares the splitting-weight structure of that expression.
+The full cross-section subtraction also requires the DPD colour
+projections, phase space and a consistent overlap prescription. Averaged over the helicities of the
+incoming gluons, its dependence on $x$ follows from
+Eq.~(\ref{eq:dpdkernels}). For $gg\to HH$ it is
+\begin{equation}
+\begin{aligned}
+\frac{F_S^2+W^2}{2}=\frac1{4C_A^2}\Big[&
+T_{g\to gg}\bar T_{g\to gg}
++T_{g\to\Delta g\Delta g}\bar T_{g\to\Delta g\Delta g}\\
+&+2T_{g\to\delta g\delta g}\bar T_{g\to\delta g\delta g}
++2T_{g\to g\delta g}\bar T_{g\to g\delta g}\Big],
+\end{aligned}
+\label{eq:dpdsquare}
+\end{equation}
+where $T$ and $\bar T$ are evaluated at $x$ and $1-x$,
+and $T_{g\to g\delta g}=2C_Ax/(1-x)$ is the kernel for
+one unpolarised gluon, of momentum fraction $x$, and one
+linearly polarised gluon~\cite{Diehl:2014vaa}. For $gg\to AA$, $F_A$
+replaces $F_S$ and the last term changes sign.
+The right-hand side is a sum, over the polarisations
+of the two gluon pairs, of products of the kernels
+of the two splittings.
+
+At the next order, Eq.~(\Lref{eq:kernel}) with
+$r_1=r_2=0$ gives, at fixed $\bb$,
+\begin{equation}
+\big|\widetilde{\mathcal K}\big|^2
+=a_s^2\big|\widetilde{\mathcal K}_0\big|^2
+\Big\{1+2a_s\,\mathrm{Re}\Big[\DD X_\mu^2
+-2\DD X X_\mu+BX_\mu+r_0\Big]+O(a_s^2)\Big\}.
+\label{eq:Ksquared}
+\end{equation}
+The amplitude and its complex conjugate have the same
+$\bb$ in the cross section integrated over
+$\boldsymbol p_T$. The phase of Eq.~(\Lref{eq:imK})
+does not contribute to Eq.~(\ref{eq:Ksquared}), in
+accordance with the cancellation of Glauber exchange in
+the double Drell--Yan cross
+section~\cite{Diehl:2015bca}.
+Equation~(\ref{eq:Ksquared}) displays the virtual DPS correction
+for a scalar-projected kernel, with the hard subprocess corrections
+added separately. For the full tensor kernel, the colour and helicity
+indices are contracted before taking the squared amplitude.
+This relation does not itself establish the complete subtraction
+term for a hadronic DPS cross section.
+The real emission at the same order and the relation of
+$r_0$ to the two-loop splitting kernels of
+DPDs~\cite{Diehl:2019rdh,Diehl:2021non} are not
+considered here.
 
 
 
@@ -2053,20 +2134,33 @@ splittings, however, it would give a cubic
 coefficient $-4C_A/3$ instead of
 $4/(3N_c)$.
 
-Analytic two-loop amplitudes are available
-for $gg\to ZZ$ and $gg\to\gamma^*\gamma^*$~\cite{vonManteuffel:2015msa,Caola:2015ila},
+Analytic two-loop amplitudes are available for the
+production of two off-shell electroweak bosons through
+massless quark loops~\cite{vonManteuffel:2015msa,Caola:2015ila},
 and DPS singularities occur in some of the
 corresponding master integrals~\cite{Henn:2014lfa}.
-Under the same boundary condition,
-Eq.~(\ref{eq:quarks}) also predicts the
-leading logarithms for
-$gg\to\gamma^*\gamma^*$ with equal
-invariant masses. We do not test that
-channel separately. The extension to
+In these amplitudes both vector bosons couple to the
+same quark loop; contributions in which they couple to
+different quark loops cancel for massless quark
+doublets~\cite{vonManteuffel:2015msa}. The terms with
+one $\gamma_5$ cancel between the two orientations of
+the loop (Sec.~\ref{sec:quarkloops}), and the terms with
+two axial-vector couplings equal those with two vector
+couplings~\cite{vonManteuffel:2015msa}.
+The amplitudes for $\gamma^*\gamma^*$, $Z\gamma^*$,
+$ZZ$ and $W^+W^-$ production are therefore the same
+coefficient functions, multiplied by a factor that
+contains the electroweak
+couplings~\cite{vonManteuffel:2015msa}.
+Sections~\ref{sec:zz} and~\ref{sec:unequal} use these
+coefficient functions without that factor, and their
+comparisons apply to all four pairs.
+Equation~(\ref{eq:quarks}) is tested for equal
+invariant masses in Sec.~\ref{sec:zz}. The extension to
 different invariant masses, for which
 $Q_*$ and the splitting fractions change,
-is tested using $gg\to V_1^*V_2^*$
-amplitudes in Sec.~\ref{sec:unequal}.
+is tested for two configurations in
+Sec.~\ref{sec:unequal}. Top-quark loops are not included.
 
 \subsection{Test in two-loop \texorpdfstring{$gg\to ZZ$}{gg -> ZZ}}
 \label{sec:zz}
@@ -2148,6 +2242,11 @@ These results agree with the crossed-box
 calculation including both fermion-loop
 orientations (Sec.~\ref{sec:quarkloops})
 and Ref.~\cite{Gaunt:2011xd}.
+In terms of the lowest-order DPD kernels for
+two unpolarised and for two transversely polarised
+quarks~\cite{Diehl:2014vaa},
+$x^2+(1-x)^2=2T_{g\to q\bar q}$ and
+$x(1-x)=-T_{g\to\delta q\delta\bar q}$.
 The closed forms agree with the evaluated
 amplitudes to $\zzOneLoopDev$ at all
 \zzVelocityCount{} velocities.

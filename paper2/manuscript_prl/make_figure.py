@@ -5,9 +5,9 @@
 # (../_build/make_figure.py) from the result files listed in its SOURCES, with the output
 # directed to figures/ here.
 #
-# Letter, Fig. 1: the tree diagram and the crossed box of Paper I, drawn with TikZ-Feynman. The
-# the retained original TikZ source is in figures/dps_diagram_tikz.tex and compiled inside
-# the wrapper figures/dps_diagram.tex. No Paper I manuscript directory is needed.
+# Letter, Fig. 1: the two-loop DPS configuration for gluon and quark splittings, drawn with
+# TikZ-Feynman. The TikZ source is figures/dps_diagram_tikz.tex, compiled inside the wrapper
+# figures/dps_diagram.tex.
 #
 #   python3 make_figure.py
 import importlib.util
