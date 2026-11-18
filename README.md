@@ -74,6 +74,18 @@ python -m pip install -r requirements-pinned.txt
 
 ## Reproducing the results
 
+A fresh clone can run the included scientific tests, regenerate the Letter and
+Supplement, and check the arXiv archive with one command:
+
+```bash
+make reproduce
+```
+
+This requires the pinned Python dependencies and the TeX packages listed above.
+For installation commands, the individual reproduction routes, and a precise
+account of inputs not redistributed here, see [REPRODUCING.md](REPRODUCING.md).
+Use `make test-science` to run the scientific checks without TeX.
+
 ### 1. Scientific validation
 
 Run the complete included test suite:
@@ -131,7 +143,9 @@ The archive is written to:
 
 The **arXiv archive includes the Letter and Supplemental Material source files at its top level**, together with an `anc/` directory containing the tracked scientific code, stored amplitude points, numerical results, tests and provenance documentation. The originating Git commit is recorded in `anc/README_ANCILLARY.txt`. Published third-party full-amplitude expressions are not redistributed here.
 
-Ancillary packaging requires tracked inputs to match the current Git commit. During editing, use `make build`, or check compilation without ancillary data using `python3 paper2/manuscript_prl/make_arxiv.py --check --no-anc`. Commit the final changes before running `make archive`. Some numerical tests regenerate tracked outputs; inspect them and restore only verified by-products before packaging.
+Ancillary packaging requires tracked inputs to match the current Git commit. During editing, use `make build`, or check compilation without ancillary data using `python3 paper2/manuscript_prl/make_arxiv.py --check --no-anc`. Commit the final changes before running `make archive`. The standard test suite preserves the tracked HH bookkeeping and RG reference outputs.
+If running optional numerical regeneration commands, inspect `git status` and
+commit or restore only independently checked by-products before packaging.
 
 The manuscript's canonical LaTeX sources are `letter.tex` and `supplement.tex` in `paper2/manuscript_prl/`.
 

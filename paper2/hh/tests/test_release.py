@@ -20,6 +20,7 @@
 #     from them and from the gg -> ZZ results in ../zz;
 #   - the one-loop, subtraction, RG and orientation scripts run and pass their own checks.
 import hashlib, json, os, pathlib, shutil, subprocess, sys, tempfile
+from contextlib import contextmanager
 from decimal import Decimal, InvalidOperation, localcontext
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
@@ -45,6 +46,19 @@ def run(script, cwd, *args):
     r = subprocess.run([PY, script, *args], cwd=cwd, capture_output=True, text=True)
     assert r.returncode == 0, f'{script} failed:\n{r.stdout[-2000:]}\n{r.stderr[-2000:]}'
     return r.stdout
+
+
+@contextmanager
+def preserved_file(path):
+    """Keep the repository's stored result unchanged after a fresh comparison."""
+    previous = path.read_bytes() if path.exists() else None
+    try:
+        yield
+    finally:
+        if previous is None:
+            path.unlink(missing_ok=True)
+        else:
+            path.write_bytes(previous)
 
 
 def same(a, b, rel=1e-20, path=''):
@@ -158,11 +172,13 @@ def test_one_loop_scripts():
 
 
 def test_stage2a():
-    stored = (ROOT/'stage2a'/'results_stage2a.json').read_text()
-    out = run('stage2a_bookkeeping.py', ROOT/'stage2a')
+    path = ROOT/'stage2a'/'results_stage2a.json'
+    stored = json.loads(path.read_text())
+    with preserved_file(path):
+        out = run('stage2a_bookkeeping.py', ROOT/'stage2a')
+        new = json.loads(path.read_text())
     assert out.count('give the same O(eps^0) terms: True') == 2
-    new = json.loads((ROOT/'stage2a'/'results_stage2a.json').read_text())
-    assert new['rows'] == json.loads(stored)['rows'], 'Table 4 entries changed'
+    assert new['rows'] == stored['rows'], 'Table 4 entries changed'
 
 
 def test_tables_reproduced():
@@ -177,8 +193,10 @@ def test_tables_reproduced():
 
 def test_rg_argument():
     import sympy as sp
-    run('src/verify_integrated_setup.py', ROOT/'rg_argument')
-    new = json.loads((ROOT/'rg_argument'/'results'/'verification.json').read_text())
+    path = ROOT/'rg_argument'/'results'/'verification.json'
+    with preserved_file(path):
+        run('src/verify_integrated_setup.py', ROOT/'rg_argument')
+        new = json.loads(path.read_text())
     ref = json.loads((ROOT/'rg_argument'/'results'/'verification_reference.json').read_text())
     equal = lambda a, b: sp.simplify(sp.sympify(a)-sp.sympify(b)) == 0
     for key in ('A0_over_C1', 'A2_over_K1'):

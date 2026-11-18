@@ -1,6 +1,8 @@
 name: Scientific and manuscript validation
 on:
   push:
+    branches: [main, 'cleanup/**']
+  pull_request:
     branches: [main]
   workflow_dispatch:
 permissions:
@@ -24,17 +26,8 @@ jobs:
             texlive-latex-base texlive-latex-recommended texlive-latex-extra \
             texlive-pictures texlive-publishers texlive-science texlive-plain-generic \
             texlive-fonts-recommended lmodern poppler-utils libginac-dev
-      - name: Validate calculations
-        run: |
-          make test PY=python
-          make -C paper2/r0/derivation test PYTHON=python
-      - name: Compile manuscript and source archive
-        run: |
-          git restore --worktree -- \
-            paper2/hh/rg_argument/results/verification.json \
-            paper2/hh/stage2a/results_stage2a.json
-          make build PY=python
-          python paper2/manuscript_prl/make_arxiv.py --check
+      - name: Verify calculations and rebuild publication
+        run: make reproduce PY=python
       - name: Upload validated documents
         uses: actions/upload-artifact@v4
         with:

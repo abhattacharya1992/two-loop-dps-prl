@@ -62,7 +62,8 @@ def kernel(num, den, suffix=''):
     xx = num/den
     J1 = load(f'{num}o{den}', suffix)
     J2s = load(f'{den - num}o{den}', suffix)
-    se = {k: self_energies(xx)[k] + self_energies(1 - xx)[k] for k in (-2, -1, 0)}
+    se_x, se_y = self_energies(xx), self_energies(1 - xx)
+    se = {k: se_x[k] + se_y[k] for k in (-2, -1, 0)}
     out = {}
     flip = {'ek': 'ke', 'ke': 'ek'}
     # the four helicity configurations: structure s1 of J1 and s2 of J2, where J2 in structure s2 is J1(1 - x) in

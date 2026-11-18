@@ -49,11 +49,15 @@ def leading_logs_gluon(process, regular, beta, L=0, colours=theory.GLUON_COLOURS
         if not recs:
             continue
         deg, pdeg = GLUON_MODELS[comp]
+        # Each fit supplies all powers. Keep the reporting order unchanged.
+        fitted = {}
+        for col in colours:
+            vals = series(recs, f'{col}:L{L}' if process.name == 'hh' else col)
+            fitted[col] = fit.with_shift(recs, vals, deg, pdeg)
         for power in ((3, 2) if comp == 1 else (2, 1)):
             key = f'G{power}'
             for col in colours:
-                vals = series(recs, f'{col}:L{L}' if process.name == 'hh' else col)
-                c0, shifts = fit.with_shift(recs, vals, deg, pdeg)
+                c0, shifts = fitted[col]
                 p = pred[name][key].get(col, mp.mpf(0))
                 rows.append({'component': comp, 'power': power, 'colour': col, 'value': c0[power],
                              'shift': shifts[power] if shifts else None, 'prediction': p,
@@ -102,6 +106,14 @@ def one_loop_quark(recs):
     return f0, f1
 
 
+def quark_helicity_inputs(regular, beta):
+    """One-loop fits at each helicity, shared by normalisation and coefficient extraction."""
+    helicities = sorted(h for (h, b) in regular if b == beta)
+    fitted = {h: one_loop_quark(regular[(h, beta)]) for h in helicities}
+    cmax = max(abs(fitted[h][0][1]) for h in helicities)
+    return helicities, fitted, cmax
+
+
 def leading_logs_quark(regular, beta, pdeg=QUARK_MODEL[1]):
     """Two-loop coefficients of the gg -> ZZ helicity amplitudes against the quark-splitting
     prediction (analyse_zz.py): for dJz = 0 amplitudes with a one-loop logarithm, f3/c1 and
@@ -110,12 +122,11 @@ def leading_logs_quark(regular, beta, pdeg=QUARK_MODEL[1]):
     Lx = mp.log(x * (1 - x))
     pred = {'2l_CF': {'dJz0': {3: -mp.mpf(4) / 3, 2: -2 * Lx - 3}, 'dJz2': {2: -4, 1: -4 * Lx - 2}},
             '2l_CA': {'dJz0': {3: mp.mpf(2) / 3, 2: 2 * Lx}, 'dJz2': {2: 2, 1: 4 * Lx - 2}}}
-    hels = sorted(h for (h, b) in regular if b == beta)
-    cmax = max(abs(one_loop_quark(regular[(h, beta)])[0][1]) for h in hels)
+    hels, fitted, cmax = quark_helicity_inputs(regular, beta)
     rows = []
     for h in hels:
         recs = regular[(h, beta)]
-        one, one_w = one_loop_quark(recs)
+        one, _ = fitted[h]
         c1, K = one[1], one[0]
         dj = jz_change(h)
         if dj == 0 and abs(c1) > 1e-3 * cmax:
@@ -141,12 +152,11 @@ def leading_logs_quark(regular, beta, pdeg=QUARK_MODEL[1]):
 def r0_quark(regular, beta):
     """r_0 for quark splittings from the gg -> ZZ fits (r0/data/r0_from_zz.py), in a_s units."""
     x = momentum_fraction(beta)
-    hels = sorted(h for (h, b) in regular if b == beta)
-    cmax = max(abs(one_loop_quark(regular[(h, beta)])[0][1]) for h in hels)
+    hels, fitted, cmax = quark_helicity_inputs(regular, beta)
     out = {'x': x, 'nu0': {}, 'nu2': {}}
     for h in hels:
         recs = regular[(h, beta)]
-        one, _ = one_loop_quark(recs)
+        one, _ = fitted[h]
         c1, K = one[1], one[0]
         dj = jz_change(h)
         if dj == 0 and abs(c1) > 1e-3 * cmax:
