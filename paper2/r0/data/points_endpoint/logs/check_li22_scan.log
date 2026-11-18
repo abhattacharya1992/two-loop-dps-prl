@@ -1,0 +1,24 @@
+nohup: ignoring input
+multiprocessing.pool.RemoteTraceback:
+"""
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/home/arunimab/Desktop/DPS_PRL_PUBLICATION/two-loop-dps-prl/paper2/zz/scripts/check_li22_scan.py", line 92, in run_point
+    require_close(v,ref,rtol=0,atol=1000*mp.mpf(10)**(-dps),label='Li22 scan')
+  File "/home/arunimab/Desktop/DPS_PRL_PUBLICATION/two-loop-dps-prl/paper2/zz/scripts/numeric_checks.py", line 12, in require_close
+    raise ValueError(f'{label}: difference {mp.nstr(error,6)} exceeds rtol={rtol}, atol={atol}')
+ValueError: Li22 scan: difference 2.71917e-32 exceeds rtol=0.0, atol=1.0e-47
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/arunimab/Desktop/DPS_PRL_PUBLICATION/two-loop-dps-prl/paper2/zz/scripts/check_li22_scan.py", line 129, in <module>
+    main()
+  File "/home/arunimab/Desktop/DPS_PRL_PUBLICATION/two-loop-dps-prl/paper2/zz/scripts/check_li22_scan.py", line 121, in main
+    for text, w, rr in pool.imap(run_point, pts):
+  File "/usr/lib/python3.12/multiprocessing/pool.py", line 873, in next
+    raise value
+ValueError: Li22 scan: difference 2.71917e-32 exceeds rtol=0.0, atol=1.0e-47

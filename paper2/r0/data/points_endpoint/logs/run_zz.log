@@ -1,0 +1,10 @@
+20:09:28 zz_b19o20_d5_p55.json 489.1 s; integral-branch pairs 422 ; fixed split off by 1.40616e-33 ; evaluate_hh.li22 vs reference 0.0
+20:09:29 zz_b19o20_d4_p50.json 490.3 s; integral-branch pairs 479 ; fixed split off by 2.71917e-32 ; evaluate_hh.li22 vs reference 0.0
+20:11:45 zz_b19o20_d6_p60.json 625.2 s; integral-branch pairs 458 ; fixed split off by 3.57434e-39 ; evaluate_hh.li22 vs reference 0.0
+20:12:00 zz_b19o20_d7_p65.json 642.5 s; integral-branch pairs 407 ; fixed split off by 1.18695e-66 ; evaluate_hh.li22 vs reference 0.0
+20:18:14 zz_b19o20_d8_p70.json 1013.6 s; integral-branch pairs 455 ; fixed split off by 9.05568e-72 ; evaluate_hh.li22 vs reference 0.0
+20:22:03 zz_b19o20_d9_p75.json 1239.6 s; integral-branch pairs 457 ; fixed split off by 4.14536e-76 ; evaluate_hh.li22 vs reference 0.0
+20:27:57 zz_b19o20_d10_p80.json 1584.1 s; integral-branch pairs 479 ; fixed split off by 3.68977e-80 ; evaluate_hh.li22 vs reference 0.0
+20:30:45 zz_b19o20_d12_p90.json 1756.3 s; integral-branch pairs 410 ; fixed split off by 7.91665e-62 ; evaluate_hh.li22 vs reference 0.0
+20:34:02 zz_b19o20_d11_p85.json 1946.0 s; integral-branch pairs 488 ; fixed split off by 3.60042e-81 ; evaluate_hh.li22 vs reference 0.0
+20:34:53 zz_b19o20_d10_p95.json 2005.8 s; integral-branch pairs 437 ; fixed split off by 9.36335e-97 ; evaluate_hh.li22 vs reference 0.0
