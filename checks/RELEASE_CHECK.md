@@ -1,34 +1,32 @@
-# Comparing the cleaned release with the frozen baseline
+# Release comparison for the consolidated PRL v2 branch
 
-The publication baseline is commit `1259ee1fc9dedb42047cd3919f655713dd631f27`.
-The comparison is run from the cleaned branch. Neither branch is changed.
+The active working branch is `cleanup/reproducible-pipeline-20261118`.
+Its scientific and publication baseline is the validated PRL v2 commit
+`d362f551357f80125649e583b22b6dbf8aeccb4e`. The original `main` remains at
+`1259ee1fc9dedb42047cd3919f655713dd631f27` and is never updated by these checks.
 
-## On GitHub
+## GitHub Actions
 
-1. Open **Actions** in `abhattacharya1992/two-loop-dps-prl`.
-2. Select **Scientific and manuscript validation**.
-3. Select **Run workflow** and choose branch `cleanup/reproducible-pipeline-20261118`.
-4. Run it. The manually triggered workflow performs the frozen-baseline comparison.
-5. Open the resulting run and download artifact `release-comparison`.
-6. Read `report.md` first, then examine `report.json` and the individual logs for any failures.
+Open the repository's **Actions → Scientific and manuscript validation**
+workflow, click **Run workflow**, and select
+`cleanup/reproducible-pipeline-20261118`. The comparison job runs
+both revisions in temporary detached worktrees and uploads
+`release-comparison`, containing `report.md`, `report.json`
+and the command logs.
 
-The comparison checks every retained numerical dataset against its Git blob
-identity, independently runs the published scientific tests in detached
-worktrees, checks generated TeX and arXiv source files byte for byte, and
-compares the Letter and Supplement as text and as rendered pages at 108 dpi.
-Repeated timing benchmarks cover the shared DPS, ZZ and region-matching tests.
-The benchmark measurements are not hardware-independent; investigate an
-apparent regression rather than ignoring it or accepting a single noisy run.
+Normal pushes also run the scientific and manuscript CI checks.
+The main/cleanup comparison from the original v1 is already recorded in the
+GitHub Actions history; the present comparison concerns the updated PRL v2.
 
-## On a Linux workstation or HPC login node
+## Local release comparison
 
-From a full clone with Python 3.12, GNU Make, Git, the Python dependencies,
-pdfLaTeX/BibTeX/REVTeX/TikZ-Feynman, and Poppler installed:
+From a full clone, with Python 3.12, pinned scientific dependencies,
+GNU Make, pdfLaTeX, BibTeX, REVTeX, TikZ-Feynman, Poppler and
+`/usr/bin/time` available:
 
 ```bash
 git clone https://github.com/abhattacharya1992/two-loop-dps-prl.git
 cd two-loop-dps-prl
-git fetch origin main cleanup/reproducible-pipeline-20261118
 git switch cleanup/reproducible-pipeline-20261118
 python3.12 -m venv .venv
 source .venv/bin/activate
@@ -36,61 +34,36 @@ python -m pip install -r requirements-pinned.txt
 make release-check PY=python BENCH_RUNS=3
 ```
 
-This writes `release-check/report.md`, `release-check/report.json`, and the
-complete command logs. For a quick source-data preflight without any numerical
-runs or TeX, use `make release-check-quick`.
+The result is written to `release-check/report.md` and
+`release-check/report.json`. For the source and cache-provenance
+preflight only, use `make release-check-quick`.
 
-The comparison uses temporary Git worktrees and the same Python interpreter
-and installed libraries for both versions. The baseline's older Makefile is
-run using its original sequence of commands; the cleaned version uses
-`make reproduce`. A working directory must contain the frozen baseline Git
-commit: a shallow checkout may need `git fetch --unshallow` first.
-
-## Remaining full-input stage
-
-A passing `release-check` establishes equivalence for the included inputs,
-analyses, reference derivations and generated publication. It does **not**
-re-evaluate every original two-loop amplitude from external third-party files.
-Those costly calculations must also be validated before claiming complete
-from-scratch equivalence.
-
-Use separate detached worktrees on the same HPC machine and preserve the
-original inputs and code revisions:
+The comparison rejects changes to required scientific inputs. Exactly six
+source-fingerprinted sector-decomposition **performance** caches are excluded
+from that byte-for-byte requirement. Their original Git blobs and SHA-256
+checksums are recorded in `checks/region_cache_manifest.json` and verified
+before running the comparison. They can be restored for expensive region
+integrations using:
 
 ```bash
-git worktree add --detach ../dps-main 1259ee1fc9dedb42047cd3919f655713dd631f27
-git worktree add --detach ../dps-clean 356e5285d6c6712ea88489d173856955082537e0
+python checks/region_cache_archive.py --restore
 ```
 
-Install/verify the published input files **in each worktree** as documented in
-`paper2/hh/README.md`, `paper2/zz/README.md` and `common/aa_source/README.md`.
-For each worktree, run the same calculation commands, preserving the logs:
+The full release comparison regenerates numerical analyses, published
+tables, Letter and Supplement sources, arXiv top-level sources and PDFs.
+It compares the PDFs as extracted text and rendered pages, and measures
+the runtime and peak resident memory of representative scientific tests.
+An unexplained difference or performance regression fails the comparison.
 
-```bash
-make -C paper2/hh fetch
-make -C paper2/hh test-full
-bash common/aa_source/inputs/fetch_inputs.sh
-make -C common/dps aa-check
-make -C paper2/zz inputs
-make -C paper2/zz build
-make -C paper2/zz checks
-```
+## What these checks do not establish
 
-Regenerating entire scans and region-integral Laurent coefficients is a
-separate, longer campaign. Follow the respective directory Makefiles for
-`scan`, `rescan`, `aa-scan`, `quarks`, `gluons` and `n4`. Use isolated outputs and
-record the third-party input SHA-256 sums, CPU configuration, precision, and
-runtime in both worktrees. The produced JSON numerical records must be compared
-by a precision-aware comparator and cross-checked against the paper's claims.
+The entire original two-loop amplitude-production chain and expensive
+region-integral generation from external third-party input expressions
+are outside the standard workflow. The commands for those calculations
+are documented in `REPRODUCING.md` and the relevant process-specific
+Makefiles. A successful comparison demonstrates equivalence for the
+included published calculations, not a universal guarantee that every
+external calculation has been rerun.
 
-Several of these runs can take hours and require external amplitude sources
-that are not distributed in the repository. Do not substitute existing JSON
-records for a claimed fresh amplitude evaluation.
-
-## Acceptance condition
-
-A successful workflow does not merge code. The author decides whether the
-archived historical helpers need to be present in the working branch and
-whether the external amplitude-production comparisons are complete. Do not
-replace `main` until these decisions and all numerical discrepancies are
-resolved.
+Nothing in this workflow merges any branch. Replacing `main` requires
+the author's explicit approval.

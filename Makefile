@@ -13,7 +13,7 @@ help:
 	 'make build: regenerate tables, figures, Letter and Supplement' \
 	 'make archive: build and validate isolated arXiv source package' \
 	 'make reproduce: test, analytic derivations, PDFs and source archive' \
-	 'make release-check: compare this branch against frozen main and benchmark'
+	 'make release-check: compare publication and calculations against frozen PRL v2'
 
 threshold:
 	$(PY) checks/threshold_ggAA/check.py
@@ -66,11 +66,11 @@ pinch-figures:
 release-check-tests:
 	$(PY) -m unittest discover -s checks -p 'test_release_compare.py' -v
 
-release-check-quick: release-check-tests
-	$(PY) checks/release_compare.py --quick --python "$(PY)" --output release-check
+release-check-quick: cache-archive-check release-check-tests
+	$(PY) checks/release_compare.py --quick --archived-cache-manifest checks/region_cache_manifest.json --python "$(PY)" --output release-check
 
-release-check: release-check-tests
-	$(PY) checks/release_compare.py --python "$(PY)" --output release-check --benchmark-runs "$(BENCH_RUNS)"
+release-check: cache-archive-check release-check-tests
+	$(PY) checks/release_compare.py --archived-cache-manifest checks/region_cache_manifest.json --python "$(PY)" --output release-check --benchmark-runs "$(BENCH_RUNS)"
 
 .PHONY: dps-links
 dps-links:
@@ -78,8 +78,7 @@ dps-links:
 	$(PY) checks/dps_links/check_dpd_kernels.py
 
 # Reproduce v2 and the candidate in detached worktrees, then compare their outputs.
-phase2-check: cache-archive-check release-check-tests
-	$(PY) checks/release_compare.py --baseline d362f551357f80125649e583b22b6dbf8aeccb4e --archived-cache-manifest checks/region_cache_manifest.json --python "$(PY)" --benchmark-runs "$(BENCH_RUNS)" --output release-check
+phase2-check: release-check
 
 # Cache snapshots are optional; this check only reads the frozen v2 Git history.
 cache-archive-check:

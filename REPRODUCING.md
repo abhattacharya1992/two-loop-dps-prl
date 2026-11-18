@@ -1,5 +1,12 @@
 # Reproducing the DPS calculations and manuscript
 
+The canonical development branch is `cleanup/reproducible-pipeline-20261118`.
+It contains the PRL v2 manuscripts and both stages of tested cleanup.
+Use `make release-check` to compare this branch with frozen PRL v2
+(`d362f551357f80125649e583b22b6dbf8aeccb4e`). The original `main` commit
+(`1259ee1fc9dedb42047cd3919f655713dd631f27`) is unchanged.
+
+
 The default reproduction uses the evaluated amplitude points and region Laurent
 coefficients included in this repository. It reruns the scientific comparisons,
 checks the independent analytic derivation, rebuilds the two manuscripts, and

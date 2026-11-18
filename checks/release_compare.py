@@ -20,7 +20,8 @@ import tarfile
 import tempfile
 import time
 
-BASELINE = "1259ee1fc9dedb42047cd3919f655713dd631f27"
+BASELINE = "d362f551357f80125649e583b22b6dbf8aeccb4e"
+LEGACY_BASELINE = "1259ee1fc9dedb42047cd3919f655713dd631f27"
 DATA_SUFFIXES = (".json", ".jsonl", ".pkl", ".tex", ".bib", ".bbl", ".pdf")
 HISTORICAL = "paper2/r0/theory/stored/history/2026-10-22-pr1-initial-fdh/"
 PAPER = Path("paper2/manuscript_prl")
@@ -238,7 +239,7 @@ def measured(command: list[str], cwd: Path, logfile: Path) -> dict:
 
 def reproduction(root: Path, label: str, python: str, output: Path) -> list[dict]:
     # The baseline predates the combined 'reproduce' Make target.
-    if label == "baseline" and git(root, "rev-parse", "HEAD") == BASELINE:
+    if label == "baseline" and git(root, "rev-parse", "HEAD") == LEGACY_BASELINE:
         commands = [
             ["make", "test", f"PY={python}"],
             ["make", "-C", "paper2/r0/derivation", "test", f"PYTHON={python}"],
