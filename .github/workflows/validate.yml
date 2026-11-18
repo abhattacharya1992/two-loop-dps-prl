@@ -9,16 +9,23 @@ permissions:
   contents: read
 jobs:
   validate:
+    if: github.event_name != 'workflow_dispatch' || !startsWith(github.ref_name, 'cleanup/')
     runs-on: ubuntu-latest
     timeout-minutes: 90
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
           cache: pip
       - name: Install scientific packages
         run: python -m pip install -r requirements-pinned.txt
+      - name: Check frozen data inputs and comparison harness
+        run: |
+          python -m unittest discover -s checks -p 'test_release_compare.py' -v
+          python checks/release_compare.py --quick --output release-check
       - name: Install TeX and related tools
         run: |
           sudo apt-get update -qq
@@ -36,3 +43,34 @@ jobs:
             paper2/manuscript_prl/letter.pdf
             paper2/manuscript_prl/supplement.pdf
             paper2/manuscript_prl/release/PRL_DPS_arxiv_sources.tar.gz
+
+  release_compare:
+    if: github.event_name == 'workflow_dispatch' && startsWith(github.ref_name, 'cleanup/')
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - name: Install scientific dependencies
+        run: python -m pip install -r requirements-pinned.txt
+      - name: Install TeX and PDF tools
+        run: |
+          sudo apt-get update -qq
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+            texlive-latex-base texlive-latex-recommended texlive-latex-extra \
+            texlive-pictures texlive-publishers texlive-science texlive-plain-generic \
+            texlive-fonts-recommended lmodern poppler-utils libginac-dev time
+      - name: Compare with frozen publication baseline
+        run: make release-check PY=python BENCH_RUNS=3
+      - name: Upload comparison report and logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-comparison
+          path: release-check/
+          if-no-files-found: warn

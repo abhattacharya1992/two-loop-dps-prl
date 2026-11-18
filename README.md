@@ -159,6 +159,20 @@ and the recovery command are documented in
 The current numerical checkpoints and independent reference implementations
 remain in the active repository.
 
+## Frozen-baseline comparison
+
+The scientific equivalence check against the original `main` commit runs in
+separate temporary worktrees. It compares retained numerical inputs, re-runs
+the included analyses, checks the generated Letter and Supplement, and measures
+representative runtimes. The command does not update either branch:
+
+```bash
+make release-check
+```
+
+For complete instructions and the distinct external-input stage, see
+[release comparison instructions](checks/RELEASE_CHECK.md).
+
 ## Blind-point provenance
 
 The HH and ZZ independent-velocity point data are copied without modification from their source repository. Their exact Git blob identities can be checked using:

@@ -2,8 +2,9 @@
 SHELL := /bin/bash
 .SHELLFLAGS := -e -o pipefail -c
 PY ?= python3
+BENCH_RUNS ?= 3
 .NOTPARALLEL:
-.PHONY: help threshold independent-checks test-science test pinch-checks pinch-figures manuscript-tests derivation-tests build archive reproduce
+.PHONY: help threshold independent-checks test-science test pinch-checks pinch-figures manuscript-tests derivation-tests build archive reproduce release-check release-check-quick release-check-tests
 
 help:
 	@printf '%s\n' 'make threshold: earlier AA threshold coefficients vs PRL at x=1/2' \
@@ -11,7 +12,8 @@ help:
 	 'make test: scientific tests plus figure generation checks' \
 	 'make build: regenerate tables, figures, Letter and Supplement' \
 	 'make archive: build and validate isolated arXiv source package' \
-	 'make reproduce: test, analytic derivations, PDFs and source archive'
+	 'make reproduce: test, analytic derivations, PDFs and source archive' \
+	 'make release-check: compare this branch against frozen main and benchmark'
 
 threshold:
 	$(PY) checks/threshold_ggAA/check.py
@@ -57,3 +59,13 @@ manuscript-tests:
 
 pinch-figures:
 	$(MAKE) -C paper2/manuscript_prl figure PY="$(PY)"
+
+# Run both revisions in detached worktrees. Does not update a branch.
+release-check-tests:
+	$(PY) -m unittest discover -s checks -p 'test_release_compare.py' -v
+
+release-check-quick: release-check-tests
+	$(PY) checks/release_compare.py --quick --python "$(PY)" --output release-check
+
+release-check: release-check-tests
+	$(PY) checks/release_compare.py --python "$(PY)" --output release-check --benchmark-runs "$(BENCH_RUNS)"

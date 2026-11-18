@@ -29,3 +29,6 @@ __pycache__/
 /paper2/manuscript_prl/letter.pdf
 /paper2/manuscript_prl/supplement.pdf
 /paper2/manuscript_prl/release/
+
+# Temporary baseline-equivalence reports and logs
+/release-check/
