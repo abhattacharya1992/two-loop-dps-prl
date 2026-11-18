@@ -59,7 +59,11 @@ def source(doc):
             if name.startswith('tables/'):
                 continue
             name += '' if name.endswith('.tex') else '.tex'
-            children.append(read(HERE / name))
+            child = HERE / name
+            # The initial table pass precedes these generated manuscript inputs.
+            if name in {'numbers.tex', 'sm_nocite.tex', 'letter_labels.tex'} and not child.exists():
+                continue
+            children.append(read(child))
         return text + '\n' + '\n'.join(children)
     return read(HERE / f'{doc}.tex')
 
