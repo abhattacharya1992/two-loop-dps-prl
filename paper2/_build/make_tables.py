@@ -1331,6 +1331,8 @@ def unequal_matching_part(data):
 def main():
     colour, oneloop, scale, forward = load('colour'), load('one_loop'), load('scale'), load('forward')
     stage2a, p1, bose, scan = load('stage2a'), load('p1'), load('bose'), scan_summary()
+    zz_data, zz_forward, n4_data = load('zz'), load('zz_forward'), load('n4')
+    blind_hh, blind_zz = load('r0_blind_hh'), load('r0_blind_zz')
     BETAS = sorted(colour, key=Fraction)
     rows_all = [r for b in BETAS for r in colour[b]['rows']]
     nonzero = [r for r in rows_all if float(r['prediction']) != 0]
@@ -1414,26 +1416,24 @@ def main():
         'kOneApproachDigits': NUMBER_WORDS[kdig],
     }
     # gg -> ZZ (task J): section 6.2, Table 7 and the gg -> ZZ parts of appendices A and B
-    (HERE/'tables').mkdir(exist_ok=True)
-    zz_macros, zz_words = zz_part(load('zz'), load('zz_summary'), load('zz_forward'))
-    assert len({v['spread_from_delta_exp'] for v in load('zz_forward').values()}) == 1
-    assert set(colour) == set(load('zz')['betas'])
+    zz_macros, zz_words = zz_part(zz_data, load('zz_summary'), zz_forward)
+    assert len({v['spread_from_delta_exp'] for v in zz_forward.values()}) == 1
+    assert set(colour) == set(zz_data['betas'])
     assert not set(zz_macros) & set(macros) and not set(zz_words) & set(words)
     macros |= zz_macros
-    macros |= windows_part(load('windows'), load('zz_windows'), colour, load('zz'))
+    macros |= windows_part(load('windows'), load('zz_windows'), colour, zz_data)
     words |= zz_words
-    fwd_macros, fwd_words = forward_part(load('aa_curve'), load('zz_wide'), load('zz'))
+    fwd_macros, fwd_words = forward_part(load('aa_curve'), load('zz_wide'), zz_data)
     macros |= fwd_macros
     words |= fwd_words
-    n4_macros, n4_words = n4_part(load('n4'))
+    n4_macros, n4_words = n4_part(n4_data)
     macros |= n4_macros
     words |= n4_words
     k_macros, k_words = kernel_part(load('kernel'))
     assert not set(k_macros) & set(macros) and not set(k_words) & set(words)
     macros |= k_macros
     words |= k_words
-    (HERE/'tables').mkdir(exist_ok=True)
-    r_macros, r_words = r0_part(load('r0_fits'), load('r0_blind_hh'), load('r0_blind_zz'), load('r0_quarks'),
+    r_macros, r_words = r0_part(load('r0_fits'), blind_hh, blind_zz, load('r0_quarks'),
                                 load('r0_gluons'))
     assert not set(r_macros) & set(macros) and not set(r_words) & set(words)
     macros |= r_macros
@@ -1444,7 +1444,7 @@ def main():
     uv_macros=unequal_matching_part(load('uv_matching'))
     assert not set(uv_macros) & set(macros)
     macros |= uv_macros
-    f_macros, f_words = r0_fits_part(load('r0_scan_hh'), load('r0_scan_zz'), load('r0_blind_hh'), load('r0_blind_zz'))
+    f_macros, f_words = r0_fits_part(load('r0_scan_hh'), load('r0_scan_zz'), blind_hh, blind_zz)
     assert not set(f_macros) & set(macros) and not set(f_words) & set(words)
     macros |= f_macros
     words |= f_words
@@ -1457,11 +1457,11 @@ def main():
     macros |= g_macros
     words |= g_words
     three_loop_part(load('three_loop'))
-    for more in (nmhv_primary_part(load('n4_primary'), load('n4')), ultrasoft_part(load('ultrasoft')),
+    for more in (nmhv_primary_part(load('n4_primary'), n4_data), ultrasoft_part(load('ultrasoft')),
                  ultrasoft_dimension_part(SOURCES['ultrasoft_d'], load('ultrasoft'))):
         assert not set(more) & set(macros) and not set(more) & set(words)
         words |= more
-    cs_macros, cs_words = collins_soper_part(load('collins_soper'), load('n4'))
+    cs_macros, cs_words = collins_soper_part(load('collins_soper'), n4_data)
     assert not set(cs_macros) & set(macros) and not set(cs_words) & set(words)
     macros |= cs_macros
     words |= cs_words
@@ -1479,7 +1479,6 @@ def main():
             f.write(f'\\newcommand{{\\{k}}}{{\\ensuremath{{{v}}}}}\n')
         for k, v in words.items():
             f.write(f'\\newcommand{{\\{k}}}{{{v}}}\n')
-    (HERE/'tables').mkdir(exist_ok=True)
 
     # ------------------------------------------------------------ Table 1: one loop
     names = {'N2': '$N^2$', 'N_Nf': '$Nn_f$', 'Nf_over_N': '$n_f/N$', 'Nf2': '$n_f^2$'}
@@ -1510,10 +1509,6 @@ def main():
           '\\label{tab:colour}', '\\end{table}']
     (HERE/'tables'/'table_colour.tex').write_text('\n'.join(t)+'\n')
 
-    # ------------------------------------------------------------ Table 3: one loop from the scale dependence
-    t = ['\\begin{table}[t]', '\\centering', '\\small',
-         '\\begin{tabular}{ll' + 'c'*len(BETAS) + '}', '\\toprule',
-         'quantity & expected & ' + ' & '.join(f'$\\beta={x}$' for x in BETAS) + '\\\\', '\\midrule']
     row_names = {'spin 0, C_1 G^3': '$\\G^3$ in $\\M_1$, units of $C_1$',
                  'spin 0, C_1 beta0 G^2': '$\\beta_0\\G^2$ in $\\M_1$, units of $C_1$',
                  'spin 2, K G^2': '$\\G^2$ in $\\M_2$, units of $K$',
