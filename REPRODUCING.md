@@ -99,3 +99,30 @@ third-party amplitudes from first principles.
 Before committing manually regenerated data, inspect `git status` and the
 numerical differences. The cache checks reject partial results and mismatched
 source fingerprints; do not bypass those safeguards.
+
+## Optional region-sector performance caches
+
+The six large `paper2/r0/theory/secdec_cache_*.pkl` files were removed from
+this distribution because they contain cached sector decompositions, not
+amplitude samples, Laurent coefficients, or matching results. The loader
+rebuilds their entries on cache misses or source changes. Fresh integrand and
+region production still requires the external inputs, precision controls and
+computing time described above. The default `make reproduce` uses neither
+these caches nor their archived versions.
+
+The exact six original files remain in Git history at `d362f551357f80125649e583b22b6dbf8aeccb4e`.
+To verify the Git blobs and their SHA-256 checksums:
+
+```bash
+make cache-archive-check PY=python
+```
+
+To restore optional acceleration data for the full original region runs:
+
+```bash
+python checks/region_cache_archive.py --restore
+```
+
+Restoration requires a clone containing the frozen v2 commit. Each recovered
+file is checked against its pinned Git blob and SHA-256 hash. Avoid executing
+untrusted pickle files from other sources.

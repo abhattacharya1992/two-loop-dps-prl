@@ -160,6 +160,16 @@ and the recovery command are documented in
 The current numerical checkpoints and independent reference implementations
 remain in the active repository.
 
+## Phase-two cleanup from the validated PRL v2
+
+This experimental branch starts from `d362f551357f80125649e583b22b6dbf8aeccb4e`. It excludes
+six optional, source-fingerprinted sector-decomposition caches from the
+active distribution; the cache inventory and exact restoration mechanism are
+in [`checks/region_cache_manifest.json`](checks/region_cache_manifest.json).
+The integrand checkpoints, Laurent data, numerical amplitude points, and
+all scientific and manuscript source files remain in the repository.
+See [`REPRODUCING.md`](REPRODUCING.md) for the optional cache recovery.
+
 ## PRL manuscript v2
 
 This branch starts from the validated cleanup commit `6d54247406102e201bb09e0d365ab1c1d3a0d940`.

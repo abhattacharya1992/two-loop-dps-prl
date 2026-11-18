@@ -42,3 +42,7 @@ __pycache__/
 /paper2/manuscript_prl/letter_labels.tex
 /paper2/manuscript_prl/*.bbl
 /paper2/manuscript_prl/sm_nocite.tex
+
+# Regenerated region-sector acceleration caches; the original bytes are in frozen v2 Git history.
+/paper2/r0/theory/secdec_cache_*.pkl
+/phase2-check/

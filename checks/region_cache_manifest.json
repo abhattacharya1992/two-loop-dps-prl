@@ -1,0 +1,42 @@
+{
+  "baseline": "d362f551357f80125649e583b22b6dbf8aeccb4e",
+  "purpose": "Optional sector-decomposition acceleration data; not a scientific result or input to make reproduce",
+  "entries": [
+    {
+      "path": "paper2/r0/theory/secdec_cache_fdh_x1o2.pkl",
+      "size": 1580544,
+      "git_sha": "f2801c2a50a8931a7645a22dcac3bf2c6ed92659",
+      "sha256": "dc17edee4758cd496f02cd01a2f2d06e2f790a59c9dcbc9038ffc4cf4e815c34"
+    },
+    {
+      "path": "paper2/r0/theory/secdec_cache_n4_x1o10.pkl",
+      "size": 507981,
+      "git_sha": "3d690e164e8c54e216018f58d33c7d8928ef4d7f",
+      "sha256": "2e4cd9aa32570e5b0fa70d386367dfda58e76f86d88bd56753bfd96c221d19e6"
+    },
+    {
+      "path": "paper2/r0/theory/secdec_cache_n4_x1o2.pkl",
+      "size": 203551,
+      "git_sha": "01de8337b9d9c71045b18f499f379c900cf182a7",
+      "sha256": "4dac482f86f6797330ca60bd01dc5f452f3e64de198a506cb278682c98853b14"
+    },
+    {
+      "path": "paper2/r0/theory/secdec_cache_n4_x3o10.pkl",
+      "size": 521325,
+      "git_sha": "5a2cd682f469be58bb68767978e06b1e529b7d5a",
+      "sha256": "df37c3a92ef16048cc48cd5703879ad61e52384a9db93ea1e47aea0ee9e74e38"
+    },
+    {
+      "path": "paper2/r0/theory/secdec_cache_n4_x7o10.pkl",
+      "size": 632791,
+      "git_sha": "34d2846fd80daabdf6869ca800026a249234ae7e",
+      "sha256": "ee0754e599fcadffa7c0a6b170bb959c516f409545fe35fc94a6f7c4ca8855f8"
+    },
+    {
+      "path": "paper2/r0/theory/secdec_cache_n4_x9o10.pkl",
+      "size": 628473,
+      "git_sha": "be2e285edaf4f13f682b432ccb1b5e1d0290c9d1",
+      "sha256": "f7e4f5a77bc01e5e40bbd2e0ce479c80602408eec00063268fe1967567772df1"
+    }
+  ]
+}

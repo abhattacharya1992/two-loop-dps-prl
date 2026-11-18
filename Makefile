@@ -4,7 +4,7 @@ SHELL := /bin/bash
 PY ?= python3
 BENCH_RUNS ?= 3
 .NOTPARALLEL:
-.PHONY: help threshold independent-checks test-science test pinch-checks pinch-figures manuscript-tests derivation-tests build archive reproduce release-check release-check-quick release-check-tests
+.PHONY: cache-archive-check phase2-check help threshold independent-checks test-science test pinch-checks pinch-figures manuscript-tests derivation-tests build archive reproduce release-check release-check-quick release-check-tests
 
 help:
 	@printf '%s\n' 'make threshold: earlier AA threshold coefficients vs PRL at x=1/2' \
@@ -76,3 +76,8 @@ release-check: release-check-tests
 dps-links:
 	$(PY) checks/dps_links/check_couplings.py
 	$(PY) checks/dps_links/check_dpd_kernels.py
+
+# Cache snapshots are optional; this check only reads the frozen v2 Git history.
+cache-archive-check:
+	$(PY) -m unittest discover -s checks -p 'test_region_cache_archive.py' -v
+	$(PY) checks/region_cache_archive.py --verify
