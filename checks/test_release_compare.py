@@ -100,6 +100,38 @@ A regular output that should not be compared
             (b / paths[1]).write_text("abce")
             self.assertEqual(rc.compare_files(a, b, paths), [str(paths[1])])
 
+    def test_generated_publication_inventory_handles_relative_paths(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            reference, candidate = Path(tmp) / "main", Path(tmp) / "clean"
+            filenames = ("numbers.tex", "sm.bib", "sm_nocite.tex", "letter_labels.tex",
+                         "tables/table_colour.tex", "tables/table_zz.tex")
+            for root in (reference, candidate):
+                for name in filenames:
+                    path = root / rc.PAPER / name
+                    path.parent.mkdir(parents=True, exist_ok=True)
+                    path.write_text(f"same: {name}\n")
+
+            self.assertTrue(all(not name.is_absolute()
+                                for name in rc.publication_sources(reference)))
+            match = rc.compare_publication_sources(reference, candidate)
+            self.assertEqual(match["counts"], [6, 6])
+            self.assertTrue(match["match"])
+            self.assertEqual(match["differences"], [])
+
+            (candidate / rc.PAPER / "tables/table_colour.tex").write_text("changed\n")
+            difference = rc.compare_publication_sources(reference, candidate)
+            self.assertFalse(difference["match"])
+            self.assertEqual(difference["differences"],
+                             ["paper2/manuscript_prl/tables/table_colour.tex"])
+
+            (candidate / rc.PAPER / "tables/table_zz.tex").unlink()
+            missing = rc.compare_publication_sources(reference, candidate)
+            self.assertEqual(missing["counts"], [6, 5])
+            self.assertEqual(missing["differences"], [
+                "paper2/manuscript_prl/tables/table_colour.tex",
+                "paper2/manuscript_prl/tables/table_zz.tex",
+            ])
+
     def test_git_worktrees_are_temporary_and_leave_branch_unchanged(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)

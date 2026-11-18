@@ -101,10 +101,22 @@ def compare_files(first: Path, second: Path, relpaths: list[Path]) -> list[str]:
 
 
 def publication_sources(root: Path) -> list[Path]:
+    """Paths relative to the worktree root, including all generated PRL tables."""
     files = [PAPER / item for item in (
         "numbers.tex", "sm.bib", "sm_nocite.tex", "letter_labels.tex")]
     files += [PAPER / "tables" / f.name for f in sorted((root / PAPER / "tables").glob("*.tex"))]
     return files
+
+
+def compare_publication_sources(reference: Path, candidate: Path) -> dict:
+    """Compare the complete generated-file inventories and their exact contents."""
+    main_files = set(publication_sources(reference))
+    clean_files = set(publication_sources(candidate))
+    paths = sorted(main_files | clean_files)
+    differences = sorted({str(path) for path in main_files ^ clean_files}
+                         | set(compare_files(reference, candidate, paths)))
+    return {"counts": [len(main_files), len(clean_files)],
+            "differences": differences, "match": not differences}
 
 
 def archive_sources(path: Path) -> dict[str, str]:
@@ -343,15 +355,10 @@ def main(argv: list[str] | None = None) -> int:
                     result["scientific_log_match"] = bool(main_science and main_science == clean_science)
                     if not result["scientific_log_match"]:
                         result["failures"].append("Scientific log lines differ")
-                    a, b = publication_sources(reference), publication_sources(clean)
-                    result["publication_source_counts"] = [len(a), len(b)]
-                    rel_a = {p.relative_to(reference) for p in a}
-                    rel_b = {p.relative_to(clean) for p in b}
-                    relative = sorted(rel_a | rel_b)
-                    result["publication_source_differences"] = sorted(
-                        str(p) for p in (rel_a ^ rel_b)) + compare_files(reference, clean, relative)
-                    result["publication_source_differences"] = sorted(set(result["publication_source_differences"]))
-                    result["publication_sources_match"] = not result["publication_source_differences"]
+                    publication = compare_publication_sources(reference, clean)
+                    result["publication_source_counts"] = publication["counts"]
+                    result["publication_source_differences"] = publication["differences"]
+                    result["publication_sources_match"] = publication["match"]
                     if not result["publication_sources_match"]:
                         result["failures"].append("Generated manuscript source files differ")
                     archive = PAPER / "release" / "PRL_DPS_arxiv_sources.tar.gz"
@@ -377,7 +384,7 @@ def main(argv: list[str] | None = None) -> int:
                             elif record["possible_regression"]:
                                 result["failures"].append(f"Possible performance regression in {name}; review measurements")
         result["complete"] = True
-    except (OSError, RuntimeError, subprocess.CalledProcessError) as error:
+    except (OSError, RuntimeError, ValueError, subprocess.CalledProcessError) as error:
         result["complete"] = False
         result["failures"].append(f"Comparison interrupted: {error}")
     finally:

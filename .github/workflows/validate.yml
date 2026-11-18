@@ -45,7 +45,7 @@ jobs:
             paper2/manuscript_prl/release/PRL_DPS_arxiv_sources.tar.gz
 
   release_compare:
-    if: github.event_name == 'workflow_dispatch' && startsWith(github.ref_name, 'cleanup/')
+    if: startsWith(github.ref_name, 'cleanup/') && (github.event_name == 'workflow_dispatch' || github.event_name == 'push')
     runs-on: ubuntu-latest
     timeout-minutes: 90
     steps:
