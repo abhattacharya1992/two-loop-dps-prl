@@ -77,6 +77,10 @@ dps-links:
 	$(PY) checks/dps_links/check_couplings.py
 	$(PY) checks/dps_links/check_dpd_kernels.py
 
+# Reproduce v2 and the candidate in detached worktrees, then compare their outputs.
+phase2-check: cache-archive-check release-check-tests
+	$(PY) checks/release_compare.py --baseline d362f551357f80125649e583b22b6dbf8aeccb4e --archived-cache-manifest checks/region_cache_manifest.json --python "$(PY)" --benchmark-runs "$(BENCH_RUNS)" --output release-check
+
 # Cache snapshots are optional; this check only reads the frozen v2 Git history.
 cache-archive-check:
 	$(PY) -m unittest discover -s checks -p 'test_region_cache_archive.py' -v

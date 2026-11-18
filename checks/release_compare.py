@@ -69,16 +69,45 @@ def git_blobs(repo: Path, revision: str) -> dict[str, str]:
     return entries
 
 
-def compare_inputs(reference: dict[str, str], candidate: dict[str, str]):
+def compare_inputs(reference: dict[str, str], candidate: dict[str, str], *, archived=()):
+    """Require equality for retained scientific inputs, excluding verified cache snapshots."""
+    archived = set(archived)
     checked, differences = [], []
     for path, digest in sorted(reference.items()):
-        if path.startswith(HISTORICAL) or not path.endswith(DATA_SUFFIXES):
+        if path.startswith(HISTORICAL) or path in archived or not path.endswith(DATA_SUFFIXES):
             continue
         checked.append(path)
         found = candidate.get(path)
         if found != digest:
             differences.append({"path": path, "expected": digest, "found": found})
     return checked, differences
+
+
+def archived_sector_paths(path: Path, baseline: str, reference: dict[str, str],
+                          candidate: dict[str, str]) -> set[str]:
+    """Only exclude immutable, checksum-recorded performance caches."""
+    manifest = json.loads(path.read_text())
+    if manifest.get("baseline") != baseline:
+        raise ValueError("Cache archive manifest names a different baseline")
+    entries = manifest.get("entries")
+    if not isinstance(entries, list) or not entries:
+        raise ValueError("Cache archive manifest has no cache records")
+    allowed = set()
+    for entry in entries:
+        name = entry["path"]
+        if (not name.startswith("paper2/r0/theory/secdec_cache_")
+                or not name.endswith(".pkl") or name in allowed):
+            raise ValueError(f"Unexpected or duplicate cache archive entry: {name}")
+        if reference.get(name) != entry["git_sha"]:
+            raise ValueError(f"Archived cache Git identity differs: {name}")
+        if candidate.get(name) is not None:
+            raise ValueError(f"Archived cache still present in candidate: {name}")
+        if not isinstance(entry["size"], int) or entry["size"] <= 0:
+            raise ValueError(f"Invalid archived cache size: {name}")
+        if not isinstance(entry["sha256"], str) or len(entry["sha256"]) != 64:
+            raise ValueError(f"Invalid archived cache SHA-256: {name}")
+        allowed.add(name)
+    return allowed
 
 
 def science_lines(content: str) -> list[str]:
@@ -209,7 +238,7 @@ def measured(command: list[str], cwd: Path, logfile: Path) -> dict:
 
 def reproduction(root: Path, label: str, python: str, output: Path) -> list[dict]:
     # The baseline predates the combined 'reproduce' Make target.
-    if label == "baseline":
+    if label == "baseline" and git(root, "rev-parse", "HEAD") == BASELINE:
         commands = [
             ["make", "test", f"PY={python}"],
             ["make", "-C", "paper2/r0/derivation", "test", f"PYTHON={python}"],
@@ -276,6 +305,7 @@ def markdown(result: dict) -> str:
              f"- Candidate: `{result['candidate']}`",
              f"- Tracked scientific inputs checked: {result['input_files_checked']}",
              f"- Changed required inputs: {len(result['input_mismatches'])}",
+             f"- Verified archived performance caches: {result.get('archived_cache_count', 0)}",
              f"- Reproduction commands passed: {result.get('reproduction_passed', False)}",
              f"- Scientific output lines matched: {result.get('scientific_log_match', False)}",
              f"- Generated TeX files matched: {result.get('publication_sources_match', False)}",
@@ -312,6 +342,8 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--baseline", default=BASELINE)
     parser.add_argument("--candidate", default="HEAD")
+    parser.add_argument("--archived-cache-manifest", default=None,
+                        help="verified optional sector-cache manifest relative to the repository")
     parser.add_argument("--output", default="release-check")
     parser.add_argument("--python", default=sys.executable)
     parser.add_argument("--quick", action="store_true", help="compare tracked inputs without running calculations")
@@ -332,7 +364,14 @@ def main(argv: list[str] | None = None) -> int:
     }
     try:
         first, second = git_blobs(root, baseline), git_blobs(root, candidate)
-        checked, mismatches = compare_inputs(first, second)
+        archived = set()
+        if args.archived_cache_manifest:
+            manifest = (root / args.archived_cache_manifest).resolve()
+            if not manifest.is_relative_to(root):
+                raise ValueError("Cache manifest must be inside the repository")
+            archived = archived_sector_paths(manifest, baseline, first, second)
+        result["archived_cache_count"] = len(archived)
+        checked, mismatches = compare_inputs(first, second, archived=archived)
         result["input_files_checked"] = len(checked)
         result["input_mismatches"] = mismatches
         if mismatches:

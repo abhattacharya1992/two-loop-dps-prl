@@ -150,6 +150,19 @@ commit or restore only independently checked by-products before packaging.
 
 The manuscript's canonical LaTeX sources are `letter.tex` and `supplement.tex` in `paper2/manuscript_prl/`.
 
+## Phase-two cache and reproduction checks
+
+This branch removes six **performance-only** sector-decomposition caches (4,074,665 bytes)
+but retains the numerical Laurent coefficients and all amplitude inputs. The cache files
+are recoverable byte-for-byte from the frozen PRL v2 commit with
+`python checks/region_cache_archive.py --verify` and
+`python checks/region_cache_archive.py --restore`. The independent
+archive manifest records their Git identities and SHA-256 hashes.
+
+To compare both versions and their published outputs in separate temporary worktrees,
+run `make phase2-check PY=python BENCH_RUNS=3`. This uses the validated PRL v2
+baseline, **not** the pre-v2 `main` manuscript. Neither baseline is modified.
+
 ## Historical records
 
 The initial FDH comparison and superseded kernel evaluators remain available

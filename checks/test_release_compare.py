@@ -74,6 +74,31 @@ A regular output that should not be compared
         del candidate["paper2/manuscript_prl/letter.tex"]
         self.assertEqual(len(rc.compare_inputs(reference, candidate)[1]), 2)
 
+    def test_optional_cache_manifest_excludes_only_provenance_checked_caches(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "cache.json"
+            name = "paper2/r0/theory/secdec_cache_n4_x1o2.pkl"
+            entry = {"path": name, "git_sha": "a" * 40,
+                     "size": 9, "sha256": "b" * 64}
+            path.write_text(json.dumps({"baseline": "frozen", "entries": [entry]}))
+            previous = {name: entry["git_sha"],
+                        "paper2/r0/theory/r0_theory_quarks.json": "same"}
+            clean = {"paper2/r0/theory/r0_theory_quarks.json": "same"}
+            archived = rc.archived_sector_paths(path, "frozen", previous, clean)
+            self.assertEqual(archived, {name})
+            checked, errors = rc.compare_inputs(previous, clean, archived=archived)
+            self.assertEqual(checked, ["paper2/r0/theory/r0_theory_quarks.json"])
+            self.assertEqual(errors, [])
+            self.assertEqual(len(rc.compare_inputs(previous, clean)[1]), 1)
+            with self.assertRaisesRegex(ValueError, "different baseline"):
+                rc.archived_sector_paths(path, "wrong", previous, clean)
+            with self.assertRaisesRegex(ValueError, "still present"):
+                rc.archived_sector_paths(path, "frozen", previous, {**clean, name: entry["git_sha"]})
+            path.write_text(json.dumps({"baseline": "frozen",
+                                        "entries": [{**entry, "path": "paper2/r0/theory/gqq_integrands_x1o2.pkl"}]}))
+            with self.assertRaisesRegex(ValueError, "Unexpected"):
+                rc.archived_sector_paths(path, "frozen", previous, clean)
+
     def test_archive_compares_only_publication_top_level(self):
         with tempfile.TemporaryDirectory() as tmp:
             archive = Path(tmp) / "sources.tar.gz"
