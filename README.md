@@ -166,6 +166,8 @@ This branch starts from the validated cleanup commit `6d54247406102e201bb09e0d36
 It contains revised manuscripts and figures, independent coupling and DPD
 splitting checks, and an additional near-endpoint validation at `beta=19/20`.
 The original `main` and frozen cleanup branch are unchanged.
+The endpoint summary in `paper2/r0/data/endpoint_test.json` is regenerated
+by the manuscript table target and checked by the r0 regression tests.
 
 The frozen-baseline `make release-check` tests identical publication sources;
 this new manuscript intentionally differs. Validate v2 with `make reproduce`

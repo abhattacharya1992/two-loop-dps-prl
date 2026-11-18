@@ -200,6 +200,9 @@ All numbers below are in `summary.md` and `summary.json`, read from the logs of 
   a ≈ 1 − 6 × 10⁻⁶, b ≈ 0.64, where the pole of 1/(1 − at) lies just beyond t = 1), 50 or less at every
   other point and about one unit at most of them: the loss is at most three of the 30 + 5k digits,
   against the k + 30 or so that the cancellations leave, so the stored points stand (App. A of Paper 2).
+  At β = 19/20 (x = 0.975) the same comparison stops at δ = 10⁻⁴: the fixed subdivision loses up to 29 of 90
+  digits there, so those points (`../r0/data/points_endpoint/`) evaluate the integral branch with the
+  gg → HH routine (`../r0/data/zz_points_acc.py`).
 - **p0002.** `check_p0002.py` transcribes the 1613 statements of p0002.cpp (401 Li₂,₂, 501 Liₙ,
   19 logarithms, 3 ζ values and 689 algebraic statements) independently of
   `translate_ggvvamp.py` and compares them with the generated `p0002.py`: none differ. The

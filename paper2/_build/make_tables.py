@@ -41,6 +41,7 @@ SOURCES = {
     'r0_scan_zz': R/'r0'/'data'/'r0_from_zz.json',             # Sec. 7.1, Table r0_zz: r0 of the eight gg -> ZZ amplitudes
     'r0_blind_hh': R/'r0'/'data'/'blind_test_hh.json',         # Sec. 7.1: blind test of the HH closed form
     'r0_blind_zz': R/'r0'/'data'/'blind_test_zz.json',         # Sec. 7.1: blind test of the ZZ closed form
+    'r0_endpoint': R/'r0'/'data'/'endpoint_test.json',         # Supplement: r0 of gg -> HH and gg -> ZZ at beta = 19/20
     'r0_quarks': R/'r0'/'theory'/'r0_theory_quarks.json',      # Sec. 7.2, App. F, Table 9: g -> q qbar from the regions
     'r0_gluons': R/'r0'/'theory'/'r0_theory_gluons.json',      # Sec. 7.2, App. F, Table 9: g -> gg from the regions
     'n4reg': R/'r0'/'theory'/'kappa1_n4.json',                 # Sec. 7.3, Table 11: kappa_1 of planar N = 4 from the regions
@@ -1274,6 +1275,41 @@ def glauber_part(g):
 
 
 
+def endpoint_part(e):
+    """Supplement, after the tests at additional velocities: r0 of gg -> HH and gg -> ZZ at beta = 19/20
+    (x = 0.975; r0/data/endpoint_test.py), and the Li_{2,2} evaluation of the gg -> ZZ points there."""
+    hh, zz = e['hh']['rows'], e['zz']['rows']
+    assert e['beta'] == '19/20' and len(hh) == 2 and len(zz) == 8, (e['beta'], len(hh), len(zz))
+    assert {r['hel'] for r in zz} == {'++++', '----', '++--', '--++', '+-++', '+---', '-+++', '-+--'}
+    # every value deviates from the closed form by less than a tenth of its own fit-window shift, and its
+    # imaginary part is smaller than that too
+    for r in hh:
+        for k in ('C_A', 'n_f'):
+            assert r[f'dev_{k}'] < 0.1*r[f'shift_{k}'] and abs(r[k][1]) < 0.1*r[f'shift_{k}'], r
+    for r in zz:
+        for p in ('2l_CF', '2l_CA'):
+            assert r[p]['dev'] < 0.1*r[p]['shift'] and abs(r[p]['r0'][1]) < 0.1*r[p]['shift'], r
+    dev_hh = max(max(r['dev_C_A'], r['dev_n_f']) for r in hh)
+    unc_hh = max(max(r['shift_C_A'], r['shift_n_f']) for r in hh)
+    dev_zz = max(r[p]['dev'] for r in zz for p in ('2l_CF', '2l_CA'))
+    unc_zz = max(r[p]['shift'] for r in zz for p in ('2l_CF', '2l_CA'))
+    # the precision controls (15 more digits at delta = 1e-10) leave the amplitudes unchanged far below the fits
+    ctrl = [c['rel_diff'] for c in e['hh']['control']] + [v for c in e['zz']['control'] for v in c['max_rel_diff'].values()]
+    assert len(e['hh']['control']) == 2 and len(e['zz']['control']) == 1 and max(ctrl) < 1e-30, ctrl
+    # gg -> ZZ: the fixed subdivision of ggvv.py loses digits at this velocity; the points use evaluate_hh.li22,
+    # which agrees with a reference of 30 more digits, and the amplitudes change by less than the quoted bound
+    li = e['zz']['li22']
+    assert li['points'] == 10 and li['max_reference_diff_in_units_of_last_digit'] < 1, li
+    change = e['zz']['max_amplitude_change_fixed_split']
+    assert 0 < change < 1e-20, change
+    ratio = e['quark_x_dependence_ratio_to_x_0.9']
+    assert 2 < ratio < 3, ratio
+    return {'rzEndHH': sci(dev_hh, 1), 'rzEndHHunc': sci(unc_hh, 1), 'rzEndZZ': sci(dev_zz, 1),
+            'rzEndZZunc': sci(unc_zz, 1), 'rzEndXratio': f'{ratio:.1f}',
+            'rzEndLiLost': str(li['max_digits_lost_fixed_split']), 'rzEndLiDps': str(li['at']['dps']),
+            'rzEndAmp': f'10^{{{math.ceil(math.log10(change))}}}'}
+
+
 def unequal_matching_part(data):
     """New fits of retained unequal-mass amplitudes, including both helicities."""
     results=data['results']
@@ -1402,6 +1438,9 @@ def main():
     assert not set(r_macros) & set(macros) and not set(r_words) & set(words)
     macros |= r_macros
     words |= r_words
+    e_macros = endpoint_part(load('r0_endpoint'))
+    assert not set(e_macros) & set(macros)
+    macros |= e_macros
     uv_macros=unequal_matching_part(load('uv_matching'))
     assert not set(uv_macros) & set(macros)
     macros |= uv_macros

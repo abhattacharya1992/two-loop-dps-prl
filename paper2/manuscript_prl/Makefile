@@ -21,6 +21,7 @@ PY ?= python3
 all: tables figure pdf words
 
 tables:
+	$(PY) ../r0/data/endpoint_test.py > endpoint_test.log
 	$(PY) make_tables.py > tables.log
 	@tail -1 tables.log
 
