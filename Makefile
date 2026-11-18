@@ -54,6 +54,8 @@ pinch-checks:
 	$(MAKE) -C checks/pinch_regions check PY="$(PY)"
 
 manuscript-tests:
+	$(MAKE) -C paper2/manuscript_prl tables PY="$(PY)"
+	$(MAKE) -C paper2/manuscript_prl pdf PY="$(PY)"
 	$(PY) -m unittest discover -s paper2/manuscript_prl -p 'test_make_tables.py' -v
 	$(MAKE) -C paper2/manuscript_prl test PY="$(PY)"
 

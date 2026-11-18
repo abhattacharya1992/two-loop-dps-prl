@@ -173,6 +173,10 @@ The frozen-baseline `make release-check` tests identical publication sources;
 this new manuscript intentionally differs. Validate v2 with `make reproduce`
 and independently compare the unchanged scientific inputs and calculations.
 
+The v2 Letter's figure, numerical macros, citation files and bibliography
+outputs are regenerated during `make reproduce`, rather than being tracked
+in this manuscript branch.
+
 ## Frozen-baseline comparison
 
 The scientific equivalence check against the original `main` commit runs in

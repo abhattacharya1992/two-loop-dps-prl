@@ -35,3 +35,9 @@ __pycache__/
 
 # Fig. 1 is built deterministically from its retained TikZ source.
 /paper2/manuscript_prl/figures/dps_diagram.pdf
+
+# The PRL v2 publication files are generated from tracked source and data.
+/paper2/manuscript_prl/numbers.tex
+/paper2/manuscript_prl/sm.bib
+/paper2/manuscript_prl/letter_labels.tex
+/paper2/manuscript_prl/*.bbl
