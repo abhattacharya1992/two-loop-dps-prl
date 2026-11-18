@@ -29,9 +29,9 @@ dependence and the restriction of the logarithm to ++++ and ++−− agree with 
 (arXiv:1103.1888: [s − 2M² ± sβ]/s = 2x², 2(1−x)²). An independent full fermion trace now
 checks the absolute normalization, including the measure, colour and two orientations:
 see the Supplement's "Helicity coefficients and normalisation" subsection.
-The repository-only [derivation notes](../../derivations/README.md) also include a restored
-standalone trace calculation in `derivations/checks/independent/phase3/zz_dirac_trace.py`;
-that four-channel symbolic check has a narrower scope than the original amplitude comparison.
+A separate historical derivation contains a four-channel standalone fermion-trace check;
+it is not distributed with this publication repository. The retained amplitude comparisons
+and the source-mapping checks are documented in [the mapping-check instructions](../../checks/README_ZZ_CA_MAPPING.md).
 In the retained amplitude comparison, all 36 helicities were checked and the twelve
 nonzero comparisons agree with the fits within their window shifts. The section 2 and
 section 3 ZZ displays of that reference differ by a factor of two; the trace fixes the

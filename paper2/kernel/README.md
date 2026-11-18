@@ -158,7 +158,7 @@ real ℓ⁻ axis (D₆(u₅) = −B + xa/(x + ℓ⁻) + iη with η > 0 on x + �
 the wrong side, z₆′ and the gluon pole formed a fake pinch on the half line ℓ_⊥ ∥ q − k, beyond
 q − k, where F grew like 1/distance and the transverse integral did not converge. The earlier test of
 the closed form did not see it because the residue at z₆′ is small at its test points. The three
-files keep copies `*_before_z6p_fix.py`.
+the pre-correction sources are retained in Git history at commit `1259ee1`, rather than in the active source tree. They are not used to generate the published results.
 
 Results (λ ≥ 10⁻³; at λ = 3 × 10⁻⁴ the smallest windows reach the rounding level of double precision):
 

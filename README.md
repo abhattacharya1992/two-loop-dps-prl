@@ -149,6 +149,16 @@ commit or restore only independently checked by-products before packaging.
 
 The manuscript's canonical LaTeX sources are `letter.tex` and `supplement.tex` in `paper2/manuscript_prl/`.
 
+## Historical records
+
+The initial FDH comparison and superseded kernel evaluators remain available
+in Git history at commit `1259ee1fc9dedb42047cd3919f655713dd631f27`. They are not used
+by the current publication or validation workflows. The original FDH checksums
+and the recovery command are documented in
+[the historical FDH record](paper2/r0/theory/stored/history/2026-10-22-pr1-initial-fdh/README.md).
+The current numerical checkpoints and independent reference implementations
+remain in the active repository.
+
 ## Blind-point provenance
 
 The HH and ZZ independent-velocity point data are copied without modification from their source repository. Their exact Git blob identities can be checked using:
