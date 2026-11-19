@@ -104,22 +104,43 @@ benchmark-pipeline: benchmark-tests
 benchmark-v2: benchmark-tests
 	$(PY) checks/benchmark_pipeline.py --baseline d362f551357f80125649e583b22b6dbf8aeccb4e --baseline-label frozen_v2 --runs $(PERF_V2_RUNS) --python "$(PY)" --output benchmark-results/pipeline-v2
 
-# Independent compression/performance research branch; not part of make reproduce.
+# Dedicated compression/ module; never part of the default PRL reproduction.
 AA_REPO ?= ggAA-threshold
 .PHONY: compression-tests compression-points compression-aa-recorded
 compression-tests:
-	$(PY) -m unittest discover -s checks/compression -p 'test_*.py' -v
+	$(PY) -m unittest discover -s compression -p 'test_*.py' -v
 
 compression-points: compression-tests
-	$(PY) checks/compression/point_benchmark.py --process all --repeats 5
+	$(PY) compression/point_benchmark.py --process all --repeats 5
 
 compression-aa-recorded: compression-tests
-	$(PY) checks/compression/aa_threshold.py --aa-repo "$(AA_REPO)"
+	$(PY) compression/aa_threshold.py --aa-repo "$(AA_REPO)"
 
 # These two targets require the published large third-party evaluator inputs.
 .PHONY: compression-exact-hh compression-exact-zz
 compression-exact-hh:
-	$(PY) checks/compression/exact_evaluators.py --process HH --run-exact --beta 1/10 --costheta 0 --digits 50 --repeats 3
+	$(PY) compression/exact_evaluators.py --process HH --run-exact --beta 1/10 --costheta 0 --digits 50 --repeats 3
 
 compression-exact-zz:
-	$(PY) checks/compression/exact_evaluators.py --process ZZ --run-exact --beta 1/10 --costheta 0 --digits 50 --repeats 3
+	$(PY) compression/exact_evaluators.py --process ZZ --run-exact --beta 1/10 --costheta 0 --digits 50 --repeats 3
+
+# Two-stage unified HH/AA/ZZ runner: shared evaluation stage and separate report stage.
+.PHONY: compression-unified compression-stage1 compression-stage2
+COMPRESSION_BETA ?= 1/10
+COMPRESSION_COSTHETA ?= 0
+COMPRESSION_DIGITS ?= 50
+COMPRESSION_REPEATS ?= 3
+
+compression-unified: compression-tests
+	$(PY) compression/unified_pipeline.py run --aa-repo "$(AA_REPO)" --beta $(COMPRESSION_BETA) --costheta $(COMPRESSION_COSTHETA) --digits $(COMPRESSION_DIGITS) --repeats $(COMPRESSION_REPEATS)
+
+compression-stage1: compression-tests
+	$(PY) compression/unified_pipeline.py stage1 --aa-repo "$(AA_REPO)" --beta $(COMPRESSION_BETA) --costheta $(COMPRESSION_COSTHETA) --digits $(COMPRESSION_DIGITS) --repeats $(COMPRESSION_REPEATS)
+
+compression-stage2: compression-tests
+	$(PY) compression/unified_pipeline.py stage2
+
+# Check the opt-in original-amplitude benchmark guards; no expensive input needed.
+.PHONY: compression-full-tests
+compression-full-tests: compression-tests
+	$(PY) -m unittest discover -s compression -p 'test_full_performance.py' -v
