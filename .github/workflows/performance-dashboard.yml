@@ -81,7 +81,7 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add compression/benchmark_snapshot.json compression/00-performance-overview.svg compression/RESULTS.md
+          git add compression/benchmark_snapshot.json compression/00-performance-overview.svg compression/RESULTS.md compression/README.md
           if git diff --cached --quiet; then
             echo "Benchmarks unchanged; no commit needed."
             exit 0
