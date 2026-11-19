@@ -1,0 +1,91 @@
+name: Performance dashboard publisher
+
+on:
+  workflow_run:
+    workflows:
+      - Compression and performance validation
+      - Full HH AA ZZ amplitude performance (manual)
+    types: [completed]
+  workflow_dispatch:
+    inputs:
+      successful_run_id:
+        description: Successful compression or full-amplitude workflow run ID to ingest
+        required: true
+        type: string
+
+permissions:
+  contents: write
+  actions: read
+
+concurrency:
+  group: performance-dashboard-main
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    if: >-
+      (github.event_name == 'workflow_dispatch') ||
+      (github.event.workflow_run.conclusion == 'success' &&
+       github.event.workflow_run.head_branch == 'main')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Checkout permanent main branch
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: true
+      - name: Use Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Download only a successful permitted benchmark run
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EVENT_NAME: ${{ github.event_name }}
+          COMPLETED_RUN_ID: ${{ github.event.workflow_run.id }}
+          MANUAL_RUN_ID: ${{ inputs.successful_run_id }}
+        run: |
+          set -euo pipefail
+          if [[ "$EVENT_NAME" == "workflow_dispatch" ]]; then
+            RUN_ID="$MANUAL_RUN_ID"
+          else
+            RUN_ID="$COMPLETED_RUN_ID"
+          fi
+          [[ "$RUN_ID" =~ ^[0-9]+$ ]] || { echo "Invalid run ID"; exit 1; }
+          read -r STATUS CONCLUSION BRANCH WORKFLOW < <(
+            gh run view "$RUN_ID" --repo "$GITHUB_REPOSITORY" \
+              --json status,conclusion,headBranch,workflowName \
+              --jq '[.status,.conclusion,.headBranch,.workflowName] | @tsv'
+          )
+          [[ "$STATUS" == "completed" && "$CONCLUSION" == "success" && "$BRANCH" == "main" ]] || {
+            echo "Only completed successful main-branch runs are allowed"; exit 1;
+          }
+          case "$WORKFLOW" in
+            "Compression and performance validation"|"Full HH AA ZZ amplitude performance (manual)") ;;
+            *) echo "Unexpected workflow: $WORKFLOW"; exit 1 ;;
+          esac
+          echo "RUN_ID=$RUN_ID" >> "$GITHUB_ENV"
+          mkdir -p "${{RUNNER_TEMP}/performance-artifacts"
+          gh run download "$RUN_ID" --repo "$GITHUB_REPOSITORY" \
+            --dir "${{RUNNER_TEMP}/performance-artifacts"
+      - name: Verify result schemas, regenerate plot and results
+        run: |
+          python compression/update_dashboard.py \
+            --artifact-dir "${{RUNNER_TEMP}/performance-artifacts" \
+            --run-id "$RUN_ID"
+      - name: Commit updated static dashboard if different
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add compression/benchmark_snapshot.json compression/00-performance-overview.svg compression/RESULTS.md
+          if git diff --cached --quiet; then
+            echo "Benchmarks unchanged; no commit needed."
+            exit 0
+          fi
+          git commit -m "Refresh verified performance dashboard from Actions run $RUN_ID"
+          git pull --rebase origin main
+          git push origin HEAD:main
