@@ -61,3 +61,32 @@ The optional CI only runs lossless HH/AA/ZZ and published AA record checks.
 It cannot claim that original third-party full amplitudes were recomputed.
 All benchmark reports are generated outputs and ignored by Git. No existing
 scientific numerical records or manuscript files are deleted or modified.
+
+## Optional original exact-amplitude evaluations at fixed angle
+
+The original HH and ZZ evaluator backends can be timed, but only after the
+external published expressions are installed:
+
+    make -C paper2/hh fetch
+    make compression-exact-hh PY=python
+
+For ZZ, first follow paper2/zz/README.md to install VVamp expressions and
+translate them into paper2/zz/build/ggv, then:
+
+    make compression-exact-zz PY=python
+
+These commands use s=4/(1-beta^2), equal external mass squared 1, and
+t/u=1-s/2 +/- s beta cos(theta)/2. Positive beta and 0 <= cos(theta) < 1
+are required by the current ZZ helicity reconstruction convention.
+They report preparation time, repeated evaluation time, expression/input
+bytes, normalized amplitudes, source SHA-256 and process high-water RSS.
+
+Run HH and ZZ in separate OS processes. RSS is the whole process high-water
+mark, not the incremental cost of individual function calls. Results are
+stored under compression-results/exact and ignored by Git. These exact
+backend calls are opt-in and excluded from CI because the external expressions
+are not distributed in this repository.
+
+Do not compare HH and ZZ exact backend timings against the AA beta6 timing:
+they are different physical processes, conventions and numerical workloads.
+Direct HH/ZZ exact-vs-beta benchmarking requires their own validated series.

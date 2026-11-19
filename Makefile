@@ -108,10 +108,18 @@ benchmark-v2: benchmark-tests
 AA_REPO ?= ggAA-threshold
 .PHONY: compression-tests compression-points compression-aa-recorded
 compression-tests:
-	$(PY) -m unittest discover -s checks/compression -p 'test_compression.py' -v
+	$(PY) -m unittest discover -s checks/compression -p 'test_*.py' -v
 
 compression-points: compression-tests
 	$(PY) checks/compression/point_benchmark.py --process all --repeats 5
 
 compression-aa-recorded: compression-tests
 	$(PY) checks/compression/aa_threshold.py --aa-repo "$(AA_REPO)"
+
+# These two targets require the published large third-party evaluator inputs.
+.PHONY: compression-exact-hh compression-exact-zz
+compression-exact-hh:
+	$(PY) checks/compression/exact_evaluators.py --process HH --run-exact --beta 1/10 --costheta 0 --digits 50 --repeats 3
+
+compression-exact-zz:
+	$(PY) checks/compression/exact_evaluators.py --process ZZ --run-exact --beta 1/10 --costheta 0 --digits 50 --repeats 3

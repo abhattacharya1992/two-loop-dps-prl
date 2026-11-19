@@ -16,6 +16,7 @@ import hashlib
 import importlib
 import json
 import os
+import resource
 from pathlib import Path
 import subprocess
 import sys
@@ -195,6 +196,8 @@ def fresh(repo: Path, *, beta: str, costheta: str, digits: int,
             "median_speedup_exact_over_series": medians["exact"] / medians["beta_series"],
             "relative_errors": errors,
             "exact_input_sha256": {p.name: _sha256(p) for p in expected},
+            "peak_rss_kib_process": resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,
+            "rss_scope": "entire combined AA process; not isolated exact/series peak memory",
             "precision_note": ("Exact evaluator returns the published normalization "
                                "divided by 64; special functions use memoization "
                                "within each exact call."),
