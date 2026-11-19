@@ -9,7 +9,7 @@
     "status": "validated beta^6 expansion",
     "upstream_source_repo": "https://github.com/abhattacharya1992/ggAA-threshold",
     "upstream_source_commit": "76491fd105e6f498be51affa213fe6839f879ce6",
-    "upstream_historical_ci": "https://github.com/abhattacharya1992/two-loop-dps-prl/actions/runs/44588650024",
+    "upstream_historical_ci": "https://github.com/abhattacharya1992/two-loop-dps-prl/actions/runs/44599204550",
     "expression_representation": "Wolfram, matching original and beta6 expressions; not the raw original published files",
     "original_bytes": 44844413,
     "beta6_bytes": 637268,
@@ -30,8 +30,8 @@
       "exact_seconds": 237.1148,
       "beta6_seconds": 0.0274,
       "relative_errors": {
-        "M1": 6.3816e-9,
-        "M2": 8.3391e-8
+        "M1": 6.3816e-09,
+        "M2": 8.3391e-08
       },
       "single_run_ci": "https://github.com/abhattacharya1992/two-loop-dps-prl/actions/runs/44556434508",
       "note": "Fresh one-evaluation Python timings; warm speedup and first-run speedup must not be conflated."
@@ -44,32 +44,37 @@
       },
       "ci": "https://github.com/abhattacharya1992/two-loop-dps-prl/actions/runs/44564737847",
       "note": "Older pre-gate CI was green despite incorrect amplitude values; current gate rejects this."
+    },
+    "upstream_hashes": {
+      "data/timing/timing_benchmark.csv": "b70828bedcd9971394fb6f7552fbae2ab36c383556c48b42a5e6e0df2d3fe315",
+      "data/timing/timing_run.json": "99bbf09eb4dfa3025672f0b7568ec64e901997a9e16f3c8c5c53599ff8e5e38c",
+      "data/validation/validation_1080.csv": "c7f26ae8e9a494fa91e6c0777a5907ed47505f4ca10ffb200665319195fc85be"
     }
   },
   "point_storage": {
     "compression": "zlib level 9 + stored byte length + SHA-256, verified lossless",
-    "ci": "https://github.com/abhattacharya1992/two-loop-dps-prl/actions/runs/44588650024",
+    "ci": "https://github.com/abhattacharya1992/two-loop-dps-prl/actions/runs/44599204550",
     "items": {
       "HH": {
         "points": 50,
         "original_bytes": 157276,
         "packed_bytes": 75139,
-        "raw_parse_ms": 0.014978,
-        "verified_packed_parse_ms": 0.031313
+        "raw_parse_ms": 0.009353,
+        "verified_packed_parse_ms": 0.023061
       },
       "AA": {
         "points": 82,
         "original_bytes": 236949,
         "packed_bytes": 121491,
-        "raw_parse_ms": 0.010825,
-        "verified_packed_parse_ms": 0.026945
+        "raw_parse_ms": 0.006516,
+        "verified_packed_parse_ms": 0.020233
       },
       "ZZ": {
         "points": 28,
         "original_bytes": 804266,
         "packed_bytes": 225887,
-        "raw_parse_ms": 0.086376,
-        "verified_packed_parse_ms": 0.180567
+        "raw_parse_ms": 0.056977,
+        "verified_packed_parse_ms": 0.143881
       }
     },
     "note": "Storage savings, not analytic amplitude compression. Verified packed parsing is slower than raw JSON parsing."
