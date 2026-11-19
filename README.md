@@ -66,7 +66,7 @@ Manuscript compilation additionally requires:
 git clone https://github.com/abhattacharya1992/two-loop-dps-prl.git
 
 cd two-loop-dps-prl
-git switch cleanup/reproducible-pipeline-20261118  # until PRL v2 becomes the default branch
+git switch cleanup/reproducible-pipeline-20261118  # current maintenance branch
 
 python3 -m venv .venv
 source .venv/bin/activate
@@ -160,7 +160,8 @@ Optional diagnostic plots can be produced with
 The active development branch is `cleanup/reproducible-pipeline-20261118`. It combines the
 initial reproducible-pipeline cleanup, PRL v2 manuscript and figure revisions,
 the additional `beta=19/20` numerical checks and DPD identities, and the
-second-stage cache cleanup. The original `main` branch is unchanged.
+second-stage cache cleanup. The pre-v2 `main` snapshot remains in Git history
+at `1259ee1fc9dedb42047cd3919f655713dd631f27`.
 
 The publication baseline is the validated PRL v2 commit
 `d362f551357f80125649e583b22b6dbf8aeccb4e`. The branch removes six optional
@@ -201,7 +202,9 @@ This verifies the source data rather than recalculating the external two-loop am
 
 ## Further validation
 
-The repository retains the relevant amplitude evaluation and region calculation tools. More extensive tests require the original external inputs.
+The repository retains amplitude evaluation and region calculation tools. Fresh
+full-amplitude evaluations require the relevant third-party inputs; the
+independent region-integrand generators use code retained in this repository.
 
 **Pseudoscalar amplitudes:** The published two-loop inputs are available through [arXiv:1909.08993](https://arxiv.org/abs/1909.08993). Their input manifests and relevant evaluation code are included under `common/aa_source/`.
 
