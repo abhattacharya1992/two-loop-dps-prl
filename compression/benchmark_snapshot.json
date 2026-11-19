@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "label": "Verified compression and performance results",
+  "snapshot_date": "2026-11-19",
+  "source_commit": "b9de7e8f933d966f7f9bb89a63711a29d98ae642",
+  "note": "Static, source-linked snapshot. Numerical-point zlib compression and AA analytic threshold expansion are different operations.",
+  "aa_analytic": {
+    "process": "AA",
+    "status": "validated beta^6 expansion",
+    "upstream_source_repo": "https://github.com/abhattacharya1992/ggAA-threshold",
+    "upstream_source_commit": "76491fd105e6f498be51affa213fe6839f879ce6",
+    "upstream_historical_ci": "https://github.com/abhattacharya1992/two-loop-dps-prl/actions/runs/44588650024",
+    "expression_representation": "Wolfram, matching original and beta6 expressions; not the raw original published files",
+    "original_bytes": 44844413,
+    "beta6_bytes": 637268,
+    "historical_warm": {
+      "beta": "1/10",
+      "cos_theta": "0",
+      "digits": 80,
+      "repeats": 7,
+      "exact_seconds": 0.342209,
+      "beta6_seconds": 0.017842,
+      "original_environment": "Wolfram 13.2, AMD Ryzen 9 7950X",
+      "note": "Historical warm medians, not startup costs or GitHub Actions fresh timings."
+    },
+    "fresh_accuracy": {
+      "beta": "1/10",
+      "cos_theta": "1/3",
+      "digits": 120,
+      "exact_seconds": 237.1148,
+      "beta6_seconds": 0.0274,
+      "relative_errors": {
+        "M1": 6.3816e-9,
+        "M2": 8.3391e-8
+      },
+      "single_run_ci": "https://github.com/abhattacharya1992/two-loop-dps-prl/actions/runs/44556434508",
+      "note": "Fresh one-evaluation Python timings; warm speedup and first-run speedup must not be conflated."
+    },
+    "failed_accuracy_example": {
+      "digits": 40,
+      "relative_errors": {
+        "M1": 1,
+        "M2": 1
+      },
+      "ci": "https://github.com/abhattacharya1992/two-loop-dps-prl/actions/runs/44564737847",
+      "note": "Older pre-gate CI was green despite incorrect amplitude values; current gate rejects this."
+    }
+  },
+  "point_storage": {
+    "compression": "zlib level 9 + stored byte length + SHA-256, verified lossless",
+    "ci": "https://github.com/abhattacharya1992/two-loop-dps-prl/actions/runs/44588650024",
+    "items": {
+      "HH": {
+        "points": 50,
+        "original_bytes": 157276,
+        "packed_bytes": 75139,
+        "raw_parse_ms": 0.014978,
+        "verified_packed_parse_ms": 0.031313
+      },
+      "AA": {
+        "points": 82,
+        "original_bytes": 236949,
+        "packed_bytes": 121491,
+        "raw_parse_ms": 0.010825,
+        "verified_packed_parse_ms": 0.026945
+      },
+      "ZZ": {
+        "points": 28,
+        "original_bytes": 804266,
+        "packed_bytes": 225887,
+        "raw_parse_ms": 0.086376,
+        "verified_packed_parse_ms": 0.180567
+      }
+    },
+    "note": "Storage savings, not analytic amplitude compression. Verified packed parsing is slower than raw JSON parsing."
+  },
+  "exact_precision": {
+    "point": {
+      "beta": "1/10",
+      "cos_theta": "1/3"
+    },
+    "HH": {
+      "digits": [
+        40,
+        60,
+        80
+      ],
+      "verified_min_digits": 40,
+      "low_precision_eval_seconds": 66.8492,
+      "top_precision_convergence_error": 1.784e-51,
+      "archived_reference_error": 2.813e-27,
+      "reference_is_independent_implementation": false,
+      "ci": "https://github.com/abhattacharya1992/two-loop-dps-prl/actions/runs/44573748819"
+    },
+    "ZZ": {
+      "digits": [
+        40,
+        60,
+        80
+      ],
+      "verified_min_digits": 40,
+      "low_precision_eval_seconds": 27.6274,
+      "top_precision_convergence_error": 4.343e-50,
+      "archived_reference_error": 2.137e-21,
+      "reference_is_independent_implementation": true,
+      "reference_scope": "36 helicities, two-loop CF only",
+      "ci": "https://github.com/abhattacharya1992/two-loop-dps-prl/actions/runs/44578459993"
+    },
+    "note": "The original amplitude evaluations pass precision convergence here. Neither HH nor ZZ has a validated analytic beta series."
+  }
+}

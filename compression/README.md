@@ -1,5 +1,11 @@
 # Compression and Performance — independent module on main
 
+![Verified HH / AA / ZZ compression and performance overview](00-performance-overview.svg)
+
+**[Read the measured results, accuracy checks and source links](RESULTS.md)** · [Machine-readable benchmark snapshot](benchmark_snapshot.json)
+
+> **What improves?** AA has a validated analytic β⁶ series with a 70.37× smaller expression and 19.18× faster historical warm evaluation. Lossless stored-point reductions are 52.23% (HH), 48.73% (AA), and 71.91% (ZZ). HH/ZZ analytic beta series are **not yet derived**. The plotted benchmarks are a dated snapshot, not live CI measurements.
+
 ## Distinct scientific and storage questions
 
 This is a self-contained HH/AA/ZZ research module inside the PRL repository. Its tests and outputs remain separate from the canonical Letter and Supplemental Material.
@@ -55,7 +61,7 @@ compare with the VVamp evaluator, not the fixed-beta small-pT DPS fits.
 Both processes require independent validation over a bounded beta domain,
 including withheld points, precision sensitivity, relative errors,
 expression bytes, operation counts, preparation/evaluation time and memory.
-This branch does not fabricate those analytic coefficients.
+This module does not fabricate those analytic coefficients.
 
 The optional CI only runs lossless HH/AA/ZZ and published AA record checks.
 It cannot claim that original third-party full amplitudes were recomputed.
