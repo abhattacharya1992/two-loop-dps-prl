@@ -2,7 +2,7 @@
 # Writes letter_labels.tex: the numbers that the equations, figures and tables of the Letter carry, for
 # the references from the Supplemental Material to the Letter (the macro \Lref in supplement.tex and in
 # the tables it inputs). The numbers are read from letter.aux, so the Letter is compiled first;
-# `make pdf` runs this script between the two documents. The file is kept under version control, so
+# `make pdf` runs this script between the two documents. The file is generated at build time and is not tracked, so
 # that the Supplement also compiles on its own.
 #
 #   python3 letter_labels.py

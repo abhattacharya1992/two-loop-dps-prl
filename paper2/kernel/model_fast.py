@@ -2,7 +2,7 @@
 """Vectorised double-precision version of model_exact2.py (same formulas; validated against it by
 model_ref_check.py).  F(l_perp) = int dl^+ F_lminus(l^+, l_perp; eps0), F_lminus = closed-form l^- integral.
 Gauss-Legendre (64 nodes) on segments: log-spaced around l^+ = 0 and around B = 0, plus windows around
-the pinch points (width 0.1 ... 1e4 eps0).  The transverse integral is in model_2d.py.
+the pinch points (width 0.1 ... 1e4 eps0).  The older transverse-integral experiment is retained in Git history as model_2d.py.
 """
 import numpy as np
 from numpy.polynomial.legendre import leggauss

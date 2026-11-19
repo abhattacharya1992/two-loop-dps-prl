@@ -48,12 +48,13 @@ def gluon(process, regular, control):
         if not all((c, beta) in regular and len(regular[(c, beta)]) >= 7 for c in (1, 2)):
             continue
         x = kinematics.momentum_fraction(beta)
+        cache = {}  # confined to this velocity; never shared with another process
         res = {'x': S(x), 'n_points': {c: len(regular[(c, beta)]) for c in (1, 2)},
                'deltas': {c: [r['delta_exp'] for r in regular[(c, beta)]] for c in (1, 2)}}
         res['leading_logs'] = [{'component': r['component'], 'power': r['power'], 'colour': r['colour'],
                                 'value': S(r['value']), 'shift': S(r['shift']), 'prediction': S(r['prediction']),
-                                'deviation': F(r['deviation'])} for r in analysis.leading_logs_gluon(process, regular, beta)]
-        r0 = analysis.r0_gluon(process, regular, beta)
+                                'deviation': F(r['deviation'])} for r in analysis.leading_logs_gluon(process, regular, beta, cache=cache)]
+        r0 = analysis.r0_gluon(process, regular, beta, cache=cache)
         closed = analysis.r0_closed_gluon(process, beta)
         res['r0'] = {}
         for nu in ('nu0', 'nu2'):
@@ -105,12 +106,13 @@ def quark(regular, control):
     out = {}
     for beta in analysis.betas_of(regular):
         x = kinematics.momentum_fraction(beta)
-        rows = analysis.leading_logs_quark(regular, beta)
+        cache = {}  # reuse only identical precision fits for this velocity
+        rows = analysis.leading_logs_quark(regular, beta, cache=cache)
         if not rows:
             continue
         res = {'x': S(x), 'leading_logs': [{k: (S(v) if isinstance(v, (mp.mpc, mp.mpf)) and k not in ('deviation',) else F(v) if k == 'deviation' else v)
                                             for k, v in r.items()} for r in rows]}
-        r0 = analysis.r0_quark(regular, beta)
+        r0 = analysis.r0_quark(regular, beta, cache=cache)
         CFc, CAc = theory.r0_closed(theory.ZZ, 0, x)
         res['r0'] = {}
         for nu in ('nu0', 'nu2'):

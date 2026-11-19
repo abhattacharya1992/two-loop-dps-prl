@@ -11,6 +11,7 @@ Reads gqq_laurent_x*.json (assemble_gqq.py) and writes r0_theory_quarks.json.
     python3 r0_theory_quarks.py
 """
 import json, os
+from fractions import Fraction
 import numpy as np
 import mpmath as mp
 from laurent_inputs import load_laurent
@@ -45,7 +46,7 @@ def load(tag, suffix=''):
     d = load_laurent(f'gqq_laurent_x{tag}{suffix}.json', 'gqq', expected_x=tag.split('_', 1)[0].replace('o', '/'))
     tot = {st: {c: {} for c in DC} for st in ('ek', 'ke')}
     for name, dd in d['diagrams'].items():
-        pref = {k: float(eval(v)) for k, v in dd['pref'].items()}
+        pref = {k: float(Fraction(v)) for k, v in dd['pref'].items()}
         for st in ('ek', 'ke'):
             for key, (re, im) in dd['laurent'][st].items():
                 for c in DC:

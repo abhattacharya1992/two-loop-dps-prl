@@ -69,9 +69,6 @@ def _split_contractions(string):
     return results
 
 
-_LC_REDUCE = {}
-
-
 def _reduce_lc(word):
     """reduce a word in N, Nb (N N = Nb Nb = 0, N Nb N = 4N, Nb N Nb = 4Nb): returns (coeff, word) or (0, None)"""
     w = list(word)
@@ -126,16 +123,6 @@ def dirac_ncoeff(string):
 
 # ----------------------------------------------------------------------------- 2. perp words
 D = sp.Symbol('D')          # D = d - 2
-
-
-def _dot(a, b, dots):
-    """Euclidean dot product of two tokens (vectors or index tokens)"""
-    if isinstance(a, tuple) and isinstance(b, tuple):
-        return 1 if a == b else 0          # delta^{ij}: only used when equal labels are contracted later
-    if isinstance(a, tuple) or isinstance(b, tuple):
-        raise ValueError('dot of an index with a vector should not occur here')
-    key = tuple(sorted((a, b)))
-    return dots[key]
 
 
 def perp_contract(word, dots):

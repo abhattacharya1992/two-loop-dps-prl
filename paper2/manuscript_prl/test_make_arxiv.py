@@ -9,6 +9,7 @@ import tarfile
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 import make_arxiv as ma
 
@@ -51,6 +52,26 @@ class Selection(unittest.TestCase):
                          original.encode())
         with self.assertRaisesRegex(RuntimeError, "Expected one APS"):
             ma.arxiv_member_bytes(Path("sm.bib"), b"Reference already edited")
+
+    @unittest.skipUnless(shutil.which('make'), 'GNU Make required')
+    def test_reproduction_builds_publication_once(self):
+        root = ma.HERE.parents[1]
+        run = subprocess.run(['make', '-n', 'reproduce', 'PY=python'], cwd=root,
+                             capture_output=True, text=True, check=True)
+        for cmd in ('python make_tables.py', 'python make_figure.py',
+                    'python count_words.py'):
+            self.assertEqual(run.stdout.count(cmd), 1, cmd)
+        self.assertEqual(run.stdout.count('make_arxiv.py --check'), 1)
+
+    def test_gzip_archive_bytes_are_reproducible(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            a, b = Path(tmp) / 'first.tar.gz', Path(tmp) / 'second.tar.gz'
+            # Normalise the archive-only citation independently of gzip metadata.
+            with patch.object(ma, 'arxiv_member_bytes', side_effect=lambda path, data: data):
+                ma.build_archive(a, with_anc=False)
+                ma.build_archive(b, with_anc=False)
+            self.assertEqual(a.read_bytes(), b.read_bytes())
+            self.assertEqual(a.read_bytes()[4:8], b'\0\0\0\0')
 
     def test_top_level_files_pdfs_and_release_are_left_out(self):
         paths, dirty = ma.select_ancillary(self.TRACKED, [], PREFIX, self.TOP)

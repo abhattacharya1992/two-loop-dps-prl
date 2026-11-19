@@ -66,6 +66,7 @@ Manuscript compilation additionally requires:
 git clone https://github.com/abhattacharya1992/two-loop-dps-prl.git
 
 cd two-loop-dps-prl
+git switch cleanup/reproducible-pipeline-20261118  # until PRL v2 becomes the default branch
 
 python3 -m venv .venv
 source .venv/bin/activate
@@ -149,6 +150,10 @@ If running optional numerical regeneration commands, inspect `git status` and
 commit or restore only independently checked by-products before packaging.
 
 The manuscript's canonical LaTeX sources are `letter.tex` and `supplement.tex` in `paper2/manuscript_prl/`.
+`make reproduce` generates the publication figures and PDFs once, then checks the
+arXiv source package through a second, independent isolated compilation.
+Optional diagnostic plots can be produced with
+`make -C paper2/manuscript_prl figure-diagnostics`.
 
 ## Consolidated PRL v2 cleanup
 

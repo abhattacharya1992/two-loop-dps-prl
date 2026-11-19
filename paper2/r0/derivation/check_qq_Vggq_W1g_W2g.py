@@ -17,6 +17,7 @@ Steps checked here:
   4  the results against the stored Laurent coefficients
 Usage: python3 check_qq_Vggq_W1g_W2g.py <repository root>"""
 import json, sys, pathlib, warnings
+from functools import lru_cache
 import numpy as np
 from scipy.special import gamma as Gam, spence, beta as Beta
 from scipy.integrate import quad
@@ -106,7 +107,10 @@ QK = dict(complex_func=True, epsabs=1e-11, epsrel=1e-10, limit=400)
 
 def V_numeric(x, z, m, pu, pw):
     xb = 1 - x
-    inner = lambda u: quad(lambda w: (u - w)**pu*w**pw/(((x - z)*(u - w) - m[2])*(z*w - m[3])*(-(1 - z)*w - m[4])), -np.inf, np.inf, **QK)[0]
+    @lru_cache(maxsize=8192)  # scipy's complex quadrature revisits identical nodes
+    def inner(u):
+        return quad(lambda w: (u - w)**pu*w**pw/(((x - z)*(u - w) - m[2])*(z*w - m[3])*(-(1 - z)*w - m[4])),
+                    -np.inf, np.inf, **QK)[0]
     return quad(lambda u: inner(u)/((x*u - m[0])*(-xb*u - m[1])), -np.inf, np.inf, **QK)[0]
 
 
@@ -129,7 +133,10 @@ for zz, where in ((0.12, '0 < z < x'), (0.60, 'x < z < 1'), (-0.30, 'z < 0'), (1
 
 def W_numeric(x, z, m):
     xb = 1 - x
-    inner = lambda w: quad(lambda u: 1/(((x - z)*(u - w) - m[0])*(-xb*u - m[1])), -np.inf, np.inf, **QK)[0]
+    @lru_cache(maxsize=8192)  # scoped to this numerical integral and its fixed inputs
+    def inner(w):
+        return quad(lambda u: 1/(((x - z)*(u - w) - m[0])*(-xb*u - m[1])),
+                    -np.inf, np.inf, **QK)[0]
     return quad(lambda w: inner(w)/((-(1 - z)*w - m[2])*(z*w - m[3])), -np.inf, np.inf, **QK)[0]
 
 

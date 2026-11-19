@@ -29,20 +29,37 @@ def letter_table(mt):
     mhv, nmhv = res['three_to_three'], res['nmhv']
     loops = res['loops_compared']
     assert loops == 5 and {r['L'] for r in nmhv} == {1, 2, 3, 4}
-    t = ['\\begin{table*}[t]', '\\centering', '\\small', '\\setlength{\\tabcolsep}{5pt}',
-         '\\begin{tabular}{cp{0.9\\textwidth}}', '\\toprule',
-         '$L$ & MHV: coefficients of $2\\pi i\\,\\ell^k$, $k=2L-1,\\dots,1$\\\\', '\\midrule']
-    t += [f'{L} & ${row(mhv, L, 2*L - 1, 1)}$\\\\' for L in range(1, loops + 1)]
-    t += ['\\midrule', '$L$ & NMHV: coefficients of $\\pi i\\,\\frac{1+w}{1+w^*}\\,\\ell^k$, $k=2L-2,\\dots,0$\\\\', '\\midrule']
-    t += [f'{L} & ${row(nmhv, L, 2*L - 2, 0)}$\\\\' for L in range(1, 5)]
-    t += ['\\bottomrule', '\\end{tabular}',
-          '\\caption{Planar $\\mathcal N=4$: the coefficients of the powers of $\\ell=\\ln|\\delta_*|$ in the $L$-loop '
-          'MHV amplitude $\\mathcal E^{(L)}$, eqs.~(3.17)--(3.21) of ref.~\\cite{Dixon:2016epj}, and in the next-to-MHV '
-          'amplitude $\\rho^{(L)}$, eqs.~(D.14)--(D.17) of its erratum, in $3\\to3$ kinematics, against '
-          'eqs.~(\\ref{eq:kernel}), (\\ref{eq:Fm}) and~(\\ref{eq:n4exp}) with $\\nu=0$ and $\\nu=2$. The one-loop '
-          'coefficients define $C_1$ and $K$; a coefficient followed by a constant in brackets fixes that constant, '
-          'and every other coefficient is a prediction. All agree.}',
-          '\\label{tab:n4letter}', '\\end{table*}']
+    # Construct the final two-panel PRL v2 layout directly from checked rows,
+    # instead of parsing and rewriting an intermediate TeX table.
+    t = [r'\begin{table*}[t]', r'\centering', r'\small',
+         r'\setlength{\tabcolsep}{5pt}',
+         r'\begin{tabular}{@{}r@{\hspace{4pt}}r@{\hspace{6pt}}l@{\hspace{12pt}}r@{\hspace{4pt}}r@{\hspace{6pt}}l@{}}',
+         r'\toprule',
+         r'\multicolumn{3}{c}{\textbf{MHV}: $2\pi i\,\ell^k$} & \multicolumn{3}{c}{\textbf{NMHV}: $\pi i\,\frac{1+w}{1+w^*}\,\ell^k$}\\',
+         r'\cmidrule(lr){1-3}\cmidrule(l){4-6}',
+         r'$L$ & $k$ & coefficient & $L$ & $k$ & coefficient\\', r'\midrule']
+    for L in range(1, 5):
+        left, right = row(mhv, L, 2*L - 1, 1).split(r',\ '), row(nmhv, L, 2*L - 2, 0).split(r',\ ')
+        assert len(left) == len(right) == 2*L - 1
+        for i, (cl, cr) in enumerate(zip(left, right)):
+            lh = f'{L if i == 0 else ""} & {2*L-1-i} & $' + cl + '$'
+            rh = f'{L if i == 0 else ""} & {2*L-2-i} & $' + cr + '$'
+            t.append(lh + ' & ' + rh + r'\\')
+        if L < 4:
+            t.append(r'\addlinespace[3pt]')
+    t.append(r'\addlinespace[3pt]')
+    last = row(mhv, 5, 9, 1).split(r',\ ')
+    assert len(last) == 9
+    for i, coeff_ in enumerate(last):
+        t.append(f'{5 if i == 0 else ""} & {9-i} & $' + coeff_ + '$ & & & ' + r'\\')
+    t += [r'\bottomrule', r'\end{tabular}',
+          r'\caption{Planar $\mathcal N=4$: the coefficients of the powers of $\ell=\ln|\delta_*|$ in the $L$-loop '
+          r'MHV amplitude $\mathcal E^{(L)}$, Eqs.~(3.17)--(3.21) of Ref.~\cite{Dixon:2016epj}, and in the next-to-MHV '
+          r'amplitude $\rho^{(L)}$, Eqs.~(D.14)--(D.17) of its erratum, in $3\to3$ kinematics, against '
+          r'Eqs.~(\ref{eq:kernel}), (\ref{eq:Fm}) and~(\ref{eq:n4exp}) with $\nu=0$ and $\nu=2$. The one-loop '
+          r'coefficients define $C_1$ and $K$; a coefficient followed by a constant in brackets fixes that constant, '
+          r'and the remaining coefficients check the known radial representation and helicity map. All agree.}',
+          r'\label{tab:n4letter}', r'\end{table*}']
     (HERE/'tables'/'table_n4_letter.tex').write_text('\n'.join(t) + '\n')
     return len(mhv) + len(nmhv)
 

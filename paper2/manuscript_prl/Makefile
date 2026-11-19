@@ -16,9 +16,9 @@
 
 PY ?= python3
 
-.PHONY: all tables figure pdf words test clean
+.PHONY: all tables figure figure-diagnostics pdf words test clean
 
-all: tables figure pdf words
+all: words
 
 tables:
 	$(PY) ../r0/data/endpoint_test.py > endpoint_test.log
@@ -27,6 +27,9 @@ tables:
 
 figure:
 	$(PY) make_figure.py
+
+figure-diagnostics:
+	$(PY) make_figure.py --diagnostics
 
 define latex_runs
 	@pdflatex -interaction=nonstopmode -halt-on-error $(1).tex > $(1)_latex.log || { tail -30 $(1)_latex.log; exit 1; }
@@ -39,12 +42,12 @@ define latex_runs
 	@grep -iE "warning|error" $(1)_bibtex.log | grep -vE "missing number|empty year in SM|There w(as|ere)" || echo "bibtex ($(1)): no warnings"   # apsrev4-2 warns for entries without an issue number, and for the Supplemental Material entry, which has no year
 endef
 
-pdf:
+pdf: tables figure
 	$(call latex_runs,letter)
 	$(PY) letter_labels.py
 	$(call latex_runs,supplement)
 
-words:
+words: pdf
 	$(PY) count_words.py
 
 test:

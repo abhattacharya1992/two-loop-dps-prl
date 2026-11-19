@@ -4,7 +4,7 @@ SHELL := /bin/bash
 PY ?= python3
 BENCH_RUNS ?= 3
 .NOTPARALLEL:
-.PHONY: cache-archive-check phase2-check help threshold independent-checks test-science test pinch-checks pinch-figures manuscript-tests derivation-tests build archive reproduce release-check release-check-quick release-check-tests
+.PHONY: cache-archive-check phase2-check help threshold independent-checks test-science test pinch-checks pinch-figures manuscript-tests derivation-tests build archive archive-check reproduce release-check release-check-quick release-check-tests
 
 help:
 	@printf '%s\n' 'make threshold: earlier AA threshold coefficients vs PRL at x=1/2' \
@@ -25,7 +25,7 @@ independent-checks:
 	$(PY) checks/stage2_novelty_20261113/verify_stage2.py --output "$$d/stage2.json"; \
 	$(PY) checks/stage2_novelty_20261113/test_stage2_guards.py --output "$$d/stage2-guards.json"
 
-test: pinch-figures manuscript-tests test-science
+test: manuscript-tests test-science
 
 test-science: threshold independent-checks pinch-checks dps-links
 	$(PY) checks/blind_point_provenance.py
@@ -42,20 +42,21 @@ test-science: threshold independent-checks pinch-checks dps-links
 build:
 	$(MAKE) -C paper2/manuscript_prl PY="$(PY)"
 
-archive: build
+archive: build archive-check
+
+archive-check:
 	$(PY) paper2/manuscript_prl/make_arxiv.py --check
 
 derivation-tests:
 	$(MAKE) -C paper2/r0/derivation test PYTHON="$(PY)"
 
-reproduce: test derivation-tests archive
+reproduce: test derivation-tests archive-check
 
 pinch-checks:
 	$(MAKE) -C checks/pinch_regions check PY="$(PY)"
 
 manuscript-tests:
-	$(MAKE) -C paper2/manuscript_prl tables PY="$(PY)"
-	$(MAKE) -C paper2/manuscript_prl pdf PY="$(PY)"
+	$(MAKE) -C paper2/manuscript_prl all PY="$(PY)"
 	$(PY) -m unittest discover -s paper2/manuscript_prl -p 'test_make_tables.py' -v
 	$(MAKE) -C paper2/manuscript_prl test PY="$(PY)"
 

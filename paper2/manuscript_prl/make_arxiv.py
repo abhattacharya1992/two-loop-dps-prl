@@ -18,6 +18,7 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import gzip
 import io
 from pathlib import Path
 import re
@@ -180,7 +181,10 @@ def build_archive(dest: Path, with_anc: bool = True,
     files = source_list()
     anc = ancillary(files, allow_dirty) if with_anc else None
     dest.parent.mkdir(parents=True, exist_ok=True)
-    with tarfile.open(dest, "w:gz", compresslevel=9) as bundle:
+    # Gzip headers otherwise include the wall-clock time and output filename.
+    with dest.open('wb') as stream, gzip.GzipFile(fileobj=stream, mode='wb', filename='',
+                                                 compresslevel=9, mtime=0) as compressed, \
+            tarfile.open(fileobj=compressed, mode='w') as bundle:
         for path in files:
             add_member(bundle, path.relative_to(HERE).as_posix(), arxiv_member_bytes(path, path.read_bytes()))
         if anc:

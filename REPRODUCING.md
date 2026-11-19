@@ -20,6 +20,7 @@ Ubuntu with Python 3.12 and the dependencies in `requirements-pinned.txt`.
 ```bash
 git clone https://github.com/abhattacharya1992/two-loop-dps-prl.git
 cd two-loop-dps-prl
+git switch cleanup/reproducible-pipeline-20261118  # PRL v2 is not yet the default main branch
 python3.12 -m venv .venv
 source .venv/bin/activate
 python -m pip install -r requirements-pinned.txt

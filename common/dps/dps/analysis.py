@@ -36,8 +36,22 @@ def rel(a, b):
     return abs(a - b) / abs(b) if b != 0 else abs(a)
 
 
+def _shift(recs, key, deg, pdeg, cache=None):
+    """A local report-only cache: same records, series, fit model and precision.
+
+    No global state or cross-dataset reuse: separate analytical checks still
+    execute their own independent fits when no cache is passed.
+    """
+    if cache is None:
+        return fit.with_shift(recs, series(recs, key), deg, pdeg)
+    token = (id(recs), key, deg, pdeg, mp.mp.dps)
+    if token not in cache:
+        cache[token] = fit.with_shift(recs, series(recs, key), deg, pdeg)
+    return cache[token]
+
+
 # gluon splittings ---------------------------------------------------------------------------
-def leading_logs_gluon(process, regular, beta, L=0, colours=theory.GLUON_COLOURS):
+def leading_logs_gluon(process, regular, beta, L=0, colours=theory.GLUON_COLOURS, cache=None):
     """Fitted coefficients of G^3, G^2 (component 1) and G^2, G^1 (component 2) at mu = m for each
     colour monomial, with the window shift and the prediction of eq. (5.5); the key 'L' picks the
     power of ln(m^2/mu^2) of the gg -> HH points (only L = 0 exists for gg -> AA)."""
@@ -52,8 +66,7 @@ def leading_logs_gluon(process, regular, beta, L=0, colours=theory.GLUON_COLOURS
         # Each fit supplies all powers. Keep the reporting order unchanged.
         fitted = {}
         for col in colours:
-            vals = series(recs, f'{col}:L{L}' if process.name == 'hh' else col)
-            fitted[col] = fit.with_shift(recs, vals, deg, pdeg)
+            fitted[col] = _shift(recs, f'{col}:L{L}' if process.name == 'hh' else col, deg, pdeg, cache)
         for power in ((3, 2) if comp == 1 else (2, 1)):
             key = f'G{power}'
             for col in colours:
@@ -65,7 +78,7 @@ def leading_logs_gluon(process, regular, beta, L=0, colours=theory.GLUON_COLOURS
     return rows
 
 
-def r0_gluon(process, regular, beta):
+def r0_gluon(process, regular, beta, cache=None):
     """r_0 for the two components from the N^2 and N n_f terms (eq. 7.1 with the known parts of
     theory.known_parts_gluon), and the n_f/N and n_f^2 terms of the same coefficients, which must
     vanish; values in units of the one-loop terms."""
@@ -80,8 +93,7 @@ def r0_gluon(process, regular, beta):
         norm = process.c1_over_N(x) if comp == 1 else process.K_over_N(x)
         res = {}
         for col in theory.GLUON_COLOURS:
-            vals = series(recs, f'{col}:L0' if process.name == 'hh' else col)
-            c0, shifts = fit.with_shift(recs, vals, deg, pdeg)
+            c0, shifts = _shift(recs, f'{col}:L0' if process.name == 'hh' else col, deg, pdeg, cache)
             res[col] = {'over_oneloop': c0[power] / norm, 'shift': shifts[power] / abs(norm) if shifts else None}
         res['r0_N'] = res['N2']['over_oneloop'] - known[nu]['N']
         res['r0_nf'] = res['N_Nf']['over_oneloop'] - known[nu]['nf']
@@ -98,23 +110,28 @@ def r0_closed_gluon(process, beta):
 
 
 # quark splittings (gg -> ZZ) -----------------------------------------------------------------
-def one_loop_quark(recs):
+def one_loop_quark(recs, cache=None):
     """(c1, K) of the one-loop helicity amplitude: coefficient of G and constant, window 0 and 1."""
+    token = (id(recs), '1l', *QUARK_ONE_LOOP, mp.mp.dps)
+    if cache is not None and token in cache:
+        return cache[token]
     vals = series(recs, '1l')
-    f0 = fit.leading(recs, vals, *QUARK_ONE_LOOP, 0)
-    f1 = fit.leading(recs, vals, *QUARK_ONE_LOOP, 1)
-    return f0, f1
+    result = (fit.leading(recs, vals, *QUARK_ONE_LOOP, 0),
+              fit.leading(recs, vals, *QUARK_ONE_LOOP, 1))
+    if cache is not None:
+        cache[token] = result
+    return result
 
 
-def quark_helicity_inputs(regular, beta):
+def quark_helicity_inputs(regular, beta, cache=None):
     """One-loop fits at each helicity, shared by normalisation and coefficient extraction."""
     helicities = sorted(h for (h, b) in regular if b == beta)
-    fitted = {h: one_loop_quark(regular[(h, beta)]) for h in helicities}
+    fitted = {h: one_loop_quark(regular[(h, beta)], cache) for h in helicities}
     cmax = max(abs(fitted[h][0][1]) for h in helicities)
     return helicities, fitted, cmax
 
 
-def leading_logs_quark(regular, beta, pdeg=QUARK_MODEL[1]):
+def leading_logs_quark(regular, beta, pdeg=QUARK_MODEL[1], cache=None):
     """Two-loop coefficients of the gg -> ZZ helicity amplitudes against the quark-splitting
     prediction (analyse_zz.py): for dJz = 0 amplitudes with a one-loop logarithm, f3/c1 and
     f2/c1; for |dJz| = 2, f2/K and f1/K; C_F and C_A parts separately."""
@@ -122,7 +139,7 @@ def leading_logs_quark(regular, beta, pdeg=QUARK_MODEL[1]):
     Lx = mp.log(x * (1 - x))
     pred = {'2l_CF': {'dJz0': {3: -mp.mpf(4) / 3, 2: -2 * Lx - 3}, 'dJz2': {2: -4, 1: -4 * Lx - 2}},
             '2l_CA': {'dJz0': {3: mp.mpf(2) / 3, 2: 2 * Lx}, 'dJz2': {2: 2, 1: 4 * Lx - 2}}}
-    hels, fitted, cmax = quark_helicity_inputs(regular, beta)
+    hels, fitted, cmax = quark_helicity_inputs(regular, beta, cache)
     rows = []
     for h in hels:
         recs = regular[(h, beta)]
@@ -136,8 +153,7 @@ def leading_logs_quark(regular, beta, pdeg=QUARK_MODEL[1]):
         else:
             continue
         for part in ('2l_CF', '2l_CA'):
-            vals = series(recs, part)
-            f0, shifts = fit.with_shift(recs, vals, 3, pdeg)
+            f0, shifts = _shift(recs, part, 3, pdeg, cache)
             if f0 is None:
                 continue
             for power in powers:
@@ -149,10 +165,10 @@ def leading_logs_quark(regular, beta, pdeg=QUARK_MODEL[1]):
     return rows
 
 
-def r0_quark(regular, beta):
+def r0_quark(regular, beta, cache=None):
     """r_0 for quark splittings from the gg -> ZZ fits (r0/data/r0_from_zz.py), in a_s units."""
     x = momentum_fraction(beta)
-    hels, fitted, cmax = quark_helicity_inputs(regular, beta)
+    hels, fitted, cmax = quark_helicity_inputs(regular, beta, cache)
     out = {'x': x, 'nu0': {}, 'nu2': {}}
     for h in hels:
         recs = regular[(h, beta)]
@@ -167,7 +183,7 @@ def r0_quark(regular, beta):
             continue
         row = {}
         for part, (CF, CA) in (('2l_CF', (1, 0)), ('2l_CA', (0, 1))):
-            f0, shifts = fit.with_shift(recs, series(recs, part), *QUARK_MODEL)
+            f0, shifts = _shift(recs, part, *QUARK_MODEL, cache)
             kn = theory.known_parts_quark(x, CF, CA)[0 if comp == 'nu0' else 1]
             row[part] = {'r0': 2 * f0[j] / norm - kn, 'shift': 2 * shifts[j] / abs(norm) if shifts else None}
         out[comp][h] = row
