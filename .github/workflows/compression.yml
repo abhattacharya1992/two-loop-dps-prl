@@ -1,0 +1,36 @@
+name: Compression and performance validation
+on:
+  push:
+    branches: [compression-and-performance]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  compression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - run: python -m pip install -r requirements-pinned.txt
+      - name: Compression codec and historical AA report unit tests
+        run: make compression-tests PY=python
+      - name: Lossless HH AA ZZ point compression and decode benchmark
+        run: make compression-points PY=python
+      - uses: actions/checkout@v4
+        with:
+          repository: abhattacharya1992/ggAA-threshold
+          ref: main
+          path: ggAA-threshold
+      - name: Published AA exact versus beta6 report
+        run: make compression-aa-recorded PY=python AA_REPO=ggAA-threshold
+      - name: Upload reproducible reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: compression-performance-reports
+          path: compression-results/
+          if-no-files-found: warn

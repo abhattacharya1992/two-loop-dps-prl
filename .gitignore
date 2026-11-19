@@ -49,3 +49,7 @@ __pycache__/
 
 # Optional historical size and runtime reports.
 /benchmark-results/
+
+# Independent compression research and separate upstream AA checkout.
+/compression-results/
+/ggAA-threshold/

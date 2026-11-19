@@ -103,3 +103,15 @@ benchmark-pipeline: benchmark-tests
 
 benchmark-v2: benchmark-tests
 	$(PY) checks/benchmark_pipeline.py --baseline d362f551357f80125649e583b22b6dbf8aeccb4e --baseline-label frozen_v2 --runs $(PERF_V2_RUNS) --python "$(PY)" --output benchmark-results/pipeline-v2
+
+# Independent compression/performance research branch; not part of make reproduce.
+AA_REPO ?= ggAA-threshold
+.PHONY: compression-tests compression-points compression-aa-recorded
+compression-tests:
+	$(PY) -m unittest discover -s checks/compression -p 'test_compression.py' -v
+
+compression-points: compression-tests
+	$(PY) checks/compression/point_benchmark.py --process all --repeats 5
+
+compression-aa-recorded: compression-tests
+	$(PY) checks/compression/aa_threshold.py --aa-repo "$(AA_REPO)"
