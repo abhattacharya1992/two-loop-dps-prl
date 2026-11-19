@@ -6,6 +6,7 @@ on:
       - compression/benchmark_snapshot.json
       - compression/00-performance-overview.svg
       - compression/RESULTS.md
+      - compression/README.md
   workflow_dispatch:
 permissions:
   contents: read
