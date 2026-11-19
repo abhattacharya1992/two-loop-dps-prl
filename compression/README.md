@@ -2,7 +2,7 @@
 
 ## Distinct scientific and storage questions
 
-This is an independent HH/AA/ZZ experiment, not the PRL release branch.
+This is a self-contained HH/AA/ZZ research module inside the PRL repository. Its tests and outputs remain separate from the canonical Letter and Supplemental Material.
 
 1. HH, AA, ZZ: point_benchmark.py implements byte-identical zlib storage
    and checks SHA-256, size and payload integrity on every decoded JSON point.
@@ -36,7 +36,7 @@ For a *fresh* AA exact-vs-beta6 benchmark (requires full external inputs and
 considerably longer evaluation time):
 
     (cd ggAA-threshold && bash inputs/fetch_inputs.sh)
-    python checks/compression/aa_threshold.py --aa-repo ggAA-threshold --fresh --beta 1/10 --costheta 0 --order 6 --digits 80 --repeats 3
+    python compression/aa_threshold.py --aa-repo ggAA-threshold --fresh --beta 1/10 --costheta 0 --order 6 --digits 80 --repeats 3
 
 The two AA amplitudes are compared in the same convention (exact divided by
 64). The published historical timings also preserve the original CPU,
@@ -111,7 +111,7 @@ For HH and ZZ the default Stage 1 status is not_derived for analytic beta
 series, and not_run for original full evaluators. This is intentional and
 must not be interpreted as an analytical result.
 
-Use the explicit --run-exact flag on checks/compression/unified_pipeline.py
+Use the explicit --run-exact flag on compression/unified_pipeline.py
 for the optional full-amplitude backend, only after ALL required external
 HH, AA and ZZ inputs are installed. A missing input is an error, never a
 fallback to stored points.

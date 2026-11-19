@@ -22,7 +22,7 @@ import time
 
 import mpmath as mp
 
-ROOT = Path(__file__).resolve().parents[2]
+ROOT = Path(__file__).resolve().parents[1]
 
 
 def fraction(text: str) -> mp.mpf:

@@ -16,7 +16,7 @@ import struct
 import time
 import zlib
 
-ROOT = Path(__file__).resolve().parents[2]
+ROOT = Path(__file__).resolve().parents[1]
 MAGIC = b"DPS-POINT-v1\0"
 HEADER_LENGTH = len(MAGIC) + 8 + 32
 MAX_POINT_BYTES = 16 * 1024 * 1024

@@ -30,7 +30,7 @@ import aa_threshold
 import exact_evaluators
 import point_benchmark
 
-ROOT = Path(__file__).resolve().parents[2]
+ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_OUTPUT = ROOT / "compression-results/unified"
 DEFAULT_AA = ROOT / "ggAA-threshold"
 SCHEMA = "dps-unified-v1"

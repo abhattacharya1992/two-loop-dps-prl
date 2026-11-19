@@ -1,7 +1,7 @@
 name: Compression and performance validation
 on:
   push:
-    branches: [compression-and-performance]
+    branches: [compression-and-performance, 'cleanup/reproducible-pipeline-20261118']
   workflow_dispatch:
 permissions:
   contents: read

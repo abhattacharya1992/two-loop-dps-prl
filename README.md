@@ -39,6 +39,7 @@ The complete classification of pinched surfaces and matching onto renormalised o
 | `paper2/r0/` | Finite matching coefficients and region calculations |
 | `paper2/kernel/` | One-loop DPS kernel and boundary analysis |
 | `paper2/n4/` | Planar $\mathcal N=4$ amplitude comparisons |
+| `compression/` | Independent HH/AA/ZZ two-stage evaluation, compression and performance benchmarks; not part of PRL manuscript reproduction |
 | `checks/` | Independent analytical and numerical validation |
 | `checks/threshold_ggAA/` | Comparison with the published pseudoscalar threshold expansion |
 | `checks/pinch_regions/` | Exact scalar-pinch identities and bounded checks on supplied momentum-region data |

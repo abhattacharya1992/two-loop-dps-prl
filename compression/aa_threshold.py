@@ -25,8 +25,8 @@ import time
 from mpmath import mp
 
 HERE = Path(__file__).resolve().parent
-ROOT = HERE.parents[1]
-AA_REPO_DEFAULT = ROOT.parent / "ggAA-threshold"
+ROOT = HERE.parent
+AA_REPO_DEFAULT = ROOT / "ggAA-threshold"
 
 
 def _read_json(path: Path) -> dict:
