@@ -1,0 +1,15 @@
+{
+ "beta": "19/20",
+ "delta_exp": 10,
+ "dps": 95,
+ "point_file": "zz_b19o20_d10_p95.json",
+ "sec": 2005.8,
+ "li22_integral_branch": "paper2/hh/hh_two_loop/evaluate_hh.li22 for max(|a|, |ab|) >= 0.95 (fixed-split integral of ggvv.py replaced); series of ggvv.py below",
+ "integral_branch_pairs": 437,
+ "max_abs_diff_fixed_split": "9.36335e-97",
+ "at": [
+  "0.9749999999049375000092686",
+  "1.025641025641091387245234"
+ ],
+ "abs_diff_to_reference_there": "0.0"
+}

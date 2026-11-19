@@ -18,6 +18,7 @@
 #
 #   python3 make_tables.py          (or `make tables`)
 import importlib.util
+from fractions import Fraction
 import pathlib
 import re
 
@@ -59,7 +60,11 @@ def source(doc):
             if name.startswith('tables/'):
                 continue
             name += '' if name.endswith('.tex') else '.tex'
-            children.append(read(HERE / name))
+            child = HERE / name
+            # The initial table pass precedes these generated manuscript inputs.
+            if name in {'numbers.tex', 'sm_nocite.tex', 'letter_labels.tex'} and not child.exists():
+                continue
+            children.append(read(child))
         return text + '\n' + '\n'.join(children)
     return read(HERE / f'{doc}.tex')
 
@@ -78,35 +83,30 @@ def house_style(s):
 
 
 
-def letter_threeloop_table():
-    """Generate a compact three-loop table without changing any coefficients."""
-    s = (HERE/'tables'/'table_threeloop.tex').read_text()
-
-    head = '& $N^2$ & $Nn_f$ & $n_f^2$\\\\'
-    assert s.count(head) == 1 and s.count('\\small') == 1, \
-        'the layout of the three-loop table has changed'
-    s = s.replace(head, '$x$ & $N_c^2$ & $N_cn_f$ & $n_f^2$\\\\')
-    s = s.replace('\\small', '\\footnotesize', 1)
-    s = s.replace(r'\setlength{\tabcolsep}{5pt}',r'\setlength{\tabcolsep}{7pt}')   
-    s = s.replace(r'\begin{tabular}{lccc}', r'\renewcommand{\arraystretch}{1.35}' + '\n'
-    + r'\begin{tabular}{lccc}', 1 )
-
-    # The same six data rows, with a compact heading for each component.
-    s = s.replace(r'\multicolumn{4}{l}{coefficient of $\G^3$ in $\M_1^{(3)}/C_1$}',
-                  r'\multicolumn{4}{@{}l}{$[\G^3]\,\M_1^{(3)}/C_1$}')
-    s = s.replace(r'\multicolumn{4}{l}{coefficient of $\G^2$ in $\M_2^{(3)}/K$}',
-                  r'\multicolumn{4}{@{}l}{$[\G^2]\,\M_2^{(3)}/K$}')
-    for x in ('\\frac58','\\frac34','\\frac56'):
-        s = s.replace('$x='+x+'$', '$'+x+'$')
-    s,n = re.subn(r'\\caption\{.*\}\n\\label\{tab:threeloop\}',
-                  lambda m: (r'\caption{Conditional three-loop DPS coefficients for '
-                             r'$gg\to HH$ at $\mu=m_H$ in minimal subtraction; '
-                             r'the boundary assumptions are stated in the text.}'
-                             '\n'+r'\label{tab:threeloop}'),
-                  s,flags=re.S)
-    assert n==1, 'the caption of the three-loop table was not found'
-    assert s.count('\\multicolumn{4}{@{}l}')==2
-    (HERE/'tables'/'table_threeloop_letter.tex').write_text(s)
+def letter_threeloop_table(mt):
+    """Render the final six checked coefficients, without parsing an old TeX table."""
+    numbers = mt.load('three_loop')['numbers gg -> HH at mu = m']
+    xs = sorted(numbers, key=Fraction)
+    assert xs == ['5/8', '3/4', '5/6'], xs
+    cols = ('N^2', 'N n_f', 'n_f^2')
+    fmt = lambda v: f'{v[0]:.3f}' + (f'{v[1]:+.3f}\\,i' if abs(v[1]) > 5e-4 else '')
+    t = [r'\begin{table}[t]', r'\centering', r'\footnotesize',
+         r'\setlength{\tabcolsep}{7pt}', r'\renewcommand{\arraystretch}{1.35}',
+         r'\begin{tabular}{lccc}', r'\toprule',
+         r'$x$ & $N_c^2$ & $N_cn_f$ & $n_f^2$\\', r'\midrule']
+    for name, heading in (('nu=0 G^3', r'$[\G^3]\,\M_1^{(3)}/C_1$'),
+                          ('nu=2 G^2', r'$[\G^2]\,\M_2^{(3)}/K$')):
+        if name != 'nu=0 G^3':
+            t.append(r'\midrule')
+        t.append(r'\multicolumn{4}{@{}l}{' + heading + r'}\\')
+        for x in xs:
+            t.append('$' + mt.frac_tex(Fraction(x)) + '$ & ' +
+                     ' & '.join('$' + fmt(numbers[x][name][c]) + '$' for c in cols) + r'\\')
+    t += [r'\bottomrule', r'\end{tabular}',
+          r'\caption{Conditional three-loop DPS coefficients for $gg\to HH$ at $\mu=m_H$ in minimal subtraction; '
+          r'the boundary assumptions are stated in the text.}',
+          r'\label{tab:threeloop}', r'\end{table}']
+    (HERE/'tables'/'table_threeloop_letter.tex').write_text('\n'.join(t) + '\n')
 
 
 def keep_used_tables():
@@ -173,63 +173,6 @@ def write_sm_bib():
     
 
 
-def format_planar_rows(s):
-    """Keep all 41 known planar coefficients in one compact table.
-
-    MHV and NMHV coefficients at loops 1--4 are paired across 16 rows.
-    The nine MHV coefficients at five loops continue in the MHV column,
-    with the NMHV column empty at this order.
-    Expressions are copied directly from the common data generator.
-    """
-    old = r'\begin{tabular}{cp{0.9\textwidth}}'
-    assert s.count(old) == 1 and s.count(r'\end{tabular}') == 1, \
-        'the original planar table layout has changed'
-    before, rest = s.split(old, 1)
-    rows, after = rest.split(r'\end{tabular}', 1)
-    groups = {'MHV': {}, 'NMHV': {}}
-    mode = None
-    for line in rows.splitlines():
-        if line.startswith('$L$ & MHV:'):
-            mode = 'MHV'
-        elif line.startswith('$L$ & NMHV:'):
-            mode = 'NMHV'
-        elif re.match(r'^[1-5] & \$', line):
-            assert mode in groups, line
-            loop, body = line.split(' & $', 1)
-            assert body.endswith('$' + r'\\'), line
-            coeffs = body[:-3].split(r',\ ')
-            L = int(loop)
-            assert len(coeffs) == 2 * L - 1 and L not in groups[mode], (mode, L)
-            groups[mode][L] = coeffs
-    assert set(groups['MHV']) == set(range(1, 6)), groups['MHV']
-    assert set(groups['NMHV']) == set(range(1, 5)), groups['NMHV']
-    assert sum(len(row) for g in groups.values() for row in g.values()) == 41
-
-    out = [
-        r'\begin{tabular}{@{}r@{\hspace{4pt}}r@{\hspace{6pt}}l@{\hspace{12pt}}r@{\hspace{4pt}}r@{\hspace{6pt}}l@{}}',
-        r'\toprule',
-        r'\multicolumn{3}{c}{\textbf{MHV}: $2\pi i\,\ell^k$} & \multicolumn{3}{c}{\textbf{NMHV}: $\pi i\,\frac{1+w}{1+w^*}\,\ell^k$}\\',
-        r'\cmidrule(lr){1-3}\cmidrule(l){4-6}',
-        r'$L$ & $k$ & coefficient & $L$ & $k$ & coefficient\\',
-        r'\midrule',
-    ]
-    for L in range(1, 5):
-        assert len(groups['MHV'][L]) == len(groups['NMHV'][L])
-        for i, (left_coeff, right_coeff) in enumerate(zip(groups['MHV'][L], groups['NMHV'][L])):
-            left = f'{L if i == 0 else ""} & {2*L-1-i} & $' + left_coeff + '$'
-            right = f'{L if i == 0 else ""} & {2*L-2-i} & $' + right_coeff + '$'
-            out.append(left + ' & ' + right + r'\\')
-        if L < 4:
-            out.append(r'\addlinespace[3pt]')
-    out.append(r'\addlinespace[3pt]')
-    five_loop = groups['MHV'][5]
-    assert len(five_loop) == 9
-    for i, coeff in enumerate(five_loop):
-        out.append(f'{5 if i == 0 else ""} & {9-i} & $' + coeff + '$ & & & ' + r'\\')
-    out += [r'\bottomrule', r'\end{tabular}']
-    return before + '\n'.join(out) + after
-
-
 if __name__ == '__main__':
     mt = load(FULL/'make_tables.py', 'make_tables_full')
     mt.HERE = HERE                   # numbers.tex and tables/ are written here; SOURCES stay as registered there
@@ -240,13 +183,7 @@ if __name__ == '__main__':
     one = load(LETTER_I/'make_tables_letter.py', 'make_tables_letter')
     one.HERE = HERE
     n = one.letter_table(mt)
-    n4_path = HERE/'tables'/'table_n4_letter.tex'
-    n4 = n4_path.read_text()
-    old = 'and every other coefficient is a prediction. All agree.'
-    assert old in n4, 'the original planar table caption has changed'
-    n4_path.write_text(format_planar_rows(n4.replace(
-        old, 'and the remaining coefficients check the known radial representation and helicity map. All agree.')))
-    letter_threeloop_table()
+    letter_threeloop_table(mt)
     tables = keep_used_tables()
     sm_only = write_sm_bib()
     print(f'numbers.tex, {len(tables)} tables ({", ".join(t[6:] for t in tables)}; the planar N = 4 table of the '

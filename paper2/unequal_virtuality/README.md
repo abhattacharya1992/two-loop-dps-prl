@@ -1,8 +1,9 @@
 # Tests with off-shell vector bosons of different invariant masses
 
 A separate extension of the massless-quark `gg -> V1* V2*` DPS comparison,
-built on `main` **3d59dd953735bfbe2e3f8ca48dfd12b9e7b86195**.
-Branch: **`unequal-virtuality`**. The original amplitude points and equal-mass scientific datasets are preserved.
+originally developed from the historical source commit `3d59dd953735bfbe2e3f8ca48dfd12b9e7b86195`.
+These tests are now included in the consolidated PRL v2 cleanup branch; the
+original amplitude points and equal-mass scientific datasets are preserved.
 
 Two independent tests with **different invariant masses of the off-shell vector bosons**
 have been completed: `(ma2,mb2,s)=(1,2,15/2)` and `(2,3,17)`, in

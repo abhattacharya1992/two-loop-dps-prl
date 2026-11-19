@@ -34,7 +34,7 @@ The supplied point records remain analysis inputs. Resuming their numerical
 evaluation now requires matching provenance and a complete finite payload;
 untagged legacy files are not silently reused. Use a fresh output directory to
 preserve those files, or explicitly request `--recompute`. See the
-[reproduction guide](../../docs/REPRODUCIBILITY.md) for commands and the distinction
+[reproduction guide](../../REPRODUCING.md) for commands and the distinction
 between reanalysis and fresh amplitude evaluation.
 
 ## The gg → AA result (scan of 18–19 October 2026 on lhcpheno48, 80 points at β = 1/10, 1/4, 1/2, 2/3, 4/5)

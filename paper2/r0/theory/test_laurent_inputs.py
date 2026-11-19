@@ -120,6 +120,14 @@ class LaurentConsumerTests(unittest.TestCase):
                     with self.assertRaisesRegex(ValueError, 'invalid or incomplete'):
                         load_laurent(path, kind, expected_x='1/2')
 
+    def test_quark_self_energies_are_reused(self):
+        with working_directory(HERE):
+            original = r0_theory_quarks.self_energies
+            with patch.object(r0_theory_quarks, 'self_energies', wraps=original) as evaluate:
+                result, _ = r0_theory_quarks.kernel(1, 2)
+        self.assertEqual(evaluate.call_count, 2)
+        self.assertIn(('ek', 'ek'), result)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -1,11 +1,24 @@
-# FDH records before the follow-up regeneration
+# Initial FDH comparison snapshot
 
-These seven files were preserved byte for byte from the initial draft PR head,
-`2b5cbeb6b6dd7979b1a39de925a2dc43791b9f35`, before the 22 October follow-up.
-`SHA256SUMS` records their exact contents. The old check quotes a residual of
-`1.2779728801307832e-10`; the separate older `stored/` record quotes
-`2.1717718860454835e-13`. Both passed the existing numerical tolerance, but their
-original producer provenance is not established by those numbers.
+The seven records listed in SHA256SUMS document the initial FDH check from
+22 October 2026. Their contents and checksums remain available in Git history
+at commit `1259ee1fc9dedb42047cd3919f655713dd631f27`. They are not active inputs for the
+Letter, Supplement, or current numerical tests.
+
+To retrieve any record from a clone containing that commit, use:
+
+```bash
+git show 1259ee1fc9dedb42047cd3919f655713dd631f27:paper2/r0/theory/stored/history/2026-10-22-pr1-initial-fdh/FILE > FILE
+```
+
+Replace `FILE` with the filename in `SHA256SUMS`. The current FDH results
+and checkpoints remain in `paper2/r0/theory/`. The archival checksum manifest
+is retained here so the earlier comparison can still be identified and recovered.
+
+The initial check reported a residual of `1.2779728801307832e-10`;
+another older stored record reported `2.1717718860454835e-13`.
+Both passed the existing tolerance, but the residuals do not establish
+the original producer provenance.
 
 The active FDH files were regenerated from fresh symbolic integrands and fresh
 sector decompositions using the reviewed scripts. Their metadata records actual

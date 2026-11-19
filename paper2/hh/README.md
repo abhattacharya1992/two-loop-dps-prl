@@ -26,7 +26,7 @@ https://github.com/abhattacharya1992/ggAA-threshold.
 | `stage2a/` | Sec. 4 | what UV renormalisation and the infrared subtraction contribute to the leading logarithms |
 | `rg_argument/` | Sec. 5 | the renormalisation-group structure and its boundary term |
 | `orientation/` | Sec. 2.4 | the two quark-loop orientations of the massless crossed box |
-| `../manuscript/` | the paper: Tables 1–8, Figs. 1–5, every number quoted in the text | `make_tables.py` writes `numbers.tex` and the tables from the result files here, in `../zz` and in `../n4` (and from `p1_numbers.json` for the few numbers quoted from P1); `make_figure.py` draws Figs. 2–5 from the same files; `make figures` here runs both (Fig. 1 is a TikZ drawing, compiled by `make` in `../manuscript`) |
+| `../manuscript_prl/` | the current PRL v2 Letter and Supplemental Material, figures and reproducible TeX tables | `make build` from the repository root regenerates the tables, figures and both PDFs; Fig. 1 is compiled from the retained TikZ source. |
 | `tests/` | | `test_release.py` |
 
 The check scripts in `one_loop/`, `stage2a/`, `rg_argument/` and `orientation/` stop with

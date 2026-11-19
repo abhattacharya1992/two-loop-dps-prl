@@ -29,3 +29,20 @@ __pycache__/
 /paper2/manuscript_prl/letter.pdf
 /paper2/manuscript_prl/supplement.pdf
 /paper2/manuscript_prl/release/
+
+# Temporary baseline-equivalence reports and logs
+/release-check/
+
+# Fig. 1 is built deterministically from its retained TikZ source.
+/paper2/manuscript_prl/figures/dps_diagram.pdf
+
+# The PRL v2 publication files are generated from tracked source and data.
+/paper2/manuscript_prl/numbers.tex
+/paper2/manuscript_prl/sm.bib
+/paper2/manuscript_prl/letter_labels.tex
+/paper2/manuscript_prl/*.bbl
+/paper2/manuscript_prl/sm_nocite.tex
+
+# Regenerated region-sector acceleration caches; the original bytes are in frozen v2 Git history.
+/paper2/r0/theory/secdec_cache_*.pkl
+/phase2-check/

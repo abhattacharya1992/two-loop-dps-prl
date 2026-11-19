@@ -11,7 +11,7 @@ the real axis from the i0's), integrated over the half-line (-oo, 1-x) with the 
 (-oo, -x). For a rational R(z) = sum_j c_j/(z - z_j) with sum_j c_j = 0 (R ~ 1/z^2),
   int_{-oo}^{c} R dz = sum_j c_j [ ln|c - r_j| - i pi s_j theta(c - r_j) ],   z_j = r_j - i s_j 0,
 s_j = +1 for a pole below the real axis, -1 above. This closed form is checked against direct
-quadrature with a finite i0, then used in model_exact.py.
+quadrature with a finite i0, previously used in the historical model_exact.py; the active reference is model_exact2.py.
     python3 model_lminus.py
 """
 import mpmath as mp

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-# Writes numbers.tex (every number the text quotes, as a macro) and tables/table_*.tex
-# (Tables 1-11) from the result files, and checks what the text says about the figures.
+# Builds the quoted numerical macros and the tables used by the Letter and Supplement.
+# Results are read from retained data, with the original numerical checks.
 # Nothing in the tables or in the quoted numbers is typed by hand: results come from the
 # analyses in ../hh, ../zz, ../n4, ../kernel, ../r0 and the shared code dps/ (../dps or ../../common/dps), the scan settings from the scan points, and the few numbers
 # taken from P1 or from an earlier evaluation from small data files that say where each one
@@ -41,6 +41,7 @@ SOURCES = {
     'r0_scan_zz': R/'r0'/'data'/'r0_from_zz.json',             # Sec. 7.1, Table r0_zz: r0 of the eight gg -> ZZ amplitudes
     'r0_blind_hh': R/'r0'/'data'/'blind_test_hh.json',         # Sec. 7.1: blind test of the HH closed form
     'r0_blind_zz': R/'r0'/'data'/'blind_test_zz.json',         # Sec. 7.1: blind test of the ZZ closed form
+    'r0_endpoint': R/'r0'/'data'/'endpoint_test.json',         # Supplement: r0 of gg -> HH and gg -> ZZ at beta = 19/20
     'r0_quarks': R/'r0'/'theory'/'r0_theory_quarks.json',      # Sec. 7.2, App. F, Table 9: g -> q qbar from the regions
     'r0_gluons': R/'r0'/'theory'/'r0_theory_gluons.json',      # Sec. 7.2, App. F, Table 9: g -> gg from the regions
     'n4reg': R/'r0'/'theory'/'kappa1_n4.json',                 # Sec. 7.3, Table 11: kappa_1 of planar N = 4 from the regions
@@ -549,7 +550,7 @@ def n4_lines(expr, per_line=6, first=''):
 
 
 def n4_part(res):
-    """Checks the statements of Sec. 5.1 about the comparison with planar N = 4 and writes Tables 5 and 6."""
+    """Checks the planar N = 4 comparison and returns the quoted macros."""
     rows, nm = res['three_to_three'], res['nmhv']
     assert res['n_pass'] + res['n_fixed'] + res['n_norm'] == res['n_checked'] == len(rows)
     assert not any(r['status'].startswith('FAIL') for r in rows)
@@ -572,44 +573,6 @@ def n4_part(res):
     for r in rows:
         if r['k'] == 2*r['L'] - 2:
             assert r['status'] == 'PASS' and r['DE'] == '0', r
-    first = {}                                   # the order at which each constant is fixed
-    for r in rows:
-        if r['status'].startswith('fixes'):
-            first[r['status'].split()[1]] = (r['L'], r['k'])
-
-    def status(r, norm):
-        if r['status'] == 'PASS':
-            return 'agrees'
-        if r['status'].startswith('fixes'):
-            return f'fixes ${N4_NAMES[r["status"].split()[1]]}$'
-        assert r['status'] == 'normalisation', r
-        return f'defines ${norm}$'
-
-    def block(rs, norm):
-        return [f'{r["L"]} & {r["k"]} & ${n4_tex(r["DE"])}$ & {status(r, norm)}' for r in rs]
-
-    def table(rs, label, caption, name, norm):
-        half = (len(rs) + 1)//2
-        left, right = block(rs[:half], norm), block(rs[half:], norm) + [' & & & ']*(half - len(rs[half:]))
-        t = ['\\begin{table}[t]', '\\centering', '\\small', '\\setlength{\\tabcolsep}{4pt}',
-             '\\begin{tabular}{ccll@{\\hspace{14pt}}|@{\\hspace{14pt}}ccll}', '\\toprule',
-             '$L$ & $k$ & coefficient & result & $L$ & $k$ & coefficient & result\\\\', '\\midrule']
-        t += [f'{l} & {r}\\\\' for l, r in zip(left, right)]
-        t += ['\\bottomrule', '\\end{tabular}', f'\\caption{{{caption}}}', f'\\label{{{label}}}', '\\end{table}']
-        (HERE/'tables'/f'{name}.tex').write_text('\n'.join(t)+'\n')
-
-    table(rows, 'tab:n4',
-          'The coefficients of $2\\pi i\\ln^k|\\delta_*|$ in the $L$-loop MHV amplitude $\\mathcal E^{(L)}$ of ref.~\\cite{Dixon:2016epj}, '
-          'eqs.~(3.17)--(3.21), in $3\\to3$ kinematics, and the comparison with the structure of section~\\ref{sec:rg} '
-          'in the conformal theory: each fitted constant is fixed by the first coefficient in which it appears '
-          '(the constants are given in eq.~(\\ref{eq:n4const})); every other coefficient is a prediction.',
-          'table_n4', 'C_1')
-    table(nm, 'tab:n4nmhv',
-          'The same for the next-to-MHV amplitude: coefficients of $\\pi i\\,\\frac{1+w}{1+w^*}\\ln^k|\\delta_*|$ in $\\rho^{(L)}$, '
-          'including the constants $k=0$, eqs.~(D.14)--(D.17) of the erratum to ref.~\\cite{Dixon:2016epj}, compared with the '
-          '$|\\Delta J_z|=2$ component of the kernel, transformed with $\\nu=2$ in eq.~(\\ref{eq:Fm}), with the constants of '
-          'table~\\ref{tab:n4} and no new one; the one-loop term defines the normalisation $K$.',
-          'table_n4nmhv', 'K')
     g4 = res['solved_constants']['G4']
     # the constants have uniform transcendental weight: 2n for kappa_n, 2n - 1 for B^(n) (Sec. 5.1)
     loc = {f'zeta_{k}': sp.Symbol(f'zeta_{k}') for k in range(2, 10)}
@@ -1052,19 +1015,15 @@ def r0_part(fits, bhh, bzz, rq, rg):
 
 # ---------------------------------------------------------------- Sec. 7.3, Table 11: kappa_1 of planar N = 4 from the regions
 def n4reg_part(res, fdh):
-    """kappa_1 = zeta_2 from the regions (r0/theory/n4_hexagon.py): checks what the text says, writes Table 11,
-    returns the macros."""
+    """Check kappa_1 from the regions and return the quoted macros."""
     assert res['symbolic']['poles'] == 'cancel' and res['symbolic']['X^2'] == '-1/2' and res['symbolic']['X^1'] == '0'
     assert not res['symbolic']['depends on t1, t2']
-    z2 = res['zeta_2']
     pairs = res['pairs']
     fracs = sorted({p['x1'] for p in pairs} | {p['x2'] for p in pairs}, key=Fraction)
     assert len(fracs) == 5 and len(pairs) == 15, (fracs, len(pairs))
     eta = imag = pole = closed = dev = spread_nu = 0.0
-    rows = []
     for p in pairs:
         ex = p['expected poles (a_s C_A units)']
-        row = [f'{float(Fraction(p["x1"])):.1f}', f'{float(Fraction(p["x2"])):.1f}']
         for nu in ('nu=0', 'nu=2'):
             t = p[nu]
             eta = max(eta, t['max |1/eta coefficient|']); imag = max(imag, t['max |imag|'])
@@ -1072,8 +1031,6 @@ def n4reg_part(res, fdh):
             closed = max(closed, abs(t['r0 - [-5 z2 - 2 ln x ln(1-x) terms]']))
             dev = max(dev, abs(t['kappa_1 - zeta_2']))
         spread_nu = max(spread_nu, abs(p['nu=0']['eps^0'] - p['nu=2']['eps^0']))
-        row += [p['nu=0']['eps^0'], p['nu=2']['eps^0'], p['nu=0']['kappa_1'], p['nu=2']['kappa_1']]
-        rows.append(row)
     assert eta < 1e-9 and imag < 1e-8 and pole < 1e-8 and closed < 1e-6 and dev < 1e-6 and spread_nu < 1e-6
     assert fdh['largest deviation'] < 1e-9 and fdh['x'] == '1/2'
     prec = {}
@@ -1081,23 +1038,6 @@ def n4reg_part(res, fdh):
         if k.startswith('change of r0/C_A at x = 1/2'):
             key = 'quad' if 'quadrature' in k else 'alias'
             prec[key] = max(abs(w) for w in v.values())
-    t = ['\\begin{table}[t]', '\\centering', '\\small', '\\setlength{\\tabcolsep}{5pt}',
-         '\\begin{tabular}{cccccc}', '\\toprule',
-         '& & \\multicolumn{2}{c}{$r_0^{\\mathcal N=4}/C_A$} & \\multicolumn{2}{c}{$\\kappa_1$}\\\\',
-         '\\cmidrule(lr){3-4}\\cmidrule(lr){5-6}',
-         '$x_1$ & $x_2$ & $\\nu=0$ & $\\nu=2$ & $\\nu=0$ & $\\nu=2$\\\\', '\\midrule']
-    for r in rows:
-        t.append(f'{r[0]} & {r[1]} & ' + ' & '.join(f'${v:.8f}$' for v in r[2:]) + '\\\\')
-    t += ['\\midrule', f'eq.~(\\ref{{eq:r0n4}}), $\\zeta_2$ & & \\multicolumn{{2}}{{c}}{{to ${sci(closed, 1)}$}} '
-          f'& \\multicolumn{{2}}{{c}}{{${z2:.8f}$, to ${sci(dev, 1)}$}}\\\\',
-          '\\bottomrule', '\\end{tabular}',
-          '\\caption{Planar $\\mathcal N=4$ super Yang--Mills theory from the regions: the finite part of the '
-          'one-loop kernel at $\\mu=\\mu_b$, in units of $a_sC_A$, for the two components and all pairs of the '
-          'momentum fractions of the two splittings, and the constant $\\kappa_1$ of eq.~(\\ref{eq:kappaone}) '
-          'that follows with the hard functions and the normalisation of ref.~\\cite{Dixon:2016epj}. The last '
-          'row gives the largest difference from eq.~(\\ref{eq:r0n4}) and from $\\zeta_2$.}',
-          '\\label{tab:n4reg}', '\\end{table}']
-    (HERE/'tables'/'table_n4reg.tex').write_text('\n'.join(t)+'\n')
     macros = {'kappaOneReg': sci(dev, 1), 'nFourFDH': sci(fdh['largest deviation'], 1), 'rzNfourPole': sci(pole, 1),
               'rzNfourEta': sci(eta, 1), 'rzNfourImag': sci(imag, 1), 'rzNfourClosed': sci(closed, 1),
               'rzNfourSpread': sci(spread_nu, 1)}
@@ -1290,56 +1230,6 @@ def aa_part(aa, hh, check):
 
 
 # ---------------------------------------------------------------- Table 8: the three processes compared
-def rg_coefficients(DC, B):
-    """The four coefficients of eq. (5.6): G^3 and G^2 of the Delta J_z = 0 amplitude in units of
-    C_1, G^2 and G of the |Delta J_z| = 2 amplitude in units of K, in the variable of Q_*."""
-    return [-Fraction(4, 3)*DC, -B, -4*DC, 4*DC-2*B]
-
-
-def compare_table(colour, zz):
-    N, nf = 3, 5
-    CA, CF = Fraction(N), Fraction(N*N-1, 2*N)
-    beta0 = Fraction(11, 3)*CA-Fraction(2, 3)*nf
-    gluon = rg_coefficients(CA, 2*beta0)
-    quark = rg_coefficients(2*CF-CA, 6*CF)
-    assert set(colour) == set(zz['betas'])
-    vel = ','.join(frac_tex(Fraction(b)) for b in sorted(colour, key=Fraction))
-    sgn = lambda q: ('-' if q < 0 else '')+frac_tex(abs(q))
-    both = lambda a: f'\\multicolumn{{2}}{{c}}{{{a}}}'          # the same entry for AA and HH
-    rows = [
-        ('final state couples to', both('gluons, effective vertex'), 'quarks, massless loop'),
-        ('splitting', both('$g\\to gg$'), '$g\\to q\\bar q$'),
-        ('$\\DD$', both('$C_A$'), '$2C_F-C_A$'),
-        ('$B$', both('$2\\beta_0$'), '$6C_F$'),
-        ('$Q_*^2$', both('$m^4/s$'), '$s^{N_c^2}/m^{2(N_c^2-1)}$'),
-        ('variable $\\G_*$', both('$\\G$'), '$\\G_q$'),
-    ]
-    t = ['\\begin{table}[t]', '\\centering', '\\small', '\\begin{tabular}{lccc}', '\\toprule',
-         '& $gg\\to AA$ & $gg\\to HH$ & $gg\\to ZZ$\\\\', '\\midrule']
-    t += [' & '.join(r)+'\\\\' for r in rows]
-    t += ['\\midrule', '\\multicolumn{4}{l}{one loop}\\\\',
-          '$C_1$ & $2\\pi N_cm^2F_A(x)$ & $-2\\pi N_cm^2F_S(x)$ & $|C_1|=16\\pi x^2,\\ 16\\pi(1-x)^2$\\\\',
-          f'$K$ & {both("$\\pi N_cm^2W(x)$")} & $|K|=8\\pi x(1-x)$\\\\']
-    for head, items in (('two loops, $\\Delta J_z=0$, units of $C_1$', (('$\\G_*^3$', 0), ('$\\G_*^2$', 1))),
-                        ('two loops, $|\\Delta J_z|=2$, units of $K$', (('$\\G_*^2$', 2), ('$\\G_*$', 3)))):
-        t += ['\\midrule', f'\\multicolumn{{4}}{{l}}{{{head}}}\\\\']
-        t += [f'{lab} & {both("$"+sgn(gluon[i])+"$")} & ${sgn(quark[i])}$\\\\' for lab, i in items]
-    t += ['\\midrule',
-          f'tested in & ref.~\\cite{{P1}}, section~\\ref{{sec:r0}} & section~\\ref{{sec:hh}} & section~\\ref{{sec:zz}}\\\\',
-          '\\bottomrule', '\\end{tabular}',
-          '\\caption{The DPS terms in the three processes. The two-loop coefficients follow from eq.~(\\ref{eq:rg}) '
-          'with the colour factors above, in the variable $\\G_*=\\ln(p_T/Q_*)+i\\pi/2$ of the scale $Q_*$, '
-          'which is $\\G$ of eq.~(\\ref{eq:Gdef}) for gluon splittings and $\\G_q$ of eq.~(\\ref{eq:Gq}) for '
-          f'quark splittings, for $N_c={N}$ and $n_f={nf}$. '
-          'For $gg\\to ZZ$ the one-loop coefficients are moduli in the normalisation of section~\\ref{sec:zz}, '
-          'and the amplitudes with $\\Delta J_z=0$ and $|\\Delta J_z|=2$ are those of the first and second '
-          'group there; for $gg\\to AA$ and $gg\\to HH$ they are $\\M_1$ and $\\M_2$. Ref.~\\cite{P1} tested the '
-          '$gg\\to AA$ relations at threshold and, for the $\\G^3$ and $\\G^2$ coefficients, in the forward limit; '
-          'section~\\ref{sec:r0} tests the constant of the boundary term there. The $gg\\to HH$ and '
-          f'$gg\\to ZZ$ amplitudes are tested at $\\beta={vel}$.}}',
-          '\\label{tab:compare}', '\\end{table}']
-    (HERE/'tables'/'table_compare.tex').write_text('\n'.join(t)+'\n')
-
 def glauber_part(g):
     """The imaginary part of the kernel (r0/theory/glauber.py, task 5): checks what Secs. 7.2, 7.3 and App. F say
     and returns the macros."""
@@ -1385,6 +1275,41 @@ def glauber_part(g):
 
 
 
+def endpoint_part(e):
+    """Supplement, after the tests at additional velocities: r0 of gg -> HH and gg -> ZZ at beta = 19/20
+    (x = 0.975; r0/data/endpoint_test.py), and the Li_{2,2} evaluation of the gg -> ZZ points there."""
+    hh, zz = e['hh']['rows'], e['zz']['rows']
+    assert e['beta'] == '19/20' and len(hh) == 2 and len(zz) == 8, (e['beta'], len(hh), len(zz))
+    assert {r['hel'] for r in zz} == {'++++', '----', '++--', '--++', '+-++', '+---', '-+++', '-+--'}
+    # every value deviates from the closed form by less than a tenth of its own fit-window shift, and its
+    # imaginary part is smaller than that too
+    for r in hh:
+        for k in ('C_A', 'n_f'):
+            assert r[f'dev_{k}'] < 0.1*r[f'shift_{k}'] and abs(r[k][1]) < 0.1*r[f'shift_{k}'], r
+    for r in zz:
+        for p in ('2l_CF', '2l_CA'):
+            assert r[p]['dev'] < 0.1*r[p]['shift'] and abs(r[p]['r0'][1]) < 0.1*r[p]['shift'], r
+    dev_hh = max(max(r['dev_C_A'], r['dev_n_f']) for r in hh)
+    unc_hh = max(max(r['shift_C_A'], r['shift_n_f']) for r in hh)
+    dev_zz = max(r[p]['dev'] for r in zz for p in ('2l_CF', '2l_CA'))
+    unc_zz = max(r[p]['shift'] for r in zz for p in ('2l_CF', '2l_CA'))
+    # the precision controls (15 more digits at delta = 1e-10) leave the amplitudes unchanged far below the fits
+    ctrl = [c['rel_diff'] for c in e['hh']['control']] + [v for c in e['zz']['control'] for v in c['max_rel_diff'].values()]
+    assert len(e['hh']['control']) == 2 and len(e['zz']['control']) == 1 and max(ctrl) < 1e-30, ctrl
+    # gg -> ZZ: the fixed subdivision of ggvv.py loses digits at this velocity; the points use evaluate_hh.li22,
+    # which agrees with a reference of 30 more digits, and the amplitudes change by less than the quoted bound
+    li = e['zz']['li22']
+    assert li['points'] == 10 and li['max_reference_diff_in_units_of_last_digit'] < 1, li
+    change = e['zz']['max_amplitude_change_fixed_split']
+    assert 0 < change < 1e-20, change
+    ratio = e['quark_x_dependence_ratio_to_x_0.9']
+    assert 2 < ratio < 3, ratio
+    return {'rzEndHH': sci(dev_hh, 1), 'rzEndHHunc': sci(unc_hh, 1), 'rzEndZZ': sci(dev_zz, 1),
+            'rzEndZZunc': sci(unc_zz, 1), 'rzEndXratio': f'{ratio:.1f}',
+            'rzEndLiLost': str(li['max_digits_lost_fixed_split']), 'rzEndLiDps': str(li['at']['dps']),
+            'rzEndAmp': f'10^{{{math.ceil(math.log10(change))}}}'}
+
+
 def unequal_matching_part(data):
     """New fits of retained unequal-mass amplitudes, including both helicities."""
     results=data['results']
@@ -1406,6 +1331,8 @@ def unequal_matching_part(data):
 def main():
     colour, oneloop, scale, forward = load('colour'), load('one_loop'), load('scale'), load('forward')
     stage2a, p1, bose, scan = load('stage2a'), load('p1'), load('bose'), scan_summary()
+    zz_data, zz_forward, n4_data = load('zz'), load('zz_forward'), load('n4')
+    blind_hh, blind_zz = load('r0_blind_hh'), load('r0_blind_zz')
     BETAS = sorted(colour, key=Fraction)
     rows_all = [r for b in BETAS for r in colour[b]['rows']]
     nonzero = [r for r in rows_all if float(r['prediction']) != 0]
@@ -1489,34 +1416,35 @@ def main():
         'kOneApproachDigits': NUMBER_WORDS[kdig],
     }
     # gg -> ZZ (task J): section 6.2, Table 7 and the gg -> ZZ parts of appendices A and B
-    (HERE/'tables').mkdir(exist_ok=True)
-    zz_macros, zz_words = zz_part(load('zz'), load('zz_summary'), load('zz_forward'))
-    assert len({v['spread_from_delta_exp'] for v in load('zz_forward').values()}) == 1
-    compare_table(colour, load('zz'))
+    zz_macros, zz_words = zz_part(zz_data, load('zz_summary'), zz_forward)
+    assert len({v['spread_from_delta_exp'] for v in zz_forward.values()}) == 1
+    assert set(colour) == set(zz_data['betas'])
     assert not set(zz_macros) & set(macros) and not set(zz_words) & set(words)
     macros |= zz_macros
-    macros |= windows_part(load('windows'), load('zz_windows'), colour, load('zz'))
+    macros |= windows_part(load('windows'), load('zz_windows'), colour, zz_data)
     words |= zz_words
-    fwd_macros, fwd_words = forward_part(load('aa_curve'), load('zz_wide'), load('zz'))
+    fwd_macros, fwd_words = forward_part(load('aa_curve'), load('zz_wide'), zz_data)
     macros |= fwd_macros
     words |= fwd_words
-    n4_macros, n4_words = n4_part(load('n4'))
+    n4_macros, n4_words = n4_part(n4_data)
     macros |= n4_macros
     words |= n4_words
     k_macros, k_words = kernel_part(load('kernel'))
     assert not set(k_macros) & set(macros) and not set(k_words) & set(words)
     macros |= k_macros
     words |= k_words
-    (HERE/'tables').mkdir(exist_ok=True)
-    r_macros, r_words = r0_part(load('r0_fits'), load('r0_blind_hh'), load('r0_blind_zz'), load('r0_quarks'),
+    r_macros, r_words = r0_part(load('r0_fits'), blind_hh, blind_zz, load('r0_quarks'),
                                 load('r0_gluons'))
     assert not set(r_macros) & set(macros) and not set(r_words) & set(words)
     macros |= r_macros
     words |= r_words
+    e_macros = endpoint_part(load('r0_endpoint'))
+    assert not set(e_macros) & set(macros)
+    macros |= e_macros
     uv_macros=unequal_matching_part(load('uv_matching'))
     assert not set(uv_macros) & set(macros)
     macros |= uv_macros
-    f_macros, f_words = r0_fits_part(load('r0_scan_hh'), load('r0_scan_zz'), load('r0_blind_hh'), load('r0_blind_zz'))
+    f_macros, f_words = r0_fits_part(load('r0_scan_hh'), load('r0_scan_zz'), blind_hh, blind_zz)
     assert not set(f_macros) & set(macros) and not set(f_words) & set(words)
     macros |= f_macros
     words |= f_words
@@ -1529,11 +1457,11 @@ def main():
     macros |= g_macros
     words |= g_words
     three_loop_part(load('three_loop'))
-    for more in (nmhv_primary_part(load('n4_primary'), load('n4')), ultrasoft_part(load('ultrasoft')),
+    for more in (nmhv_primary_part(load('n4_primary'), n4_data), ultrasoft_part(load('ultrasoft')),
                  ultrasoft_dimension_part(SOURCES['ultrasoft_d'], load('ultrasoft'))):
         assert not set(more) & set(macros) and not set(more) & set(words)
         words |= more
-    cs_macros, cs_words = collins_soper_part(load('collins_soper'), load('n4'))
+    cs_macros, cs_words = collins_soper_part(load('collins_soper'), n4_data)
     assert not set(cs_macros) & set(macros) and not set(cs_words) & set(words)
     macros |= cs_macros
     words |= cs_words
@@ -1551,34 +1479,8 @@ def main():
             f.write(f'\\newcommand{{\\{k}}}{{\\ensuremath{{{v}}}}}\n')
         for k, v in words.items():
             f.write(f'\\newcommand{{\\{k}}}{{{v}}}\n')
-    (HERE/'tables').mkdir(exist_ok=True)
 
     # ------------------------------------------------------------ Table 1: one loop
-    rng = lambda e: f'${p1[e]["beta_range"][0]}\\le\\beta\\le{p1[e]["beta_range"][1]}$'
-    rows = [
-        ('$gg\\to AA$, $\\ln p_T^2$ in $\\M_1^{(1)}$', '$\\pi N_cm^2F_A(x)$',
-         'exact one-loop remainders \\cite{P1}', f'${sci(p1["AA_log"]["value"], 0)}$'),
-        ('$gg\\to AA$, forward limit of $\\M_2^{(1)}$', '$m^2K_1(x)$',
-         'exact one-loop remainders \\cite{P1}', f'${sci(p1["AA_K1"]["value"], 0)}$'),
-        ('$gg\\to HH$, $\\ln p_T^2$ in $\\M_1^{(1)}$', '$-\\pi N_cm^2F_S(x)$',
-         'one-loop amplitude of ref.~\\cite{P1}', f'${sci(p1["HH_log"]["value"], 0)}$'),
-        ('', '', 'scale dependence of the two-loop amplitudes, section~\\ref{sec:hhoneloop}', f'${sci(ol_slope, 1)}$'),
-        ('$gg\\to HH$, forward limit of $\\M_2^{(1)}$', '$m^2K_1(x)$',
-         'scale dependence of the two-loop amplitudes, section~\\ref{sec:hhoneloop}', f'${sci(ol_K, 1)}$'),
-    ]
-    t = ['\\begin{table}[t]', '\\centering', '\\small',
-         '\\begin{tabular}{p{4.2cm}p{2.4cm}p{4.6cm}c}', '\\toprule',
-         'quantity & derived & compared with & rel.\\ difference\\\\', '\\midrule']
-    t += [' & '.join(r)+'\\\\' for r in rows]
-    t += ['\\bottomrule', '\\end{tabular}',
-          '\\caption{One-loop DPS terms, eqs.~(\\ref{eq:FA})--(\\ref{eq:K1}), compared with exact amplitudes. '
-          f'The $AA$ comparisons are those of ref.~\\cite{{P1}}, for {rng("AA_log")} ($F_A$) and '
-          f'{rng("AA_K1")} ($K_1$). The comparison with the one-loop $gg\\to HH$ amplitude of ref.~\\cite{{P1}} '
-          f'covers {rng("HH_log")}, and those based on the two-loop amplitudes are at '
-          f'$\\beta={",".join(BETAS)}$.}}', '\\label{tab:oneloop}', '\\end{table}']
-    (HERE/'tables'/'table_oneloop.tex').write_text('\n'.join(t)+'\n')
-
-    # ------------------------------------------------------------ Table 2: colour terms at one velocity
     names = {'N2': '$N^2$', 'N_Nf': '$Nn_f$', 'Nf_over_N': '$n_f/N$', 'Nf2': '$n_f^2$'}
     coeffs = {'spin0 G^3': '$c_{13}$, $\\G^3$ in $A_1$', 'spin0 G^2': '$c_{12}$, $\\G^2$ in $A_1$',
               'spin2 G^2': '$c_{22}$, $\\G^2$ in $A_2$', 'spin2 G^1': '$c_{21}$, $\\G$ in $A_2$'}
@@ -1607,34 +1509,6 @@ def main():
           '\\label{tab:colour}', '\\end{table}']
     (HERE/'tables'/'table_colour.tex').write_text('\n'.join(t)+'\n')
 
-    # ------------------------------------------------------------ Table 3: one loop from the scale dependence
-    t = ['\\begin{table}[t]', '\\centering', '\\small',
-         '\\begin{tabular}{ll' + 'c'*len(BETAS) + '}', '\\toprule',
-         'quantity & expected & ' + ' & '.join(f'$\\beta={x}$' for x in BETAS) + '\\\\', '\\midrule']
-    ol = lambda key: [float(oneloop[x]['one_loop'][key]) for x in BETAS]
-    t.append('$\\bar c_1$, coefficient of $N\\G$ in $A_1^{(1)}$ & $-2\\pi F_S$ & '
-             + ' & '.join(f'${sci(v, 1)}$' for v in ol('spin0_slope_rel_dev')) + '\\\\')
-    t.append('$\\bar K_1$, coefficient of $N$ in $A_2^{(1)}$ at $p_T=0$ & $\\pi W$ & '
-             + ' & '.join(f'${sci(v, 1)}$' for v in ol('spin2_forward_rel_dev')) + '\\\\')
-    t.append('coefficient of $n_f\\G$ in $A_1^{(1)}$ & 0 & '
-             + ' & '.join(f'${sci(v, 1, 1e-30)}$' for v in ol('spin0_slope_mF_abs')) + '\\\\')
-    labels = {'c13(N^2)/slope': ('$c_{13}(N^2)/\\bar c_1$', '$-4/3$'), 'c12(N^2)/slope': ('$c_{12}(N^2)/\\bar c_1$', '$-22/3$'),
-              'c12(N n_f)/slope': ('$c_{12}(Nn_f)/\\bar c_1$', '$4/3$'), 'c22(N^2)/K': ('$c_{22}(N^2)/\\bar K_1$', '$-4$'),
-              'c21(N^2)/K': ('$c_{21}(N^2)/\\bar K_1$', '$-32/3$'), 'c21(N n_f)/K': ('$c_{21}(Nn_f)/\\bar K_1$', '$8/3$')}
-    for k, (lab, ex) in labels.items():
-        t.append(f'{lab} & {ex} & '
-                 + ' & '.join(f'${sci(float(oneloop[x]["ratios"][k]["rel_dev"]), 1)}$' for x in BETAS) + '\\\\')
-    t += ['\\bottomrule', '\\end{tabular}',
-          '\\caption{One-loop $gg\\to HH$ coefficients obtained from the coefficient of $L$ in the two-loop '
-          'remainders, and the relations of eq.~(\\ref{eq:relations}) tested with numbers taken from the same '
-          'expressions. Here $\\bar c_1=c_1/N$ and $\\bar K_1=K_1/N$ are the one-loop coefficients per unit $N$, '
-          'and $c_{ij}(N^2)$ and $c_{ij}(Nn_f)$ are the coefficients of $N^2$ and $Nn_f$ in $c_{ij}$. The '
-          'entries are relative deviations from the expected values, except in the third row, which gives '
-          'the absolute value.}',
-          '\\label{tab:hhoneloop}', '\\end{table}']
-    (HERE/'tables'/'table_hhoneloop.tex').write_text('\n'.join(t)+'\n')
-
-    # ------------------------------------------------------------ Table 4: what the subtraction adds (task A)
     row_names = {'spin 0, C_1 G^3': '$\\G^3$ in $\\M_1$, units of $C_1$',
                  'spin 0, C_1 beta0 G^2': '$\\beta_0\\G^2$ in $\\M_1$, units of $C_1$',
                  'spin 2, K G^2': '$\\G^2$ in $\\M_2$, units of $K$',
@@ -1657,7 +1531,7 @@ def main():
     print('numbers.tex:')
     for k, v in {**macros, **words}.items():
         print(f'  {k:20s} {v}')
-    print('tables: ' + ', '.join(f'table_{n}.tex' for n in ('oneloop', 'colour', 'hhoneloop', 'stage2a', 'zz', 'compare', 'n4', 'n4nmhv', 'r0', 'n4reg')))
+    print('tables: colour, stage2a, zz, r0, r0_amp, r0_zz, threeloop')
 
 
 if __name__ == '__main__':

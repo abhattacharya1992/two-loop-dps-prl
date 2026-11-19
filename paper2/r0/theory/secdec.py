@@ -198,9 +198,6 @@ class Sector:
                 tot += coef*complex(self.Hf(*vals, ep, et))
                 continue
             grids = np.meshgrid(*([t]*len(free)), indexing='ij')
-            wgrid = np.ones_like(grids[0])
-            for g, i in zip(range(len(free)), free):
-                pass
             # substitution v = s^p on each free variable
             V = [g**p for g in grids]
             J = np.ones_like(grids[0])

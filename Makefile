@@ -2,14 +2,18 @@
 SHELL := /bin/bash
 .SHELLFLAGS := -e -o pipefail -c
 PY ?= python3
+BENCH_RUNS ?= 3
 .NOTPARALLEL:
-.PHONY: help threshold independent-checks test build archive
+.PHONY: cache-archive-check phase2-check help threshold independent-checks test-science test pinch-checks pinch-figures manuscript-tests derivation-tests build archive archive-check reproduce release-check release-check-quick release-check-tests
 
 help:
 	@printf '%s\n' 'make threshold: earlier AA threshold coefficients vs PRL at x=1/2' \
-	 'make test: all included stored-data tests and bounded Stage 1/2 checks' \
+	 'make test-science: scientific tests without TeX figure compilation' \
+	 'make test: scientific tests plus figure generation checks' \
 	 'make build: regenerate tables, figures, Letter and Supplement' \
-	 'make archive: build and validate isolated arXiv source package'
+	 'make archive: build and validate isolated arXiv source package' \
+	 'make reproduce: test, analytic derivations, PDFs and source archive' \
+	 'make release-check: compare publication and calculations against frozen PRL v2'
 
 threshold:
 	$(PY) checks/threshold_ggAA/check.py
@@ -21,10 +25,11 @@ independent-checks:
 	$(PY) checks/stage2_novelty_20261113/verify_stage2.py --output "$$d/stage2.json"; \
 	$(PY) checks/stage2_novelty_20261113/test_stage2_guards.py --output "$$d/stage2-guards.json"
 
-test: threshold independent-checks pinch-checks
+test: manuscript-tests test-science
+
+test-science: threshold independent-checks pinch-checks dps-links
 	$(PY) checks/blind_point_provenance.py
 	$(PY) checks/test_boundary_coefficients.py
-	$(MAKE) -C paper2/manuscript_prl test PY="$(PY)"
 	$(MAKE) -C common/dps test PY="$(PY)"
 	$(MAKE) -C paper2/hh test PY="$(PY)"
 	$(MAKE) -C paper2/zz test PY="$(PY)"
@@ -37,11 +42,46 @@ test: threshold independent-checks pinch-checks
 build:
 	$(MAKE) -C paper2/manuscript_prl PY="$(PY)"
 
-archive: build
+archive: build archive-check
+
+archive-check:
 	$(PY) paper2/manuscript_prl/make_arxiv.py --check
 
-.PHONY: pinch-checks
+derivation-tests:
+	$(MAKE) -C paper2/r0/derivation test PYTHON="$(PY)"
+
+reproduce: test derivation-tests archive-check
+
 pinch-checks:
-	$(MAKE) -C paper2/manuscript_prl figure PY="$(PY)"
-	$(PY) -m unittest discover -s paper2/manuscript_prl -p 'test_make_tables.py' -v
 	$(MAKE) -C checks/pinch_regions check PY="$(PY)"
+
+manuscript-tests:
+	$(MAKE) -C paper2/manuscript_prl all PY="$(PY)"
+	$(PY) -m unittest discover -s paper2/manuscript_prl -p 'test_make_tables.py' -v
+	$(MAKE) -C paper2/manuscript_prl test PY="$(PY)"
+
+pinch-figures:
+	$(MAKE) -C paper2/manuscript_prl figure PY="$(PY)"
+
+# Run both revisions in detached worktrees. Does not update a branch.
+release-check-tests:
+	$(PY) -m unittest discover -s checks -p 'test_release_compare.py' -v
+
+release-check-quick: cache-archive-check release-check-tests
+	$(PY) checks/release_compare.py --quick --archived-cache-manifest checks/region_cache_manifest.json --python "$(PY)" --output release-check
+
+release-check: cache-archive-check release-check-tests
+	$(PY) checks/release_compare.py --archived-cache-manifest checks/region_cache_manifest.json --python "$(PY)" --output release-check --benchmark-runs "$(BENCH_RUNS)"
+
+.PHONY: dps-links
+dps-links:
+	$(PY) checks/dps_links/check_couplings.py
+	$(PY) checks/dps_links/check_dpd_kernels.py
+
+# Reproduce v2 and the candidate in detached worktrees, then compare their outputs.
+phase2-check: release-check
+
+# Cache snapshots are optional; this check only reads the frozen v2 Git history.
+cache-archive-check:
+	$(PY) -m unittest discover -s checks -p 'test_region_cache_archive.py' -v
+	$(PY) checks/region_cache_archive.py --verify

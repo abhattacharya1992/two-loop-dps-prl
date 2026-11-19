@@ -125,7 +125,8 @@ def kernel(num, den, col, suffix=''):
     tx, ty = f'{num}o{den}{suffix}', f'{den - num}o{den}{suffix}'
     J1, tau1 = load(tx, col)
     J2, tau2 = load(ty, col)
-    se = {j: self_energy(xx, col)[j] + self_energy(1 - xx, col)[j] for j in (-2, -1, 0)}
+    se_x, se_y = self_energy(xx, col), self_energy(1 - xx, col)
+    se = {j: se_x[j] + se_y[j] for j in (-2, -1, 0)}
     dc = 1 if col == 'CA' else 0
     out = {}
     for nu in (0, 2):

@@ -45,52 +45,50 @@ class NestedInputs(unittest.TestCase):
         self.assertIn('Gardi:2024dissecting',mt.cited(mt.HERE/'supplement.tex'))
 
     def test_planar_parallel_panels_preserve_41_coefficients(self):
-        rows = [
-            r'\begin{table*}[t]', r'\centering', r'\small',
-            r'\begin{tabular}{cp{0.9\textwidth}}',
-            r'\toprule', r'$L$ & MHV: coefficients\\', r'\midrule',
-        ]
+        # Exercise the final table renderer directly from independent structured
+        # rows. The former test only exercised a now-retired TeX reparser.
+        from types import SimpleNamespace
+        renderer = mt.load(mt.FULL/'make_tables_letter.py', 'letter_direct_regression')
+        rows = {'MHV': [], 'NMHV': []}
         expressions = []
         for mode, loops in (('MHV', range(1, 6)), ('NMHV', range(1, 5))):
-            if mode == 'NMHV':
-                rows += [r'\midrule', r'$L$ & NMHV: coefficients\\', r'\midrule']
             for L in loops:
                 powers = (range(2 * L - 1, 0, -1) if mode == 'MHV'
                           else range(2 * L - 2, -1, -1))
-                entries = [rf'\mathrm{{{mode}}}_{{{L}{k}}}' for k in powers]
-                expressions.extend(entries)
-                rows.append(f'{L} & $' + r',\ '.join(entries) + '$' + r'\\')
-        rows += [r'\bottomrule', r'\end{tabular}',
-                 r'\caption{ONE CAPTION}', r'\label{tab:n4letter}',
-                 r'\end{table*}']
-        result = mt.format_planar_rows('\n'.join(rows) + '\n')
+                for k in powers:
+                    value = rf'\mathrm{{{mode}}}_{{{L}{k}}}'
+                    rows[mode].append({'L': L, 'k': k, 'DE': value, 'status': 'PASS'})
+                    expressions.append(value)
+        fake_mt = SimpleNamespace(
+            load=lambda _: {'three_to_three': rows['MHV'],
+                            'nmhv': rows['NMHV'], 'loops_compared': 5},
+            sp=None, n4_tex=lambda expr: expr, N4_NAMES={})
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root/'tables').mkdir()
+            with patch.object(renderer, 'HERE', root):
+                count = renderer.letter_table(fake_mt)
+            result = (root/'tables'/'table_n4_letter.tex').read_text()
+        self.assertEqual(count, 41)
         self.assertEqual(len(expressions), 41)
         for expression in expressions:
             self.assertEqual(result.count('$' + expression + '$'), 1, expression)
         self.assertEqual(result.count(r'\begin{tabular}{@{}r@{'), 1)
         self.assertEqual(result.count(r'\end{tabular}'), 1)
-        self.assertEqual(result.count(r'\caption{ONE CAPTION}'), 1)
         self.assertEqual(result.count(r'\addlinespace[3pt]'), 4)
-        self.assertEqual(result.count(r'\multicolumn{4}{@{}l@{}}'), 0)
-        self.assertNotIn(r'\textbf{MHV}, $L=5$', result)
-        self.assertNotIn(r'\begin{tabular*}{\textwidth}', result)
         self.assertIn(
             '4 & 7 & $' + r'\mathrm{MHV}_{47}' +
             '$ & 4 & 6 & $' + r'\mathrm{NMHV}_{46}' + '$', result)
-        five_loop = result.split(
+        last = result.split(
             '5 & 9 & $' + r'\mathrm{MHV}_{59}' + '$', 1)[1].split(
             r'\bottomrule', 1)[0]
         five_rows = [
             '5 & 9 & $' + r'\mathrm{MHV}_{59}' + '$' +
-            five_loop.splitlines()[0],
-            *five_loop.splitlines()[1:],
-        ]
+            last.splitlines()[0], *last.splitlines()[1:]]
         self.assertEqual(len(five_rows), 9)
         self.assertTrue(all(row.count('&') == 5 for row in five_rows))
         for k in range(9, 0, -1):
-            self.assertIn(
-                '& ' + str(k) + ' & $' + rf'\mathrm{{MHV}}_{{5{k}}}' +
-                '$ & & & ' + r'\\', result)
-        self.assertNotIn('$ &  & &', result)
+            self.assertIn('& ' + str(k) + ' & $' +
+                          rf'\mathrm{{MHV}}_{{5{k}}}' + '$ & & & ' + r'\\', result)
 
 if __name__=='__main__':unittest.main()

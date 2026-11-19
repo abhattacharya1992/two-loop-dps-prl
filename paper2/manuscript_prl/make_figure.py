@@ -5,15 +5,16 @@
 # (../_build/make_figure.py) from the result files listed in its SOURCES, with the output
 # directed to figures/ here.
 #
-# Letter, Fig. 1: the tree diagram and the crossed box of Paper I, drawn with TikZ-Feynman. The
-# the retained original TikZ source is in figures/dps_diagram_tikz.tex and compiled inside
-# the wrapper figures/dps_diagram.tex. No Paper I manuscript directory is needed.
+# Letter, Fig. 1: the two-loop DPS configuration for gluon and quark splittings, drawn with
+# TikZ-Feynman. The TikZ source is figures/dps_diagram_tikz.tex, compiled inside the wrapper
+# figures/dps_diagram.tex.
 #
 #   python3 make_figure.py
 import importlib.util
 import pathlib
 import subprocess
 import sys
+import argparse
 
 HERE = pathlib.Path(__file__).resolve().parent
 FULL = HERE.parent/'_build'
@@ -41,10 +42,16 @@ def diagram_figure():
 
 
 if __name__ == '__main__':
-    mf.forward_figure()
-    mf.zz_figure()
+    parser = argparse.ArgumentParser(description='Reproduce the PRL v2 figures')
+    parser.add_argument('--diagnostics', action='store_true',
+                        help='also render forward-approach and ZZ-coefficient diagnostic plots')
+    args = parser.parse_args()
+    if args.diagnostics:
+        mf.forward_figure()
+        mf.zz_figure()
     mf.zz_prediction_figure()
     mf.three_process_comparison_figure()
     mf.windows_figure()
-    print('figures/forward_approach.pdf, zz_coefficients.pdf, zz_prediction.pdf, three_process_comparison.pdf, fit_windows.pdf written')
     diagram_figure()
+    print('Publication figures regenerated'
+          + (' with optional diagnostic plots' if args.diagnostics else ''))

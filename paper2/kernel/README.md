@@ -158,7 +158,7 @@ real ℓ⁻ axis (D₆(u₅) = −B + xa/(x + ℓ⁻) + iη with η > 0 on x + �
 the wrong side, z₆′ and the gluon pole formed a fake pinch on the half line ℓ_⊥ ∥ q − k, beyond
 q − k, where F grew like 1/distance and the transverse integral did not converge. The earlier test of
 the closed form did not see it because the residue at z₆′ is small at its test points. The three
-files keep copies `*_before_z6p_fix.py`.
+the pre-correction sources are retained in Git history at commit `1259ee1`, rather than in the active source tree. They are not used to generate the published results.
 
 Results (λ ≥ 10⁻³; at λ = 3 × 10⁻⁴ the smallest windows reach the rounding level of double precision):
 
@@ -228,12 +228,17 @@ Part 3: the DPS kernel, c_u = d_u = 0 (B2.3), g₁ = 0 (B1): r₂ = r₁ = 0.
 | `model_fast.py` | B2.2: numpy evaluator (pinches, kinks, windows) used for the results |
 | `model_ref_check.py`, `.log` | B2.2: numpy against mpmath at six points |
 | `model_numerics.py`, `.log` | B2.2: ultrasoft scaling, single logarithm, eikonal coefficient |
-| `model_2d.py`, `model_2d_conv.log` | transverse integral of F (written before the z₆′ fix was complete; not used for the results) |
+| `model_2d.py`, `model_2d_conv.log` (history only) | older transverse-integral experiment preceding the z₆′ correction; not used in published results |
 | `us_telescoping.py`, `.log` | B2.3: the ultrasoft cancellation |
 | `kernel_logs.py`, `.log` | B2.4: r₂ = c_u/2, r₁ = g₁ + d_u + c_u κ_u; triangle check; r₁ = r₂ = 0 |
 | `stage_b_results.py`, `results_stage_b.json` | the numbers quoted in the manuscript, recomputed from the functions above |
-| `model_exact.py` | first (scipy) version, superseded |
+| `model_exact.py` (history only) | superseded SciPy implementation; the active reference is `model_exact2.py` |
 
 Run: `python3 soft_function.py`, `lab_triangle.py`, `model_kres.py`, `us_telescoping.py`
 (each < 1 min), `kernel_logs.py` (seconds), `model_numerics.py` (about 1 min), `model_ref_check.py`
 (about 4 min), `stage_b_results.py` (about 2 min).
+
+Historical optional programs `model_exact.py`, `model_2d.py` and its convergence
+log are retrievable from Git history at commit
+`5e6efa267e52fefa6980ae4462b8a1be9bd24e4f`; they are not required
+for the current publication or test suite.

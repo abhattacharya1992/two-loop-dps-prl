@@ -11,6 +11,7 @@ Reads gqq_laurent_x*.json (assemble_gqq.py) and writes r0_theory_quarks.json.
     python3 r0_theory_quarks.py
 """
 import json, os
+from fractions import Fraction
 import numpy as np
 import mpmath as mp
 from laurent_inputs import load_laurent
@@ -45,7 +46,7 @@ def load(tag, suffix=''):
     d = load_laurent(f'gqq_laurent_x{tag}{suffix}.json', 'gqq', expected_x=tag.split('_', 1)[0].replace('o', '/'))
     tot = {st: {c: {} for c in DC} for st in ('ek', 'ke')}
     for name, dd in d['diagrams'].items():
-        pref = {k: float(eval(v)) for k, v in dd['pref'].items()}
+        pref = {k: float(Fraction(v)) for k, v in dd['pref'].items()}
         for st in ('ek', 'ke'):
             for key, (re, im) in dd['laurent'][st].items():
                 for c in DC:
@@ -62,7 +63,8 @@ def kernel(num, den, suffix=''):
     xx = num/den
     J1 = load(f'{num}o{den}', suffix)
     J2s = load(f'{den - num}o{den}', suffix)
-    se = {k: self_energies(xx)[k] + self_energies(1 - xx)[k] for k in (-2, -1, 0)}
+    se_x, se_y = self_energies(xx), self_energies(1 - xx)
+    se = {k: se_x[k] + se_y[k] for k in (-2, -1, 0)}
     out = {}
     flip = {'ek': 'ke', 'ke': 'ek'}
     # the four helicity configurations: structure s1 of J1 and s2 of J2, where J2 in structure s2 is J1(1 - x) in

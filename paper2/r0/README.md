@@ -37,7 +37,8 @@ Here F₀ = F_S and F₂ = W, as defined in the Letter.
 | `points_hh/`, `run_hh_new_velocities.py` | new gg → HH points at β = 1/10 and 4/5 (x = 0.55, 0.9), with the scan code of `../hh/hh_two_loop` (needs the files of `make fetch` in `../hh`) |
 | `points_zz/`, `zz_jobs_a.txt`, `zz_jobs_b.txt` | new gg → ZZ points at β = 4/5 (x = 0.9), computed with `../zz/scripts/zz_points.py` and these job lists |
 | `blind_test_hh.py`, `blind_test_zz.py` → `blind_test_*.json` | the closed forms against fits at the new velocities, which were not used to find them: 2 × 10⁻⁹ (HH), 4 × 10⁻⁹ (ZZ) |
-| `test_data.py` | reruns the five scripts and checks that the stored files are reproduced |
+| `points_endpoint/`, `zz_points_acc.py`, `endpoint_test.py` → `endpoint_test.json` | gg → HH and gg → ZZ at β = 19/20 (x = 0.975, where the x-dependent part of the quark-splitting r₀ is 2.4 times its value at x = 0.9): r₀ against the closed forms, every value within a tenth of its fit-window shift, and the precision controls. The ZZ points come from `zz_points_acc.py`, which runs `../zz/scripts/zz_points.py` with Li₂,₂ on its integral branch evaluated by `../hh/hh_two_loop/evaluate_hh.li22`: at this velocity the fixed subdivision of `ggvv.py` loses up to 29 of 90 digits (`points_endpoint/zz/li22_*.json`; `check_li22_scan.py` stops at δ = 10⁻⁴, `points_endpoint/logs/check_li22_scan.log`). `points_endpoint/zz_fixed_split/` holds the same points from the unchanged code; their amplitudes differ by less than 10⁻²². The commands are in the docstring of `endpoint_test.py` |
+| `test_data.py` | reruns the six scripts and checks that the stored files are reproduced |
 
 ## `theory/`: numerical evaluation of momentum regions
 

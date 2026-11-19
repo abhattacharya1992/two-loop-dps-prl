@@ -17,6 +17,7 @@ export P1_ROOT
 
 test:
 	$(PY) tests/test_dps.py
+	$(PY) tests/test_analysis_efficiency.py
 	$(PY) tests/test_provenance.py
 	$(PY) tests/test_numerical_guards.py
 
