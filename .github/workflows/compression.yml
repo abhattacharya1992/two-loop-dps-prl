@@ -2,6 +2,10 @@ name: Compression and performance validation
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - compression/benchmark_snapshot.json
+      - compression/00-performance-overview.svg
+      - compression/RESULTS.md
   workflow_dispatch:
 permissions:
   contents: read
