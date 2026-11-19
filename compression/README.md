@@ -4,7 +4,9 @@
 
 **[Read the measured results, accuracy checks and source links](RESULTS.md)** · [Machine-readable benchmark snapshot](benchmark_snapshot.json)
 
-> **What improves?** AA has a validated analytic β⁶ series with a 70.37× smaller expression and 19.18× faster historical warm evaluation. Lossless stored-point reductions are 52.23% (HH), 48.73% (AA), and 71.91% (ZZ). HH/ZZ analytic beta series are **not yet derived**. The plotted benchmarks are a dated snapshot, not live CI measurements.
+<!-- PERFORMANCE_SUMMARY_START -->
+> **What improves?** AA has a validated analytic β⁶ series with a 70.37× smaller expression and 19.18× faster historical warm evaluation. Lossless stored-point reductions are 52.22% (HH), 48.73% (AA), and 71.91% (ZZ). HH/ZZ analytic beta series are **not yet derived**. This summary and plot update following successful benchmark CI runs.
+<!-- PERFORMANCE_SUMMARY_END -->
 
 ## Distinct scientific and storage questions
 
