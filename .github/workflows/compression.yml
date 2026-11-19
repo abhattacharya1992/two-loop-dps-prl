@@ -31,6 +31,10 @@ jobs:
         run: make compression-unified PY=python AA_REPO=ggAA-threshold
       - name: Validate full-amplitude workflow and safeguards
         run: make compression-full-tests PY=python
+      - name: Check HH ZZ precision sweeps and AA numerical gates
+        run: |
+          make compression-precision-tests PY=python
+          python -m unittest discover -s compression -p 'test_accuracy_gate.py' -v
       - name: Upload reproducible reports
         if: always()
         uses: actions/upload-artifact@v4
