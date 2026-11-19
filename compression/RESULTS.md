@@ -15,19 +15,19 @@ stored point-data compression; HH/ZZ analytical beta series are not derived.
 Historical repeat timing from the pinned ggAA-threshold package (Wolfram 13.2,
 80 digits, beta=0.1, cos(theta)=0). Not a fresh one-shot Python speedup.
 [Upstream source](https://github.com/abhattacharya1992/ggAA-threshold/tree/76491fd105e6f498be51affa213fe6839f879ce6)
-[Verification CI](https://github.com/abhattacharya1992/two-loop-dps-prl/actions/runs/44599204550)
+[Verification CI](https://github.com/abhattacharya1992/two-loop-dps-prl/actions/runs/44599332076)
 
 ## Lossless numerical-point storage (zlib + SHA-256)
 
 | Process | Points | Raw bytes | Packed bytes | Smaller | Raw parse (ms) | Verified packed parse (ms) |
 |---|---:|---:|---:|---:|---:|---:|
-| HH | 50 | 157276 | 75139 | **52.22%** | 0.0094 | 0.0231 |
-| AA | 82 | 236949 | 121491 | **48.73%** | 0.0065 | 0.0202 |
-| ZZ | 28 | 804266 | 225887 | **71.91%** | 0.0570 | 0.1439 |
+| HH | 50 | 157276 | 75139 | **52.22%** | 0.0085 | 0.0178 |
+| AA | 82 | 236949 | 121491 | **48.73%** | 0.0065 | 0.0159 |
+| ZZ | 28 | 804266 | 225887 | **71.91%** | 0.0531 | 0.1018 |
 
 Lossless byte-identical storage savings; decompression plus verified parsing
 is slower than raw JSON parsing. No HH/ZZ beta expansion is implied.
-[Storage CI](https://github.com/abhattacharya1992/two-loop-dps-prl/actions/runs/44599204550)
+[Storage CI](https://github.com/abhattacharya1992/two-loop-dps-prl/actions/runs/44599332076)
 
 ## Fresh numerical checks
 
