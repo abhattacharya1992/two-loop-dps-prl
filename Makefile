@@ -108,7 +108,7 @@ benchmark-v2: benchmark-tests
 AA_REPO ?= ggAA-threshold
 .PHONY: compression-tests compression-points compression-aa-recorded
 compression-tests:
-	$(PY) -m unittest discover -s checks/compression -p 'test_*.py' -v
+	$(PY) -m unittest discover -s compression -p 'test_*.py' -v
 
 compression-points: compression-tests
 	$(PY) compression/point_benchmark.py --process all --repeats 5
