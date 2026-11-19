@@ -1,0 +1,47 @@
+name: Historical cleanup size and pipeline benchmarks
+on:
+  workflow_dispatch:
+  push:
+    branches: ['cleanup/reproducible-pipeline-20261118']
+    paths:
+      - 'checks/benchmark_size.py'
+      - 'checks/benchmark_pipeline.py'
+      - 'checks/test_benchmark_tools.py'
+      - 'checks/BENCHMARKS.md'
+      - 'Makefile'
+      - '.github/workflows/benchmark.yml'
+permissions:
+  contents: read
+
+jobs:
+  benchmarks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - name: Install dependencies
+        run: |
+          python -m pip install -r requirements-pinned.txt
+          sudo apt-get update -qq
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends libginac-dev time
+      - name: Unit tests for benchmark accounting and reporting
+        run: python -m unittest discover -s checks -p 'test_benchmark_tools.py' -v
+      - name: Record tracked source, data and archive sizes
+        run: make benchmark-size PY=python
+      - name: Compare original main with the cleaned analysis pipeline
+        run: make benchmark-pipeline PY=python PERF_RUNS=5
+      - name: Compare frozen PRL v2 with the cleaned analysis pipeline
+        run: make benchmark-v2 PY=python PERF_V2_RUNS=3
+      - name: Upload benchmark data and logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cleanup-benchmark-results
+          path: benchmark-results/
+          if-no-files-found: warn

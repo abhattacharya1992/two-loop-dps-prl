@@ -46,3 +46,6 @@ __pycache__/
 # Regenerated region-sector acceleration caches; the original bytes are in frozen v2 Git history.
 /paper2/r0/theory/secdec_cache_*.pkl
 /phase2-check/
+
+# Optional historical size and runtime reports.
+/benchmark-results/
