@@ -14,6 +14,10 @@ The calculations cover three QCD processes:
 
 The analysis also includes comparisons with planar $\mathcal N=4$ super Yang–Mills amplitudes and conditional predictions for the leading three-loop logarithms.
 
+![Fig. 1: Two-loop double parton scattering configurations, with gluon splittings (a) and quark splittings (b).](paper2/manuscript_prl/figures/dps_diagram.png)
+
+*Fig. 1 of the PRL Letter: DPS configurations for scalar/pseudoscalar and vector-boson pairs. The red gluon denotes the additional two-loop exchange. [Manuscript figure source](paper2/manuscript_prl/figures/dps_diagram_tikz.tex).*
+
 ## Scientific results
 
 The main results are:
