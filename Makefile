@@ -139,3 +139,8 @@ compression-stage1: compression-tests
 
 compression-stage2: compression-tests
 	$(PY) compression/unified_pipeline.py stage2
+
+# Check the opt-in original-amplitude benchmark guards; no expensive input needed.
+.PHONY: compression-full-tests
+compression-full-tests: compression-tests
+	$(PY) -m unittest discover -s compression -p 'test_full_performance.py' -v

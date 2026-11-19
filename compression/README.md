@@ -127,3 +127,45 @@ The engine is a unified driver and interface to existing evaluators, not
 a new, validated multi-process symbolic beta-series construction engine.
 A process-independent rational DAG/MPL series constructor and new HH/ZZ
 analytic coefficients remain separate scientific development.
+
+
+## Optional full HH/AA/ZZ amplitude performance workflow
+
+The independent .github/workflows/full-performance.yml runs by
+workflow_dispatch only: it will NEVER launch expensive external evaluations
+on routine commits. When the workflow file is available on the default
+GitHub branch, select Actions > Full HH AA ZZ amplitude performance (manual)
+> Run workflow; choose aa, hh, zz or all. Each process runs separately,
+with a two-hour safety timeout and separately uploaded JSON/Markdown reports.
+
+AA: pin ggAA-threshold to the previously verified commit; fetch its published
+two-loop exact expressions and evaluate the complete M1/M2 Type-II finite
+remainders together with the validated beta^6 series. Report exact/series
+runtime, input sizes and relative numerical errors on the same runner.
+
+HH: fetch both published class-B Gauge{1,2} expressions, check their SHA-256,
+compile and evaluate them at fixed angle. Report setup, evaluation time, input
+bytes and whole-process memory. No full HH beta expansion currently exists.
+
+ZZ: fetch the original VVamp archive and three auxiliary files, check each
+against the tracked SHA-256 manifest, translate the original expression
+program and evaluate the complete massless-quark-loop class-A helicities.
+Report time, input bytes and whole-process memory. No full ZZ beta expansion
+currently exists.
+
+All processes use fixed-angle equal-mass kinematics at beta <= 1/5,
+0 <= cos(theta) < 1, with 20..120 working digits and 1..5 repeats.
+The Stage 1 JSON record is SHA-256 sealed; Stage 2 independently verifies
+the seal before reporting results. No stored forward-point data are accepted
+as a substitute for complete original amplitudes.
+
+Use locally, after acquiring all required external inputs:
+
+    python compression/full_performance.py run --process aa --beta 1/10 --costheta 0 --digits 40 --repeats 1
+    python compression/full_performance.py run --process hh --beta 1/10 --costheta 0 --digits 40 --repeats 1
+    python compression/full_performance.py run --process zz --beta 1/10 --costheta 0 --digits 40 --repeats 1
+
+Reports are generated under compression-results/full/PROCESS/ and ignored by Git.
+The manual GitHub Actions workflow will not appear in the Actions picker
+until its workflow file also exists on the repository's default branch.
+This research workflow is distinct from the normal release-check.

@@ -29,6 +29,8 @@ jobs:
         run: make compression-aa-recorded PY=python AA_REPO=ggAA-threshold
       - name: Unified two-stage HH AA ZZ pipeline
         run: make compression-unified PY=python AA_REPO=ggAA-threshold
+      - name: Validate full-amplitude workflow and safeguards
+        run: make compression-full-tests PY=python
       - name: Upload reproducible reports
         if: always()
         uses: actions/upload-artifact@v4
