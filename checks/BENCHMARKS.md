@@ -84,3 +84,12 @@ precision, warm-up control, separate load/preparation and evaluation timings,
 operation counts, expression serialization sizes, and numerical-error bounds.
 That larger mathematical benchmark is NOT implemented or implied by these
 stored-data pipeline results.
+
+
+## Consolidated main (19 November 2026)
+The original main tree (1259ee1) contained 772 files / 12,233,790 raw
+tracked bytes (11.667 MiB). The first consolidated main tree (42d808a)
+contained 829 files / 7,332,078 bytes (6.992 MiB): 40.07% fewer
+tracked bytes than the original. Later code/CI additions change the
+current count; regenerate it with make benchmark-size.
+These numbers are NOT compressed Git history or clone size.

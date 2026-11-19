@@ -67,7 +67,7 @@ Manuscript compilation additionally requires:
 git clone https://github.com/abhattacharya1992/two-loop-dps-prl.git
 
 cd two-loop-dps-prl
-git switch cleanup/reproducible-pipeline-20261118  # current maintenance branch
+# The default branch is main; no development branch switch is needed.
 
 python3 -m venv .venv
 source .venv/bin/activate
@@ -156,16 +156,17 @@ arXiv source package through a second, independent isolated compilation.
 Optional diagnostic plots can be produced with
 `make -C paper2/manuscript_prl figure-diagnostics`.
 
-## Consolidated PRL v2 cleanup
+## Consolidated PRL v2 release on main
 
-The active development branch is `cleanup/reproducible-pipeline-20261118`. It combines the
-initial reproducible-pipeline cleanup, PRL v2 manuscript and figure revisions,
-the additional `beta=19/20` numerical checks and DPD identities, and the
-second-stage cache cleanup. The pre-v2 `main` snapshot remains in Git history
+The permanent and only active branch is `main`. It combines the tested
+reproducible-pipeline cleanup, PRL v2 manuscript and figure revisions,
+the additional `beta=19/20` numerical checks and DPD identities,
+and the independent `compression/` research module.
+The original pre-v2 `main` snapshot remains in Git history
 at `1259ee1fc9dedb42047cd3919f655713dd631f27`.
 
 The publication baseline is the validated PRL v2 commit
-`d362f551357f80125649e583b22b6dbf8aeccb4e`. The branch removes six optional
+`d362f551357f80125649e583b22b6dbf8aeccb4e`. The current tree omits six optional
 sector-decomposition performance caches (4,074,665 bytes) while retaining
 the amplitude inputs, numerical Laurent coefficients, integration checkpoints,
 analytic checks and all manuscript sources. The exact cache data remain

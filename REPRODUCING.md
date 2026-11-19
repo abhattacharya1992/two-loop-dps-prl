@@ -1,8 +1,8 @@
 # Reproducing the DPS calculations and manuscript
 
-The canonical development branch is `cleanup/reproducible-pipeline-20261118`.
-It contains the PRL v2 manuscripts and both stages of tested cleanup.
-Use `make release-check` to compare this branch with frozen PRL v2
+The permanent release branch is `main`. It contains the PRL v2 manuscripts,
+the completed reproducibility cleanup and the separate `compression/` research module.
+Use `make release-check` to compare the current branch with frozen PRL v2
 (`d362f551357f80125649e583b22b6dbf8aeccb4e`). The pre-v2 `main` commit
 (`1259ee1fc9dedb42047cd3919f655713dd631f27`) remains available in Git
 history; it is not the current tip of `main`.
@@ -21,7 +21,7 @@ Ubuntu with Python 3.12 and the dependencies in `requirements-pinned.txt`.
 ```bash
 git clone https://github.com/abhattacharya1992/two-loop-dps-prl.git
 cd two-loop-dps-prl
-git switch cleanup/reproducible-pipeline-20261118  # phase-1 maintenance branch
+# Main is checked out by default; no maintenance branch is required.
 python3.12 -m venv .venv
 source .venv/bin/activate
 python -m pip install -r requirements-pinned.txt

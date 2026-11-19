@@ -1,7 +1,7 @@
 name: Scientific and manuscript validation
 on:
   push:
-    branches: [main, 'cleanup/**']
+    branches: [main]
   pull_request:
     branches: [main]
   workflow_dispatch:
@@ -9,9 +9,6 @@ permissions:
   contents: read
 jobs:
   validate:
-    # The full comparison already reruns the candidate on cleanup pushes.
-    # Keep independent validation of PR merge revisions and the main branch.
-    if: github.event_name == 'pull_request' || github.ref_name != 'cleanup/reproducible-pipeline-20261118'
     runs-on: ubuntu-latest
     timeout-minutes: 90
     steps:
@@ -25,16 +22,11 @@ jobs:
       - name: Install scientific packages
         run: python -m pip install -r requirements-pinned.txt
       - name: Verify archived region cache provenance
-        if: github.ref_name == 'cleanup/reproducible-pipeline-20261118'
         run: |
           python -m unittest discover -s checks -p 'test_region_cache_archive.py' -v
           python checks/region_cache_archive.py --verify
       - name: Check comparison harness and frozen inputs
-        run: |
-          python -m unittest discover -s checks -p 'test_release_compare.py' -v
-          if [[ "$GITHUB_REF_NAME" == cleanup/reproducible-pipeline-20261118 ]]; then
-            python checks/release_compare.py --quick --archived-cache-manifest checks/region_cache_manifest.json --output release-check
-          fi
+        run: python -m unittest discover -s checks -p 'test_release_compare.py' -v
       - name: Install TeX and related tools
         run: |
           sudo apt-get update -qq
@@ -54,7 +46,8 @@ jobs:
             paper2/manuscript_prl/release/PRL_DPS_arxiv_sources.tar.gz
 
   release_compare:
-    if: github.ref_name == 'cleanup/reproducible-pipeline-20261118' && (github.event_name == 'workflow_dispatch' || github.event_name == 'push')
+    # Frozen-v2 comparison is deliberately opt-in; normal pushes validate via make reproduce.
+    if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     timeout-minutes: 90
     steps:

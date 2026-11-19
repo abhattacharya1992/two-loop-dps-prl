@@ -1,8 +1,8 @@
-name: Historical cleanup size and pipeline benchmarks
+name: Historical repository size and pipeline benchmarks
 on:
   workflow_dispatch:
   push:
-    branches: ['cleanup/reproducible-pipeline-20261118']
+    branches: [main]
     paths:
       - 'checks/benchmark_size.py'
       - 'checks/benchmark_pipeline.py'

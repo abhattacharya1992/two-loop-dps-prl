@@ -1,4 +1,4 @@
-# Compression and Performance — research branch
+# Compression and Performance — independent module on main
 
 ## Distinct scientific and storage questions
 
@@ -36,7 +36,7 @@ For a *fresh* AA exact-vs-beta6 benchmark (requires full external inputs and
 considerably longer evaluation time):
 
     (cd ggAA-threshold && bash inputs/fetch_inputs.sh)
-    python compression/aa_threshold.py --aa-repo ggAA-threshold --fresh --beta 1/10 --costheta 0 --order 6 --digits 80 --repeats 3
+    python compression/aa_threshold.py --aa-repo ggAA-threshold --fresh --beta 1/10 --costheta 1/3 --order 6 --digits 120 --repeats 1
 
 The two AA amplitudes are compared in the same convention (exact divided by
 64). The published historical timings also preserve the original CPU,
@@ -161,11 +161,13 @@ as a substitute for complete original amplitudes.
 
 Use locally, after acquiring all required external inputs:
 
-    python compression/full_performance.py run --process aa --beta 1/10 --costheta 0 --digits 40 --repeats 1
+    python compression/full_performance.py run --process aa --beta 1/10 --costheta 1/3 --digits 120 --repeats 1
     python compression/full_performance.py run --process hh --beta 1/10 --costheta 0 --digits 40 --repeats 1
     python compression/full_performance.py run --process zz --beta 1/10 --costheta 0 --digits 40 --repeats 1
 
 Reports are generated under compression-results/full/PROCESS/ and ignored by Git.
-The manual GitHub Actions workflow will not appear in the Actions picker
-until its workflow file also exists on the repository's default branch.
+The manual workflow is available in GitHub Actions on the default `main` branch.
+AA exact evaluation rejects cos(theta)=0 and fails if the beta6 relative error
+exceeds 1e-4 or if an archived independent exact-amplitude benchmark disagrees.
+Failed gates produce an accuracy_failure.json artifact and a red workflow result.
 This research workflow is distinct from the normal release-check.

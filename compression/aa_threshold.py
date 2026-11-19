@@ -187,6 +187,11 @@ def fresh(repo: Path, *, beta: str, costheta: str, digits: int,
                 f"M{i}": relative_error(results["exact"][i], results["beta_series"][i])
                 for i in (1, 2)
             }
+            amplitude_values = {
+                kind: {f"M{i}": mp.nstr(values[i], digits)
+                       for i in (1, 2)}
+                for kind, values in results.items()
+            }
         return {
             "mode": "fresh_same_machine", "beta": beta, "cos_theta": costheta,
             "mA": mA, "muR": muR, "Nc": Nc, "nf": nf, "digits": digits,
@@ -195,6 +200,7 @@ def fresh(repo: Path, *, beta: str, costheta: str, digits: int,
             "evaluation_seconds": runs, "evaluation_median_seconds": medians,
             "median_speedup_exact_over_series": medians["exact"] / medians["beta_series"],
             "relative_errors": errors,
+            "amplitude_values": amplitude_values,
             "exact_input_sha256": {p.name: _sha256(p) for p in expected},
             "peak_rss_kib_process": resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,
             "rss_scope": "entire combined AA process; not isolated exact/series peak memory",

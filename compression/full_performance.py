@@ -12,6 +12,10 @@ series, or fallback to stored forward-point values is permitted.
 from __future__ import annotations
 
 import argparse
+import csv
+from fractions import Fraction
+import math
+import mpmath as mp
 from datetime import datetime, timezone
 import hashlib
 import json
@@ -27,6 +31,7 @@ import exact_evaluators
 ROOT = Path(__file__).resolve().parents[1]
 MAGIC = "full-amplitude-benchmark-v1"
 PROCESSES = ("aa", "hh", "zz")
+AA_MAX_REL_ERROR = 1e-4  # Covers the independently validated beta <= 0.2 sixth-order AA grid.
 ZZ_REQUIRED = (
     "ggvvamp-1.0.tar.gz",
     "gg_projectors-1.0.inc",
@@ -151,8 +156,88 @@ def validated_args(process: str, beta: str, costheta: str,
         raise ValueError("all-channel comparison requires 0 < beta <= 1/5")
     if not 0 <= c < 1:
         raise ValueError("require 0 <= cos(theta) < 1 for common HH/ZZ convention")
+    if process == "aa" and c == 0:
+        raise ValueError("AA original expressions have removable 0/0 terms at cos(theta)=0; use a nonzero angle")
     return {"beta": beta, "cos_theta": costheta,
             "digits": digits, "repeats": repeats}
+
+
+
+def archived_aa_reference(aa_repo: Path, config: dict, measurement: dict) -> dict:
+    """Compare exact AA M1/M2 with separately archived Mathematica reference data.
+
+    A comparison is only reported when the exact (beta, angle, parameters)
+    tuple is represented in the upstream 1080-point validation table.
+    """
+    path = aa_repo / "data/validation/validation_1080.csv"
+    if not path.is_file():
+        raise FileNotFoundError(f"Missing independent AA validation table: {path}")
+    target_beta = Fraction(config["beta"])
+    target_angle = Fraction(config["cos_theta"])
+    matches = {}
+    with path.open(newline="", encoding="utf-8") as handle:
+        for row in csv.DictReader(handle):
+            if (row["quantity"] not in ("M1_nf5", "M2_nf5")
+                    or Fraction(row["beta"]) != target_beta
+                    or Fraction(row["costheta"]) != target_angle
+                    or (int(row["mA_GeV"]), int(row["muR_GeV"]), int(row["Nc"])) != (125, 125, 3)):
+                continue
+            label = row["quantity"].split("_")[0]
+            if label in matches:
+                raise ValueError(f"Duplicate AA reference {label}")
+            with mp.workdps(max(90, config["digits"] + 20)):
+                reference = mp.mpc(row["re_exact"], row["im_exact"]) / 64
+                actual = mp.mpmathify(measurement["amplitude_values"]["exact"][label])
+                err = abs(actual - reference) / abs(reference)
+                matches[label] = float(err)
+    if matches and set(matches) != {"M1", "M2"}:
+        raise ValueError("Incomplete independently archived AA benchmark point")
+    return {
+        "status": "compared" if matches else "not_tabulated",
+        "exact_relative_errors": matches,
+        "reference_source": "ggAA-threshold/data/validation/validation_1080.csv",
+        "reference_sha256": _sha256(path),
+        "reference_provenance": "independent Mathematica exact-amplitude evaluation",
+    }
+
+
+def check_aa_accuracy(measurement: dict, archived: dict,
+                      tolerance: float = AA_MAX_REL_ERROR) -> dict:
+    """Fail closed: a timing ratio must not be presented as accurate if it is not."""
+    if not (math.isfinite(tolerance) and 0 < tolerance < 1):
+        raise ValueError("Invalid AA numerical accuracy tolerance")
+    series = measurement["relative_errors"]
+    if set(series) != {"M1", "M2"}:
+        raise ValueError("Missing AA M1/M2 numerical errors")
+    checks = {f"beta6_{name}": float(series[name]) for name in ("M1", "M2")}
+    if archived["status"] == "compared":
+        refs = archived["exact_relative_errors"]
+        if set(refs) != {"M1", "M2"}:
+            raise ValueError("Incomplete independent AA benchmark")
+        checks.update({f"archived_exact_{name}": float(refs[name])
+                       for name in ("M1", "M2")})
+    passed = all(math.isfinite(v) and v <= tolerance for v in checks.values())
+    return {"passed": passed, "max_relative_error": tolerance,
+            "observed_relative_errors": checks,
+            "requirement": "all tested errors finite and <= threshold",
+            "independent_reference": archived["status"]}
+
+
+def enforce_aa_accuracy(measurement: dict, archived: dict, output: Path) -> dict:
+    gate = check_aa_accuracy(measurement, archived)
+    if not gate["passed"]:
+        write(output / "accuracy_failure.json", {
+            "status": "failed_numerical_accuracy",
+            "gate": gate,
+            "raw_timing_only": measurement["evaluation_median_seconds"],
+            "note": "Do not quote exact/series timing ratio as accuracy-preserving",
+        })
+        raise ValueError(
+            "AA numerical accuracy failed: "
+            + json.dumps(gate["observed_relative_errors"], sort_keys=True)
+            + "; increase precision and use a nonzero scattering angle"
+        )
+    return gate
 
 
 def stage1(process: str, args) -> dict:
@@ -177,6 +262,10 @@ def stage1(process: str, args) -> dict:
         measurement["analytic_series_source_bytes"] = sum(p.stat().st_size for p in series)
         measurement["analytic_series_source_sha256"] = {p.name: _sha256(p) for p in series}
         measurement["analytic_series_source_kind"] = "published beta^6 coefficients"
+        independent = archived_aa_reference(aa_repo, config, measurement)
+        measurement["archived_exact_comparison"] = independent
+        measurement["accuracy_gate"] = enforce_aa_accuracy(
+            measurement, independent, args.output)
     elif process == "hh":
         measurement = exact_evaluators.exact_hh(
             kin, args.digits, args.repeats,
@@ -215,13 +304,21 @@ def stage2(path: Path, process: str, output: Path) -> dict:
     payload = unseal(json.loads(path.read_text(encoding="utf-8")), process)
     m = payload["measurement"]
     if process == "aa":
+        if not check_aa_accuracy(m, m["archived_exact_comparison"])["passed"]:
+            raise ValueError("AA saved result fails numerical accuracy gate")
+        if not m.get("accuracy_gate", {}).get("passed"):
+            raise ValueError("AA saved result has no successful accuracy certificate")
         median = m["evaluation_median_seconds"]
         exact_bytes = sum(v["bytes"] for v in payload["verified_external_inputs"].values())
         series_bytes = m["analytic_series_source_bytes"]
         result = {
             "exact_median_seconds": median["exact"],
             "beta6_median_seconds": median["beta_series"],
+            "raw_exact_over_beta6_timing_ratio": m["median_speedup_exact_over_series"],
             "fresh_exact_over_beta6_speedup": m["median_speedup_exact_over_series"],
+            "accuracy_preserving_exact_over_beta6_speedup": m["median_speedup_exact_over_series"],
+            "accuracy_gate": m["accuracy_gate"],
+            "independent_exact_reference": m["archived_exact_comparison"],
             "relative_error_M1": m["relative_errors"]["M1"],
             "relative_error_M2": m["relative_errors"]["M2"],
             "exact_published_input_bytes": exact_bytes,
@@ -274,7 +371,9 @@ def stage2(path: Path, process: str, output: Path) -> dict:
     if process == "aa":
         lines += [
             f"Beta6 evaluation median: {result['beta6_median_seconds']:.4f} s",
-            f"Fresh exact/beta6 speedup: {result['fresh_exact_over_beta6_speedup']:.3f}x",
+            f"Raw exact/beta6 timing ratio: {result['raw_exact_over_beta6_timing_ratio']:.3f}x",
+            f"Accuracy-preserving exact/beta6 ratio: {result['accuracy_preserving_exact_over_beta6_speedup']:.3f}x",
+            f"AA accuracy gate: PASSED (max error {result['accuracy_gate']['max_relative_error']})",
             f"Relative error M1: {result['relative_error_M1']:.5g}",
             f"Relative error M2: {result['relative_error_M2']:.5g}",
             f"Published input bytes: {result['exact_published_input_bytes']:,}",
