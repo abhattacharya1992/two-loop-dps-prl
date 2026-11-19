@@ -27,6 +27,8 @@ jobs:
           path: ggAA-threshold
       - name: Published AA exact versus beta6 report
         run: make compression-aa-recorded PY=python AA_REPO=ggAA-threshold
+      - name: Unified two-stage HH AA ZZ pipeline
+        run: make compression-unified PY=python AA_REPO=ggAA-threshold
       - name: Upload reproducible reports
         if: always()
         uses: actions/upload-artifact@v4

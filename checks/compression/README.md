@@ -90,3 +90,40 @@ are not distributed in this repository.
 Do not compare HH and ZZ exact backend timings against the AA beta6 timing:
 they are different physical processes, conventions and numerical workloads.
 Direct HH/ZZ exact-vs-beta benchmarking requires their own validated series.
+
+
+## Unified two-stage implementation
+
+The single entry point combines the established HH/AA/ZZ adapters into one
+experiment, rather than maintaining three unrelated reporting paths.
+
+    make compression-unified PY=python AA_REPO=ggAA-threshold
+
+Alternatively, run each stage independently:
+
+    make compression-stage1 PY=python AA_REPO=ggAA-threshold
+    make compression-stage2 PY=python
+
+Stage 1 writes compression-results/unified/stage1.json. It really evaluates
+the independently validated AA beta^4 and beta^6 series at fixed angle. It
+also authenticates and measures every stored HH/AA/ZZ forward-point record.
+For HH and ZZ the default Stage 1 status is not_derived for analytic beta
+series, and not_run for original full evaluators. This is intentional and
+must not be interpreted as an analytical result.
+
+Use the explicit --run-exact flag on checks/compression/unified_pipeline.py
+for the optional full-amplitude backend, only after ALL required external
+HH, AA and ZZ inputs are installed. A missing input is an error, never a
+fallback to stored points.
+
+Stage 2 checks the SHA-256 sealed Stage 1 JSON file and creates
+compression-results/unified/{stage2.json,report.md}. It reports
+point-data compression, loading runtime, actual AA series timing,
+historical AA exact/series speedups, size measurements, and the entire
+Stage 1 process peak RSS. It never reruns an evaluator. Exact HH/ZZ
+versus their missing analytic beta expansions cannot yet be reported.
+
+The engine is a unified driver and interface to existing evaluators, not
+a new, validated multi-process symbolic beta-series construction engine.
+A process-independent rational DAG/MPL series constructor and new HH/ZZ
+analytic coefficients remain separate scientific development.

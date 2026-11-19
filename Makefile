@@ -123,3 +123,19 @@ compression-exact-hh:
 
 compression-exact-zz:
 	$(PY) checks/compression/exact_evaluators.py --process ZZ --run-exact --beta 1/10 --costheta 0 --digits 50 --repeats 3
+
+# Two-stage unified HH/AA/ZZ runner: shared evaluation stage and separate report stage.
+.PHONY: compression-unified compression-stage1 compression-stage2
+COMPRESSION_BETA ?= 1/10
+COMPRESSION_COSTHETA ?= 0
+COMPRESSION_DIGITS ?= 50
+COMPRESSION_REPEATS ?= 3
+
+compression-unified: compression-tests
+	$(PY) checks/compression/unified_pipeline.py run --aa-repo "$(AA_REPO)" --beta $(COMPRESSION_BETA) --costheta $(COMPRESSION_COSTHETA) --digits $(COMPRESSION_DIGITS) --repeats $(COMPRESSION_REPEATS)
+
+compression-stage1: compression-tests
+	$(PY) checks/compression/unified_pipeline.py stage1 --aa-repo "$(AA_REPO)" --beta $(COMPRESSION_BETA) --costheta $(COMPRESSION_COSTHETA) --digits $(COMPRESSION_DIGITS) --repeats $(COMPRESSION_REPEATS)
+
+compression-stage2: compression-tests
+	$(PY) checks/compression/unified_pipeline.py stage2
