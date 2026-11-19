@@ -75,6 +75,8 @@ def exact_hh(kin: dict, dps: int, repeats: int, directory: Path) -> dict:
             "HH published inputs absent: obtain Gauge1Simp.in and Gauge2Simp.in "
             "through the documented paper2/hh fetch target")
     with prepend_python(directory):
+        # Preserve the AST depth needed by the original large expressions.
+        sys.setrecursionlimit(max(sys.getrecursionlimit(), 100000))
         ev=importlib.import_module("evaluate_hh")
         with mp.workdps(dps):
             started=time.perf_counter()
