@@ -1,23 +1,23 @@
-# Release comparison for the consolidated PRL v2 branch
+# Release comparison for consolidated PRL v2 on main
 
-The active working branch is `cleanup/reproducible-pipeline-20261118`.
-Its scientific and publication baseline is the validated PRL v2 commit
-`d362f551357f80125649e583b22b6dbf8aeccb4e`. The pre-v2 `main` commit is
-`1259ee1fc9dedb42047cd3919f655713dd631f27`; it remains in Git history
-but is not the current `main` head. These checks never update a branch.
+The permanent working and release branch is `main`. Its scientific and
+publication comparison baseline is the validated PRL v2 commit
+`d362f551357f80125649e583b22b6dbf8aeccb4e`. The original, pre-v2
+`main` commit, `1259ee1fc9dedb42047cd3919f655713dd631f27`, remains in
+Git history. The comparison does not modify either revision or update `main`.
 
 ## GitHub Actions
 
 Open the repository's **Actions → Scientific and manuscript validation**
-workflow, click **Run workflow**, and select
-`cleanup/reproducible-pipeline-20261118`. The comparison job runs
-both revisions in temporary detached worktrees and uploads
+workflow, click **Run workflow**, and select **main**. This manual dispatch
+runs the `release_compare` job alongside normal scientific validation.
+The comparison checks both revisions in temporary detached worktrees and uploads
 `release-comparison`, containing `report.md`, `report.json`
 and the command logs.
 
-Normal pushes also run the scientific and manuscript CI checks.
-The main/cleanup comparison from the original v1 is already recorded in the
-GitHub Actions history; the present comparison concerns the updated PRL v2.
+Normal pushes to `main` run scientific and manuscript validation; the full
+frozen-v2 release comparison runs only when manually dispatched. Historical
+comparisons remain available in the GitHub Actions history.
 
 ## Local release comparison
 
@@ -28,7 +28,7 @@ GNU Make, pdfLaTeX, BibTeX, REVTeX, TikZ-Feynman, Poppler and
 ```bash
 git clone https://github.com/abhattacharya1992/two-loop-dps-prl.git
 cd two-loop-dps-prl
-git switch cleanup/reproducible-pipeline-20261118
+# The clone already checks out main.
 python3.12 -m venv .venv
 source .venv/bin/activate
 python -m pip install -r requirements-pinned.txt
@@ -66,5 +66,5 @@ use the included source code. The commands for both are documented in
 comparison demonstrates equivalence for the included published calculations,
 not a guarantee that every original calculation has been rerun.
 
-Nothing in this workflow merges or updates any branch. Any future branch
-promotion or update to `main` is a separate, author-controlled operation.
+The release comparison runs in temporary detached worktrees. It does not
+merge branches, modify the checked-out scientific sources, or push to `main`.
