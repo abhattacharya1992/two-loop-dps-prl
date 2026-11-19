@@ -144,3 +144,8 @@ compression-stage2: compression-tests
 .PHONY: compression-full-tests
 compression-full-tests: compression-tests
 	$(PY) -m unittest discover -s compression -p 'test_full_performance.py' -v
+
+
+.PHONY: compression-precision-tests
+compression-precision-tests:
+	$(PY) -m unittest discover -s compression -p 'test_precision_sweep.py' -v

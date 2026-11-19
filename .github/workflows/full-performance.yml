@@ -28,6 +28,11 @@ on:
         required: true
         type: number
         default: 1
+      precision_levels:
+        description: "HH/ZZ stability sweep digits (2..5 increasing, 20..120)"
+        required: true
+        type: string
+        default: "40,60,80"
 
 permissions:
   contents: read
@@ -48,6 +53,7 @@ jobs:
       COSTHETA: ${{ inputs.costheta }}
       DIGITS: ${{ inputs.digits }}
       REPEATS: ${{ inputs.repeats }}
+      PRECISION_LEVELS: ${{ inputs.precision_levels }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -104,11 +110,17 @@ jobs:
           python compression/full_performance.py stage1 \
             --process "$PROCESS" --beta "$BETA" --costheta "$COSTHETA" \
             --digits "$DIGITS" --repeats "$REPEATS"
+      - name: HH ZZ precision convergence and archived reference checks
+        if: matrix.process != 'aa'
+        shell: bash
+        run: |
+          set -euo pipefail
+          python compression/precision_sweep.py             --process "$PROCESS" --beta "$BETA" --costheta "$COSTHETA"             --precisions "$PRECISION_LEVELS"
       - name: Stage 2 verified performance report
         shell: bash
         run: |
           set -euo pipefail
-          python compression/full_performance.py stage2 --process "$PROCESS"
+          python compression/full_performance.py stage2 --process "$PROCESS" --require-precision
       - name: Upload exact performance artifacts
         if: always()
         uses: actions/upload-artifact@v4

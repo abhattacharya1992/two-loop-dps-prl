@@ -300,7 +300,24 @@ def stage1(process: str, args) -> dict:
     return payload
 
 
-def stage2(path: Path, process: str, output: Path) -> dict:
+
+def verified_precision_report(path: Path, process: str, stage1_sha: str) -> dict:
+    """Verify a sealed precision scan matches the current Stage 1 exact run."""
+    record = json.loads(path.read_text(encoding="utf-8"))
+    payload = record.get("payload")
+    if (record.get("schema") != MAGIC or not isinstance(payload, dict)
+            or payload.get("process") != process
+            or record.get("sha256") != hashlib.sha256(_canonical(payload)).hexdigest()):
+        raise ValueError("Precision scan integrity or process mismatch")
+    if (payload.get("status") != "precision_convergence_verified"
+            or payload.get("original_stage1_sha256") != stage1_sha
+            or not payload.get("precision", {}).get("precision_stability_passed")
+            or not payload.get("archived_reference", {}).get("pass")):
+        raise ValueError("Unverified precision stability or archived reference")
+    return payload
+
+
+def stage2(path: Path, process: str, output: Path, *, require_precision: bool = False) -> dict:
     payload = unseal(json.loads(path.read_text(encoding="utf-8")), process)
     m = payload["measurement"]
     if process == "aa":
@@ -342,6 +359,39 @@ def stage2(path: Path, process: str, output: Path) -> dict:
             "comparison_note": ("Do not compare HH/ZZ exact evaluation times to AA: "
                                 "different physical processes and conventions."),
         }
+    if process in ("hh", "zz"):
+        precision_file = output / "precision.json"
+        if require_precision and not precision_file.is_file():
+            raise ValueError("Missing required HH/ZZ precision-convergence check")
+        if precision_file.is_file():
+            checked = verified_precision_report(
+                precision_file, process, _sha256(path))
+            stable = checked["precision"]
+            result.update({
+                "precision_validation_status": "passed",
+                "raw_baseline_at_low_precision_seconds":
+                    stable["raw_baseline_seconds"],
+                "accuracy_preserving_evaluation_seconds":
+                    stable["accuracy_preserving_seconds"],
+                "accuracy_preserving_working_digits":
+                    stable["accuracy_preserving_digits"],
+                "raw_over_accuracy_preserving_runtime_ratio":
+                    stable["raw_over_accuracy_preserving_runtime_ratio"],
+                "max_precision_convergence_error":
+                    stable["max_relative_difference_adjacent_top"],
+                "archived_reference": checked["archived_reference"],
+                "precision_sweep": {
+                    "precision_levels": stable["precision_levels"],
+                    "evaluation_seconds": stable["evaluation_seconds_by_precision"],
+                    "max_relative_differences":
+                        stable["max_relative_difference_to_high_precision"],
+                },
+                "precision_limit": "Convergence is against the highest precision; "
+                    "HH archived Bose check is not an independent method; "
+                    "ZZ FORM route B is independent for its CF subset.",
+            })
+        else:
+            result["precision_validation_status"] = "not_run"
     result.update({
         "schema": MAGIC, "process": process,
         "source_commit": payload["repo_commit"],
@@ -381,7 +431,25 @@ def stage2(path: Path, process: str, output: Path) -> dict:
         ]
     else:
         lines += ["HH/ZZ analytic beta-series: NOT DERIVED.",
-                  "HH/ZZ analytic speedup/relative errors: NOT AVAILABLE."]
+                  "HH/ZZ analytic speedup/relative errors: NOT AVAILABLE.",
+                  "Precision stability status: "
+                  + result.get("precision_validation_status", "not_run")]
+        if result.get("precision_validation_status") == "passed":
+            lines += [
+                f"Raw {result['precision_sweep']['precision_levels'][0]}-digit "
+                f"full-amplitude runtime: "
+                f"{result['raw_baseline_at_low_precision_seconds']:.4f} s",
+                f"Accuracy-preserving full-amplitude runtime: "
+                f"{result['accuracy_preserving_evaluation_seconds']:.4f} s "
+                f"at {result['accuracy_preserving_working_digits']} digits",
+                f"Raw / accuracy-preserving runtime ratio: "
+                f"{result['raw_over_accuracy_preserving_runtime_ratio']:.4f}x",
+                f"Top-level convergence error: "
+                f"{result['max_precision_convergence_error']:.4g}",
+                f"Archived reference maximum error: "
+                f"{result['archived_reference']['max_relative_error']:.4g}",
+                result["precision_limit"],
+            ]
     lines += ["", "The original published inputs were SHA-256 verified.",
               "Peak RSS is the entire process high-water mark (Linux),",
               "not an isolated per-evaluation measurement.", ""]
@@ -399,10 +467,12 @@ def parser() -> argparse.ArgumentParser:
     p.add_argument("--aa-repo", type=Path, default=ROOT / "ggAA-threshold")
     p.add_argument("--beta", default="1/10")
     p.add_argument("--costheta", default="0")
-    p.add_argument("--digits", type=int, default=40)
+    p.add_argument("--digits", type=int, default=120)
     p.add_argument("--repeats", type=int, default=1)
     p.add_argument("--output", type=Path, default=None)
     p.add_argument("--input", type=Path, default=None)
+    p.add_argument("--require-precision", action="store_true",
+                   help="HH/ZZ Stage 2 must have a passing precision-sweep record")
     return p
 
 
@@ -419,7 +489,8 @@ def main(argv=None) -> int:
         stage1(args.process, argparse.Namespace(
             **{**vars(args), "output": output}))
     if args.stage in ("run", "stage2"):
-        stage2(args.input or output / "stage1.json", args.process, output)
+        stage2(args.input or output / "stage1.json", args.process, output,
+               require_precision=args.require_precision)
     return 0
 
 

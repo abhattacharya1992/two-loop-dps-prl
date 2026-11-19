@@ -171,3 +171,35 @@ AA exact evaluation rejects cos(theta)=0 and fails if the beta6 relative error
 exceeds 1e-4 or if an archived independent exact-amplitude benchmark disagrees.
 Failed gates produce an accuracy_failure.json artifact and a red workflow result.
 This research workflow is distinct from the normal release-check.
+
+
+## Accuracy-gated benchmarking on main
+
+The manual full-amplitude workflow now rejects AA points at cos(theta)=0
+(removable singularities in published original inputs). Its default
+benchmark uses beta=1/10, cos(theta)=1/3, 120 working digits.
+The AA sixth-order relative errors for both M1 and M2 must be finite and
+<=1e-4. Where the exact point exists in the independently archived AA
+Mathematica validation CSV, its full exact amplitude is also compared
+against that independent archived exact value. A failed gate produces
+accuracy_failure.json, and the workflow ends red. The raw timing ratio is
+not published as accuracy preserving if the gate fails.
+
+HH and ZZ have no analytic beta series. After their original Stage 1 run,
+the manual workflow invokes compression/precision_sweep.py, by default
+at 40, 60 and 80 digits. Every available HH coefficient (2) and ZZ helicity
+and colour part (36 x 3) is tested for convergence at the requested point.
+Additionally, a separately archived validation point is recomputed:
+- HH: the stored exact Bose-symmetry benchmark at x=1/3, y=1/2;
+  this is an independent *record* but uses the same analytic evaluator,
+  not an independently derived amplitude.
+- ZZ: the 36 2l_CF helicity amplitudes from the archived FORM plus master-
+  integral route B at beta=1/2, delta=1e-4; this is an independently
+  implemented reference for that particular colour component.
+
+For HH/ZZ, a red check indicates the top two precision levels do not
+agree to 1e-10, the archived reference point disagrees, or any input hash
+changes. The final Stage 2 report includes raw low-precision runtime,
+fastest verified stable precision and its runtime, and the component-wise
+stability/reference diagnostics. These are full-original-amplitude timing
+measurements, NOT analytic beta-series acceleration.
