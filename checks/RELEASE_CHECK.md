@@ -2,8 +2,9 @@
 
 The active working branch is `cleanup/reproducible-pipeline-20261118`.
 Its scientific and publication baseline is the validated PRL v2 commit
-`d362f551357f80125649e583b22b6dbf8aeccb4e`. The original `main` remains at
-`1259ee1fc9dedb42047cd3919f655713dd631f27` and is never updated by these checks.
+`d362f551357f80125649e583b22b6dbf8aeccb4e`. The pre-v2 `main` commit is
+`1259ee1fc9dedb42047cd3919f655713dd631f27`; it remains in Git history
+but is not the current `main` head. These checks never update a branch.
 
 ## GitHub Actions
 
@@ -42,8 +43,8 @@ The comparison rejects changes to required scientific inputs. Exactly six
 source-fingerprinted sector-decomposition **performance** caches are excluded
 from that byte-for-byte requirement. Their original Git blobs and SHA-256
 checksums are recorded in `checks/region_cache_manifest.json` and verified
-before running the comparison. They can be restored for expensive region
-integrations using:
+before running the comparison. Their historical bytes can be recovered for
+inspection or provenance using:
 
 ```bash
 python checks/region_cache_archive.py --restore
@@ -58,12 +59,12 @@ An unexplained difference or performance regression fails the comparison.
 ## What these checks do not establish
 
 The entire original two-loop amplitude-production chain and expensive
-region-integral generation from external third-party input expressions
-are outside the standard workflow. The commands for those calculations
-are documented in `REPRODUCING.md` and the relevant process-specific
-Makefiles. A successful comparison demonstrates equivalence for the
-included published calculations, not a universal guarantee that every
-external calculation has been rerun.
+region-integral generation are outside the standard workflow. Full-amplitude
+runs require published third-party inputs; the independent region generators
+use the included source code. The commands for both are documented in
+`REPRODUCING.md` and the relevant process-specific Makefiles. A successful
+comparison demonstrates equivalence for the included published calculations,
+not a guarantee that every original calculation has been rerun.
 
-Nothing in this workflow merges any branch. Replacing `main` requires
-the author's explicit approval.
+Nothing in this workflow merges or updates any branch. Any future branch
+promotion or update to `main` is a separate, author-controlled operation.

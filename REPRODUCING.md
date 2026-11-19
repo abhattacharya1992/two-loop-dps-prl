@@ -3,8 +3,9 @@
 The canonical development branch is `cleanup/reproducible-pipeline-20261118`.
 It contains the PRL v2 manuscripts and both stages of tested cleanup.
 Use `make release-check` to compare this branch with frozen PRL v2
-(`d362f551357f80125649e583b22b6dbf8aeccb4e`). The original `main` commit
-(`1259ee1fc9dedb42047cd3919f655713dd631f27`) is unchanged.
+(`d362f551357f80125649e583b22b6dbf8aeccb4e`). The pre-v2 `main` commit
+(`1259ee1fc9dedb42047cd3919f655713dd631f27`) remains available in Git
+history; it is not the current tip of `main`.
 
 
 The default reproduction uses the evaluated amplitude points and region Laurent
@@ -20,7 +21,7 @@ Ubuntu with Python 3.12 and the dependencies in `requirements-pinned.txt`.
 ```bash
 git clone https://github.com/abhattacharya1992/two-loop-dps-prl.git
 cd two-loop-dps-prl
-git switch cleanup/reproducible-pipeline-20261118  # PRL v2 is not yet the default main branch
+git switch cleanup/reproducible-pipeline-20261118  # phase-1 maintenance branch
 python3.12 -m venv .venv
 source .venv/bin/activate
 python -m pip install -r requirements-pinned.txt
@@ -79,9 +80,12 @@ after comparing freshly generated values.
 
 ## Regenerating the underlying inputs
 
-The original numerical amplitude evaluation is a separate, substantially
-more expensive task and needs published input files that cannot be bundled
-in this repository. The relevant entry points are:
+Fresh numerical evaluation of the published HH, AA and ZZ amplitudes is a
+separate, substantially more expensive task. Their full-amplitude backends
+require third-party input expressions not bundled in this repository. In
+contrast, the region-integrand generators under `paper2/r0/theory/` use the
+included source code and do not require those full-amplitude inputs. The
+relevant entry points are:
 
 - Scalar pairs: `make -C paper2/hh fetch`, then
   `make -C paper2/hh test-full`. Full scans are `scan`/`rescan` in
@@ -98,8 +102,9 @@ in this repository. The relevant entry points are:
   coefficients. These take hours rather than seconds. Other detailed
   checks are documented in that directory's Makefile.
 
-These routes are intentionally not part of `make reproduce`: they require
-external published expressions, substantial computing time or both.
+These routes are intentionally not part of `make reproduce`: full-amplitude
+runs require external published expressions, whereas fresh region calculations
+require substantial computing time and the stated numerical precision settings.
 The default reproduction is complete for the publicly included numerical
 records and their interpretation, not a claim to regenerate external
 third-party amplitudes from first principles.
@@ -113,10 +118,10 @@ source fingerprints; do not bypass those safeguards.
 The six large `paper2/r0/theory/secdec_cache_*.pkl` files were removed from
 this distribution because they contain cached sector decompositions, not
 amplitude samples, Laurent coefficients, or matching results. The loader
-rebuilds their entries on cache misses or source changes. Fresh integrand and
-region production still requires the external inputs, precision controls and
-computing time described above. The default `make reproduce` uses neither
-these caches nor their archived versions.
+rebuilds their entries on cache misses or source changes. Fresh region-integrand
+production uses the included code, precision controls and substantial
+computing time; it does not require the external full-amplitude expressions.
+The default `make reproduce` uses neither these caches nor their archived versions.
 
 The exact six original files remain in Git history at `d362f551357f80125649e583b22b6dbf8aeccb4e`.
 To verify the Git blobs and their SHA-256 checksums:
@@ -125,12 +130,16 @@ To verify the Git blobs and their SHA-256 checksums:
 make cache-archive-check PY=python
 ```
 
-To restore optional acceleration data for the full original region runs:
+To recover the original historical cache files for inspection or provenance
+(not necessarily for acceleration of current region runs):
 
 ```bash
 python checks/region_cache_archive.py --restore
 ```
 
 Restoration requires a clone containing the frozen v2 commit. Each recovered
-file is checked against its pinned Git blob and SHA-256 hash. Avoid executing
-untrusted pickle files from other sources.
+file is checked against its pinned Git blob and SHA-256 hash. Recovery preserves
+historical data but does not guarantee immediate reuse: the current
+`sector_cache()` loader rejects missing or incompatible source-provenance
+fingerprints and rebuilds those cache entries. Do not bypass these checks or
+execute untrusted pickle files from other sources.

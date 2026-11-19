@@ -53,8 +53,13 @@ carries this sign as `Process.rho2`; `make_tables.py` asserts both differences f
     make test          # seconds: HH/ZZ stored results; fresh AA fits and complete point inventory
     make analyse       # seconds: results_*.json for every process with points, and a summary
 
-The gg → AA scan needs the P1 package with its inputs in place (`make inputs` there): it is
-`common/aa_source` of the master folder, a legacy `paper1/` tree, or a directory supplied with `P1_ROOT=/path/to/AA_source`.
+The gg → AA scan needs the published evaluator inputs. From `common/dps/`, prepare
+the bundled evaluator and verify the downloaded expressions with:
+
+    (cd ../aa_source && bash inputs/fetch_inputs.sh)
+
+The evaluator is in `common/aa_source/`; an existing compatible `paper1/` tree
+or a directory specified with `P1_ROOT=/path/to/AA_source` can also be used.
 
     make aa-check                 # about 10 min: one point at two precisions, agreeing digits
     make aa-scan WORKERS=4        # the 48 points of the scan and 2 control points, resumable

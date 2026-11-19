@@ -3,8 +3,10 @@ SHELL := /bin/bash
 .SHELLFLAGS := -e -o pipefail -c
 PY ?= python3
 BENCH_RUNS ?= 3
+PERF_RUNS ?= 5
+PERF_V2_RUNS ?= 3
 .NOTPARALLEL:
-.PHONY: cache-archive-check phase2-check help threshold independent-checks test-science test pinch-checks pinch-figures manuscript-tests derivation-tests build archive archive-check reproduce release-check release-check-quick release-check-tests
+.PHONY: benchmark-size benchmark-pipeline benchmark-v2 benchmark-tests cache-archive-check phase2-check help threshold independent-checks test-science test pinch-checks pinch-figures manuscript-tests derivation-tests build archive archive-check reproduce release-check release-check-quick release-check-tests
 
 help:
 	@printf '%s\n' 'make threshold: earlier AA threshold coefficients vs PRL at x=1/2' \
@@ -13,7 +15,10 @@ help:
 	 'make build: regenerate tables, figures, Letter and Supplement' \
 	 'make archive: build and validate isolated arXiv source package' \
 	 'make reproduce: test, analytic derivations, PDFs and source archive' \
-	 'make release-check: compare publication and calculations against frozen PRL v2'
+	 'make release-check: compare publication and calculations against frozen PRL v2' \
+	 'make benchmark-size: tracked Git tree size for original, v2, and candidate' \
+	 'make benchmark-pipeline: original main versus candidate stored-data runtime' \
+	 'make benchmark-v2: frozen v2 versus candidate stored-data runtime'
 
 threshold:
 	$(PY) checks/threshold_ggAA/check.py
@@ -85,3 +90,36 @@ phase2-check: release-check
 cache-archive-check:
 	$(PY) -m unittest discover -s checks -p 'test_region_cache_archive.py' -v
 	$(PY) checks/region_cache_archive.py --verify
+
+# Optional performance reporting: no scientific input is changed and no ref is moved.
+benchmark-tests:
+	$(PY) -m unittest discover -s checks -p 'test_benchmark_tools.py' -v
+
+benchmark-size: benchmark-tests
+	$(PY) checks/benchmark_size.py --output benchmark-results/size
+
+benchmark-pipeline: benchmark-tests
+	$(PY) checks/benchmark_pipeline.py --baseline-label original_main --runs $(PERF_RUNS) --python "$(PY)" --output benchmark-results/pipeline-original
+
+benchmark-v2: benchmark-tests
+	$(PY) checks/benchmark_pipeline.py --baseline d362f551357f80125649e583b22b6dbf8aeccb4e --baseline-label frozen_v2 --runs $(PERF_V2_RUNS) --python "$(PY)" --output benchmark-results/pipeline-v2
+
+# Independent compression/performance research branch; not part of make reproduce.
+AA_REPO ?= ggAA-threshold
+.PHONY: compression-tests compression-points compression-aa-recorded
+compression-tests:
+	$(PY) -m unittest discover -s checks/compression -p 'test_*.py' -v
+
+compression-points: compression-tests
+	$(PY) checks/compression/point_benchmark.py --process all --repeats 5
+
+compression-aa-recorded: compression-tests
+	$(PY) checks/compression/aa_threshold.py --aa-repo "$(AA_REPO)"
+
+# These two targets require the published large third-party evaluator inputs.
+.PHONY: compression-exact-hh compression-exact-zz
+compression-exact-hh:
+	$(PY) checks/compression/exact_evaluators.py --process HH --run-exact --beta 1/10 --costheta 0 --digits 50 --repeats 3
+
+compression-exact-zz:
+	$(PY) checks/compression/exact_evaluators.py --process ZZ --run-exact --beta 1/10 --costheta 0 --digits 50 --repeats 3

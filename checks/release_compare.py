@@ -326,7 +326,7 @@ def markdown(result: dict) -> str:
             lines.append(f"- {name}: baseline {b['baseline_median_seconds']:.2f}s; "
                          f"candidate {b['candidate_median_seconds']:.2f}s; "
                          f"ratio {b['candidate_over_baseline']}; "
-                         f"peak RSS (KB) main/clean: {b['peak_rss_kb']['baseline']}/"
+                         f"peak RSS (KB) baseline/candidate: {b['peak_rss_kb']['baseline']}/"
                          f"{b['peak_rss_kb']['candidate']}; "
                          f"possible regression: {b['possible_regression']}")
     lines += ["", "## Remaining release condition", "",
