@@ -8,6 +8,7 @@ import argparse
 import copy
 import json
 import math
+import re
 from pathlib import Path
 import sys
 
@@ -244,6 +245,31 @@ def main():
     SNAP.write_text(json.dumps(revised,indent=2,ensure_ascii=False)+"\n")
     (DIR/"00-performance-overview.svg").write_text(draw(revised))
     (DIR/"RESULTS.md").write_text(table(revised))
+    # Keep the root-visible summary consistent with the generated diagram.
+    readme_path = DIR/"README.md"
+    existing = readme_path.read_text()
+    aa = revised["aa_analytic"]
+    timing = aa["historical_warm"]
+    reductions = {name: 100*(1-revised["point_storage"]["items"][name]["packed_bytes"]/
+                               revised["point_storage"]["items"][name]["original_bytes"])
+                  for name in LABELS}
+    summary = (
+        "<!-- PERFORMANCE_SUMMARY_START -->\n"
+        "> **What improves?** AA has a validated analytic β⁶ series with a "
+        "%.2f× smaller expression and %.2f× faster historical warm evaluation. "
+        "Lossless stored-point reductions are %.2f%% (HH), %.2f%% (AA), "
+        "and %.2f%% (ZZ). HH/ZZ analytic beta series are **not yet derived**. "
+        "This summary and plot update following successful benchmark CI runs.\n"
+        "<!-- PERFORMANCE_SUMMARY_END -->"
+    ) % (aa["original_bytes"]/aa["beta6_bytes"],
+         timing["exact_seconds"]/timing["beta6_seconds"],
+         reductions["HH"], reductions["AA"], reductions["ZZ"])
+    matched, count = re.subn(
+        r"<!-- PERFORMANCE_SUMMARY_START -->.*?<!-- PERFORMANCE_SUMMARY_END -->",
+        lambda _: summary, existing, flags=re.S)
+    if count != 1:
+        raise ValueError("README dashboard markers missing or duplicated")
+    readme_path.write_text(matched)
     print("Verified dashboard updated",args.run_id)
 
 if __name__=="__main__":
