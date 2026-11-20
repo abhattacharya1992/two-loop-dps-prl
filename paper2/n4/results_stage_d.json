@@ -54,7 +54,7 @@
   {
    "L": 3,
    "k": 2,
-   "status": "PASS",
+   "status": "fixes B2 = 3*zeta_3",
    "DE": "-z3/4",
    "DE_eq": "3.19"
   },
@@ -103,7 +103,7 @@
   {
    "L": 4,
    "k": 2,
-   "status": "PASS",
+   "status": "fixes B3 = -2*zeta_2*zeta_3 - 10*zeta_5",
    "DE": "(4*z5 - 3*z2*z3)/4",
    "DE_eq": "3.20"
   },
@@ -179,21 +179,21 @@
   }
  ],
  "n_checked": 25,
- "n_pass": 18,
- "n_fixed": 6,
+ "n_pass": 16,
+ "n_fixed": 8,
  "n_norm": 1,
  "three_loop_ln3_coefficient": "C_1 (-2/3) (kappa_1 + gamma_K^(2)/4) G^3, in the notation of the paper",
  "components_related": true,
  "nmhv_five_loop_prediction": {
-  "0": "zeta_2*zeta_3**2/2 - 14*zeta_2*zeta_3 - 17*zeta_2*zeta_5 + 30*zeta_2 + 8*zeta_3**2 - 11*zeta_3*zeta_4 + 45*zeta_3*zeta_5/2 - 25*zeta_3 + 27*zeta_4 - 12*zeta_5 + 115*zeta_6/6 + 55*zeta_7/4 + 257*zeta_8/36 + 105",
-  "1": "14*zeta_2*zeta_3 + 17*zeta_2*zeta_5 - 30*zeta_2 - 8*zeta_3**2 + 11*zeta_3*zeta_4 + 25*zeta_3 - 27*zeta_4 + 12*zeta_5 - 115*zeta_6/6 - 55*zeta_7/4 - 105",
-  "2": "-7*zeta_2*zeta_3 + 15*zeta_2 + 4*zeta_3**2 - 25*zeta_3/2 + 27*zeta_4/2 - 6*zeta_5 + 115*zeta_6/12 + 105/2",
-  "3": "7*zeta_2*zeta_3/3 - 5*zeta_2 + 25*zeta_3/6 - 9*zeta_4/2 + 2*zeta_5 - 35/2",
-  "4": "5*zeta_2/4 - 25*zeta_3/24 + 9*zeta_4/8 + 35/8",
-  "5": "-zeta_2/4 + 5*zeta_3/24 - 7/8",
-  "6": "zeta_2/24 + 7/48",
+  "8": "1/384",
   "7": "-1/48",
-  "8": "1/384"
+  "6": "zeta_2/24 + 7/48",
+  "5": "-zeta_2/4 + 5*zeta_3/24 - 7/8",
+  "4": "5*zeta_2/4 - 25*zeta_3/24 + 9*zeta_4/8 + 35/8",
+  "3": "7*zeta_2*zeta_3/3 - 5*zeta_2 + 25*zeta_3/6 - 9*zeta_4/2 + 2*zeta_5 - 35/2",
+  "2": "-7*zeta_2*zeta_3 + 15*zeta_2 + 4*zeta_3**2 - 25*zeta_3/2 + 27*zeta_4/2 - 6*zeta_5 + 115*zeta_6/12 + 105/2",
+  "1": "14*zeta_2*zeta_3 + 17*zeta_2*zeta_5 - 30*zeta_2 - 8*zeta_3**2 + 11*zeta_3*zeta_4 + 25*zeta_3 - 27*zeta_4 + 12*zeta_5 - 115*zeta_6/6 - 55*zeta_7/4 - 105",
+  "0": "zeta_2*zeta_3**2/2 - 14*zeta_2*zeta_3 - 17*zeta_2*zeta_5 + 30*zeta_2 + 8*zeta_3**2 - 11*zeta_3*zeta_4 + 45*zeta_3*zeta_5/2 - 25*zeta_3 + 27*zeta_4 - 12*zeta_5 + 115*zeta_6/6 + 55*zeta_7/4 + 257*zeta_8/36 + 105"
  },
  "solved_constants": {
   "r0": "zeta_2",
@@ -206,10 +206,10 @@
   "r0d": "-13*zeta_2*zeta_3**2/6 + 65*zeta_3*zeta_5/2 + 257*zeta_8/36"
  },
  "solved_order": [
-  "B2",
-  "B3",
   "r0",
+  "B2",
   "r0b",
+  "B3",
   "r0c",
   "G4",
   "B4",
@@ -360,29 +360,5 @@
    "prediction": "-2*I*pi**3/3"
   }
  ],
- "two_to_four_single_log_difference": "0",
- "n_external": 2,
- "external_inputs": {
-  "source": "Caron-Huot et al., JHEP 08 (2019) 016, arXiv:1903.10890v2",
-  "equations": [
-   "5.10",
-   "5.11"
-  ],
-  "convention": "2016 BDS-like; a = 2g^2; B = -Gamma_virt",
-  "not_fitted_to": "Dixon-Esterlis 2016 self-crossing MHV coefficients",
-  "values": {
-   "B2": "3*zeta_3",
-   "B3": "-2*zeta_2*zeta_3 - 10*zeta_5"
-  },
-  "matched_MHV_rows": [
-   {
-    "L": 3,
-    "k": 2
-   },
-   {
-    "L": 4,
-    "k": 2
-   }
-  ]
- }
+ "two_to_four_single_log_difference": "0"
 }

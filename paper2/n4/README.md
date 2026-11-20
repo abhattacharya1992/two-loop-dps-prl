@@ -26,18 +26,21 @@ times 1/(2α) for ν = 0 and 1/(1−α) for ν = 2 (checked against the Γ funct
 | file | what |
 |---|---|
 | `de_data.json` | the coefficients of 2πi lnᵏ|δ| in E⁽ᴸ⁾, L = 1–5, eqs. (3.17)–(3.21) of Dixon–Esterlis, and of πi (1+w)/(1+w*) lnᵏ|δ| in ρ⁽ᴸ⁾, L = 1–4, k = 2L−2, …, 0, eqs. (D.14)–(D.17) of the erratum; Y and R₆⁽²⁾ for 2 → 4, eqs. (2.32), (3.10). Transcribed from the PDF texts two (MHV) and three (NMHV) times; see `_source` and `_transcription` inside |
-| `stage_d.py` | the comparison: the one-loop terms define the normalisations C₁ and K, B⁽²⁾ and B⁽³⁾ are taken from independently published virtual anomalous dimensions, not fitted to the 2016 MHV coefficients. Six other parameters are determined from those MHV data, and the remaining coefficients, MHV and NMHV, are checks; also what the three-loop ln³ tests, the exact relation between the two components, the five-loop prediction for the |ΔJ_z| = 2 component and the 2 → 4 two-loop coefficients (about 10 s) |
+| `stage_d.py` | the comparison: the one-loop terms define the normalisations C₁ and K, every unknown constant is solved from the lowest order at which it appears in the MHV data, and all other coefficients, MHV and NMHV, are predictions; also what the three-loop ln³ tests, the exact relation between the two components, the five-loop prediction for the |ΔJ_z| = 2 component and the 2 → 4 two-loop coefficients (about 10 s) |
 | `results_stage_d.json`, `stage_d.log` | its output; `results_stage_d.json` is what the manuscript reads (Tables 5 and 6, Sec. 5.1) |
 | `test_n4.py`, `Makefile` | the test and the targets above |
 | `test_literature.py` | an independent symbolic comparison of κ₁–κ₄ and B⁽²⁾–B⁽⁴⁾ with the published expressions of arXiv:1903.10890, without fitting the MHV data |
 | `stage_d_blind.py`, `.log` | separate reimplementation of the MHV comparison from the written definitions, written with the AI assistant in a fresh session (same results; about 30 s) |
 | `nmhv_blind.py`, `.log` | the same for the NMHV comparison, written in another fresh session from `stage_d_blind.py` and the data only (same results; about 5 minutes, spent in the sympy series of the Γ functions) |
 
-Result, MHV (3 → 3, 25 coefficients through five loops): one fixes C₁, six
-fit parameters, and B⁽²⁾, B⁽³⁾ enter independently from the published
-2019 virtual anomalous dimension. The other 18 are tests and all agree.
-The external inputs are B⁽²⁾ = 3ζ₃ and B⁽³⁾ = −2ζ₂ζ₃ − 10ζ₅ in the
-2016 BDS-like convention; test_literature.py checks them symbolically. In particular: the leading logarithms at L = 1–5
+Result, MHV (3 → 3, 25 coefficients through five loops): one defines C₁, 8 fix constants, the
+remaining 16 are coefficient-level consistency checks and all agree.
+The eight parameters (including B⁽²⁾ and B⁽³⁾) are fitted to MHV data. The
+independently published relation B = −Γ_virt agrees with these fitted values,
+but was already used to describe and test the same Dixon–Esterlis self-crossing
+singular terms in Caron-Huot et al. (2019). It is therefore an existing
+literature consistency check, not two additional independent tests.
+In particular: the leading logarithms at L = 1–5
 (C₁G∫₀¹dt e^{−2aG²t²}, the transform of the Gaussian); no next-to-leading logarithms at the tested orders
 (B⁽¹⁾ = 0 and the scale Q_*); the three-loop ln³|δ| term, −(2/3)(κ₁ + γ_K⁽²⁾/4)C₁G³, vanishes after
 κ₁ = ζ₂ (the first test of the two-loop cusp −4ζ₂); the ζ₂ tower at L = 4, 5; the ζ₃ tower at

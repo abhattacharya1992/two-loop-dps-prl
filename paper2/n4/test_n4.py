@@ -16,7 +16,7 @@ with tempfile.TemporaryDirectory() as tmp:
 assert new == stored, 'stage_d.py no longer reproduces results_stage_d.json'
 mhv, nmhv = stored['three_to_three'], stored['nmhv']
 assert stored['loops_compared'] == 5 and len(mhv) == 25
-assert stored['n_pass'] == 18 and stored['n_fixed'] == 6 and stored['n_external'] == 2 and stored['n_norm'] == 1
+assert stored['n_pass'] == 16 and stored['n_fixed'] == 8 and stored['n_norm'] == 1
 assert not any(r['status'].startswith('FAIL') for r in mhv + nmhv)
 assert stored['four_loop_cusp_agrees'] and stored['LL_Gaussian_integral'] and stored['nmhv_LL_exponential']
 assert stored['components_related'] and stored['two_to_four_single_log_difference'] == '0'
@@ -25,10 +25,7 @@ assert len(nmhv) == 16 and stored['nmhv_n_checked'] == stored['nmhv_n_pass'] == 
 assert [(r['L'], r['k']) for r in mhv if r['status'] == 'normalisation'] == [(1, 1)]
 assert [(r['L'], r['k']) for r in nmhv if r['status'] == 'normalisation'] == [(1, 0)]
 assert stored['solved_constants']['r0'] == 'zeta_2' and stored['solved_constants']['B2'] == '3*zeta_3'
-assert stored['solved_constants']['B3'] == '-2*zeta_2*zeta_3 - 10*zeta_5'
-assert stored['external_inputs']['values'] == {'B2': '3*zeta_3', 'B3': '-2*zeta_2*zeta_3 - 10*zeta_5'}
-assert {(r['L'],r['k']) for r in mhv if r['status'] == 'PASS' and (r['L'],r['k']) in ((3,2),(4,2))} == {(3,2),(4,2)}
 assert len(stored['nmhv_five_loop_prediction']) == 9
 assert 'wrote' in log
-print('n4: stage_d.py reproduces results_stage_d.json; MHV 18 of 18 tests agree, 6 constants fitted and B2/B3 externally fixed; '
+print('n4: stage_d.py reproduces results_stage_d.json; MHV 16 of 16 predictions agree, 8 constants fixed; '
       'NMHV 15 of 15, no new constant; four-loop cusp agrees; the two components are related exactly')
