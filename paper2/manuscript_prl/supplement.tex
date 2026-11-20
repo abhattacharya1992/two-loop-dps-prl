@@ -2065,6 +2065,11 @@ produce the final colour singlets
 non-cusp anomalous dimension combinations are
 $\DD=2C_F-C_A=-1/N_c$ and
 $B=\beta_0+\DG=\beta_0-\beta_0+6C_F=6C_F$.
+Thus $\DD/(2C_F)=-1/(N_c^2-1)$.
+Related subleading-colour correlations occur in
+$g\to q\bar q$ double parton distributions~\cite{Buffing:2017mqm};
+their colour projections and normalisation differ
+from those of the amplitude kernel.
 %
 For equal final-state masses, the scale
 $Q_*^2=s^{N_c^2}/m^{2(N_c^2-1)}$ differs from
@@ -2356,7 +2361,9 @@ Sec.~\ref{sec:K1complete}.
 $gg\to ZZ$ DPS logarithms in the $\Delta J_z=0$ component.
 Lines are the predictions of Eq.~(\Lref{eq:rg}); symbols are
 coefficients extracted from the complete amplitudes at the
-three fitted velocities. The ratios use the one-loop coefficient $C_1$.}
+three fitted velocities. The ratio is $c_j/C_1$, with
+$c_j=2f_j$ for each colour component: the factor two converts
+the published $\alpha_s/(2\pi)$ convention to $a_s=\alpha_s/(4\pi)$.}
 \label{fig:zz_prediction}
 \end{figure}
 
@@ -3321,25 +3328,28 @@ and one-loop coefficient $C_1=2\pi i$.
 At fixed cross ratio $v$, the coefficients
 of $\ln^k|\delta_*|$ are independent of $v$.
 
-The published planar virtual anomalous
-dimension~\cite{CaronHuot:2019vjl} fixes
-$B^{(2)}=3\zeta_3$ and
-$B^{(3)}=-2\zeta_2\zeta_3-10\zeta_5$
-in our BDS-like convention, independently
-of the self-crossing MHV coefficients.
-Using these inputs and Table~\Lref{tab:n4letter},
-we determine the remaining $\kappa_n$
-and $B^{(4)}$ from the MHV data:
+Using the MHV coefficients of
+Table~\Lref{tab:n4letter}, we determine
+$\kappa_1$ at two loops and
+$B^{(L-1)}$, $\kappa_{L-1}$ from the
+double and single logarithms at $L\ge3$:
 \begin{equation}
 \begin{aligned}
 \nFourConstants
 \end{aligned}
 \label{eq:n4const}
 \end{equation}
-The seven $\kappa_n$ and $B^{(n)}$ values
+The seven fitted $\kappa_n$ and $B^{(n)}$ values
 agree with Ref.~\cite{CaronHuot:2019vjl}
-after removing its additional cosmic-normalisation
-factor; two were external inputs, not MHV fits.
+after removing its additional cosmic normalisation.
+In particular, $B^{(2)}=3\zeta_3$ and
+$B^{(3)}=-2\zeta_2\zeta_3-10\zeta_5$
+agree with $B=-\Gamma_{\rm virt}$ from
+Eq.~(5.10) of that reference.
+That relation was already used there to describe
+and check the Dixon--Esterlis self-crossing terms;
+these two agreements are not additional independent
+tests of the present representation.
 In that reference, $a=2g^2$ and
 $\gamma_K=2\Gamma_{\rm cusp}$.
 Converting $\Gamma_{\rm virt}$ and $\Gamma_3$
@@ -3377,11 +3387,10 @@ $2n$ for $\kappa_n$ and $2n-1$ for $B^{(n)}$.
 A linear one-loop boundary term would modify
 the next-to-leading logarithms.
 Of the 25 MHV coefficients through five loops,
-one fixes the normalisation, five determine the
-remaining constants in Eq.~(\ref{eq:n4const}),
-and one fixes the four-loop cusp coefficient.
-The independently supplied $B^{(2)}$ and $B^{(3)}$
-leave 18 MHV coefficients as consistency checks;
+one fixes the normalisation, seven determine the
+constants in Eq.~(\ref{eq:n4const}), and one fixes
+the four-loop cusp coefficient. The remaining
+\nFourPass{} coefficients check the representation;
 all agree.
 
 
