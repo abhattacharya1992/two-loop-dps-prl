@@ -74,22 +74,25 @@ partons, production of two massive colour singlets can develop a double
 parton scattering (DPS) singularity as the transverse momentum $p_T$
 vanishes~\cite{Gaunt:2011xd,Diehl:2011yj}: each incoming gluon splits
 into two nearly on-shell partons, which fuse pairwise in two hard
-subprocesses [Fig.~\ref{fig:dps}]. This occurs in a loop amplitude and has the kinematic structure of double parton scattering. Such amplitudes arise, for example, in calculations of Higgs and electroweak boson pairs at higher orders in QCD~\cite{Glover:1988rg,Banerjee:2018lfq,vonManteuffel:2015msa}.
-At two loops, the colour factor $\DD$ controls
-the cubic DPS logarithm, whose coefficient
-changes sign between gluon and quark splittings.
-The same colour factor determines the phase
-in Eq.~(\ref{eq:gammaK}), tested against
-complete amplitudes below.
-In cross sections, the squared one-loop amplitude overlaps with
-double parton scattering~\cite{Gaunt:2011xd,Manohar:2012pe,Gaunt:2012dd};
-its DPS limit is subtracted to avoid double
-counting~\cite{Diehl:2017kgu,BDFS2011,BDFS2012,BDFS2014}. Our two-loop terms give this
-limit for the virtual corrections.
-At one loop, the DPS singularity is at most logarithmic and is described
-by two splitting amplitudes and two hard subprocesses~\cite{Gaunt:2011xd}.
-At two loops, the dependence of this singularity on the daughter partons,
-their helicities and the hard vertices is not fixed by the one-loop analysis.
+subprocesses [Fig.~\ref{fig:dps}]. Such amplitudes occur in
+higher-order Higgs and vector-boson pair production~\cite{Glover:1988hh,Glover:1988rg,Banerjee:2018lfq,vonManteuffel:2015msa}.
+The planar self-crossing six-gluon amplitude exhibits
+related singular evolution~\cite{Dixon:2016epj}.
+Here we determine the two-loop DPS structure in QCD,
+including both gluon and quark splittings.
+The colour factor $\DD$ controls the cubic
+logarithm and Glauber phase. Its quark-splitting
+value has the opposite sign and is suppressed
+by $1/N_c^2$ relative to the gluon-splitting
+value, after normalising to the one-loop DPS term.
+The squared one-loop DPS amplitude overlaps a
+hadronic DPS contribution and requires subtraction~\cite{Gaunt:2011xd,Diehl:2017kgu}.
+Our two-loop terms supply a virtual amplitude-level
+ingredient, not the complete NLO cross-section subtraction.
+At one loop the DPS term is described by two
+splittings and two hard subprocesses~\cite{Gaunt:2011xd};
+their two-loop colour, spin and finite matching
+structure requires additional information.
 
 We determine the leading two-loop DPS logarithms and finite matching
 functions for gluon and quark splittings at fixed momentum fractions
@@ -100,10 +103,10 @@ subprocess amplitudes, with no analytic expansion of a two-loop
 amplitude at small $p_T$. We derive the kernel correction analytically
 from the collinear and soft contributions and parton self-energy
 corrections, including their helicity and parity dependence.
-For fixed daughter-parton representations and colour-singlet hard
-projections, the tensor kernel is shared between processes; the hard
-amplitudes and their helicity contractions determine the process-dependent
-coefficients and scales.
+For fixed daughter-parton representations and colour-singlet
+hard projections, the same tensor kernel applies; hard
+amplitudes and helicity contractions fix the remaining
+process dependence.
 The predicted coefficients agree with complete two-loop $gg\to HH$
 and $gg\to AA$ amplitudes with effective gluon vertices and
 $gg\to ZZ$ amplitudes with massless quark loops, across the tested
@@ -112,15 +115,22 @@ checks the region integrals.
 
 Our earlier $gg\to AA$ threshold analysis identified
 the gluon-channel cubic and quadratic DPS logarithms
-and the scalar and pseudoscalar helicity weights~\cite{P1}.
-Here we extend the logarithmic structure to quark
-splittings and derive the finite matching functions
-analytically for both splitting channels. Two-loop splitting kernels have also been calculated for double parton distributions~\cite{Diehl:2019rdh,Diehl:2021non,Diehl:2026quant}.
+and scalar and pseudoscalar helicity weights~\cite{P1}.
+The present calculation derives a common two-loop
+kernel, adds the quark-splitting channel and obtains
+the finite matching functions and Glauber phase.
+Two-loop splitting kernels for double parton
+distributions have also been calculated~\cite{Diehl:2019rdh,Diehl:2021non,Diehl:2026quant}.
 These describe parton correlations in DPS cross
 sections, whereas the present calculation concerns
 singularities of scattering amplitudes.
 %
-The Glauber region produces a phase in the infrared (IR) subtracted amplitude in the prescription used here. This is consistent with the cancellation of Glauber contributions in the inclusive double Drell--Yan cross section~\cite{Diehl:2015bca}.
+The Glauber region produces a phase in the infrared (IR)
+subtracted amplitude in our prescription, consistent
+with its cancellation in inclusive double Drell--Yan
+cross sections~\cite{Diehl:2015bca}. Its setting differs
+from recent studies of space-like collinear
+factorisation violation~\cite{Barcaro:2026glauber}.
 For $gg\to ZZ$, the predicted logarithmic coefficients
 agree with complete two-loop amplitudes to $\zzDevMax$
 in the normalisations of Table~\ref{tab:tests}, providing
@@ -442,8 +452,8 @@ r_0^{g\to gg}&=C_A\Big[\tfrac{134}9-5\zeta_2-4\ln x\ln(1-x)\Big]-\tfrac{40}9T_Fn
 r_0^{g\to q\bar q}&=C_F\Big[12-6\zeta_2+2\ln^2\tfrac{x}{1-x}\Big]\notag\\
 &\quad+C_A\Big[2+\zeta_2-2\ln^2x-2\ln^2(1-x)\Big],\label{eq:r0q}
 \end{align}
-with $x$ the momentum fraction of the splitting and $F_\nu$
-the overlap of the component, $F_0$ or $F_2$.
+Here $x$ is the splitting momentum fraction and $F_\nu$
+the helicity overlap ($F_0$ or $F_2$).
 The collinear integrals determine the common finite terms,
 while the one-loop splitting tensors and their contraction
 with the hard amplitudes determine the helicity dependence.
@@ -466,8 +476,9 @@ $\G$ in Eq.~(4.6) of Ref.~\cite{P1} exactly, including
 the hard contribution and finite IR-scheme conversion.
 The helicity-dependent term of Eq.~(\ref{eq:r0g}) originates from the
 rational part of the one-loop $g\to gg$ splitting amplitudes~\cite{Bern:1999ry}, with colour factor $C_A-2T_Fn_f$.
-For $\nu=2$, the helicity-flip contribution has the relative sign
-of $M_{--}/M_{++}$ of the hard vertex.
+For $\nu=2$, the helicity-flip contribution carries the
+relative sign of the hard-vertex gluon-helicity amplitudes
+$M_{--}/M_{++}$.
 
 \textit{Planar $\mathcal N=4$ checks:}
 The known self-crossing limit of six-gluon
@@ -502,10 +513,11 @@ $\G=\tfrac12\ln|\delta_*|$, with
 $\delta_*=p_T^2/Q_*^2$.
 The MHV singularity corresponds to $\nu=0$,
 with $C_1=2\pi i$.
-With the normalisation and boundary constants
-fixed, the representation reproduces \nFourPass{}
-additional logarithmic coefficients of the known
-planar six-gluon amplitudes through five loops
+With $B^{(2)}$ and $B^{(3)}$ supplied by the
+published planar virtual anomalous dimension~\cite{CaronHuot:2019vjl},
+the remaining parameters fixed from the MHV data
+give \nFourPass{} matching logarithmic coefficients
+through five loops
 (Table~\ref{tab:n4letter},
 \hyperref[sec:endmatter]{End Matter}).
 
@@ -592,9 +604,9 @@ gives the third coefficient for $gg\to HH$.
 
 
 \textit{Conclusion:}
-We have determined the DPS singularity of gluon-fusion
-amplitudes at two loops, including its finite matching
-functions, for gluon and quark splittings.
+We have determined the two-loop DPS logarithms and
+finite matching functions in the studied QCD
+gluon-fusion amplitudes, for gluon and quark splittings.
 A single colour factor, $\DD$, controls both the cubic
 logarithm and the phase generated by Glauber exchange;
 it is positive for gluon splittings and negative for
@@ -606,10 +618,11 @@ subprocess amplitudes and one hard scale, the kernel
 determines the leading two-loop logarithms for massive
 colour-singlet pair production with the DPS configuration
 studied here, without an expansion of the two-loop amplitude.
-The predictions agree with complete two-loop amplitudes
-in both splitting channels, with amplitudes for off-shell
-vector bosons of unequal invariant masses and with known
-planar $\mathcal N=4$ results through five loops.
+The predictions agree with complete two-loop QCD
+amplitudes in both splitting channels, including
+off-shell vector bosons of unequal masses.
+Planar $\mathcal N=4$ amplitudes provide separate
+higher-loop consistency checks.
 They provide analytic benchmarks for complete two-loop
 calculations and, under the stated boundary conditions,
 extend to the leading three-loop logarithms.
