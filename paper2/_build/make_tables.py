@@ -553,6 +553,11 @@ def n4_part(res):
     """Checks the planar N = 4 comparison and returns the quoted macros."""
     rows, nm = res['three_to_three'], res['nmhv']
     assert res['n_pass'] + res['n_fixed'] + res['n_norm'] == res['n_checked'] == len(rows)
+    assert (res['n_pass'], res['n_fixed'], res['n_external'], res['n_norm']) == (18, 6, 2, 1)
+    assert res['external_inputs']['values'] == {
+        'B2': '3*zeta_3', 'B3': '-2*zeta_2*zeta_3 - 10*zeta_5'}
+    assert {(r['L'], r['k']) for r in rows if (r['L'],r['k']) in ((3,2),(4,2))
+           and r['status'] == 'PASS'} == {(3,2),(4,2)}
     assert not any(r['status'].startswith('FAIL') for r in rows)
     assert res['four_loop_cusp_agrees'] and res['LL_Gaussian_integral'] and res['nmhv_LL_exponential']
     assert res['components_related'] and res['two_to_four_single_log_difference'] == '0'

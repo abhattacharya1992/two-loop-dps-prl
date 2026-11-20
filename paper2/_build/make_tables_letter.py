@@ -57,8 +57,10 @@ def letter_table(mt):
           r'MHV amplitude $\mathcal E^{(L)}$, Eqs.~(3.17)--(3.21) of Ref.~\cite{Dixon:2016epj}, and in the next-to-MHV '
           r'amplitude $\rho^{(L)}$, Eqs.~(D.14)--(D.17) of its erratum, in $3\to3$ kinematics, against '
           r'Eqs.~(\ref{eq:kernel}), (\ref{eq:Fm}) and~(\ref{eq:n4exp}) with $\nu=0$ and $\nu=2$. The one-loop '
-          r'coefficients define $C_1$ and $K$; a coefficient followed by a constant in brackets fixes that constant, '
-          r'and the remaining coefficients check the known radial representation and helicity map. All agree.}',
+          r'coefficients define $C_1$ and $K$. The inputs $B^{(2)}$ and $B^{(3)}$ are fixed '
+          r'from the published planar virtual anomalous dimension~\cite{CaronHuot:2019vjl}; '
+          r'brackets mark the other constants fitted from MHV coefficients. '
+          r'The remaining 18 MHV coefficients test the representation and agree.}',
           r'\label{tab:n4letter}', r'\end{table*}']
     (HERE/'tables'/'table_n4_letter.tex').write_text('\n'.join(t) + '\n')
     return len(mhv) + len(nmhv)

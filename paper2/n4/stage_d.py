@@ -16,7 +16,9 @@ Structure tested (Paper 2, eqs. (5.3)-(5.6), conformal limit, no running couplin
 Dictionary (Secs. 2.3 and 3 of DE): delta = p_T^2/Q_*^2 with Q_*^2 = s_36 x y (1-x)(1-y) (DE eq. 2.22
 = Paper 2's m_1^2 m_2^2/s); for 3 -> 3 kinematics G = ln|delta|/2 and C_1 = 2 pi i; for 2 -> 4,
 G = ln(delta)/2 + i pi/2 and C_1 = -2 pi i.  The one-loop terms define C_1 and K (normalisation);
-the unknown constants are solved from the lowest loop order at which each appears in the MHV
+B^(2) and B^(3) are supplied from the published planar virtual anomalous dimension
+of Caron-Huot et al. (2019), not fitted to the Dixon-Esterlis MHV table. Other
+unknown constants are solved at the lowest order at which they appear in MHV
 data; everything else, MHV and NMHV (constants k = 0 included), is a prediction.  Also computed:
 what the three-loop ln^3 tests, the exact relation between the two components, the five-loop
 prediction for the |Delta J_z| = 2 component, and the 2 -> 4 two-loop coefficients.
@@ -57,7 +59,19 @@ NA = LMAX - 1                                # order in a relative to the tree-l
 # ---------------------------------------------------------------- the b-space structure
 r0, r0b, r0c, r0d, B2, B3, B4, G4 = sp.symbols('r0 r0b r0c r0d B2 B3 B4 G4')
 Gamma = 4*a - 4*z[2]*a**2 + 22*z[4]*a**3 + G4*a**4      # G4: the four-loop cusp, solved from the data
-# B_n absorbs the boundary terms r_1^(n) X of the same order, which the data cannot separate from the non-cusp anomalous dimension
+# B_n absorbs any independent boundary r_1^(n) X terms, which the MHV data
+# cannot separate from the non-cusp anomalous dimension. At n=2,3, use
+# independent published BDS-like values B=-Gamma_virt from Caron-Huot et al.,
+# JHEP 08 (2019) 016, eqs. (5.10)-(5.11), g^(2n)=(a/2)^n.
+# This is NOT an operator-level Collins-Soper identification for QCD.
+published_virtual = (-12*z[3]*(a/2)**2
+                     + (80*z[5] + 16*z[2]*z[3])*(a/2)**3)
+externally_fixed = {
+    B2: sp.expand(-published_virtual).coeff(a, 2),
+    B3: sp.expand(-published_virtual).coeff(a, 3),
+}
+assert sp.expand(externally_fixed[B2] - 3*z[3]) == 0
+assert sp.expand(externally_fixed[B3] + 2*z[2]*z[3] + 10*z[5]) == 0
 expo = -(Gamma/8)*X**2 + (B2*a**2 + B3*a**3 + B4*a**4)*X
 const = 1 + r0*a + r0b*a**2 + r0c*a**3 + r0d*a**4
 bspace = sp.series(sp.exp(expo)*const, a, 0, NA + 1).removeO()
@@ -85,7 +99,7 @@ zz = {f'z{k}': z[k] for k in range(2, 10)}
 pred33 = {L: sp.expand(sp.expand(A[L]*(-2*pi*I)/(2*pi*I)).subs(G, lnd/2)) for L in A}   # C_1 = 2 pi i, G = ln|delta|/2
 raw = {}                                     # the coefficients as printed, for the table
 unknowns = [r0, r0b, r0c, r0d, B2, B3, B4, G4]
-eqs, solved, report = [], {}, []
+eqs, solved, report = [], dict(externally_fixed), []
 for L in range(1, LMAX + 1):
     de = data['three_to_three'][str(L)]['coefficients']
     for k in range(2*L - 1, 0, -1):
@@ -116,7 +130,8 @@ for L in range(1, LMAX + 1):
 print('3 -> 3 kinematics, coefficients of 2 pi i ln^k|delta| in E^(L):')
 for L, k, status, target in report:
     print(f'  L={L} k={k}: {status}')
-print('constants solved from the data:', {str(k): str(to_zeta(val)) for k, val in solved.items()})
+print('published external inputs (not fitted):', {str(k): str(to_zeta(val)) for k, val in externally_fixed.items()})
+print('remaining constants fitted from MHV:', {str(k): str(to_zeta(val)) for k, val in solved.items() if k not in externally_fixed})
 bes = -sp.Rational(219, 2)*z[6] - 4*z[3]**2
 g4_ok = G4 in solved and sp.expand(solved[G4] - bes) == 0
 if G4 in solved:
@@ -230,7 +245,17 @@ print('nu = 2 LL tower equals exp(-2 a G^2) through', LMAX, 'loops:', ll2_ok)
 out = {'loops_compared': LMAX, 'source': data['_source'],
        'three_to_three': [{'L': L, 'k': k, 'status': s, 'DE': raw.get((L, k), ''), 'DE_eq': data['three_to_three'][str(L)]['eq']}
                           for L, k, s, t in report],
-       'n_checked': len(report), 'n_pass': n_pass, 'n_fixed': len(solved), 'n_norm': n_norm,
+       'n_checked': len(report), 'n_pass': n_pass,
+       'n_fixed': len(solved) - len(externally_fixed),
+       'n_external': len(externally_fixed), 'n_norm': n_norm,
+       'external_inputs': {
+           'source': 'Caron-Huot et al., JHEP 08 (2019) 016, arXiv:1903.10890v2',
+           'equations': ['5.10', '5.11'],
+           'convention': '2016 BDS-like; a = 2g^2; B = -Gamma_virt',
+           'not_fitted_to': 'Dixon-Esterlis 2016 self-crossing MHV coefficients',
+           'values': {str(k): str(to_zeta(v)) for k, v in externally_fixed.items()},
+           'matched_MHV_rows': [{'L': L, 'k': k} for L, k in ((3, 2), (4, 2))],
+       },
        'three_loop_ln3_coefficient': 'C_1 (-2/3) (kappa_1 + gamma_K^(2)/4) G^3, in the notation of the paper',
        'components_related': bool(components_related), 'nmhv_five_loop_prediction': five,
        'solved_constants': {str(k): str(to_zeta(val)) for k, val in solved.items()},
@@ -243,7 +268,9 @@ out = {'loops_compared': LMAX, 'source': data['_source'],
 if (any(s.startswith('FAIL') for _,_,s in report2) or
         any(s.startswith('FAIL') for _,_,s,_ in report) or
         not all((g4_ok,ll_ok,ll2_ok,components_related,single_log_24)) or
-        n_pass+n_norm+len(solved)!=len(report) or n_pass2!=15 or n_checked2!=15):
+        n_pass+n_norm+len(solved)-len(externally_fixed)!=len(report)
+        or n_pass != 18 or len(solved)-len(externally_fixed) != 6
+        or n_pass2!=15 or n_checked2!=15):
     raise ValueError('Self-crossing coefficient comparison failed; results were not written')
 OUT.write_text(json.dumps(out, indent=1))
 print('wrote', OUT.name)
