@@ -208,7 +208,11 @@ def hh_figure():
 
 # A compact comparison for the PRL Letter: predictions and independent VVamp fits.
 def zz_prediction_figure():
-    """Predicted leading two-loop ZZ coefficients and fits at three velocities."""
+    """Predicted leading two-loop ZZ coefficients and fits at three velocities.
+
+    The plotted c_j/C_1 equals 2*f_j/C_1 from the input's alpha_s/(2*pi)
+    convention, since the common amplitude expansion uses a_s=alpha_s/(4*pi).
+    """
     data=load('zz'); pred=zz_predictions()
     betas=betas_of(data['betas'])
     grid=np.linspace(0.20,0.72,180)
@@ -234,7 +238,276 @@ def zz_prediction_figure():
     frame(ax)
     ax.set_xlim(.18,.74)
     ax.set_xlabel(r'$\beta$')
-    ax.set_ylabel(r'$2f_j/C_1$')
+    ax.set_ylabel(r'$c_j/C_1
+    ax.legend(fontsize=7,loc='lower left',ncol=2,handletextpad=.3,columnspacing=.85)
+    fig.tight_layout(pad=.6)
+    save(fig,'zz_prediction')
+
+
+
+# The Letter compares the two splitting channels and all three tested hard processes.
+def three_process_comparison_figure():
+    """Leading and next-to-leading isotropic two-loop DPS logarithms.
+
+    The reported HH/AA amplitudes use a_s=alpha_s/(4*pi); the published ZZ
+    amplitudes instead use alpha_s/(2*pi), giving a factor two in the
+    two-loop/one-loop ratios. The plotted points are *unconstrained* amplitude
+    fits. Prediction curves are obtained solely from Delta_C and B; no
+    plotted fit value is used in their construction.
+    """
+    hh, one, aa, zz = (load(k) for k in ('colour', 'one_loop', 'dps_aa', 'zz'))
+    aa = aa['betas']; zz = zz['betas']
+    betas = ['1/4', '1/2', '2/3']
+    assert all(set(betas).issubset(d) for d in (hh, one, aa, zz))
+    Nc, nf = 3, 5
+    CA, CF = mp.mpf(Nc), mp.mpf(Nc*Nc-1)/(2*Nc)
+    beta0 = (11*CA - 2*nf)/3
+    colour_weights = {'N2': Nc*Nc, 'N_Nf': Nc*nf,
+                      'Nf_over_N': mp.mpf(nf)/Nc, 'Nf2': nf*nf}
+    out = {p: {j: [] for j in (3, 2)} for p in ('HH', 'AA', 'ZZ')}
+    theory = {p: {j: [] for j in (3, 2)} for p in out}
+    for b in betas:
+        # The HH one-loop slope in results_one_loop.json is per Nc.
+        ch = CA*mp.mpf(one[b]['one_loop']['DPS_minus_2piFS'])
+        # The AA analytic one-loop slope in results_aa.json is also per Nc.
+        ca = CA*mp.mpf(aa[b]['one_loop']['C1/N']['analytic'])
+        cz = cplx(zz[b]['hel']['++++']['c1'])
+        for j in (3, 2):
+            h = sum(colour_weights[r['colour']]*cplx((r['re'],r['im']))
+                    for r in hh[b]['rows'] if r['coefficient']==f'spin0 G^{j}')/ch
+            a = sum(colour_weights[r['colour']]*cplx(r['value'])
+                    for r in aa[b]['leading_logs']
+                    if r['component']==1 and r['power']==j)/ca
+            z = 2*sum(c*cplx(zz[b]['hel']['++++']['2l_'+label]['f'][j])
+                      for label,c in (('CF',CF),('CA',CA)))/cz
+            Lx = mp.log((1-(mp.mpf(Fraction(b).numerator)/Fraction(b).denominator)**2)/4)
+            for proc, value, expected in (
+                ('HH',h, -mp.mpf(4)/3*CA if j==3 else -2*beta0),
+                ('AA',a, -mp.mpf(4)/3*CA if j==3 else -2*beta0),
+                ('ZZ',z, -mp.mpf(4)/3*(2*CF-CA) if j==3 else -6*CF+4*(CA-CF)*Lx),
+            ):
+                if abs(value-expected)>mp.mpf('1e-8'):
+                    raise AssertionError(f'{proc} beta={b}, power={j}: {value} != {expected}')
+                out[proc][j].append(float(mp.re(value)))
+                theory[proc][j].append(float(expected))
+    bf=np.array([float(Fraction(b)) for b in betas])
+    bg=np.linspace(0.18,0.73,201)
+    gluon_c3=float(-mp.mpf(4)*CA/3)
+    quark_c3=float(-mp.mpf(4)*(2*CF-CA)/3)
+    gluon_c2=float(-2*beta0)
+    quark_c2=(-6*float(CF)+4*float(CA-CF)*np.log((1-bg*bg)/4))
+    fig, axes=plt.subplots(1,2,figsize=(6.75,2.6))
+    for ax in axes:
+        frame(ax)
+        ax.set_xlim(0.18,0.73)
+        ax.set_xticks([0.25,0.5,2/3]); ax.set_xticklabels([r'$1/4$',r'$1/2$',r'$2/3$'])
+        ax.set_xlabel(r'$\beta$')
+    axes[0].axhline(gluon_c3,lw=1.3,color=INK,ls='-',zorder=2)
+    axes[0].axhline(quark_c3,lw=1.3,color=INK2,ls='--',zorder=2)
+    axes[1].axhline(gluon_c2,lw=1.3,color=INK,ls='-',zorder=2)
+    axes[1].plot(bg,quark_c2,lw=1.3,color=INK2,ls='--',zorder=2)
+    process=(('HH',C1,'s',-0.012),('AA',C2,'D',0.012),('ZZ',C3,'o',0.0))
+    for p,col,mark,dx in process:
+        for j,ax in ((3,axes[0]),(2,axes[1])):
+            ax.plot(bf+dx,out[p][j],linestyle='none',marker=mark,ms=5.1,
+                    color=col,mfc=('white' if p=='AA' else col),mec=col,
+                    mew=1.3,zorder=5,label=rf'$gg\to {p}$' if j==3 else None)
+    axes[0].set_ylabel(r'$c_3/C_1$')
+    axes[1].set_ylabel(r'$c_2/C_1$')
+    axes[0].set_ylim(-4.65,1.1)
+    axes[1].set_ylim(-22.4,-14.0)
+    axes[0].set_title(r'(a) Cubic logarithm',fontsize=9,color=INK,loc='left')
+    axes[1].set_title(r'(b) Quadratic logarithm',fontsize=9,color=INK,loc='left')
+    processes=[Line2D([],[],marker=mk,color=c,mfc=('white' if p=='AA' else c),
+                      lw=0,ms=5.5,label=rf'$gg\to {p}$') for p,c,mk,_ in process]
+    prediction_lines=[Line2D([],[],color=INK,lw=1.3,label=r'$g\to gg$ prediction'),
+                      Line2D([],[],color=INK2,lw=1.3,ls='--',label=r'$g\to q\bar q$ prediction')]
+    fig.legend(handles=processes+prediction_lines,loc='upper center',ncol=5,
+               bbox_to_anchor=(0.5,1.0),fontsize=8,handletextpad=.4,
+               columnspacing=1.05,handlelength=1.6)
+    fig.subplots_adjust(left=.10,right=.985,bottom=.23,top=.76,wspace=.34)
+    save(fig, 'three_process_comparison')
+
+
+# ---------------------------------------------------------------- Fig. 4: gg -> ZZ coefficients
+def spread_labels(ys, gap):
+    """positions for labels at heights ys (any order), at least `gap` apart, as close as possible
+    to ys; returned in the original order"""
+    order = sorted(range(len(ys)), key=lambda k: ys[k])
+    pos = [ys[k] for k in order]
+    for _ in range(50):
+        moved = False
+        for n in range(1, len(pos)):
+            if pos[n]-pos[n-1] < gap:
+                d = (gap-(pos[n]-pos[n-1]))/2
+                pos[n-1] -= d; pos[n] += d
+                moved = True
+        if not moved:
+            break
+    out = [0.0]*len(ys)
+    for k, y in zip(order, pos):
+        out[k] = y
+    return out
+
+
+def zz_figure():
+    """Top: the coefficients of eq. (6.3), 2 f_j/C_1 for ++++ and 2 f_j/K for +-++ (the factor 2
+    converts the expansion in alpha_s/2pi of the source to a_s), against beta, with the
+    predictions of eq. (6.3), and dotted the predictions for the coefficients that depend on L_x
+    if the scale were the gluon value Q_*^2 = m^4/s, which has no terms in L_x. Bottom: absolute
+    deviation from the prediction, the largest over the four amplitudes of each group (as in
+    Table 7)."""
+    zz = load('zz')
+    pred = zz_predictions()
+    betas = betas_of(zz['betas'])
+    bf = np.array([float(Fraction(b)) for b in betas])
+    B0, B1 = 0.15, 0.75
+    grid = np.linspace(B0, B1, 200)
+    xg = (1+grid)/2
+    Lg = np.log(xg*(1-xg))
+    groups = ((ZZ_LOG, 'log', 'c1', (3, 2), r'(a) $\Delta J_z=0$: $\mathcal{M}_{{+}{+}{+}{+}}$, units of $C_1$',
+               r'(c) $\Delta J_z=0$: largest deviation'),
+              (ZZ_K, 'K', 'K', (2, 1), r'(b) $|\Delta J_z|=2$: $\mathcal{M}_{{+}{-}{+}{+}}$, units of $K$',
+               r'(d) $|\Delta J_z|=2$: largest deviation'))
+    gname = {3: r'\mathcal{G}^3', 2: r'\mathcal{G}^2', 1: r'\mathcal{G}'}
+    pname = {'CF': 'C_F', 'CA': 'C_A'}
+    colour = {'CF': C1, 'CA': C2}
+    fig, ax = plt.subplots(2, 2, figsize=(7.0, 5.8), gridspec_kw={'height_ratios': [1.4, 1]})
+    for col, (hels, kind, key, powers, title, dtitle) in enumerate(groups):
+        top, bot = ax[0, col], ax[1, col]
+        labels, alts, handles, ys = [], {}, [], []
+        for k, j in enumerate(powers):
+            for i, part in enumerate(('CF', 'CA')):
+                a0, a1 = (float(q) for q in lin_coeffs(pred[(kind, j, part)]))
+                vals, devs = [], []
+                for b in betas:
+                    r = zz['betas'][b]
+                    q = Fraction(b)
+                    x = (1+mp.mpf(q.numerator)/q.denominator)/2
+                    p = a0+a1*mp.log(x*(1-x))
+                    ratios = [2*cplx(r['hel'][h]['2l_'+part]['f'][j])/cplx(r['hel'][h][key]) for h in hels]
+                    vals.append(float(mp.re(ratios[0])))
+                    devs.append(float(max(abs(v-p) for v in ratios)))
+                first = k == 0                       # highest power: open circles, as in Fig. 3
+                mk = dict(marker='o', ms=8, mfc='none', mec=colour[part], mew=1.4) if first else \
+                    dict(marker='s', ms=4.5, mfc=colour[part], mec=colour[part])
+                curve = a0+a1*Lg
+                top.plot(grid, curve, ls='-' if a1 else (0, (5, 2.5)), color=colour[part], lw=1.1)
+                top.plot(bf, vals, ls='none', **mk)
+                ys += list(curve)+vals
+                labels.append((curve[-1], f'${gname[j]}$, ${pname[part]}$'))
+                if a1:                               # the same coefficient for the gluon scale (no L_x)
+                    alts.setdefault(a0, []).append((j, part))
+                    ys.append(a0)
+                bot.plot(bf+(2*k+i-1.5)*0.010, devs, ls='none',
+                         **(dict(marker='o', ms=6, mfc='white', mec=colour[part], mew=1.3) if first else
+                            dict(marker='s', ms=5, mfc=colour[part], mec='white', mew=0.6)))
+                handles.append(Line2D([], [], ls='none', label=f'${gname[j]}$, ${pname[part]}$',
+                                      **(dict(marker='o', ms=6, mfc='white', mec=colour[part], mew=1.3) if first else
+                                         dict(marker='s', ms=5, mfc=colour[part], mec='white', mew=0.6))))
+        y0, y1 = min(ys), max(ys)
+        pad = 0.07*(y1-y0)
+        top.set_ylim(y0-pad, y1+pad)
+        span = y1-y0+2*pad
+        for a0, parts in alts.items():               # coinciding lines alternate their colours
+            for n, (j, part) in enumerate(parts):
+                top.plot(grid, np.full_like(grid, a0), color=colour[part], lw=1.3,
+                         ls=(1.8*n, (1.0, 1.8*len(parts)-1.0)) if len(parts) > 1 else (0, (1.0, 1.6)))
+            powers_here = {j for j, _ in parts}
+            assert len(powers_here) == 1
+            who = ' and '.join(f'${pname[part]}$' for _, part in parts)
+            text = f'${gname[powers_here.pop()]}$, {who}, for $Q_*^2=m^4/s$'
+            # label at the right end of the dotted line, on the side with more room over the width
+            # of the label (beta > 0.4)
+            near = [c for c in top.get_lines() if len(c.get_xdata()) == len(grid) and c.get_ydata()[0] != a0]
+            right = grid > 0.4
+            room = lambda s: min(min(abs(c.get_ydata()[right]-(a0+s*f*span)).min() for f in (0.02, 0.05, 0.08))
+                                 for c in near)
+            s = 1 if room(1) >= room(-1) else -1
+            top.text(B1-0.01, a0+s*0.022*span, text, fontsize=7, color=INK,
+                     va='bottom' if s > 0 else 'top', ha='right')
+        for (y, text), yl in zip(labels, spread_labels([y for y, _ in labels], 0.065*span)):
+            top.text(B1+0.012, yl, text, fontsize=8, color=INK, va='center', ha='left', clip_on=False)
+        frame(top, title)
+        frame(bot, dtitle)
+        for a in (top, bot):
+            a.set_xlim(B0, B1)
+        bot.set_yscale('log')
+        bot.set_xlabel(r'$\beta$')
+        bot.legend(handles=handles, loc='upper left', fontsize=7.5, ncol=2, handletextpad=0.3, columnspacing=1.0)
+    ax[0, 0].set_ylabel('coefficient')
+    ax[1, 0].set_ylabel(r'$|\mathrm{extracted}-\mathrm{predicted}|$')
+    lo = min(min(l.get_ydata()) for a in ax[1] for l in a.get_lines())
+    hi = max(max(l.get_ydata()) for a in ax[1] for l in a.get_lines())
+    for a in ax[1]:
+        a.set_ylim(10**np.floor(np.log10(lo)-0.3), 10**np.ceil(np.log10(hi)+1.3))
+    fig.tight_layout(w_pad=4.5)
+    save(fig, 'zz_coefficients')
+
+
+# ---------------------------------------------------------------- Fig. 5: fit windows
+def windows_figure():
+    """Relative deviation of a coefficient of the next-to-highest power of G from its prediction at
+    beta = 1/2, for fits through windows of consecutive deltas, against the smallest delta of the
+    window, for every fit model: no p_T^2 terms, or p_T^2 times a polynomial of degree P in G.
+    The last point of the model of the paper (P = 2 for gg -> HH, P = 3 for two-loop gg -> ZZ) is
+    the fit of Tables 2 and 7, and the point before it the fit with the window moved one step up
+    in delta, from which the numerical uncertainty is estimated. The models keep their colour in all panels."""
+    hh, zz = load('windows'), load('zz_windows')
+    b = preferred_beta(list(hh))
+    models = {'plain': ('no $p_T^2$ terms', 'v', INK2), 'pT2': ('$P=0$', 'D', C1), 'pT2 G': ('$P=1$', '^', C2),
+              'pT2 G^2': ('$P=2$', 's', C3), 'pT2 G^3': ('$P=3$', 'o', C5)}
+    panels = ((hh[b]['spin0 G^2']['rows'], 'pT2 G^2', r'(a) $gg\to HH$: $c_{12}$, $N^2$ term'),
+              (hh[b]['spin2 G^1']['rows'], 'pT2 G^2', r'(b) $gg\to HH$: $c_{21}$, $N^2$ term'),
+              ([r for r in zz[b]['++++ 2l_CF']['rows'] if r['power'] == 2], 'pT2 G^3',
+               r'(c) $gg\to ZZ$: $\mathcal{G}^2$ in $\mathcal{M}_{{+}{+}{+}{+}}$, $C_F$ term'),
+              ([r for r in zz[b]['+-++ 2l_CF']['rows'] if r['power'] == 1], 'pT2 G^3',
+               r'(d) $gg\to ZZ$: $\mathcal{G}$ in $\mathcal{M}_{{+}{-}{+}{+}}$, $C_F$ term'))
+    fig, ax = plt.subplots(2, 2, figsize=(7.0, 5.2), sharex=True, sharey=True)
+    ks = set()
+    for a, (rows, paper, title) in zip(ax.flat, panels):
+        for m, (lab, mk, col) in models.items():
+            sel = [r for r in rows if r['model'] == m]
+            if not sel:
+                continue
+            k = [r['delta_exp_min'] for r in sel]      # the window ends at delta = 10^-k
+            ks |= set(k)
+            main = m == paper
+            a.semilogy(k, [float(mp.mpf(r['rel_dev'])) for r in sel], marker=mk, color=col,
+                       lw=2.6 if main else 1.2, ms=7 if main else 4.8, mec='white', mew=0.7,
+                       zorder=3 if main else 2)
+        frame(a, title)
+    kk = list(range(min(ks), max(ks)+1))
+    ax[1, 0].set_xticks(kk)
+    ax[1, 0].set_xticklabels([f'$10^{{-{k}}}$' for k in kk])
+    ax[1, 0].set_xlim(kk[0]-0.4, kk[-1]+0.4)
+    lo = min(l.get_ydata().min() for a in ax.flat for l in a.get_lines())
+    hi = max(l.get_ydata().max() for a in ax.flat for l in a.get_lines())
+    e0, e1 = int(np.floor(np.log10(lo)-0.3)), int(np.ceil(np.log10(hi)+0.3))
+    ax[0, 0].set_ylim(10.0**e0, 10.0**e1)
+    ax[0, 0].set_yticks([10.0**e for e in range(e0 + (e0 % 2), e1+1, 2)])
+    ax[0, 0].minorticks_off()
+    for a in ax.flat:
+        a.yaxis.set_minor_locator(matplotlib.ticker.NullLocator())
+    for a in ax[1]:
+        a.set_xlabel(r'smallest $\delta$ in the fit window')
+    for a in ax[:, 0]:
+        a.set_ylabel('relative deviation')
+    handles = [Line2D([], [], marker=mk, color=col, lw=1.2, ms=4.8, mec='white', mew=0.7, label=lab)
+               for lab, mk, col in models.values()]
+    handles.append(Line2D([], [], color=INK, lw=2.6, label='used in the text'))
+    fig.legend(handles=handles, loc='upper center', ncol=6, fontsize=8, handlelength=2.2,
+               columnspacing=1.3, bbox_to_anchor=(0.5, 1.0))
+    fig.tight_layout(rect=(0, 0, 1, 0.95))
+    save(fig, 'fit_windows')
+
+
+if __name__ == '__main__':
+    forward_figure()
+    hh_figure()
+    zz_figure()
+    windows_figure()
+)   # c_j = 2 f_j, converting published alpha_s/(2pi) to a_s
     ax.legend(fontsize=7,loc='lower left',ncol=2,handletextpad=.3,columnspacing=.85)
     fig.tight_layout(pad=.6)
     save(fig,'zz_prediction')

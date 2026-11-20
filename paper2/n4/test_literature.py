@@ -28,7 +28,7 @@ def compare(repo):
         4*a - 4*z[2]*a**2 + 22*z[4]*a**3
         + (-R(219, 2)*z[6] - 4*z[3]**2)*a**4
     )
-    # Equations (5.10) and (5.11), with each g^(2n) replaced by (a/2)^n.
+    # Gamma_virt: Eq. (5.10); Gamma_3: Eq. (5.11), with g^(2n)=(a/2)^n.
     gamma_virt = (
         -12*z[3]*(a/2)**2
         + (80*z[5] + 16*z[2]*z[3])*(a/2)**3
@@ -72,6 +72,13 @@ def compare(repo):
     return {
         "source": "https://arxiv.org/pdf/1903.10890v2",
         "source_equations": ["2.20", "5.4", "5.10", "5.11"],
+        "independence_note": (
+            "The B=-Gamma_virt relation is already a published alternative "
+            "representation of the same self-crossing singular terms, tested "
+            "against Dixon-Esterlis through five loops in that publication. "
+            "Matching B2/B3 is a literature consistency check, not two "
+            "new independent self-crossing predictions."
+        ),
         "doi": "10.1007/JHEP08(2019)016",
         "normalization": {
             "coupling": "a = 2 g^2",
