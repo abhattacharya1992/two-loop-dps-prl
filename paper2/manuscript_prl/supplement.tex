@@ -615,19 +615,56 @@ counterterms. The argument does not apply
 diagram by diagram in axial gauge, where
 $(n\cdot k)^2/n^2$ introduces another scale.
 
-Hard exchanges connecting the two subprocesses
-are not included in the hard term of
-Eq.~(\ref{eq:twoloopfact}). The pointwise
-scaling checks find suppression by $\lambda$
-for $ZZ$ in Feynman and axial gauges, and
-for $HH,AA$ in axial gauges. Some individual
-scalar-channel diagrams in covariant gauge
-instead scale as $\lambda^0$. Their cancellation
-after summing diagrams is not established
-by these checks. The comparisons with the
-complete two-loop amplitudes therefore provide
-an essential test of the factorised
-hard contribution.
+Hard exchanges between the two fusion
+subprocesses do not contribute to the DPS term
+of Eq.~(\Lref{eq:factorised}). When a path of
+hard propagators connects $\mathcal H_1$ and
+$\mathcal H_2$, their squared momenta remain
+of order $s$ as $\lambda\to0$. Contracting
+these lines leaves one hard vertex producing
+both colour singlets. This is a single-parton
+scattering (SPS) pinch rather than the DPS
+pinch with two separate hard vertices
+(Sec.~\ref{sec:pinch}). This is the standard
+reduced-graph construction described in
+Sec.~5.2 of Ref.~\cite{Collins:2011zzd}.
+%
+The difference can also be seen directly
+from the loop momenta. We shift them by
+integer multiples of the outgoing momentum
+$p_3$, $k\to k+\alpha p_3$ and
+$\ell\to\ell+\beta p_3$, so that $p_3$ flows
+only through the hard path. All soft and
+collinear propagators then have no dependence
+on the transverse momentum $\qq$.
+The hard propagators have nonzero denominators
+as $\qq\to0$ and can be expanded in powers
+of $\qq$. The integration variables of the
+soft and collinear parts are unchanged by
+this expansion. Therefore each term from
+these regions, including the overlap
+subtractions, is analytic in $\qq$ and
+cannot produce a DPS term such as
+$\ln p_T$ or $1/p_T^2$.
+%
+The argument holds for individual diagrams
+in covariant gauges and does not rely on a
+cancellation between diagrams. In Feynman
+gauge some scalar-channel graphs contribute
+at order $\lambda^0$, but this is a
+contribution to the regular amplitude.
+We use expansion by regions with regulators
+independent of $\qq$, at fixed momentum
+fractions away from the endpoints.
+For fixed $s$ and final-state masses,
+the result also holds for $\beta>0$, where
+these fractions vary analytically with $p_T^2$.
+For $ZZ$ the statement applies to amplitudes
+with open final-state Lorentz indices, or
+after contraction with polarisation vectors
+analytic in $\qq$. Comparisons with the
+complete two-loop amplitudes independently
+test this separation.
 
 \paragraph{Collinear contributions: }
 For $\ell$ collinear to $p_1$, diagrams involving
@@ -674,6 +711,9 @@ A soft gluon emitted before an incoming
 gluon splits instead changes the squared
 momentum of one daughter by $O(\lambda s)$.
 We treat these attachments separately.
+Couplings to the incoming gluons are leading
+at the Glauber and ultrasoft scalings and
+are included there.
 
 A soft gluon can also attach to an effective
 $ggH$ or $ggA$ vertex. In Feynman gauge,
