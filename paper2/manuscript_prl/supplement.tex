@@ -664,18 +664,88 @@ $J_1$ and $J_2$ are evaluated in
 Sec.~\ref{app:regions}.
 
 \paragraph{Soft contributions: }
-For soft $\ell$, the couplings to
-$p_1,k,\bar k,p_2,r,\bar r$ are eikonal
-at leading power, since
-$(k+\ell)^2\simeq k^+\ell^-\sim\lambda s$
-dominates $k^2\sim\lambda^2s$.
-Individual diagrams involving an effective
-hard vertex can also contribute at leading
-power in covariant gauge. Their power
-counting alone does not establish cancellation
-after summing diagrams. We use the eikonal
-soft function defined by the corresponding
-Wilson-line matrix element.
+We consider a soft gluon with
+$\ell^\mu\sim\lambda\sqrt{s}$.
+Its leading coupling to the daughter lines
+$k,\bar k,r,\bar r$ is eikonal. For example,
+$k^2\sim\lambda^2s$, whereas
+$(k+\ell)^2\simeq2k\cdot\ell\sim\lambda s$.
+A soft gluon emitted before an incoming
+gluon splits instead changes the squared
+momentum of one daughter by $O(\lambda s)$.
+We treat these attachments separately.
+
+A soft gluon can also attach to an effective
+$ggH$ or $ggA$ vertex. In Feynman gauge,
+an individual diagram of this kind can
+contribute at leading power. We therefore
+add the four attachments to the subsystem
+containing $k$, $r$ and $\mathcal H_1$:
+the attachments to $k$ and $r$, the direct
+effective-vertex contact, and the diagram
+in which $k$ and $r$ first join at a
+three-gluon vertex. We denote their sum by
+$F^{\alpha\beta\rho}$, where $\rho$ is
+the index of the soft gluon.
+
+Let $V_2$ and $V_3$ denote the effective
+vertices with two and three gluons.
+The two-gluon vertex satisfies
+$k_\alpha V_2^{\alpha\beta}(k,r)=0$ and
+$r_\beta V_2^{\alpha\beta}(k,r)=0$.
+Thus, contracting either gluon index with
+its momentum gives zero. The three-gluon
+vertex satisfies
+\begin{equation}
+\ell_\rho V_3^{\mu\nu\rho}(k,r,\ell)
+=V_2^{\mu\nu}(k,r+\ell)
+-V_2^{\mu\nu}(k+\ell,r).
+\end{equation}
+Together with the QCD Ward identities,
+these relations give
+\begin{equation}
+\ell_\rho F^{\alpha\beta\rho}
+=f^{abc}\big[
+\Pi(r)D(r+\ell)V_2(k,r+\ell)
+-\Pi(k)D(k+\ell)V_2(k+\ell,r)
+\big]^{\alpha\beta},
+\label{eq:softward}
+\end{equation}
+where $\Pi(q)=q^2g-qq$ and $D$ is the
+gluon propagator.
+
+The right-hand side vanishes for on-shell
+daughter gluons contracted with physical
+polarisation vectors. In the DPS region,
+$k^2,r^2\sim\lambda^2s$, its contribution
+is suppressed by $O(\lambda)$ after applying
+the Ward identities of the incoming
+splittings. Thus the longitudinal ($K$)
+part of the soft propagator gives no
+leading correction. The corresponding
+eikonal $K$ term vanishes because
+$T_k+T_r=0$ at the colour-singlet vertex.
+
+The remaining ($G$) part is not determined
+by this identity alone. An exact evaluation
+of the remaining terms at the tested
+momenta shows agreement with the eikonal
+approximation at leading power.
+
+For soft attachments to an incoming gluon
+or its splitting vertex, both momentum
+routings have been examined. When the
+daughter lines at the opposite hard vertex
+remain near shell, their summed coupling
+is eikonal. In the other routing, the
+effective-vertex diagrams are suppressed
+in the tested Feynman-gauge configurations.
+The exchange between an incoming gluon
+and its daughter within one jet is also
+suppressed in these configurations.
+For this pinch class, we use the soft
+function defined by the Wilson-line
+matrix element of the four daughter lines.
 
 An exchange within one hard vertex is
 scaleless. An exchange between partons
@@ -691,13 +761,17 @@ $T_r+T_{\bar r}=T_{p_2}$. Hence
 T_k\cdot T_{\bar r}=T_{\bar k}\cdot T_r=-T_k\cdot T_{\bar k}=\tfrac12\big(C_{R_1}+C_{R_2}-C_a\big)=\tfrac12\DD ,
 \label{eq:softcolour}
 \end{equation}
-The parent-parent exchanges have colour
-factor $-C_a$, while exchanges between
-partons entering hard vertex $i$ have
-factor $-C_{R_i}$. These terms are
-independent of $b$ and enter the IR
-poles of the full amplitude and hard
-subprocess amplitudes, respectively.
+Setting $e^{i\boldsymbol\ell\cdot\bb}=1$
+in the sum over exchanges between the two
+beams gives the colour factor
+$(T_k+T_{\bar k})\cdot(T_r+T_{\bar r})
+=T_{p_1}\cdot T_{p_2}=-C_a$.
+Exchanges between partons entering
+hard vertex $i$ have factor $-C_{R_i}$.
+These terms are independent of $b$ and
+enter the IR poles of the full amplitude
+and hard subprocess amplitudes,
+respectively.
 The remaining soft function $S$ is a
 Wilson-line matrix element at two
 transverse positions. It depends on the
