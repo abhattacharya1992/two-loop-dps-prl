@@ -9,7 +9,7 @@
     "status": "validated beta^6 expansion",
     "upstream_source_repo": "https://github.com/abhattacharya1992/ggAA-threshold",
     "upstream_source_commit": "76491fd105e6f498be51affa213fe6839f879ce6",
-    "upstream_historical_ci": "https://github.com/abhattacharya1992/two-loop-dps-prl/actions/runs/44907504466",
+    "upstream_historical_ci": "https://github.com/abhattacharya1992/two-loop-dps-prl/actions/runs/44908292517",
     "expression_representation": "Wolfram, matching original and beta6 expressions; not the raw original published files",
     "original_bytes": 44844413,
     "beta6_bytes": 637268,
@@ -53,28 +53,28 @@
   },
   "point_storage": {
     "compression": "zlib level 9 + stored byte length + SHA-256, verified lossless",
-    "ci": "https://github.com/abhattacharya1992/two-loop-dps-prl/actions/runs/44907504466",
+    "ci": "https://github.com/abhattacharya1992/two-loop-dps-prl/actions/runs/44908292517",
     "items": {
       "HH": {
         "points": 50,
         "original_bytes": 157276,
         "packed_bytes": 75139,
-        "raw_parse_ms": 0.015143,
-        "verified_packed_parse_ms": 0.031378
+        "raw_parse_ms": 0.014983,
+        "verified_packed_parse_ms": 0.031113
       },
       "AA": {
         "points": 82,
         "original_bytes": 236949,
         "packed_bytes": 121491,
-        "raw_parse_ms": 0.010995,
-        "verified_packed_parse_ms": 0.027516
+        "raw_parse_ms": 0.010961,
+        "verified_packed_parse_ms": 0.02702
       },
       "ZZ": {
         "points": 28,
         "original_bytes": 804266,
         "packed_bytes": 225887,
-        "raw_parse_ms": 0.092818,
-        "verified_packed_parse_ms": 0.190214
+        "raw_parse_ms": 0.090814,
+        "verified_packed_parse_ms": 0.189037
       }
     },
     "note": "Storage savings, not analytic amplitude compression. Verified packed parsing is slower than raw JSON parsing."
